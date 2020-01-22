@@ -1,0 +1,22 @@
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.deps.json
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.runtimeconfig.json
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.runtimeconfig.dev.json
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.dll
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.pdb
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csprojAssemblyReference.cache
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csproj.ResolveComReference.cache
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfoInputs.cache
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfo.cs
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.dll
+C:\Users\sanja\Desktop\RSI-projekat\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.pdb
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.deps.json
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.runtimeconfig.json
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.runtimeconfig.dev.json
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.dll
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.pdb
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csprojAssemblyReference.cache
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csproj.ResolveComReference.cache
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfoInputs.cache
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfo.cs
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.dll
+C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.pdb

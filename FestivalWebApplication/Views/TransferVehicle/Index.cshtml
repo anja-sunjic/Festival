@@ -1,0 +1,36 @@
+﻿@using FestivalWebApplication.ViewModels.TransferVehicle;
+@model List<FestivalWebApplication.ViewModels.TransferVehicle.TransferVehicleVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List</h1>
+<div style="float:right;">
+    <a asp-controller="TransferVehicle" asp-action="New" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">+</a>
+</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Vehicle</th>
+            <th>Registration number</th>
+            <th>Capacity</th>
+            <th>Modify</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TransferVehicleVM x in Model)
+        {
+        <tr>
+            <td>@x.Id</td>
+            <td>@x.Name</td>
+            <td>@x.RegistrationNumber</td>
+            <td>@x.Capacity</td>
+            <td><a asp-controller="TransferVehicle" asp-action="Update" asp-route-id="@x.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> U </a></td>
+            <td><a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@x.Id" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> X </a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+

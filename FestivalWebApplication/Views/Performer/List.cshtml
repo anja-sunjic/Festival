@@ -1,0 +1,29 @@
+﻿@using FestivalWebApplication.ViewModels.Performer;
+@model List<FestivalWebApplication.ViewModels.Performer.PerformersListVM>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Performer</th>
+            <th>Manager</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(PerformersListVM x in  Model)
+        {
+            <tr>
+                <td>@x.Number</td>
+                <td>@x.PerformerName</td>
+                <td>@x.ManagerName</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
