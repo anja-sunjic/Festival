@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ClassLibrary.Models;
 using FestivalWebApplication.ViewModels.TransferVehicle;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -22,8 +23,8 @@ namespace FestivalWebApplication.Controllers
             {
                 Id = p.ID,
                 Name = p.Name,
-                RegistrationNumber=p.RegistrationNumber,
-                Capacity=p.Capacity
+                RegistrationNumber = p.RegistrationNumber,
+                Capacity = p.Capacity
             }).ToList();
             return View(Model);
         }
@@ -36,7 +37,14 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int Id)
         {
             TransferVehicle transferVehicle = _db.TransferVehicle.Find(Id);
-
+            List<TransferService> deleteService = _db.TransferService.Where(a => a.TransferVehicle.ID == transferVehicle.ID).ToList();
+            if (deleteService.Count > 0)
+            {
+                foreach (var service in deleteService)
+                {
+                    _db.TransferService.Remove(service);
+                }
+            }
             _db.Remove(transferVehicle);
             _db.SaveChanges();
             return Redirect("/TransferVehicle/Index");
@@ -52,14 +60,14 @@ namespace FestivalWebApplication.Controllers
                 Capacity = transferVehicle.Capacity
             };
 
-            return View("New",Model);
+            return View("New", Model);
         }
 
 
         [HttpPost]
         public IActionResult SaveNew(TransferVehicleVM Model)
         {
-            TransferVehicle transferVehicle; 
+            TransferVehicle transferVehicle;
             if (Model.Id == 0)
             {
                 transferVehicle = new TransferVehicle();
