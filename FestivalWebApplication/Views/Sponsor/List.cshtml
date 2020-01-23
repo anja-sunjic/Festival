@@ -1,0 +1,33 @@
+﻿@using FestivalWebApplication.ViewModels.Sponsor;
+@model List<FestivalWebApplication.ViewModels.Sponsor.SponsorsListVM>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Company name</th>
+            <th>Contact person</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(SponsorsListVM x in  Model)
+        {
+            <tr>
+                <td>@x.Number</td>
+                <td>@x.CompanyName</td>
+                <td>@x.ContactPersonName</td>
+                <td>
+                    <a asp-controller="Sponsor" asp-action="Edit" asp-route-id="@x.SponsorID">Edit</a> |
+                    <a asp-controller="Performer" asp-action="Delete" asp-route-id="@x.SponsorID">Delete</a>
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
+

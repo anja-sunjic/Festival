@@ -8076,23 +8076,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ed1om\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Anja\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\FestivalWebApplication\\FestivalWebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\Anja\\Desktop\\Festival\\FestivalWebApplication\\FestivalWebApplication.csproj",
       "projectName": "FestivalWebApplication",
-      "projectPath": "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\FestivalWebApplication\\FestivalWebApplication.csproj",
-      "packagesPath": "C:\\Users\\ed1om\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\FestivalWebApplication\\obj\\",
+      "projectPath": "C:\\Users\\Anja\\Desktop\\Festival\\FestivalWebApplication\\FestivalWebApplication.csproj",
+      "packagesPath": "C:\\Users\\Anja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Anja\\Desktop\\Festival\\FestivalWebApplication\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ed1om\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Anja\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8105,8 +8101,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\ClassLibrary\\ClassLibrary.csproj": {
-              "projectPath": "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\ClassLibrary\\ClassLibrary.csproj"
+            "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj"
             }
           }
         }

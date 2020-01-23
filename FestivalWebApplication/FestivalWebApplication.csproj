@@ -21,4 +21,9 @@
     <Folder Include="wwwroot\images\performerImages\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Performer\List.cshtml" />
+    <None Include="Views\Performer\New.cshtml" />
+  </ItemGroup>
+
 </Project>

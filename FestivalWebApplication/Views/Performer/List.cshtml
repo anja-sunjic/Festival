@@ -21,8 +21,12 @@
                 <td>@x.Number</td>
                 <td>@x.PerformerName</td>
                 <td>@x.ManagerName</td>
-                <td></td>
+                <td>
+                    <a asp-controller="Performer" asp-action="Edit" asp-route-id="@x.PerformerID">Edit</a>|
+                    <a asp-controller="Performer" asp-action="Delete" asp-route-id="@x.PerformerID">Delete</a>
+                </td>
             </tr>
+            
         }
     </tbody>
 </table>

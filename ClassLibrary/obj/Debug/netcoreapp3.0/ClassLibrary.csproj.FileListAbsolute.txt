@@ -20,3 +20,14 @@ C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrar
 C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfo.cs
 C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.dll
 C:\Users\ed1om\OneDrive\Radna površina\FESTIVAL\New folder\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.pdb
+C:\Users\Anja\Desktop\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.deps.json
+C:\Users\Anja\Desktop\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.runtimeconfig.json
+C:\Users\Anja\Desktop\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.runtimeconfig.dev.json
+C:\Users\Anja\Desktop\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.dll
+C:\Users\Anja\Desktop\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.pdb
+C:\Users\Anja\Desktop\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csprojAssemblyReference.cache
+C:\Users\Anja\Desktop\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csproj.ResolveComReference.cache
+C:\Users\Anja\Desktop\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfoInputs.cache
+C:\Users\Anja\Desktop\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfo.cs
+C:\Users\Anja\Desktop\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.dll
+C:\Users\Anja\Desktop\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.pdb

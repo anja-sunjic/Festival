@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\ClassLibrary\\ClassLibrary.csproj": {}
+    "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\ClassLibrary\\ClassLibrary.csproj": {
+    "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\ClassLibrary\\ClassLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj",
         "projectName": "ClassLibrary",
-        "projectPath": "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\ClassLibrary\\ClassLibrary.csproj",
-        "packagesPath": "C:\\Users\\ed1om\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ed1om\\OneDrive\\Radna površina\\FESTIVAL\\New folder\\Festival\\ClassLibrary\\obj\\",
+        "projectPath": "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj",
+        "packagesPath": "C:\\Users\\Anja\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ed1om\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anja\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
