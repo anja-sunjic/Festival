@@ -1,0 +1,33 @@
+﻿@using FestivalWebApplication.ViewModels.Performance;
+@model List<FestivalWebApplication.ViewModels.Performance.PerformanceListVM>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Date</th>
+            <th>Performer</th>
+            <th>Stage</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(PerformanceListVM x in  Model)
+        {
+            <tr>
+                <td>@x.Start.ToString()</td>
+                <td>@x.Performer</td>
+                <td>@x.Stage</td>
+                <td>
+                    @*<a asp-controller="Performance" asp-action="Edit" asp-route-id="@x.PerformanceID">Edit</a>|
+                    <a asp-controller="Performance" asp-action="Delete" asp-route-id="@x.PerformanceID">Delete</a>*@
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
+
