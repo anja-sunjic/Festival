@@ -1,0 +1,35 @@
+﻿@using FestivalWebApplication.ViewModels.Stage;
+@model List<FestivalWebApplication.ViewModels.Stage.StagesListVM>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Stage</th>
+            <th>Capacity</th>
+            <th>Sponsor</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(StagesListVM x in  Model)
+        {
+            <tr>
+                <td>@x.Number</td>
+                <td>@x.Name</td>
+                <td>@x.Capacity</td>
+                <td>@x.Sponsor</td>
+                <td>
+                    <a asp-controller="Stage" asp-action="Edit" asp-route-id="@x.StageID">Edit</a>|
+                    <a asp-controller="Stage" asp-action="Delete" asp-route-id="@x.StageID">Delete</a>
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
+

@@ -437,3 +437,6 @@ C:\Users\Anja\Desktop\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Ra
 C:\Users\Anja\Desktop\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Sponsor\Edit.cshtml.g.cs
 C:\Users\Anja\Desktop\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Sponsor\List.cshtml.g.cs
 C:\Users\Anja\Desktop\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Sponsor\New.cshtml.g.cs
+C:\Users\Anja\Desktop\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Stage\New.cshtml.g.cs
+C:\Users\Anja\Desktop\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Stage\List.cshtml.g.cs
+C:\Users\Anja\Desktop\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Stage\Edit.cshtml.g.cs
