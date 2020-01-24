@@ -1,11 +1,8 @@
-﻿using System;
+﻿using ClassLibrary.Models;
+using FestivalWebApplication.ViewModels.Accommodation;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ClassLibrary.Models;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -19,141 +16,78 @@ namespace FestivalWebApplication.Controllers
         }
 
         // GET: Accommodations
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var festivalContext = _context.Accommodation.Include(a => a.Image);
-            return View(await festivalContext.ToListAsync());
+            return RedirectToAction("List");
         }
 
-        // GET: Accommodations/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult List()
         {
-            if (id == null)
+            List<AccommodationListVM> Model = _context.Accommodation.Select(p =>
+                 new AccommodationListVM
+                 {
+                     Name = p.Name,
+                     PhoneNumber = p.PhoneNumber,
+                     Distance = p.Distance,
+                     Description = p.Description
+                 }).ToList();
+            return View("List", Model);
+        }
+
+        public IActionResult New()
+        {
+            NewAccommodationVM Model = new NewAccommodationVM();
+            return View(Model);
+        }
+
+        public IActionResult Delete(int Id)
+        {
+            Accommodation accommodation = _context.Accommodation.Find(Id);
+            _context.Remove(accommodation);
+            _context.SaveChanges();
+            return Redirect("List");
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            Accommodation accommodation = _context.Accommodation.Find(Id);
+            EditAccommodationVM Model = new EditAccommodationVM
             {
-                return NotFound();
-            }
-
-            var accommodation = await _context.Accommodation
-                .Include(a => a.Image)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (accommodation == null)
-            {
-                return NotFound();
-            }
-
-            return View(accommodation);
+                Name = accommodation.Name,
+                PhoneNumber = accommodation.PhoneNumber,
+                Distance = accommodation.Distance,
+                Description = accommodation.Description
+            };
+            return View("Edit", Model);
         }
 
-        // GET: Accommodations/Create
-        public IActionResult Create()
-        {
-            ViewData["ImageID"] = new SelectList(_context.Image, "Id", "Id");
-            return View();
-        }
-
-        // POST: Accommodations/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,PhoneNumber,Distance,ImageID,Description")] Accommodation accommodation)
+        public IActionResult SaveNew(NewAccommodationVM Model)
         {
-            if (ModelState.IsValid)
+            Accommodation accommodation = new Accommodation()
             {
-                _context.Add(accommodation);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ImageID"] = new SelectList(_context.Image, "Id", "Id", accommodation.ImageID);
-            return View(accommodation);
+                Name = Model.Name,
+                Distance = Model.Distance,
+                PhoneNumber = Model.PhoneNumber,
+                Description = Model.Description
+            };
+
+            _context.Accommodation.Add(accommodation);
+            _context.SaveChanges();
+
+            return RedirectToAction("List");
         }
 
-        // GET: Accommodations/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+
+        public IActionResult Save(EditAccommodationVM Model)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var accommodation = await _context.Accommodation.FindAsync(id);
-            if (accommodation == null)
-            {
-                return NotFound();
-            }
-            ViewData["ImageID"] = new SelectList(_context.Image, "Id", "Id", accommodation.ImageID);
-            return View(accommodation);
-        }
-
-        // POST: Accommodations/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,PhoneNumber,Distance,ImageID,Description")] Accommodation accommodation)
-        {
-            if (id != accommodation.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(accommodation);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccommodationExists(accommodation.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ImageID"] = new SelectList(_context.Image, "Id", "Id", accommodation.ImageID);
-            return View(accommodation);
-        }
-
-        // GET: Accommodations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var accommodation = await _context.Accommodation
-                .Include(a => a.Image)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (accommodation == null)
-            {
-                return NotFound();
-            }
-
-            return View(accommodation);
-        }
-
-        // POST: Accommodations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var accommodation = await _context.Accommodation.FindAsync(id);
-            _context.Accommodation.Remove(accommodation);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool AccommodationExists(int id)
-        {
-            return _context.Accommodation.Any(e => e.ID == id);
+            Accommodation acc = _context.Accommodation.Find(Model.ID);
+            acc.Name = Model.Name;
+            acc.Description = Model.Description;
+            acc.Distance = Model.Distance;
+            acc.PhoneNumber = Model.PhoneNumber;
+            _context.SaveChanges();
+            return RedirectToAction("List");
         }
     }
 }
