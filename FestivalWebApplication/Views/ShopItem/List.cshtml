@@ -1,0 +1,37 @@
+﻿@using FestivalWebApplication.ViewModels.ShopItem;
+@model List<FestivalWebApplication.ViewModels.ShopItem.ShopItemListVM>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+<div style="float:right;">
+    <a asp-controller="ShopItem" asp-action="New" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">+</a>
+</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Modify</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ShopItemListVM x in Model)
+        {
+            <tr>
+                <td>@x.ID</td>
+                <td>@x.Name</td>
+                <td>@x.Price</td>
+                <td>@x.Quantity</td>
+                <td>@x.Description</td>
+                <td><a asp-controller="ShopItem" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> U </a></td>
+                <td><a asp-controller="ShopItem" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> X </a></td>
+            </tr>
+        }
+    </tbody>
+</table>

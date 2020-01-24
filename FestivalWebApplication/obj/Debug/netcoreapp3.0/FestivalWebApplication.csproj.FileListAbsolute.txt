@@ -777,3 +777,6 @@ C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\net
 C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\Edit.cshtml.g.cs
 C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\List.cshtml.g.cs
 C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\New.cshtml.g.cs
+C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\ShopItem\Edit.cshtml.g.cs
+C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\ShopItem\New.cshtml.g.cs
+C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\ShopItem\List.cshtml.g.cs
