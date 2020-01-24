@@ -4888,19 +4888,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anja\\.nuget\\packages\\": {}
+    "C:\\Users\\DT User3\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\DT User3\\Desktop\\Festival\\Festival\\ClassLibrary\\ClassLibrary.csproj",
       "projectName": "ClassLibrary",
-      "projectPath": "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj",
-      "packagesPath": "C:\\Users\\Anja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anja\\Desktop\\Festival\\ClassLibrary\\obj\\",
+      "projectPath": "C:\\Users\\DT User3\\Desktop\\Festival\\Festival\\ClassLibrary\\ClassLibrary.csproj",
+      "packagesPath": "C:\\Users\\DT User3\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DT User3\\Desktop\\Festival\\Festival\\ClassLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DT User3\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4968,7 +4968,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
