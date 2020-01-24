@@ -774,8 +774,6 @@ C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\bin\Debug\net
 C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\bin\Debug\netcoreapp3.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\bin\Debug\netcoreapp3.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\FestivalWebApplication.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\Create.cshtml.g.cs
-C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\Delete.cshtml.g.cs
-C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\Details.cshtml.g.cs
 C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\Edit.cshtml.g.cs
-C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\Index.cshtml.g.cs
+C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\List.cshtml.g.cs
+C:\Users\DT User3\Desktop\Festival\Festival\FestivalWebApplication\obj\Debug\netcoreapp3.0\Razor\Views\Accommodations\New.cshtml.g.cs

@@ -36,7 +36,6 @@ C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\bin\Debug\netcoreapp3.0
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.runtimeconfig.dev.json
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.dll
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\bin\Debug\netcoreapp3.0\ClassLibrary.pdb
-C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csprojAssemblyReference.cache
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csproj.ResolveComReference.cache
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfoInputs.cache
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfo.cs

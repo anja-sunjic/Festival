@@ -26,6 +26,7 @@ namespace FestivalWebApplication.Controllers
             List<AccommodationListVM> Model = _context.Accommodation.Select(p =>
                  new AccommodationListVM
                  {
+                     ID = p.ID,
                      Name = p.Name,
                      PhoneNumber = p.PhoneNumber,
                      Distance = p.Distance,
