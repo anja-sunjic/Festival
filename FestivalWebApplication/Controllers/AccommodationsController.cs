@@ -15,7 +15,7 @@ namespace FestivalWebApplication.Controllers
             _context = context;
         }
 
-        // GET: Accommodations
+
         public IActionResult Index()
         {
             return RedirectToAction("List");
@@ -41,9 +41,9 @@ namespace FestivalWebApplication.Controllers
             return View(Model);
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int ID)
         {
-            Accommodation accommodation = _context.Accommodation.Find(Id);
+            Accommodation accommodation = _context.Accommodation.Find(ID);
             _context.Remove(accommodation);
             _context.SaveChanges();
             return Redirect("List");

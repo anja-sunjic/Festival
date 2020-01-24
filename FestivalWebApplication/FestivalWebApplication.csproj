@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\ShopItem\" />
     <Folder Include="wwwroot\images\performerImages\" />
   </ItemGroup>
 
