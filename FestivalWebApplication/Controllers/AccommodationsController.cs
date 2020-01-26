@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Models;
 using FestivalWebApplication.ViewModels.Accommodation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace FestivalWebApplication.Controllers
             _context = context;
         }
 
-
+        [Authorize]
         public IActionResult Index()
         {
             return RedirectToAction("List");
