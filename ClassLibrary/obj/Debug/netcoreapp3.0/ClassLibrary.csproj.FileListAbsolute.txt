@@ -41,4 +41,3 @@ C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.AssemblyInfo.cs
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.dll
 C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.pdb
-C:\Users\DT User3\Desktop\Festival\Festival\ClassLibrary\obj\Debug\netcoreapp3.0\ClassLibrary.csprojAssemblyReference.cache

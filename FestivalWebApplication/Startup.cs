@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ClassLibrary.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ClassLibrary.Models;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace FestivalWebApplication
 {
@@ -24,6 +20,23 @@ namespace FestivalWebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+            .AddCookie("Cookies")
+            .AddOpenIdConnect("oidc", options =>
+           {
+               options.SignInScheme = "Cookies";
+               options.Authority = "http://localhost:5000"; // Auth Server  
+               options.RequireHttpsMetadata = false; // only for development   
+               options.ClientId = "mvc"; // client setup in Auth Server
+               options.SaveTokens = true;
+
+           });
             services.AddControllersWithViews();
             services.AddDbContext<FestivalContext>();
         }
@@ -43,6 +56,8 @@ namespace FestivalWebApplication
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 
