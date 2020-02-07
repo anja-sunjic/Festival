@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassLibrary.Models
+﻿namespace Festival.Data.Models
 {
-   public class TicketType
+    public class TicketType
     {
         public int ID { get; set; }
         public string Name { get; set; }

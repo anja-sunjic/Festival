@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ClassLibrary.Models
+namespace Festival.Data.Models
 {
     public class Purchase
     {

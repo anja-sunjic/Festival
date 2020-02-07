@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassLibrary.Models
+﻿namespace Festival.Data.Models
 {
     public class Stage
     {
@@ -13,4 +9,3 @@ namespace ClassLibrary.Models
         public int? SponsorID { get; set; }
     }
 }
-

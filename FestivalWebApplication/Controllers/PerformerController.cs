@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Festival.Data.Models;
+using FestivalWebApplication.Helper;
 using FestivalWebApplication.ViewModels.Performer;
 using Microsoft.AspNetCore.Hosting;
-using ClassLibrary.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.IO;
-using Microsoft.AspNetCore.Http;
-using FestivalWebApplication.Helper;
+using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -30,18 +27,18 @@ namespace FestivalWebApplication.Controllers
             //fetching all records from Performer
             List<PerformersListVM> Model = _db.Performer.Select(p => new PerformersListVM
             {
-                PerformerID=p.ID,
-                PerformerName=p.Name,
-                ManagerName=_db.Manager.Where(m=> m.ID==p.ManagerID).FirstOrDefault().Name
+                PerformerID = p.ID,
+                PerformerName = p.Name,
+                ManagerName = _db.Manager.Where(m => m.ID == p.ManagerID).FirstOrDefault().Name
             }).ToList();
 
             //ordered list
             int broj = 0;
-            foreach(PerformersListVM x in Model)
+            foreach (PerformersListVM x in Model)
             {
                 x.Number = ++broj;
             }
-            return View(Model);   
+            return View(Model);
         }
 
         public IActionResult New()
@@ -70,7 +67,7 @@ namespace FestivalWebApplication.Controllers
             _db.SaveChanges();
 
             //building a filepath and name
-            string fileName = "image"+performer.ID.ToString()+Path.GetExtension(Model.Image.FileName);
+            string fileName = "image" + performer.ID.ToString() + Path.GetExtension(Model.Image.FileName);
             string folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/performerImages");
             string filePath = Path.Combine(folderPath, fileName);
 
@@ -78,7 +75,7 @@ namespace FestivalWebApplication.Controllers
             ImageUpload.UploadImageToFolder(Model.Image, filePath);
 
             Image image = new Image();
-            image.ImagePath = Path.Combine("~/images/performerImages/",fileName);
+            image.ImagePath = Path.Combine("~/images/performerImages/", fileName);
             //saving an image first, to get an imageID which will be saved in a performer object
             _db.Image.Add(image);
             _db.SaveChanges();
@@ -100,15 +97,15 @@ namespace FestivalWebApplication.Controllers
             Model.Name = x.Name;
             Model.Fee = x.Fee;
             Model.PromoText = x.PromoText;
-            if(x.ImageID!=null)
+            if (x.ImageID != null)
                 Model.ImagePath = _db.Image.Find(x.ImageID).ImagePath;
             Model.ManagerId = m.ID;
             Model.ManagerName = m.Name;
             Model.ManagerPhoneNumber = m.PhoneNumber;
             Model.ManagerEmail = m.Email;
-               
+
             return View("Edit", Model);
-            
+
         }
         public IActionResult Save(EditPerformerVM Model)
         {
@@ -118,9 +115,9 @@ namespace FestivalWebApplication.Controllers
             x.Name = Model.Name;
             x.Fee = Model.Fee;
             x.PromoText = Model.PromoText;
-                
+
             //check if there is a new image, and overwrite the previous one if there is
-            if(Model.Image != null)
+            if (Model.Image != null)
             {
                 string fileName = "image" + x.ID.ToString() + Path.GetExtension(Model.Image.FileName);
                 string folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/performerImages");
@@ -128,7 +125,7 @@ namespace FestivalWebApplication.Controllers
 
                 ImageUpload.UploadImageToFolder(Model.Image, filePath);
             }
-              
+
             //fetching a manager object
             Manager m = _db.Manager.Find(Model.ManagerId);
             m.Name = Model.ManagerName;

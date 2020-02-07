@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ClassLibrary.Migrations
+namespace Festival.Data.Migrations
 {
     public partial class x : Migration
     {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClassLibrary.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace FestivalWebApplication.ViewModels.Sponsor
-{ 
+{
     public class NewSponsorVM
     {
         public string CompanyName { get; set; }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClassLibrary.Models;
+﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.Stage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -26,10 +24,10 @@ namespace FestivalWebApplication.Controllers
             //fetching all stages
             List<StagesListVM> Model = _db.Stage.Select(s => new StagesListVM
             {
-                StageID=s.ID,
+                StageID = s.ID,
                 Name = s.Name,
                 Capacity = s.Capacity,
-                Sponsor = _db.Sponsor.Where(x=> x.ID==s.ID).FirstOrDefault().CompanyName
+                Sponsor = _db.Sponsor.Where(x => x.ID == s.ID).FirstOrDefault().CompanyName
             }).ToList();
 
             //ordered list

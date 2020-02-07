@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassLibrary.Models
+namespace Festival.Data.Models
 {
-   public class Performance
+    public class Performance
     {
         public int ID { get; set; }
         public DateTime Start { get; set; }

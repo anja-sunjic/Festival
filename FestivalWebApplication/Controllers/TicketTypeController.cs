@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClassLibrary.Models;
+﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.TicketType;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -20,7 +18,7 @@ namespace FestivalWebApplication.Controllers
         {
             List<TicketTypeVM> Model = _db.TicketType.Select(p => new TicketTypeVM
             {
-                Id=p.ID,
+                Id = p.ID,
                 Name = p.Name,
                 Price = p.Price
             }).ToList();
@@ -34,7 +32,7 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult Delete(int Id)
         {
-         
+
             TicketType ticketType = _db.TicketType.Find(Id);
 
             _db.Remove(ticketType);
@@ -51,14 +49,14 @@ namespace FestivalWebApplication.Controllers
                 Price = ticketType.Price
             };
 
-            return View("New",Model);
+            return View("New", Model);
         }
 
- 
+
         [HttpPost]
         public IActionResult SaveNew(TicketTypeVM Model)
         {
-           
+
             TicketType ticketType;
 
             if (Model.Id == 0)
@@ -80,5 +78,5 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("Index");
         }
     }
-  
+
 }

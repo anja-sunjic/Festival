@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Festival.Data.Models;
+using FestivalWebApplication.ViewModels.Performance;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using FestivalWebApplication.ViewModels.Performance;
-using ClassLibrary.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -26,10 +24,10 @@ namespace FestivalWebApplication.Controllers
             List<PerformanceListVM> Model = _db.Performance.Select(p =>
                  new PerformanceListVM
                  {
-                     PerformanceID=p.ID,
+                     PerformanceID = p.ID,
                      Start = p.Start,
-                     Performer=_db.Performer.Where(x=> x.ID==p.PerformerID).FirstOrDefault().Name,
-                     Stage=_db.Stage.Where(x=> x.ID==p.StageID).FirstOrDefault().Name
+                     Performer = _db.Performer.Where(x => x.ID == p.PerformerID).FirstOrDefault().Name,
+                     Stage = _db.Stage.Where(x => x.ID == p.StageID).FirstOrDefault().Name
 
                  }).ToList();
             return View("List", Model);
@@ -50,7 +48,7 @@ namespace FestivalWebApplication.Controllers
                 Value = s.ID.ToString()
             }).ToList();
 
-            return View("New",Model);
+            return View("New", Model);
         }
         public IActionResult SaveNew(NewPerformanceVM Model)
         {

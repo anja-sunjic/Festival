@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClassLibrary.Models;
+﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.TransferService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -20,7 +18,7 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult Index()
         {
-            
+
             List<ListTransferServiceVM> Model = _db.TransferService.Select(p => new ListTransferServiceVM
             {
                 Id = p.ID,
@@ -52,7 +50,7 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult Update(int Id)
         {
-            TransferService transferService = _db.TransferService.Include(a=>a.TransferVehicle).FirstOrDefault(a=>a.ID==Id);
+            TransferService transferService = _db.TransferService.Include(a => a.TransferVehicle).FirstOrDefault(a => a.ID == Id);
             NewTransferServiceVM Model = new NewTransferServiceVM
             {
                 Id = transferService.ID,
@@ -84,7 +82,7 @@ namespace FestivalWebApplication.Controllers
                 transferService = _db.TransferService.Find(Model.Id);
             }
 
-            transferService.NumberOfAvailableSeats = _db.TransferVehicle.FirstOrDefault(a=>a.ID==Model.VehicleId).Capacity;
+            transferService.NumberOfAvailableSeats = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId).Capacity;
             transferService.TransferVehicle = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId);
             transferService.Date = Model.Date;
 

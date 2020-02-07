@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassLibrary.Models
+﻿namespace Festival.Data.Models
 {
     public class Ticket
     {
@@ -15,4 +11,3 @@ namespace ClassLibrary.Models
         public int? AttendeeID { get; set; }
     }
 }
-

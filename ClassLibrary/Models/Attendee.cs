@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassLibrary.Models
+﻿namespace Festival.Data.Models
 {
     public class Attendee
     {
@@ -13,5 +9,5 @@ namespace ClassLibrary.Models
         public string PhoneNumber { get; set; }
         public UserAccount Account { get; set; }
         public int? UserAccountID { get; set; }
-    }   
+    }
 }

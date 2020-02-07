@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Models;
+﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.Accommodation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace FestivalWebApplication.Controllers
     public class AccommodationsController : Controller
     {
         private readonly FestivalContext _context;
+        private readonly IAccommodationRepository _repo;
 
-        public AccommodationsController(FestivalContext context)
+        public AccommodationsController(FestivalContext context, IAccommodationRepository repo)
         {
             _context = context;
+            _repo = repo;
         }
 
         [Authorize]
@@ -24,16 +27,16 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult List()
         {
-            List<AccommodationListVM> Model = _context.Accommodation.Select(p =>
-                 new AccommodationListVM
-                 {
-                     ID = p.ID,
-                     Name = p.Name,
-                     PhoneNumber = p.PhoneNumber,
-                     Distance = p.Distance,
-                     Description = p.Description
-                 }).ToList();
-            return View("List", Model);
+            List<AccommodationListVM> model = _repo.GetAll().Select(acc => new AccommodationListVM
+            {
+                ID = acc.ID,
+                Description = acc.Description,
+                Distance = acc.Distance,
+                Name = acc.Name,
+                PhoneNumber = acc.PhoneNumber
+            }).ToList();
+            return View("List", model);
+
         }
 
         public IActionResult New()

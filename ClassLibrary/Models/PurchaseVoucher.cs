@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ClassLibrary.Models
+namespace Festival.Data.Models
 {
-    public class PurchaseVoucher:Voucher
+    public class PurchaseVoucher : Voucher
     {
         [ForeignKey("PurchaseID")]
         public Purchase Purchase { get; set; }

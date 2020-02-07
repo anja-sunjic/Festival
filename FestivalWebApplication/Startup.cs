@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Models;
+﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +40,7 @@ namespace FestivalWebApplication
            });
             services.AddControllersWithViews();
             services.AddDbContext<FestivalContext>();
+            services.AddScoped<IAccommodationRepository, AccommodationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

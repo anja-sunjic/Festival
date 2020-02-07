@@ -1,4 +1,4 @@
-﻿using ClassLibrary.Models;
+﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.ShopItem;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

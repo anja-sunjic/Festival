@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using ClassLibrary.Models;
+﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.Sponsor;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -134,7 +132,7 @@ namespace FestivalWebApplication.Controllers
             using (FestivalContext db = new FestivalContext())
             {
                 Sponsor x = db.Sponsor.Find(id);
-              
+
                 db.Sponsor.Remove(x);
 
                 db.SaveChanges();

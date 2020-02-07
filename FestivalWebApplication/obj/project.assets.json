@@ -3042,7 +3042,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "ClassLibrary/1.0.0": {
+      "Festival.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
         "dependencies": {
@@ -3050,10 +3050,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.0.1"
         },
         "compile": {
-          "bin/placeholder/ClassLibrary.dll": {}
+          "bin/placeholder/Festival.Data.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ClassLibrary.dll": {}
+          "bin/placeholder/Festival.Data.dll": {}
         }
       }
     }
@@ -9284,15 +9284,15 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "ClassLibrary/1.0.0": {
+    "Festival.Data/1.0.0": {
       "type": "project",
-      "path": "../ClassLibrary/ClassLibrary.csproj",
-      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
+      "path": "../ClassLibrary/Festival.Data.csproj",
+      "msbuildProject": "../ClassLibrary/Festival.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
-      "ClassLibrary >= 1.0.0",
+      "Festival.Data >= 1.0.0",
       "IdentityModel >= 4.1.1",
       "Microsoft.AspNetCore.Authentication.Cookies >= 2.2.0",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 3.0.0",
@@ -9308,9 +9308,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DT User3\\Desktop\\Festival\\FestivalWebApplication\\FestivalWebApplication.csproj",
-      "projectName": "FestivalWebApplication",
-      "projectPath": "C:\\Users\\DT User3\\Desktop\\Festival\\FestivalWebApplication\\FestivalWebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\DT User3\\Desktop\\Festival\\FestivalWebApplication\\Festival.Web.csproj",
+      "projectName": "Festival.Web",
+      "projectPath": "C:\\Users\\DT User3\\Desktop\\Festival\\FestivalWebApplication\\Festival.Web.csproj",
       "packagesPath": "C:\\Users\\DT User3\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\DT User3\\Desktop\\Festival\\FestivalWebApplication\\obj\\",
       "projectStyle": "PackageReference",
@@ -9328,8 +9328,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\DT User3\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj": {
-              "projectPath": "C:\\Users\\DT User3\\Desktop\\Festival\\ClassLibrary\\ClassLibrary.csproj"
+            "C:\\Users\\DT User3\\Desktop\\Festival\\ClassLibrary\\Festival.Data.csproj": {
+              "projectPath": "C:\\Users\\DT User3\\Desktop\\Festival\\ClassLibrary\\Festival.Data.csproj"
             }
           }
         }

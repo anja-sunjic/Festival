@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
-namespace ClassLibrary.Migrations
+namespace Festival.Data.Migrations
 {
     public partial class EditingEntities : Migration
     {

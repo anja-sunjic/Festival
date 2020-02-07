@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassLibrary.Models
+﻿namespace Festival.Data.Models
 {
-    public enum AccountType { attendee, admin}
+    public enum AccountType { attendee, admin }
     public class UserAccount
     {
         public int ID { get; set; }

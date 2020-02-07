@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClassLibrary.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FestivalWebApplication.ViewModels.Stage
 {
