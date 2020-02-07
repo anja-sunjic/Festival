@@ -10,12 +10,10 @@ namespace FestivalWebApplication.Controllers
 {
     public class AccommodationsController : Controller
     {
-        private readonly FestivalContext _context;
         private readonly IAccommodationRepository _repo;
 
-        public AccommodationsController(FestivalContext context, IAccommodationRepository repo)
+        public AccommodationsController(IAccommodationRepository repo)
         {
-            _context = context;
             _repo = repo;
         }
 
@@ -47,15 +45,13 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Delete(int ID)
         {
-            Accommodation accommodation = _context.Accommodation.Find(ID);
-            _context.Remove(accommodation);
-            _context.SaveChanges();
+            _repo.Delete(ID);
             return Redirect("List");
         }
 
         public IActionResult Edit(int Id)
         {
-            Accommodation accommodation = _context.Accommodation.Find(Id);
+            Accommodation accommodation = _repo.GetByID(Id);
             EditAccommodationVM Model = new EditAccommodationVM
             {
                 Name = accommodation.Name,
@@ -77,21 +73,19 @@ namespace FestivalWebApplication.Controllers
                 Description = Model.Description
             };
 
-            _context.Accommodation.Add(accommodation);
-            _context.SaveChanges();
-
+            _repo.Add(accommodation);
             return RedirectToAction("List");
         }
 
 
         public IActionResult Save(EditAccommodationVM Model)
         {
-            Accommodation acc = _context.Accommodation.Find(Model.ID);
+            Accommodation acc = _repo.GetByID(Model.ID);
             acc.Name = Model.Name;
             acc.Description = Model.Description;
             acc.Distance = Model.Distance;
             acc.PhoneNumber = Model.PhoneNumber;
-            _context.SaveChanges();
+            _repo.Save();
             return RedirectToAction("List");
         }
     }
