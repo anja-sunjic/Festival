@@ -55,6 +55,7 @@ namespace FestivalWebApplication.Controllers
             ShopItem shopItem = _context.ShopItem.Find(ID);
             EditShopItemVM Model = new EditShopItemVM
             {
+                ID=ID,
                 Name = shopItem.Name,
                 Price = shopItem.Price,
                 Quantity = shopItem.Quantity,

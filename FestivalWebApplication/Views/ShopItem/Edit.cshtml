@@ -6,6 +6,7 @@
 <form asp-action="Save" enctype="multipart/form-data" method="post">
     <fieldset>
         <legend class="w-auto">Shop Item</legend>
+        <input style="display: none" asp-for="ID" />
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="Name">Shop Item Name</label>
             <div class="col-sm-5">
@@ -28,7 +29,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="Description">Description</label>
             <div class="col-sm-2">
-                <textarea asp-for="Description" class="form-control" ></textarea>
+                <textarea asp-for="Description" class="form-control"></textarea>
             </div>
         </div>
     </fieldset>
