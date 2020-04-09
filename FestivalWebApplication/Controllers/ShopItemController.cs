@@ -45,7 +45,7 @@ namespace FestivalWebApplication.Controllers
             ShopItem shopItem = _context.ShopItem.Find(ID);
             _context.Remove(shopItem);
             _context.SaveChanges();
-            return Redirect("List");
+            return Redirect("/ShopItem/List");
         }
 
         public IActionResult Edit(int ID)
