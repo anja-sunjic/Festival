@@ -1,11 +1,13 @@
 ﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.ShopItem;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+    [Authorize]
     public class ShopItemController : Controller
     {
         private readonly FestivalContext _context;
