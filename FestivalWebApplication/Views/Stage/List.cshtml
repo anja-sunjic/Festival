@@ -4,8 +4,11 @@
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
-<table class="table">
+<h1>Stage</h1>
+<div style="float:right; margin-bottom:10px;">
+    <a asp-controller="Stage" asp-action="New" class="btn btn-success btn-lg active" role="button" aria-pressed="true"><i class="fa fa-plus"></i></a>
+</div>
+<table class="table  table-striped table-hover">
     <thead class="thead-dark">
         <tr>
             <th>#</th>
@@ -16,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(StagesListVM x in  Model)
+        @foreach (StagesListVM x in Model)
         {
             <tr>
                 <td>@x.Number</td>
@@ -24,12 +27,15 @@
                 <td>@x.Capacity</td>
                 <td>@x.Sponsor</td>
                 <td>
-                    <a asp-controller="Stage" asp-action="Edit" asp-route-id="@x.StageID">Edit</a>|
-                    <a asp-controller="Stage" asp-action="Delete" asp-route-id="@x.StageID">Delete</a>
+                    <a style="margin-right:5px;" asp-controller="Stage" asp-action="Edit" asp-route-id="@x.StageID" class="btn btn-secondary active" role="button" aria-pressed="true">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a asp-controller="Stage" asp-action="Delete" asp-route-id="@x.StageID" class="btn btn-danger" role="button" aria-pressed="true">
+                        <i class="fa fa-trash"></i>
+                    </a>
                 </td>
             </tr>
-            
+
         }
     </tbody>
 </table>
-
