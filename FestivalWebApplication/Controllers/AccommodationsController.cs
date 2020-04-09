@@ -17,7 +17,6 @@ namespace FestivalWebApplication.Controllers
             _repo = repo;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             return RedirectToAction("List");
@@ -46,7 +45,7 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int ID)
         {
             _repo.Delete(ID);
-            return Redirect("List");
+            return Redirect("/Accommodations/List");
         }
 
         public IActionResult Edit(int Id)
