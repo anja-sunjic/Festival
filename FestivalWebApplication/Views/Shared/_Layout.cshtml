@@ -16,6 +16,203 @@
 
 
 
+        .visible {
+            display: none;
+        }
+
+
+        .fa {
+            height: 15px !important;
+            width: 15px !important;
+        }
+
+        body {
+            background: #fafafa;
+        }
+
+        p {
+            font-size: 1.1em;
+            font-weight: 300;
+            line-height: 1.7em;
+            color: #999;
+        }
+
+        a,
+        a:hover,
+        a:focus {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .navbar {
+            padding: 15px 10px;
+            background: #fff;
+            border: none;
+            border-radius: 0;
+            margin-bottom: 40px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-btn {
+            box-shadow: none;
+            outline: none !important;
+            border: none;
+        }
+
+        .line {
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px dashed #ddd;
+            margin: 40px 0;
+        }
+
+        i,
+        span {
+            display: inline-block;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+
+        #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background: #476A6F;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+            #sidebar.active {
+                min-width: 80px;
+                max-width: 80px;
+                text-align: center;
+            }
+
+                #sidebar.active .sidebar-header h3,
+                #sidebar.active .CTAs {
+                    display: none;
+                }
+
+                #sidebar.active .sidebar-header strong {
+                    display: block;
+                }
+
+            #sidebar ul li a {
+                text-align: left;
+            }
+
+            #sidebar.active ul li a {
+                padding: 20px 10px;
+                text-align: center;
+                font-size: 0.85em;
+            }
+
+                #sidebar.active ul li a i {
+                    margin-right: 0;
+                    display: block;
+                    font-size: 1.8em;
+                    margin-bottom: 5px;
+                }
+
+            #sidebar.active ul ul a {
+                padding: 10px !important;
+            }
+
+            #sidebar.active .dropdown-toggle::after {
+                top: auto;
+                bottom: 10px;
+                right: 50%;
+                -webkit-transform: translateX(50%);
+                -ms-transform: translateX(50%);
+                transform: translateX(50%);
+            }
+
+            #sidebar .sidebar-header {
+                padding: 20px;
+                background: #7EB09B;
+            }
+
+                #sidebar .sidebar-header strong {
+                    display: none;
+                    font-size: 1.8em;
+                }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+                border-bottom: 1px solid #7EB09B;
+            }
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1.1em;
+                display: block;
+            }
+
+                #sidebar ul li a:hover {
+                    color: #7EB09B;
+                    background: #fff;
+                }
+
+                #sidebar ul li a i {
+                    margin-right: 10px;
+                }
+
+            #sidebar ul li.active > a,
+            a[aria-expanded="true"] {
+                color: #fff;
+                background: #7EB09B;
+            }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        ul ul a {
+            font-size: 0.9em !important;
+            padding-left: 30px !important;
+            background: #7EB09B;
+        }
+
+        ul.CTAs {
+            padding: 20px;
+        }
+
+            ul.CTAs a {
+                text-align: center;
+                font-size: 0.9em !important;
+                display: block;
+                border-radius: 5px;
+                margin-bottom: 5px;
+            }
+
+        a.download {
+            background: #fff;
+            color: #476A6F;
+        }
+
+        a.article,
+        a.article:hover {
+            background: #7EB09B !important;
+            color: #fff !important;
+        }
+
+        #content {
+            width: 100%;
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
 
         fieldset, form {
             padding: 20px;
@@ -25,60 +222,141 @@
             width: 90%;
             margin: 0 auto;
         }
+
+        #sidebarCollapse {
+            background: #7EB09B !important;
+        }
     </style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FestivalWebApplication</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Mind Sound</h3>
+                <strong>MS</strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active item">
+                    <a asp-controller="Home" asp-action="Index">
+                        <i class="fa fa-home"></i>
+                        <span class="text">Home</span>
+                    </a>
+
+                </li>
+                <li class="item">
+                    <a href="#performsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-music"></i>
+                        <span class="text">Perform</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="performsubmenu">
+                        <li>
+                            <a asp-controller="Performance" asp-action="Index">
+                                Performance
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Accommodations" asp-action="Index">Accommodations</a>
+                        <li>
+                            <a asp-controller="Performer" asp-action="Index">Perfomer</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Performance" asp-action="Index">Performance</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Performer" asp-action="Index">Performer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ShopItem" asp-action="Index">ShopItem</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Sponsor" asp-action="Index">Sponsor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Stage" asp-action="Index">Stage</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TicketType" asp-action="Index">TicketType</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TransferService" asp-action="Index">TransferService</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TransferVehicle" asp-action="Index">TransferVehicle</a>
+                        <li>
+                            <a asp-controller="Stage" asp-action="Index">Stage</a>
                         </li>
                     </ul>
-                </div>
-            </div>
+
+
+                    <a asp-controller="Accommodations" asp-action="Index">
+                        <i class="fa fa-hotel"></i>
+                        <span class="text">Accommodations</span>
+                    </a>
+
+
+
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-car"></i>
+                        <span class="text">Transfer</span>
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a asp-controller="TransferService" asp-action="Index">Transfer Service</a>
+                        </li>
+                        <li>
+                            <a asp-controller="TransferVehicle" asp-action="Index">Transfer Vehicle</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-controller="Sponsor" asp-action="Index">
+                        <i class="fa fa-dollar"></i>
+                        <span class="text">Sponsor</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="TicketType" asp-action="Index">
+                        <i class="fa fa-ticket"></i>
+                        <span class="text">Ticket Type</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="ShopItem" asp-action="Index">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span class="text">Shop Item</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fa     fa-align-left"></i>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Logout  <i class="fa     fa-user"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('.text').toggleClass('visible');
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2019 - FestivalWebApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
