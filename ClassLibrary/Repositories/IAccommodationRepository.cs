@@ -9,6 +9,6 @@ namespace Festival.Data.Repositories
         bool Add(Accommodation acc);
         bool Delete(int id);
         Accommodation GetByID(int id);
-        bool Save();
+        void Save();
     }
 }

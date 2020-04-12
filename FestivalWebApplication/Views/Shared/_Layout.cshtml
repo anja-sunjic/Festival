@@ -16,12 +16,32 @@
 
 
 
+
+
+
+
+
+
+
+        .margin {
+            margin: 0;
+            margin-left: 80px !important;
+        }
+
+
+
+        .center {
+            margin-left: 16px;
+        }
+
+
+
         .visible {
             display: none;
         }
 
 
-        .fa {
+        .fa, .fa::before {
             height: 15px !important;
             width: 15px !important;
         }
@@ -75,6 +95,8 @@
         .wrapper {
             display: flex;
             align-items: stretch;
+            height: 100%;
+            width: 100%;
         }
 
         #sidebar {
@@ -83,6 +105,8 @@
             background: #476A6F;
             color: #fff;
             transition: all 0.3s;
+            height: 100%;
+            position: fixed;
         }
 
             #sidebar.active {
@@ -132,6 +156,7 @@
 
             #sidebar .sidebar-header {
                 padding: 20px;
+                text-align: center;
                 background: #7EB09B;
             }
 
@@ -145,26 +170,42 @@
                 border-bottom: 1px solid #7EB09B;
             }
 
-            #sidebar ul li a {
-                padding: 10px;
-                font-size: 1.1em;
-                display: block;
+
+        th {
+            background-color: #7EB09B !important;
+            border-color: #7EB09B !important;
+        }
+
+        .btn-success {
+            background-color: #7EB09B !important;
+            border-color: #7EB09B !important;
+        }
+
+        .btn-danger {
+            background-color: #d21F3C !important;
+            border-color: #d21F3C !important;
+        }
+
+        #sidebar ul li a {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+        }
+
+            #sidebar ul li a:hover {
+                color: #7EB09B;
+                background: #fff;
             }
 
-                #sidebar ul li a:hover {
-                    color: #7EB09B;
-                    background: #fff;
-                }
-
-                #sidebar ul li a i {
-                    margin-right: 10px;
-                }
-
-            #sidebar ul li.active > a,
-            a[aria-expanded="true"] {
-                color: #fff;
-                background: #7EB09B;
+            #sidebar ul li a i {
+                margin-right: 10px;
             }
+
+        #sidebar ul li.active > a,
+        a[aria-expanded="true"] {
+            color: #fff;
+            background: #7EB09B;
+        }
 
         a[data-toggle="collapse"] {
             position: relative;
@@ -212,6 +253,7 @@
             padding: 20px;
             min-height: 100vh;
             transition: all 0.3s;
+            margin-left: 250px;
         }
 
         fieldset, form {
@@ -232,30 +274,24 @@
 <body>
 
     <div class="wrapper">
-        <!-- Sidebar  -->
         <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Mind Sound</h3>
-                <strong>MS</strong>
-            </div>
-
             <ul class="list-unstyled components">
                 <li class="active item">
-                    <a asp-controller="Home" asp-action="Index">
-                        <i class="fa fa-home"></i>
+                    <a asp-controller="Home" asp-action="Index" class="linkItem">
+                        <i class="fa fa-home menuItem"></i>
                         <span class="text">Home</span>
                     </a>
 
                 </li>
                 <li class="item">
-                    <a href="#performsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-music"></i>
+                    <a href="#performsubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle linkItem">
+                        <i class="fa fa-music menuItem"></i>
                         <span class="text">Perform</span>
                     </a>
                     <ul class="collapse list-unstyled" id="performsubmenu">
                         <li>
                             <a asp-controller="Performance" asp-action="Index">
-                                Performance
+                                Live Set
                             </a>
                         </li>
                         <li>
@@ -265,17 +301,16 @@
                             <a asp-controller="Stage" asp-action="Index">Stage</a>
                         </li>
                     </ul>
-
-
-                    <a asp-controller="Accommodations" asp-action="Index">
-                        <i class="fa fa-hotel"></i>
+                </li>
+                <li class="item">
+                    <a asp-controller="Accommodations" asp-action="Index" class="linkItem">
+                        <i class="fa fa-hotel menuItem"></i>
                         <span class="text">Accommodations</span>
                     </a>
-
-
-
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-car"></i>
+                </li>
+                <li class="item">
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle linkItem">
+                        <i class="fa fa-car menuItem"></i>
                         <span class="text">Transfer</span>
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -289,19 +324,19 @@
                 </li>
                 <li>
                     <a asp-controller="Sponsor" asp-action="Index">
-                        <i class="fa fa-dollar"></i>
+                        <i class="fa fa-briefcase menuItem"></i>
                         <span class="text">Sponsor</span>
                     </a>
                 </li>
                 <li>
                     <a asp-controller="TicketType" asp-action="Index">
-                        <i class="fa fa-ticket"></i>
+                        <i class="fa fa-ticket menuItem"></i>
                         <span class="text">Ticket Type</span>
                     </a>
                 </li>
                 <li>
                     <a asp-controller="ShopItem" asp-action="Index">
-                        <i class="fa fa-shopping-bag"></i>
+                        <i class="fa fa-shopping-bag menuItem"></i>
                         <span class="text">Shop Item</span>
                     </a>
                 </li>
@@ -332,7 +367,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Logout  <i class="fa     fa-user"></i></a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Logout">Logout  <i class="fa     fa-user"></i></a>
                             </li>
 
                         </ul>
@@ -354,14 +389,12 @@
             $('#sidebarCollapse').on('click', function () {
                 $('.text').toggleClass('visible');
                 $('#sidebar').toggleClass('active');
+                $('.menuItem').toggleClass('center');
+                $('#content').toggleClass('margin');
+
             });
         });
     </script>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - FestivalWebApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
