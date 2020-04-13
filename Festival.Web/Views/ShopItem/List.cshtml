@@ -28,7 +28,7 @@
                 <td>@x.Price</td>
                 <td>@x.Quantity</td>
                 <td>@x.Description</td>
-                <td><a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a><a asp-controller="ShopItem" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true"> <i class="fa fa-trash"></i> </a></td>
+                <td><a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active" role="button" aria-pressed="true"><i class="fa fa-info"></i></a><a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a><a asp-controller="ShopItem" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true"> <i class="fa fa-trash"></i> </a></td>
             </tr>
         }
     </tbody>

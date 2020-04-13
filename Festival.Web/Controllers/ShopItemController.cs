@@ -1,4 +1,5 @@
 ﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.ShopItem;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace FestivalWebApplication.Controllers
     public class ShopItemController : Controller
     {
         private readonly FestivalContext _context;
+        private readonly IShopItemRepository _repo;
 
-        public ShopItemController(FestivalContext context)
+        public ShopItemController(FestivalContext context, IShopItemRepository repo)
         {
             _context = context;
+            _repo = repo;
         }
 
         public IActionResult Index()
@@ -24,7 +27,7 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult List()
         {
-            List<ShopItemListVM> p = _context.ShopItem.Select(p =>
+            List<ShopItemListVM> model = _repo.GetAll().Select(p =>
                  new ShopItemListVM
                  {
                      ID = p.ID,
@@ -33,7 +36,7 @@ namespace FestivalWebApplication.Controllers
                      Quantity = p.Quantity,
                      Description = p.Description
                  }).ToList();
-            return View("List", p);
+            return View("List", model);
         }
 
         public IActionResult New()
@@ -44,18 +47,31 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Delete(int ID)
         {
-            ShopItem shopItem = _context.ShopItem.Find(ID);
-            _context.Remove(shopItem);
-            _context.SaveChanges();
+            _repo.Delete(ID);
             return Redirect("/ShopItem/List");
+        }
+
+        public IActionResult Detail(int ID)
+        {
+            ShopItem item = _repo.GetByID(ID);
+            DetailShopItemVM model = new DetailShopItemVM()
+            {
+                ID = item.ID,
+                Name = item.Name,
+                Quantity = item.Quantity,
+                Price = item.Price,
+                Description = item.Description,
+
+            };
+            return View(model);
         }
 
         public IActionResult Edit(int ID)
         {
-            ShopItem shopItem = _context.ShopItem.Find(ID);
+            ShopItem shopItem = _repo.GetByID(ID);
             EditShopItemVM Model = new EditShopItemVM
             {
-                ID=ID,
+                ID = ID,
                 Name = shopItem.Name,
                 Price = shopItem.Price,
                 Quantity = shopItem.Quantity,
@@ -65,30 +81,29 @@ namespace FestivalWebApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveNew(NewShopItemVM Model)
+        public IActionResult SaveNew(NewShopItemVM model)
         {
             ShopItem shopItem = new ShopItem()
             {
-                Name = Model.Name,
-                Price = Model.Price,
-                Quantity = Model.Quantity,
-                Description = Model.Description
+                Name = model.Name,
+                Price = model.Price,
+                Quantity = model.Quantity,
+                Description = model.Description
             };
 
-            _context.ShopItem.Add(shopItem);
-            _context.SaveChanges();
+            _repo.Add(shopItem);
 
             return RedirectToAction("List");
         }
 
-        public IActionResult Save(EditShopItemVM Model)
+        public IActionResult Save(EditShopItemVM model)
         {
-            ShopItem shopItem = _context.ShopItem.Find(Model.ID);
-            shopItem.Name = Model.Name;
-            shopItem.Description = Model.Description;
-            shopItem.Price = Model.Price;
-            shopItem.Quantity = Model.Quantity;
-            _context.SaveChanges();
+            ShopItem shopItem = _repo.GetByID(model.ID);
+            shopItem.Name = model.Name;
+            shopItem.Description = model.Description;
+            shopItem.Price = model.Price;
+            shopItem.Quantity = model.Quantity;
+            _repo.Save();
             return RedirectToAction("List");
         }
 

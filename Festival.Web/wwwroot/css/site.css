@@ -63,13 +63,4 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background: red;
-}
-
-input {
-    display: block;
-}
-
-label {
-    display: block;
 }

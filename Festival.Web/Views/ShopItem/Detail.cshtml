@@ -1,0 +1,32 @@
+﻿@model FestivalWebApplication.ViewModels.ShopItem.DetailShopItemVM;
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<legend class="w-auto">Shop Item</legend>
+<input style="display: none" asp-for="ID" />
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="Name">Shop Item Name</label>
+    <div class="col-sm-5">
+        <input disabled asp-for="Name" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="Price">Price</label>
+    <div class="col-sm-2">
+        <input disabled asp-for="Price" class="form-control" />
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="Quantity">Quantity</label>
+    <div class="col-sm-2">
+        <input disabled asp-for="Quantity" class="form-control" />
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="Description">Description</label>
+    <div class="col-sm-5">
+        <textarea disabled asp-for="Description" class="form-control"></textarea>
+    </div>
+</div>

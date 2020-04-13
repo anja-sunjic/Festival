@@ -2630,3 +2630,19 @@
 2020-04-13 22:30:54.363 +02:00 [DBG] Consent Return Url Parameter: returnUrl
 2020-04-13 22:30:54.363 +02:00 [DBG] Error Url: /home/error
 2020-04-13 22:30:54.363 +02:00 [DBG] Error Id Parameter: errorId
+2020-04-14 00:08:01.908 +02:00 [INF] Starting host...
+2020-04-14 00:08:04.836 +02:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-04-14 00:08:04.849 +02:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-04-14 00:08:04.853 +02:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2020-04-14 00:08:04.853 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2020-04-14 00:08:04.853 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2020-04-14 00:08:04.853 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2020-04-14 00:08:04.853 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2020-04-14 00:08:04.854 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2020-04-14 00:08:04.987 +02:00 [DBG] Login Url: /Account/Login
+2020-04-14 00:08:04.988 +02:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-04-14 00:08:04.988 +02:00 [DBG] Logout Url: /Account/Logout
+2020-04-14 00:08:04.988 +02:00 [DBG] ConsentUrl Url: /consent
+2020-04-14 00:08:04.989 +02:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-04-14 00:08:04.989 +02:00 [DBG] Error Url: /home/error
+2020-04-14 00:08:04.989 +02:00 [DBG] Error Id Parameter: errorId
