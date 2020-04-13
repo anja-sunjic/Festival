@@ -40,9 +40,9 @@ namespace Festival.Data.Repositories
             return _context.Accommodation.Find(id);
         }
 
-        public async void Save()
+        public void Save()
         {
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

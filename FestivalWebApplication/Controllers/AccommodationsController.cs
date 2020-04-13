@@ -43,6 +43,20 @@ namespace FestivalWebApplication.Controllers
             return View(Model);
         }
 
+        public IActionResult Detail(int ID)
+        {
+            Accommodation accomodation = _repo.GetByID(ID);
+            DetailAccommodationVM Model = new DetailAccommodationVM()
+            {
+                ID = accomodation.ID,
+                Name = accomodation.Name,
+                PhoneNumber = accomodation.PhoneNumber,
+                Distance = accomodation.Distance,
+                Description = accomodation.Description
+            };
+            return View(Model);
+        }
+
         public IActionResult Delete(int ID)
         {
             _repo.Delete(ID);
@@ -54,6 +68,7 @@ namespace FestivalWebApplication.Controllers
             Accommodation accommodation = _repo.GetByID(Id);
             EditAccommodationVM Model = new EditAccommodationVM
             {
+                ID = Id,
                 Name = accommodation.Name,
                 PhoneNumber = accommodation.PhoneNumber,
                 Distance = accommodation.Distance,
@@ -62,7 +77,7 @@ namespace FestivalWebApplication.Controllers
             return View("Edit", Model);
         }
 
-        [HttpPost]
+
         public IActionResult SaveNew(NewAccommodationVM Model)
         {
             Accommodation accommodation = new Accommodation()
