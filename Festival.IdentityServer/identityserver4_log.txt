@@ -2614,3 +2614,19 @@
 {"SubjectId":"88421113","ClientId":"mvc","RedirectUri":"https://127.0.0.1:44330/signin-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY5EA9L3jb5Xyx0vSDGA7RzentL3TWTE3hVkOZ1AC0P5fEyin2dGYqapgaT_en4HTAzxW9YQ0QuSAgOpDUGt1PHHJQEM1YVp_pdGvd94JuwznpyHaid5Pzn8HwG0XUHd7-tRwbkAA9ljVrXehLfC8ZIESo27Fkrqo-ruJN8vySNzhrbe1GG0UMfBt-klayRLTWUkT2mN0fLINLCDQ6Ujb2ZyIHuNYtohs3VBfpdRMq8RxNV1pWIIyl9x_Pk9LCaQ22RbKQ08pI-QZaGWcaeSH70","Scope":"openid profile","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
 2020-04-13 22:28:07.976 +02:00 [DBG] Augmenting SignInContext
 2020-04-13 22:28:07.977 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-13 22:30:53.691 +02:00 [INF] Starting host...
+2020-04-13 22:30:54.207 +02:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-04-13 22:30:54.219 +02:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-04-13 22:30:54.225 +02:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2020-04-13 22:30:54.225 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2020-04-13 22:30:54.225 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2020-04-13 22:30:54.225 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2020-04-13 22:30:54.225 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2020-04-13 22:30:54.225 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2020-04-13 22:30:54.360 +02:00 [DBG] Login Url: /Account/Login
+2020-04-13 22:30:54.362 +02:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-04-13 22:30:54.362 +02:00 [DBG] Logout Url: /Account/Logout
+2020-04-13 22:30:54.362 +02:00 [DBG] ConsentUrl Url: /consent
+2020-04-13 22:30:54.363 +02:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-04-13 22:30:54.363 +02:00 [DBG] Error Url: /home/error
+2020-04-13 22:30:54.363 +02:00 [DBG] Error Id Parameter: errorId
