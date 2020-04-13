@@ -30,9 +30,8 @@ namespace FestivalWebApplication.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync();
-            SignOut(new[] { "Cookies", "oidc" });
-            return Redirect("http://localhost:5000/Account/Login");
+            await HttpContext.SignOutAsync("Cookies");
+            return Redirect("http://localhost:5000/Account/Logout");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

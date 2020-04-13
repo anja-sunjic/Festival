@@ -1,11 +1,13 @@
 ﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.TransferVehicle;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+    [Authorize]
     public class TransferVehicleController : Controller
     {
         private readonly FestivalContext _db;

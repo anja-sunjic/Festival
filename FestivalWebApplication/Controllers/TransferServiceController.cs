@@ -1,5 +1,6 @@
 ﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.TransferService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+    [Authorize]
     public class TransferServiceController : Controller
     {
         private readonly FestivalContext _db;

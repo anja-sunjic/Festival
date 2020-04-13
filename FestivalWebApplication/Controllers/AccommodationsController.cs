@@ -1,12 +1,14 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.Accommodation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+    [Authorize]
     public class AccommodationsController : Controller
     {
         private readonly IAccommodationRepository _repo;

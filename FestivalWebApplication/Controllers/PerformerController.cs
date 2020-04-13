@@ -1,6 +1,7 @@
 ﻿using Festival.Data.Models;
 using FestivalWebApplication.Helper;
 using FestivalWebApplication.ViewModels.Performer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+    [Authorize]
     public class PerformerController : Controller
     {
         private readonly FestivalContext _db;

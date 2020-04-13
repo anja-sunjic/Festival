@@ -1,5 +1,6 @@
 ﻿using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.Performance;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+    [Authorize]
     public class PerformanceController : Controller
     {
         private readonly FestivalContext _db;
