@@ -1,0 +1,41 @@
+﻿@model FestivalWebApplication.ViewModels.ShopItem.EditShopItemVM;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form asp-action="Save" enctype="multipart/form-data" method="post">
+    <fieldset>
+        <legend class="w-auto">Shop Item</legend>
+        <input style="display: none" asp-for="ID" />
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Name">Shop Item Name</label>
+            <div class="col-sm-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Price">Price</label>
+            <div class="col-sm-2">
+                <input asp-for="Price" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Quantity">Quantity</label>
+            <div class="col-sm-2">
+                <input asp-for="Quantity" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Description">Description</label>
+            <div class="col-sm-2">
+                <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
+        </div>
+    </fieldset>
+
+
+
+    <input type="submit" value="Edit shop item" class="btn btn-lg btn-secondary" />
+
+</form>

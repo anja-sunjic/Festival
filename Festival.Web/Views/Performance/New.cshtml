@@ -1,0 +1,33 @@
+﻿@model FestivalWebApplication.ViewModels.Performance.NewPerformanceVM;
+@{
+    ViewData["Title"] = "New";
+}
+
+    <form action="SaveNew" enctype="multipart/form-data" method="post">
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Start">Start</label>
+            <div class="col-sm-5">
+                <input asp-for="Start" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Performer">Performer</label>
+            <div class="col-sm-2">
+                <select asp-items="@Model.Performers" asp-for="PerformerID" class="form-control">
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Stage">Stage</label>
+            <div class="col-sm-2">
+                <select asp-items="@Model.Stages" asp-for="StageID" class="form-control">
+                </select>
+            </div>
+        </div>
+        
+        <input type="submit" value="Add new performance" class="btn btn-lg btn-secondary" />
+    </form>
+

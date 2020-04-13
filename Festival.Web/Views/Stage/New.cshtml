@@ -1,0 +1,35 @@
+﻿@model FestivalWebApplication.ViewModels.Stage.NewStageVM;
+@{
+    ViewData["Title"] = "New";
+}
+
+<form action="SaveNew" method="post">
+    
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Name">Name</label>
+            <div class="col-sm-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Capacity">Capacity</label>
+            <div class="col-sm-2">
+                <input asp-for="Capacity" class="form-control" /> 
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Sponsor">Sponsor</label>
+            <div class="col-sm-5">
+                <select asp-items="@Model.Sponsors" asp-for="SponsorID" class="form-control">
+                    <option selected disabled>(Choose a sponsor)</option>
+                </select>
+            </div>
+        </div>
+
+
+ 
+    <input type="submit" value="Add new stage" class="btn btn-lg btn-secondary"/>
+</form>
+

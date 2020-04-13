@@ -1,0 +1,35 @@
+﻿@using FestivalWebApplication.ViewModels.Accommodation;
+@model List<FestivalWebApplication.ViewModels.Accommodation.AccommodationListVM>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Accommodation</h1>
+<div style="float:right; margin-bottom:10px;">
+    <a asp-controller="Accommodations" asp-action="New" class="btn btn-success btn-lg active" role="button" aria-pressed="true"><i class="fa fa-plus"></i></a>
+</div>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark zaglavlje">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Distance</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AccommodationListVM x in Model)
+        {
+            <tr>
+                <td>@x.ID</td>
+                <td>@x.Name</td>
+                <td>@x.PhoneNumber</td>
+                <td>@x.Distance</td>
+                <td>@x.Description</td>
+                <td><a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active" role="button" aria-pressed="true"><i class="fa fa-info"></i></a><a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a><a asp-controller="Accommodations" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true"> <i class="fa fa-trash"></i> </a></td>
+            </tr>
+        }
+    </tbody>
+</table>
