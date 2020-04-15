@@ -1,0 +1,46 @@
+﻿@model FestivalWebApplication.ViewModels.TransferVehicle.TransferVehicleVM;
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<style>
+
+
+
+
+
+
+
+    .detailInput {
+        background-color: #e2e2e2 !important;
+    }
+
+    .legend {
+        margin-bottom: 30px !important;
+    }
+</style>
+
+
+
+<legend class="w-auto legend">Transfer Vehicle</legend>
+<input style="display: none" asp-for="Id" />
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="Name">Vehicle name</label>
+    <div class="col-sm-5">
+        <input disabled asp-for="Name" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="RegistrationNumber">Registration number</label>
+    <div class="col-sm-2">
+        <input disabled asp-for="RegistrationNumber" class="form-control" />
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="Capacity">Vehicle capacity</label>
+    <div class="col-sm-2">
+        <textarea disabled asp-for="Capacity" class="form-control detailInput"></textarea>
+    </div>
+</div>

@@ -1,9 +1,16 @@
 ﻿@model FestivalWebApplication.ViewModels.TransferVehicle.TransferVehicleVM;
 @{
-    ViewData["Title"] = "New";
+    if (Model.Id != 0)
+    {
+        ViewData["Title"] = "Edit";
+    }
+    else
+    {
+        ViewData["Title"] = "New";
+    }
 }
 
-<form asp-action="SaveNew" enctype="multipart/form-data" method="post">
+<form asp-action="Save" enctype="multipart/form-data" method="post">
     <fieldset>
         <legend class="w-auto">Transfer Vehicle</legend>
         <input style="display: none" asp-for="Id" />
@@ -23,13 +30,13 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="Capacity">Vehicle capacity</label>
             <div class="col-sm-2">
-                <textarea asp-for="Capacity" class="form-control" ></textarea>
+                <input type="number" asp-for="Capacity" class="form-control">
             </div>
         </div>
     </fieldset>
 
 
 
-    <input type="submit" value="Add new vehicle" class="btn btn-lg btn-secondary" />
+    <input type="submit" value="Save" class="btn btn-lg btn-secondary submit" />
 
 </form>

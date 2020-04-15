@@ -1,4 +1,5 @@
 ﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.TransferService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,28 +14,36 @@ namespace FestivalWebApplication.Controllers
     public class TransferServiceController : Controller
     {
         private readonly FestivalContext _db;
+        private readonly ITransferServiceRepository _repo;
+        private readonly ITransferVehicleRepository _vehiclerepo;
 
-        public TransferServiceController(FestivalContext db)
+        public TransferServiceController(ITransferServiceRepository repo, ITransferVehicleRepository vehiclerepo)
         {
-            _db = db;
+            _repo = repo;
+            _vehiclerepo = vehiclerepo;
         }
         public IActionResult Index()
         {
+            return RedirectToAction("List");
+        }
 
-            List<ListTransferServiceVM> Model = _db.TransferService.Select(p => new ListTransferServiceVM
+        public IActionResult List()
+        {
+            List<ListTransferServiceVM> Model = _repo.GetAll().Select(p => new ListTransferServiceVM
             {
                 Id = p.ID,
-                VehicleName = _db.TransferVehicle.Where(m => m.ID == p.TransferVehicleID).FirstOrDefault().Name,
+                VehicleName = _vehiclerepo.GetByID(p.TransferVehicle.ID).Name,
                 AvailableSeats = p.NumberOfAvailableSeats,
                 Date = p.Date.ToShortDateString()
             }).ToList();
             return View(Model);
         }
+
         public IActionResult New()
         {
             NewTransferServiceVM Model = new NewTransferServiceVM
             {
-                Vehicles = _db.TransferVehicle.Select(o => new SelectListItem
+                Vehicles = _vehiclerepo.GetAll().Select(o => new SelectListItem
                 {
                     Value = o.ID.ToString(),
                     Text = o.Name
@@ -76,19 +85,23 @@ namespace FestivalWebApplication.Controllers
             TransferService transferService;
             if (Model.Id == 0)
             {
-                transferService = new TransferService();
-                _db.TransferService.Add(transferService);
+                transferService = new TransferService()
+                {
+                    NumberOfAvailableSeats = Model.AvailableSeats,
+                    TransferVehicle = _vehiclerepo.GetByID(Model.VehicleId),
+                    Date = Model.Date
+                };
+                _repo.Add(transferService);
             }
             else
             {
                 transferService = _db.TransferService.Find(Model.Id);
+                transferService.NumberOfAvailableSeats = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId).Capacity;
+                transferService.TransferVehicle = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId);
+                transferService.Date = Model.Date;
             }
 
-            transferService.NumberOfAvailableSeats = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId).Capacity;
-            transferService.TransferVehicle = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId);
-            transferService.Date = Model.Date;
-
-            _db.SaveChanges();
+            _repo.Save();
 
             return RedirectToAction("Index");
         }
