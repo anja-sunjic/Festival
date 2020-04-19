@@ -2,8 +2,11 @@
 using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.Accommodation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -12,9 +15,11 @@ namespace FestivalWebApplication.Controllers
     public class AccommodationsController : Controller
     {
         private readonly IAccommodationRepository _repo;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AccommodationsController(IAccommodationRepository repo)
+        public AccommodationsController(IAccommodationRepository repo, IWebHostEnvironment webHostEnvironment)
         {
+            _webHostEnvironment = webHostEnvironment;
             _repo = repo;
         }
 
@@ -80,12 +85,14 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult SaveNew(NewAccommodationVM model)
         {
+            string uniqueFileName = UploadedFile(model);
             Accommodation accommodation = new Accommodation()
             {
                 Name = model.Name,
                 Distance = model.Distance,
                 PhoneNumber = model.PhoneNumber,
-                Description = model.Description
+                Description = model.Description,
+                Picture = uniqueFileName
             };
 
             _repo.Add(accommodation);
@@ -102,6 +109,23 @@ namespace FestivalWebApplication.Controllers
             acc.PhoneNumber = model.PhoneNumber;
             _repo.Save();
             return RedirectToAction("List");
+        }
+
+        private string UploadedFile(NewAccommodationVM model)
+        {
+            string uniqueFileName = null;
+
+            if (model.ProfileImage != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ProfileImage.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
         }
     }
 }
