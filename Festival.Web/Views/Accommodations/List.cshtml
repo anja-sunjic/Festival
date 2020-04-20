@@ -13,9 +13,9 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Address</th>
             <th>Phone Number</th>
             <th>Distance</th>
-            <th>Description</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -25,10 +25,20 @@
             <tr>
                 <td>@x.ID</td>
                 <td>@x.Name</td>
+                <td>@x.Address</td>
                 <td>@x.PhoneNumber</td>
-                <td>@x.Distance</td>
-                <td>@x.Description</td>
-                <td><a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active" role="button" aria-pressed="true"><i class="fa fa-info"></i></a><a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a><a asp-controller="Accommodations" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true"> <i class="fa fa-trash"></i> </a></td>
+                <td>@x.Distance km</td>
+                <td>
+                    <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active" role="button" aria-pressed="true">
+                        <i class="fa fa-info"></i>
+                    </a>
+                    <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a asp-controller="Accommodations" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

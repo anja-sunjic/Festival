@@ -36,7 +36,8 @@ namespace FestivalWebApplication.Controllers
                 Description = acc.Description,
                 Distance = acc.Distance,
                 Name = acc.Name,
-                PhoneNumber = acc.PhoneNumber
+                PhoneNumber = acc.PhoneNumber,
+                Address = acc.Address
             }).ToList();
             return View("List", model);
 
@@ -58,6 +59,7 @@ namespace FestivalWebApplication.Controllers
                 PhoneNumber = accomodation.PhoneNumber,
                 Distance = accomodation.Distance,
                 Description = accomodation.Description,
+                Address = accomodation.Address,
                 Picture = accomodation.Picture
             };
             return View(model);
@@ -78,7 +80,8 @@ namespace FestivalWebApplication.Controllers
                 Name = accommodation.Name,
                 PhoneNumber = accommodation.PhoneNumber,
                 Distance = accommodation.Distance,
-                Description = accommodation.Description
+                Description = accommodation.Description,
+                Address = accommodation.Address
             };
             return View("Edit", model);
         }
@@ -93,6 +96,7 @@ namespace FestivalWebApplication.Controllers
                 Distance = model.Distance,
                 PhoneNumber = model.PhoneNumber,
                 Description = model.Description,
+                Address = model.Address,
                 Picture = uniqueFileName
             };
 
@@ -103,11 +107,17 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Save(EditAccommodationVM model)
         {
+            string uniqueFileName = UploadedFile(model);
             Accommodation acc = _repo.GetByID(model.ID);
             acc.Name = model.Name;
             acc.Description = model.Description;
             acc.Distance = model.Distance;
             acc.PhoneNumber = model.PhoneNumber;
+            acc.Address = model.Address;
+            if (model.ProfileImage != null)
+            {
+                acc.Picture = uniqueFileName;
+            }
             _repo.Save();
             return RedirectToAction("List");
         }
@@ -118,7 +128,24 @@ namespace FestivalWebApplication.Controllers
 
             if (model.ProfileImage != null)
             {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "accommodations");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ProfileImage.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }
+
+        private string UploadedFile(EditAccommodationVM model)
+        {
+            string uniqueFileName = null;
+
+            if (model.ProfileImage != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "accommodations");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 using (var fileStream = new FileStream(filePath, FileMode.Create))

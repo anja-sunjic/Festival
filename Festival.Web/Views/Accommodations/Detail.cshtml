@@ -3,79 +3,42 @@
     ViewData["Title"] = "Detail";
 }
 
-<style>
 
-
-
-
-
-
-
-
-    .detailRow {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .detailData {
-        margin-left: 5px;
-    }
-
-
-
-
-
-
-
-
-
-    .accImage {
-        width: 100%;
-        height: 100%;
-    }
-
-
-    .detailInput {
-        background-color: #e2e2e2 !important;
-    }
-
-    .legend {
-        margin-bottom: 30px !important;
-    }
-</style>
-
-<legend class="w-auto legend">Accommodation</legend>
 <div class="col-6" style="float:left">
-    <div class="col-12 detailRow">
-        <div class="detailHeading">
-            <label>Accommodation Name:</label>
-        </div>
-        <div class="detailData">
-            <span>@Model.Name</span>
-        </div>
+    <h2 class="detailName">@Model.Name</h2>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="PhoneNumber">Phone number : </label>
+        <span class="detailData">@Model.PhoneNumber</span>
     </div>
-
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="PhoneNumber">Phone Number</label>
-        <div class="col-sm-5">
-            <input asp-for="PhoneNumber" disabled class="form-control detailInput" />
-        </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Address">Address : </label>
+        <span class="detailData">@Model.Address</span>
     </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="Distance">Distance to Festival area (km)</label>
-        <div class="col-sm-2">
-            <input type="number" disabled asp-for="Distance" class="form-control detailInput" />
-        </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Distance">Distance : </label>
+        <span class="detailData">@Model.Distance km</span>
     </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="Description">Description</label>
-        <div class="col-sm-5">
-            <textarea asp-for="Description" disabled class="form-control detailInput"></textarea>
-        </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Description">Description : </label>
+        <span style="" class="detailData">@Model.Description</span>
+    </div>
+    <div class="detailButtons">
+        <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="List" asp-route-id="@Model.ID" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
+        <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
+            Edit
+            <i class="fa fa-edit"></i>
+        </a>
+        <a asp-controller="Accommodations" asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger" role="button" aria-pressed="true">
+            Delete
+            <i class="fa fa-trash"></i>
+        </a>
     </div>
 </div>
 <div class="col-6" style="float:right">
-    <img src="~/images/@Model.Picture" class="accImage" />
+    <img src="~/images/accommodations/@Model.Picture" class="accImage" />
 </div>
 
 <div class="clearfix"></div>
