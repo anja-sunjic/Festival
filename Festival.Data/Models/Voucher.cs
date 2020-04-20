@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Festival.Data.Enumerations;
+using System;
 namespace Festival.Data.Models
 {
-    public enum VoucherType { purchase, ticket }
-
     public abstract class Voucher
     {
         public int ID { get; set; }

@@ -57,7 +57,8 @@ namespace FestivalWebApplication.Controllers
                 Name = accomodation.Name,
                 PhoneNumber = accomodation.PhoneNumber,
                 Distance = accomodation.Distance,
-                Description = accomodation.Description
+                Description = accomodation.Description,
+                Picture = accomodation.Picture
             };
             return View(model);
         }

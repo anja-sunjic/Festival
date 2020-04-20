@@ -9,6 +9,32 @@
 
 
 
+
+
+
+    .detailRow {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .detailData {
+        margin-left: 5px;
+    }
+
+
+
+
+
+
+
+
+
+    .accImage {
+        width: 100%;
+        height: 100%;
+    }
+
+
     .detailInput {
         background-color: #e2e2e2 !important;
     }
@@ -19,28 +45,37 @@
 </style>
 
 <legend class="w-auto legend">Accommodation</legend>
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Name">Accommodation Name</label>
-    <div class="col-sm-5">
-        <input asp-for="Name" class="form-control detailInput" disabled />
+<div class="col-6" style="float:left">
+    <div class="col-12 detailRow">
+        <div class="detailHeading">
+            <label>Accommodation Name:</label>
+        </div>
+        <div class="detailData">
+            <span>@Model.Name</span>
+        </div>
     </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="PhoneNumber">Phone Number</label>
+        <div class="col-sm-5">
+            <input asp-for="PhoneNumber" disabled class="form-control detailInput" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="Distance">Distance to Festival area (km)</label>
+        <div class="col-sm-2">
+            <input type="number" disabled asp-for="Distance" class="form-control detailInput" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="Description">Description</label>
+        <div class="col-sm-5">
+            <textarea asp-for="Description" disabled class="form-control detailInput"></textarea>
+        </div>
+    </div>
+</div>
+<div class="col-6" style="float:right">
+    <img src="~/images/@Model.Picture" class="accImage" />
 </div>
 
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="PhoneNumber">Phone Number</label>
-    <div class="col-sm-5">
-        <input asp-for="PhoneNumber" disabled class="form-control detailInput" />
-    </div>
-</div>
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Distance">Distance to Festival area (km)</label>
-    <div class="col-sm-2">
-        <input type="number" disabled asp-for="Distance" class="form-control detailInput" />
-    </div>
-</div>
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Description">Description</label>
-    <div class="col-sm-5">
-        <textarea asp-for="Description" disabled class="form-control detailInput"></textarea>
-    </div>
-</div>
+<div class="clearfix"></div>
