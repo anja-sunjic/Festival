@@ -3026,3 +3026,660 @@
 {"SubjectId":"88421113","ClientId":"mvc","RedirectUri":"https://127.0.0.1:44330/signin-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeZGXOoMOuy5mgRDxpJbt5rBnijLP4wZbaOezhg0UP4AASNSAgtEK99UQn3dJcPGAV6Dd5par2KLsY087BRPPbHKE5lQ90QlhaANuTLHo61DhXK1ZMA0OvPdQivqmn2OxisYRRt3SwsIlWXLR0opyvrEKKySvnEJrw9cRTHRPmMeu5IguX6n7_a0jLL08Tte5P1-kjyvuI9KmclXl29Po-jmEQ8Sh_RhDD-BEZEwVzr7mbZkHpMExLuhZMs89j9VuUE1ihjiRw8e0kRCn1xC-7eP","Scope":"openid profile","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
 2020-04-20 16:39:23.677 +02:00 [DBG] Augmenting SignInContext
 2020-04-20 16:39:23.678 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:48:12.012 +02:00 [INF] Starting host...
+2020-04-21 18:48:15.884 +02:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2020-04-21 18:48:15.903 +02:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-04-21 18:48:15.907 +02:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2020-04-21 18:48:15.907 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2020-04-21 18:48:15.907 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2020-04-21 18:48:15.907 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2020-04-21 18:48:15.907 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2020-04-21 18:48:15.907 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2020-04-21 18:48:16.575 +02:00 [DBG] Login Url: /Account/Login
+2020-04-21 18:48:16.577 +02:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-04-21 18:48:16.577 +02:00 [DBG] Logout Url: /Account/Logout
+2020-04-21 18:48:16.580 +02:00 [DBG] ConsentUrl Url: /consent
+2020-04-21 18:48:16.580 +02:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-04-21 18:48:16.580 +02:00 [DBG] Error Url: /home/error
+2020-04-21 18:48:16.580 +02:00 [DBG] Error Id Parameter: errorId
+2020-04-21 18:48:17.669 +02:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-04-21 18:48:17.671 +02:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-04-21 18:48:17.672 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-04-21 18:48:17.673 +02:00 [DBG] Start discovery request
+2020-04-21 18:48:18.054 +02:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-04-21 18:48:18.055 +02:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-04-21 18:48:18.055 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-04-21 18:48:18.056 +02:00 [DBG] Start key discovery request
+2020-04-21 18:48:18.199 +02:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-04-21 18:48:18.202 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-04-21 18:48:18.202 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-04-21 18:48:18.203 +02:00 [DBG] Start authorize request
+2020-04-21 18:48:18.208 +02:00 [DBG] No user present in authorize request
+2020-04-21 18:48:18.210 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:48:18.221 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:18.233 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:48:18.252 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:48:18.268 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OebE9SkXA__vky8o86k5FIeiHabu6-KxCKigak6rGeuBwuQD93IBxPg4zzynmcTIOJXaifmObjcyx8IASgR7LF5L37rDdvat1zsE3lyDIt6rrLWhJ3r63mLsscBI_xj39cN2YHo5uQKAoli2PbauWN6V10ckwi0Ve_iZ_DERs0CwGnHy_h0kCXF28fs1ZhS67Tv3eASqhxZeR4xwm3plWoL4YyPEsbjZGejEs0X5h4E9Y5MKjny2YM57ELZnWR86X30Vk6uLq7uq19Js9DhP7YdubEkmB4hSSyxyrgWzdYrnV0JQENqN0kipCG47hVFK8DkiJl1XMPWnHrkyiW0iHWYYOqpjT-9Jf5jWJAugbKgnlw","UiLocales":null,"Nonce":"637230844981572720.Yzk4MDM1YjktZDQzMy00YWQ4LThkNjgtMmNmYzg4YTE3MGRkNmQwZjBiYzYtYjMzNy00YTgyLTljMmYtNjhkMDFjZTZiYWNk","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"kTz72LKj06twMSNt8e58rlZrBwGjP7_BCROMCPgnUDA","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230844981572720.Yzk4MDM1YjktZDQzMy00YWQ4LThkNjgtMmNmYzg4YTE3MGRkNmQwZjBiYzYtYjMzNy00YTgyLTljMmYtNjhkMDFjZTZiYWNk","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OebE9SkXA__vky8o86k5FIeiHabu6-KxCKigak6rGeuBwuQD93IBxPg4zzynmcTIOJXaifmObjcyx8IASgR7LF5L37rDdvat1zsE3lyDIt6rrLWhJ3r63mLsscBI_xj39cN2YHo5uQKAoli2PbauWN6V10ckwi0Ve_iZ_DERs0CwGnHy_h0kCXF28fs1ZhS67Tv3eASqhxZeR4xwm3plWoL4YyPEsbjZGejEs0X5h4E9Y5MKjny2YM57ELZnWR86X30Vk6uLq7uq19Js9DhP7YdubEkmB4hSSyxyrgWzdYrnV0JQENqN0kipCG47hVFK8DkiJl1XMPWnHrkyiW0iHWYYOqpjT-9Jf5jWJAugbKgnlw","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:48:18.319 +02:00 [INF] Showing login: User is not authenticated
+2020-04-21 18:48:18.438 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:48:18.439 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:18.439 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:48:18.439 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:48:18.441 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:24.874 +02:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-04-21 18:48:25.095 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:48:25.096 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:25.096 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:48:25.096 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:48:25.107 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:48:25.108 +02:00 [DBG] Adding idp claim with value: local
+2020-04-21 18:48:25.108 +02:00 [DBG] Adding amr claim with value: pwd
+2020-04-21 18:48:25.116 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:48:25.118 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:25.129 +02:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-04-21 18:48:25.130 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-04-21 18:48:25.130 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-04-21 18:48:25.132 +02:00 [DBG] Start authorize callback request
+2020-04-21 18:48:25.136 +02:00 [DBG] User in authorize request: 88421113
+2020-04-21 18:48:25.136 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:48:25.136 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:25.136 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:48:25.136 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:48:25.136 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"88421113","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OebE9SkXA__vky8o86k5FIeiHabu6-KxCKigak6rGeuBwuQD93IBxPg4zzynmcTIOJXaifmObjcyx8IASgR7LF5L37rDdvat1zsE3lyDIt6rrLWhJ3r63mLsscBI_xj39cN2YHo5uQKAoli2PbauWN6V10ckwi0Ve_iZ_DERs0CwGnHy_h0kCXF28fs1ZhS67Tv3eASqhxZeR4xwm3plWoL4YyPEsbjZGejEs0X5h4E9Y5MKjny2YM57ELZnWR86X30Vk6uLq7uq19Js9DhP7YdubEkmB4hSSyxyrgWzdYrnV0JQENqN0kipCG47hVFK8DkiJl1XMPWnHrkyiW0iHWYYOqpjT-9Jf5jWJAugbKgnlw","UiLocales":null,"Nonce":"637230844981572720.Yzk4MDM1YjktZDQzMy00YWQ4LThkNjgtMmNmYzg4YTE3MGRkNmQwZjBiYzYtYjMzNy00YTgyLTljMmYtNjhkMDFjZTZiYWNk","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"nZ_8qCpiMuhJgVNs-JDZ4Q","Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"kTz72LKj06twMSNt8e58rlZrBwGjP7_BCROMCPgnUDA","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230844981572720.Yzk4MDM1YjktZDQzMy00YWQ4LThkNjgtMmNmYzg4YTE3MGRkNmQwZjBiYzYtYjMzNy00YTgyLTljMmYtNjhkMDFjZTZiYWNk","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OebE9SkXA__vky8o86k5FIeiHabu6-KxCKigak6rGeuBwuQD93IBxPg4zzynmcTIOJXaifmObjcyx8IASgR7LF5L37rDdvat1zsE3lyDIt6rrLWhJ3r63mLsscBI_xj39cN2YHo5uQKAoli2PbauWN6V10ckwi0Ve_iZ_DERs0CwGnHy_h0kCXF28fs1ZhS67Tv3eASqhxZeR4xwm3plWoL4YyPEsbjZGejEs0X5h4E9Y5MKjny2YM57ELZnWR86X30Vk6uLq7uq19Js9DhP7YdubEkmB4hSSyxyrgWzdYrnV0JQENqN0kipCG47hVFK8DkiJl1XMPWnHrkyiW0iHWYYOqpjT-9Jf5jWJAugbKgnlw","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:48:25.138 +02:00 [DBG] IsActive called from: AuthorizeEndpoint
+2020-04-21 18:48:25.142 +02:00 [DBG] Client is configured to not require consent, no consent is required
+2020-04-21 18:48:25.145 +02:00 [DBG] Creating Authorization Code Flow response.
+2020-04-21 18:48:25.177 +02:00 [DBG] Authorize endpoint response
+{"SubjectId":"88421113","ClientId":"mvc","RedirectUri":"https://127.0.0.1:44330/signin-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OebE9SkXA__vky8o86k5FIeiHabu6-KxCKigak6rGeuBwuQD93IBxPg4zzynmcTIOJXaifmObjcyx8IASgR7LF5L37rDdvat1zsE3lyDIt6rrLWhJ3r63mLsscBI_xj39cN2YHo5uQKAoli2PbauWN6V10ckwi0Ve_iZ_DERs0CwGnHy_h0kCXF28fs1ZhS67Tv3eASqhxZeR4xwm3plWoL4YyPEsbjZGejEs0X5h4E9Y5MKjny2YM57ELZnWR86X30Vk6uLq7uq19Js9DhP7YdubEkmB4hSSyxyrgWzdYrnV0JQENqN0kipCG47hVFK8DkiJl1XMPWnHrkyiW0iHWYYOqpjT-9Jf5jWJAugbKgnlw","Scope":"openid profile","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-04-21 18:48:25.185 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:48:25.185 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:48:25.298 +02:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-04-21 18:48:25.302 +02:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-04-21 18:48:25.302 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-04-21 18:48:25.305 +02:00 [DBG] Start token request.
+2020-04-21 18:48:25.307 +02:00 [DBG] Start client validation
+2020-04-21 18:48:25.311 +02:00 [DBG] Start parsing Basic Authentication secret
+2020-04-21 18:48:25.313 +02:00 [DBG] Start parsing for secret in post body
+2020-04-21 18:48:25.314 +02:00 [DBG] Parser found secret: PostBodySecretParser
+2020-04-21 18:48:25.314 +02:00 [DBG] Secret id found: mvc
+2020-04-21 18:48:25.314 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:25.353 +02:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-04-21 18:48:25.353 +02:00 [DBG] Client validation success
+2020-04-21 18:48:25.356 +02:00 [DBG] Start token request validation
+2020-04-21 18:48:25.360 +02:00 [DBG] Start validation of authorization code token request
+2020-04-21 18:48:25.387 +02:00 [DBG] Client required a proof key for code exchange. Starting PKCE validation
+2020-04-21 18:48:25.389 +02:00 [DBG] IsActive called from: AuthorizationCodeValidation
+2020-04-21 18:48:25.389 +02:00 [DBG] Validation of authorization code token request success
+2020-04-21 18:48:25.391 +02:00 [INF] Token request validation success, {"ClientId":"mvc","ClientName":"Festival MVC","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"0NZJZHw0qMt_VJyTpcZeBT1yjScypaDi4tpX-m-5qjQ","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"mvc","client_secret":"***REDACTED***","code":"0NZJZHw0qMt_VJyTpcZeBT1yjScypaDi4tpX-m-5qjQ","grant_type":"authorization_code","redirect_uri":"https://127.0.0.1:44330/signin-oidc","code_verifier":"h8nO-xvHJrKFVL4tp_61CZrZp75wtfjMVr80igEpRm8"},"$type":"TokenRequestValidationLog"}
+2020-04-21 18:48:25.397 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:25.408 +02:00 [DBG] Getting claims for access token for client: mvc
+2020-04-21 18:48:25.408 +02:00 [DBG] Getting claims for access token for subject: 88421113
+2020-04-21 18:48:25.411 +02:00 [DBG] Get profile called for subject 88421113 from client Festival MVC with claim types [] via ClaimsProviderAccessToken
+2020-04-21 18:48:25.411 +02:00 [DBG] Issued claims: []
+2020-04-21 18:48:25.581 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:48:25.588 +02:00 [DBG] Getting claims for identity token for subject: 88421113 and client: mvc
+2020-04-21 18:48:25.588 +02:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-04-21 18:48:25.592 +02:00 [DBG] Token request success.
+2020-04-21 18:49:36.340 +02:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-04-21 18:49:36.342 +02:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-04-21 18:49:36.343 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-04-21 18:49:36.343 +02:00 [DBG] Start discovery request
+2020-04-21 18:49:36.531 +02:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-04-21 18:49:36.531 +02:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-04-21 18:49:36.532 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-04-21 18:49:36.532 +02:00 [DBG] Start key discovery request
+2020-04-21 18:49:36.583 +02:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2020-04-21 18:49:36.584 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2020-04-21 18:49:36.584 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2020-04-21 18:49:36.586 +02:00 [DBG] Processing signout request for 88421113
+2020-04-21 18:49:36.588 +02:00 [DBG] Start end session request validation
+2020-04-21 18:49:36.591 +02:00 [DBG] Start identity token validation
+2020-04-21 18:49:36.606 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:36.606 +02:00 [DBG] Client found: mvc / Festival MVC
+2020-04-21 18:49:36.639 +02:00 [DBG] IsActive called from: IdentityTokenValidation
+2020-04-21 18:49:36.639 +02:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-04-21 18:49:36.641 +02:00 [DBG] Token validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","ValidateLifetime":false,"AccessTokenType":null,"ExpectedScope":null,"TokenHandle":null,"JwtId":null,"Claims":{"nbf":1587487705,"exp":1587488005,"iss":"http://localhost:5000","aud":"mvc","nonce":"637230844981572720.Yzk4MDM1YjktZDQzMy00YWQ4LThkNjgtMmNmYzg4YTE3MGRkNmQwZjBiYzYtYjMzNy00YTgyLTljMmYtNjhkMDFjZTZiYWNk","iat":1587487705,"at_hash":"Xp5x6G9hi4V3arr33MXodQ","s_hash":"4KFgIFMEfKRZao8-GNKBpQ","sid":"nZ_8qCpiMuhJgVNs-JDZ4Q","sub":"88421113","auth_time":1587487705,"idp":"local","amr":"pwd"},"$type":"TokenValidationLog"}
+2020-04-21 18:49:36.644 +02:00 [INF] End session request validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","SubjectId":"88421113","PostLogOutUri":"https://127.0.0.1:44330/signout-callback-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY0w2A4D-eOh4J53blqnhGxtM2we39ASyrJRDCaFcmaPya_eqvkhZVnDuNeowcfUF8pUIXxNvbP1jxqpRQT16CprDFaMy7HTCdkpUoJtY_5OzxmUBgwki-DqdXe7PACMiHCzSkYAGTf_7AZGqjd_CbL","Raw":{"post_logout_redirect_uri":"https://127.0.0.1:44330/signout-callback-oidc","id_token_hint":"***REDACTED***","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY0w2A4D-eOh4J53blqnhGxtM2we39ASyrJRDCaFcmaPya_eqvkhZVnDuNeowcfUF8pUIXxNvbP1jxqpRQT16CprDFaMy7HTCdkpUoJtY_5OzxmUBgwki-DqdXe7PACMiHCzSkYAGTf_7AZGqjd_CbL","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"EndSessionRequestValidationLog"}
+2020-04-21 18:49:36.644 +02:00 [DBG] Success validating end session request from mvc
+2020-04-21 18:49:36.694 +02:00 [INF] AuthenticationScheme: idsrv signed out.
+2020-04-21 18:49:36.776 +02:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2020-04-21 18:49:36.779 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2020-04-21 18:49:36.779 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2020-04-21 18:49:36.781 +02:00 [DBG] Processing signout callback request
+2020-04-21 18:49:36.793 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:36.793 +02:00 [DBG] No client front-channel logout URLs
+2020-04-21 18:49:36.793 +02:00 [DBG] No client back-channel logout URLs
+2020-04-21 18:49:36.793 +02:00 [INF] Successful signout callback.
+2020-04-21 18:49:36.794 +02:00 [DBG] No client front-channel iframe urls
+2020-04-21 18:49:36.794 +02:00 [DBG] No client back-channel iframe urls
+2020-04-21 18:49:36.933 +02:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-04-21 18:49:36.934 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-04-21 18:49:36.934 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-04-21 18:49:36.934 +02:00 [DBG] Start authorize request
+2020-04-21 18:49:36.934 +02:00 [DBG] No user present in authorize request
+2020-04-21 18:49:36.934 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:49:36.934 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:36.935 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:49:36.935 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:49:36.935 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OebSm1zA6UzPqXSKe8PVX0tZG8QR_x3_lRitPcedbH6-N2H61KFX-sYWiGIlczv5eDlzkrWwHuIzfw1DaYhelp-RKBAb4B4vqAr3atplqawZyc4Lk1Mh-j-0PZIuUszmTVGIX-RZcxkVXaFxZB6vMNtT4yCL0y4VCXWqqJrTQZy-eSlxVZnB3lpeJKJ6BE4l_RGVqOBqD5gPvMedOzn6d-jfxzdE5KAsIrxXTPToEqfivKejO0XV8JKuA25uoyoV2-MTXQDWbudfiCaXKT7zi6qm5isgUobw_r9JHOlUz6toOdE64TlOwLn2HqVq_uA7XZt_UcjVlN8zCP1VKpjCZmcq_ErkD629Q7N8nh7KQba8xg","UiLocales":null,"Nonce":"637230845769284575.ZmJjNmNjYjctZjFjOS00MTJlLThlYmUtM2Y0MTQ4M2UwZjBhZTdiNmZkYTMtZmYyYi00NDAyLWJlZGEtNmE4MGVhNTI5NWI4","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"2m9E7GdZAKSUx2z67tv8MdxnR5rJmmAGEiGxjVwf-6s","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230845769284575.ZmJjNmNjYjctZjFjOS00MTJlLThlYmUtM2Y0MTQ4M2UwZjBhZTdiNmZkYTMtZmYyYi00NDAyLWJlZGEtNmE4MGVhNTI5NWI4","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OebSm1zA6UzPqXSKe8PVX0tZG8QR_x3_lRitPcedbH6-N2H61KFX-sYWiGIlczv5eDlzkrWwHuIzfw1DaYhelp-RKBAb4B4vqAr3atplqawZyc4Lk1Mh-j-0PZIuUszmTVGIX-RZcxkVXaFxZB6vMNtT4yCL0y4VCXWqqJrTQZy-eSlxVZnB3lpeJKJ6BE4l_RGVqOBqD5gPvMedOzn6d-jfxzdE5KAsIrxXTPToEqfivKejO0XV8JKuA25uoyoV2-MTXQDWbudfiCaXKT7zi6qm5isgUobw_r9JHOlUz6toOdE64TlOwLn2HqVq_uA7XZt_UcjVlN8zCP1VKpjCZmcq_ErkD629Q7N8nh7KQba8xg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:49:36.935 +02:00 [INF] Showing login: User is not authenticated
+2020-04-21 18:49:36.967 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:49:36.967 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:36.967 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:49:36.967 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:49:36.967 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:40.457 +02:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-04-21 18:49:40.462 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:49:40.462 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:40.463 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:49:40.463 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:49:40.463 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:49:40.463 +02:00 [DBG] Adding idp claim with value: local
+2020-04-21 18:49:40.463 +02:00 [DBG] Adding amr claim with value: pwd
+2020-04-21 18:49:40.464 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:49:40.464 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:40.469 +02:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-04-21 18:49:40.470 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-04-21 18:49:40.470 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-04-21 18:49:40.470 +02:00 [DBG] Start authorize callback request
+2020-04-21 18:49:40.470 +02:00 [DBG] User in authorize request: 88421113
+2020-04-21 18:49:40.470 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:49:40.470 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:40.470 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:49:40.470 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:49:40.471 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"88421113","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OebSm1zA6UzPqXSKe8PVX0tZG8QR_x3_lRitPcedbH6-N2H61KFX-sYWiGIlczv5eDlzkrWwHuIzfw1DaYhelp-RKBAb4B4vqAr3atplqawZyc4Lk1Mh-j-0PZIuUszmTVGIX-RZcxkVXaFxZB6vMNtT4yCL0y4VCXWqqJrTQZy-eSlxVZnB3lpeJKJ6BE4l_RGVqOBqD5gPvMedOzn6d-jfxzdE5KAsIrxXTPToEqfivKejO0XV8JKuA25uoyoV2-MTXQDWbudfiCaXKT7zi6qm5isgUobw_r9JHOlUz6toOdE64TlOwLn2HqVq_uA7XZt_UcjVlN8zCP1VKpjCZmcq_ErkD629Q7N8nh7KQba8xg","UiLocales":null,"Nonce":"637230845769284575.ZmJjNmNjYjctZjFjOS00MTJlLThlYmUtM2Y0MTQ4M2UwZjBhZTdiNmZkYTMtZmYyYi00NDAyLWJlZGEtNmE4MGVhNTI5NWI4","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"Fh_IHQ-2NZx_UFjjf5kSAw","Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"2m9E7GdZAKSUx2z67tv8MdxnR5rJmmAGEiGxjVwf-6s","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230845769284575.ZmJjNmNjYjctZjFjOS00MTJlLThlYmUtM2Y0MTQ4M2UwZjBhZTdiNmZkYTMtZmYyYi00NDAyLWJlZGEtNmE4MGVhNTI5NWI4","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OebSm1zA6UzPqXSKe8PVX0tZG8QR_x3_lRitPcedbH6-N2H61KFX-sYWiGIlczv5eDlzkrWwHuIzfw1DaYhelp-RKBAb4B4vqAr3atplqawZyc4Lk1Mh-j-0PZIuUszmTVGIX-RZcxkVXaFxZB6vMNtT4yCL0y4VCXWqqJrTQZy-eSlxVZnB3lpeJKJ6BE4l_RGVqOBqD5gPvMedOzn6d-jfxzdE5KAsIrxXTPToEqfivKejO0XV8JKuA25uoyoV2-MTXQDWbudfiCaXKT7zi6qm5isgUobw_r9JHOlUz6toOdE64TlOwLn2HqVq_uA7XZt_UcjVlN8zCP1VKpjCZmcq_ErkD629Q7N8nh7KQba8xg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:49:40.471 +02:00 [DBG] IsActive called from: AuthorizeEndpoint
+2020-04-21 18:49:40.471 +02:00 [DBG] Client is configured to not require consent, no consent is required
+2020-04-21 18:49:40.471 +02:00 [DBG] Creating Authorization Code Flow response.
+2020-04-21 18:49:40.472 +02:00 [DBG] Authorize endpoint response
+{"SubjectId":"88421113","ClientId":"mvc","RedirectUri":"https://127.0.0.1:44330/signin-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OebSm1zA6UzPqXSKe8PVX0tZG8QR_x3_lRitPcedbH6-N2H61KFX-sYWiGIlczv5eDlzkrWwHuIzfw1DaYhelp-RKBAb4B4vqAr3atplqawZyc4Lk1Mh-j-0PZIuUszmTVGIX-RZcxkVXaFxZB6vMNtT4yCL0y4VCXWqqJrTQZy-eSlxVZnB3lpeJKJ6BE4l_RGVqOBqD5gPvMedOzn6d-jfxzdE5KAsIrxXTPToEqfivKejO0XV8JKuA25uoyoV2-MTXQDWbudfiCaXKT7zi6qm5isgUobw_r9JHOlUz6toOdE64TlOwLn2HqVq_uA7XZt_UcjVlN8zCP1VKpjCZmcq_ErkD629Q7N8nh7KQba8xg","Scope":"openid profile","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-04-21 18:49:40.472 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:49:40.472 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:49:40.579 +02:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-04-21 18:49:40.580 +02:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-04-21 18:49:40.580 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-04-21 18:49:40.580 +02:00 [DBG] Start token request.
+2020-04-21 18:49:40.580 +02:00 [DBG] Start client validation
+2020-04-21 18:49:40.580 +02:00 [DBG] Start parsing Basic Authentication secret
+2020-04-21 18:49:40.580 +02:00 [DBG] Start parsing for secret in post body
+2020-04-21 18:49:40.580 +02:00 [DBG] Parser found secret: PostBodySecretParser
+2020-04-21 18:49:40.580 +02:00 [DBG] Secret id found: mvc
+2020-04-21 18:49:40.580 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:40.580 +02:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-04-21 18:49:40.581 +02:00 [DBG] Client validation success
+2020-04-21 18:49:40.581 +02:00 [DBG] Start token request validation
+2020-04-21 18:49:40.581 +02:00 [DBG] Start validation of authorization code token request
+2020-04-21 18:49:40.581 +02:00 [DBG] Client required a proof key for code exchange. Starting PKCE validation
+2020-04-21 18:49:40.581 +02:00 [DBG] IsActive called from: AuthorizationCodeValidation
+2020-04-21 18:49:40.581 +02:00 [DBG] Validation of authorization code token request success
+2020-04-21 18:49:40.582 +02:00 [INF] Token request validation success, {"ClientId":"mvc","ClientName":"Festival MVC","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"yhofR-0ygVzqv1Mb0A8OQnbp9NF6yjDiqvI3GJOB2gY","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"mvc","client_secret":"***REDACTED***","code":"yhofR-0ygVzqv1Mb0A8OQnbp9NF6yjDiqvI3GJOB2gY","grant_type":"authorization_code","redirect_uri":"https://127.0.0.1:44330/signin-oidc","code_verifier":"Qtyy11ZH32eLmVPGxAuPn9aSfW3D6vzzc9DaKN0prqM"},"$type":"TokenRequestValidationLog"}
+2020-04-21 18:49:40.582 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:40.582 +02:00 [DBG] Getting claims for access token for client: mvc
+2020-04-21 18:49:40.582 +02:00 [DBG] Getting claims for access token for subject: 88421113
+2020-04-21 18:49:40.582 +02:00 [DBG] Get profile called for subject 88421113 from client Festival MVC with claim types [] via ClaimsProviderAccessToken
+2020-04-21 18:49:40.582 +02:00 [DBG] Issued claims: []
+2020-04-21 18:49:40.585 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:49:40.585 +02:00 [DBG] Getting claims for identity token for subject: 88421113 and client: mvc
+2020-04-21 18:49:40.585 +02:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-04-21 18:49:40.587 +02:00 [DBG] Token request success.
+2020-04-21 18:53:56.861 +02:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2020-04-21 18:53:56.862 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2020-04-21 18:53:56.862 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2020-04-21 18:53:56.864 +02:00 [DBG] Processing signout request for 88421113
+2020-04-21 18:53:56.864 +02:00 [DBG] Start end session request validation
+2020-04-21 18:53:56.865 +02:00 [DBG] Start identity token validation
+2020-04-21 18:53:56.866 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:56.866 +02:00 [DBG] Client found: mvc / Festival MVC
+2020-04-21 18:53:56.868 +02:00 [DBG] IsActive called from: IdentityTokenValidation
+2020-04-21 18:53:56.868 +02:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-04-21 18:53:56.869 +02:00 [DBG] Token validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","ValidateLifetime":false,"AccessTokenType":null,"ExpectedScope":null,"TokenHandle":null,"JwtId":null,"Claims":{"nbf":1587487780,"exp":1587488080,"iss":"http://localhost:5000","aud":"mvc","nonce":"637230845769284575.ZmJjNmNjYjctZjFjOS00MTJlLThlYmUtM2Y0MTQ4M2UwZjBhZTdiNmZkYTMtZmYyYi00NDAyLWJlZGEtNmE4MGVhNTI5NWI4","iat":1587487780,"at_hash":"2qfx2xExiMIEvXSOI6dqoQ","s_hash":"U3AqJ3DwvPo7XLU2bHR0gQ","sid":"Fh_IHQ-2NZx_UFjjf5kSAw","sub":"88421113","auth_time":1587487780,"idp":"local","amr":"pwd"},"$type":"TokenValidationLog"}
+2020-04-21 18:53:56.869 +02:00 [INF] End session request validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","SubjectId":"88421113","PostLogOutUri":"https://127.0.0.1:44330/signout-callback-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYZ4VSZjI-xNUGf0tIJLOXX4muLuNZah343WAUsklctwUe-APyp8zdvjf5VqCOALzJ1svnzRnDNDV2pERIMxPXa0irUfLnoNhvW7YWGRkQtW-J2wYn0dVZNX7lzYWJLJMrQCSzrgkWH7B0ADeJ7PF9n","Raw":{"post_logout_redirect_uri":"https://127.0.0.1:44330/signout-callback-oidc","id_token_hint":"***REDACTED***","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYZ4VSZjI-xNUGf0tIJLOXX4muLuNZah343WAUsklctwUe-APyp8zdvjf5VqCOALzJ1svnzRnDNDV2pERIMxPXa0irUfLnoNhvW7YWGRkQtW-J2wYn0dVZNX7lzYWJLJMrQCSzrgkWH7B0ADeJ7PF9n","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"EndSessionRequestValidationLog"}
+2020-04-21 18:53:56.870 +02:00 [DBG] Success validating end session request from mvc
+2020-04-21 18:53:56.878 +02:00 [INF] AuthenticationScheme: idsrv signed out.
+2020-04-21 18:53:56.952 +02:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2020-04-21 18:53:56.953 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2020-04-21 18:53:56.954 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2020-04-21 18:53:56.955 +02:00 [DBG] Processing signout callback request
+2020-04-21 18:53:56.956 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:56.956 +02:00 [DBG] No client front-channel logout URLs
+2020-04-21 18:53:56.956 +02:00 [DBG] No client back-channel logout URLs
+2020-04-21 18:53:56.956 +02:00 [INF] Successful signout callback.
+2020-04-21 18:53:56.957 +02:00 [DBG] No client front-channel iframe urls
+2020-04-21 18:53:56.957 +02:00 [DBG] No client back-channel iframe urls
+2020-04-21 18:53:57.070 +02:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-04-21 18:53:57.074 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-04-21 18:53:57.074 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-04-21 18:53:57.074 +02:00 [DBG] Start authorize request
+2020-04-21 18:53:57.074 +02:00 [DBG] No user present in authorize request
+2020-04-21 18:53:57.075 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:53:57.075 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:57.075 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:53:57.075 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:53:57.076 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY1lcMCzJyDNInGiCLnB_juU8q3c-jFpgIvQZLqG1m6S3qai-oMJmDrSHOSe4sf8LcIbmB_Xu8LgNmoX7P15jMwP9me4yxtfLpGPPjJxEzp3IxvH-v95vRMglCEMnpA83Is6GOOrseydYZfL5Op4LO6FnYn6DWbyk8LKMFb1a_zYLFSYpNNdHGQgZ6dNPC1qy9DDbo2UHDZk91HIX50N3-2gYdq7R6DbuHFqQ9EgvCYNGN4xL3tvwUIIJGzlZBEEy30aO_XFFiJYCpzJpKBZtnZ3OTcQpZPEV7sLn7p1nzhYjqsCobWcJJtXS4eJslV9ZOFs67n8dmTcJ_r0MhyJ6vdyRw0-81_oGYSAFPb2ZOvqw","UiLocales":null,"Nonce":"637230848370665156.YTI0NGVjYzUtNWU1NC00MjRjLWIxNjMtOTkzMzViZTc0OTI1MzQxOTUyMGMtYmE5OS00Y2E4LWI3MGYtYmFkNzEzNzdkZDI4","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"dy6SJFpMtuHjM7PNJcjIVY2lWmX7lBKGjJp-yKL2OLg","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230848370665156.YTI0NGVjYzUtNWU1NC00MjRjLWIxNjMtOTkzMzViZTc0OTI1MzQxOTUyMGMtYmE5OS00Y2E4LWI3MGYtYmFkNzEzNzdkZDI4","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY1lcMCzJyDNInGiCLnB_juU8q3c-jFpgIvQZLqG1m6S3qai-oMJmDrSHOSe4sf8LcIbmB_Xu8LgNmoX7P15jMwP9me4yxtfLpGPPjJxEzp3IxvH-v95vRMglCEMnpA83Is6GOOrseydYZfL5Op4LO6FnYn6DWbyk8LKMFb1a_zYLFSYpNNdHGQgZ6dNPC1qy9DDbo2UHDZk91HIX50N3-2gYdq7R6DbuHFqQ9EgvCYNGN4xL3tvwUIIJGzlZBEEy30aO_XFFiJYCpzJpKBZtnZ3OTcQpZPEV7sLn7p1nzhYjqsCobWcJJtXS4eJslV9ZOFs67n8dmTcJ_r0MhyJ6vdyRw0-81_oGYSAFPb2ZOvqw","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:53:57.076 +02:00 [INF] Showing login: User is not authenticated
+2020-04-21 18:53:57.170 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:53:57.170 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:57.170 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:53:57.170 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:53:57.171 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:59.799 +02:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-04-21 18:53:59.803 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:53:59.803 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:59.804 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:53:59.804 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:53:59.804 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:53:59.804 +02:00 [DBG] Adding idp claim with value: local
+2020-04-21 18:53:59.804 +02:00 [DBG] Adding amr claim with value: pwd
+2020-04-21 18:53:59.805 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:53:59.805 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:59.811 +02:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-04-21 18:53:59.815 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-04-21 18:53:59.815 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-04-21 18:53:59.816 +02:00 [DBG] Start authorize callback request
+2020-04-21 18:53:59.816 +02:00 [DBG] User in authorize request: 88421113
+2020-04-21 18:53:59.816 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:53:59.816 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:59.816 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:53:59.816 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:53:59.817 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"88421113","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY1lcMCzJyDNInGiCLnB_juU8q3c-jFpgIvQZLqG1m6S3qai-oMJmDrSHOSe4sf8LcIbmB_Xu8LgNmoX7P15jMwP9me4yxtfLpGPPjJxEzp3IxvH-v95vRMglCEMnpA83Is6GOOrseydYZfL5Op4LO6FnYn6DWbyk8LKMFb1a_zYLFSYpNNdHGQgZ6dNPC1qy9DDbo2UHDZk91HIX50N3-2gYdq7R6DbuHFqQ9EgvCYNGN4xL3tvwUIIJGzlZBEEy30aO_XFFiJYCpzJpKBZtnZ3OTcQpZPEV7sLn7p1nzhYjqsCobWcJJtXS4eJslV9ZOFs67n8dmTcJ_r0MhyJ6vdyRw0-81_oGYSAFPb2ZOvqw","UiLocales":null,"Nonce":"637230848370665156.YTI0NGVjYzUtNWU1NC00MjRjLWIxNjMtOTkzMzViZTc0OTI1MzQxOTUyMGMtYmE5OS00Y2E4LWI3MGYtYmFkNzEzNzdkZDI4","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"odAMh6TNCbouFLN0w-pc8g","Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"dy6SJFpMtuHjM7PNJcjIVY2lWmX7lBKGjJp-yKL2OLg","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230848370665156.YTI0NGVjYzUtNWU1NC00MjRjLWIxNjMtOTkzMzViZTc0OTI1MzQxOTUyMGMtYmE5OS00Y2E4LWI3MGYtYmFkNzEzNzdkZDI4","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY1lcMCzJyDNInGiCLnB_juU8q3c-jFpgIvQZLqG1m6S3qai-oMJmDrSHOSe4sf8LcIbmB_Xu8LgNmoX7P15jMwP9me4yxtfLpGPPjJxEzp3IxvH-v95vRMglCEMnpA83Is6GOOrseydYZfL5Op4LO6FnYn6DWbyk8LKMFb1a_zYLFSYpNNdHGQgZ6dNPC1qy9DDbo2UHDZk91HIX50N3-2gYdq7R6DbuHFqQ9EgvCYNGN4xL3tvwUIIJGzlZBEEy30aO_XFFiJYCpzJpKBZtnZ3OTcQpZPEV7sLn7p1nzhYjqsCobWcJJtXS4eJslV9ZOFs67n8dmTcJ_r0MhyJ6vdyRw0-81_oGYSAFPb2ZOvqw","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:53:59.817 +02:00 [DBG] IsActive called from: AuthorizeEndpoint
+2020-04-21 18:53:59.817 +02:00 [DBG] Client is configured to not require consent, no consent is required
+2020-04-21 18:53:59.817 +02:00 [DBG] Creating Authorization Code Flow response.
+2020-04-21 18:53:59.818 +02:00 [DBG] Authorize endpoint response
+{"SubjectId":"88421113","ClientId":"mvc","RedirectUri":"https://127.0.0.1:44330/signin-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY1lcMCzJyDNInGiCLnB_juU8q3c-jFpgIvQZLqG1m6S3qai-oMJmDrSHOSe4sf8LcIbmB_Xu8LgNmoX7P15jMwP9me4yxtfLpGPPjJxEzp3IxvH-v95vRMglCEMnpA83Is6GOOrseydYZfL5Op4LO6FnYn6DWbyk8LKMFb1a_zYLFSYpNNdHGQgZ6dNPC1qy9DDbo2UHDZk91HIX50N3-2gYdq7R6DbuHFqQ9EgvCYNGN4xL3tvwUIIJGzlZBEEy30aO_XFFiJYCpzJpKBZtnZ3OTcQpZPEV7sLn7p1nzhYjqsCobWcJJtXS4eJslV9ZOFs67n8dmTcJ_r0MhyJ6vdyRw0-81_oGYSAFPb2ZOvqw","Scope":"openid profile","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-04-21 18:53:59.818 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:53:59.818 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:53:59.873 +02:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-04-21 18:53:59.881 +02:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-04-21 18:53:59.882 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-04-21 18:53:59.882 +02:00 [DBG] Start token request.
+2020-04-21 18:53:59.883 +02:00 [DBG] Start client validation
+2020-04-21 18:53:59.883 +02:00 [DBG] Start parsing Basic Authentication secret
+2020-04-21 18:53:59.883 +02:00 [DBG] Start parsing for secret in post body
+2020-04-21 18:53:59.883 +02:00 [DBG] Parser found secret: PostBodySecretParser
+2020-04-21 18:53:59.883 +02:00 [DBG] Secret id found: mvc
+2020-04-21 18:53:59.883 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:59.883 +02:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-04-21 18:53:59.883 +02:00 [DBG] Client validation success
+2020-04-21 18:53:59.883 +02:00 [DBG] Start token request validation
+2020-04-21 18:53:59.884 +02:00 [DBG] Start validation of authorization code token request
+2020-04-21 18:53:59.884 +02:00 [DBG] Client required a proof key for code exchange. Starting PKCE validation
+2020-04-21 18:53:59.884 +02:00 [DBG] IsActive called from: AuthorizationCodeValidation
+2020-04-21 18:53:59.884 +02:00 [DBG] Validation of authorization code token request success
+2020-04-21 18:53:59.884 +02:00 [INF] Token request validation success, {"ClientId":"mvc","ClientName":"Festival MVC","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"ew0_hLjB0p2SKR13jPC7BqSU6RExCaNPTN8mngn-90c","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"mvc","client_secret":"***REDACTED***","code":"ew0_hLjB0p2SKR13jPC7BqSU6RExCaNPTN8mngn-90c","grant_type":"authorization_code","redirect_uri":"https://127.0.0.1:44330/signin-oidc","code_verifier":"SbzPDQ7t2WJ5gIkz3yvM4aKT_2sP3ujVgZ2_h9pEgzA"},"$type":"TokenRequestValidationLog"}
+2020-04-21 18:53:59.884 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:59.884 +02:00 [DBG] Getting claims for access token for client: mvc
+2020-04-21 18:53:59.885 +02:00 [DBG] Getting claims for access token for subject: 88421113
+2020-04-21 18:53:59.885 +02:00 [DBG] Get profile called for subject 88421113 from client Festival MVC with claim types [] via ClaimsProviderAccessToken
+2020-04-21 18:53:59.885 +02:00 [DBG] Issued claims: []
+2020-04-21 18:53:59.887 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:53:59.887 +02:00 [DBG] Getting claims for identity token for subject: 88421113 and client: mvc
+2020-04-21 18:53:59.887 +02:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-04-21 18:54:00.620 +02:00 [DBG] Token request success.
+2020-04-21 18:54:24.843 +02:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2020-04-21 18:54:24.846 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2020-04-21 18:54:24.846 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2020-04-21 18:54:24.846 +02:00 [DBG] Processing signout request for 88421113
+2020-04-21 18:54:24.846 +02:00 [DBG] Start end session request validation
+2020-04-21 18:54:24.846 +02:00 [DBG] Start identity token validation
+2020-04-21 18:54:24.847 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:24.847 +02:00 [DBG] Client found: mvc / Festival MVC
+2020-04-21 18:54:24.848 +02:00 [DBG] IsActive called from: IdentityTokenValidation
+2020-04-21 18:54:24.848 +02:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-04-21 18:54:24.848 +02:00 [DBG] Token validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","ValidateLifetime":false,"AccessTokenType":null,"ExpectedScope":null,"TokenHandle":null,"JwtId":null,"Claims":{"nbf":1587488040,"exp":1587488340,"iss":"http://localhost:5000","aud":"mvc","nonce":"637230848370665156.YTI0NGVjYzUtNWU1NC00MjRjLWIxNjMtOTkzMzViZTc0OTI1MzQxOTUyMGMtYmE5OS00Y2E4LWI3MGYtYmFkNzEzNzdkZDI4","iat":1587488039,"at_hash":"XYv3h6gdqyUl8nTFXRtKUw","s_hash":"HYk6DdiTqoCBi9oT9X4IJg","sid":"odAMh6TNCbouFLN0w-pc8g","sub":"88421113","auth_time":1587488039,"idp":"local","amr":"pwd"},"$type":"TokenValidationLog"}
+2020-04-21 18:54:24.849 +02:00 [INF] End session request validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","SubjectId":"88421113","PostLogOutUri":"https://127.0.0.1:44330/signout-callback-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeatyDUoulRBwzFn6LrT-v6w9ek0YNyx_dhpBq_Jkw-J0Rn8aMj-OcBq0UnfglKL_0Yb63EhwmcD1y4qr1czKdGvdBIxL3HMkkCJBLbj42trajXETH3mZM3q7PaTv-q4ag4T0vEeuiWmWYxHG6E8FTqk","Raw":{"post_logout_redirect_uri":"https://127.0.0.1:44330/signout-callback-oidc","id_token_hint":"***REDACTED***","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeatyDUoulRBwzFn6LrT-v6w9ek0YNyx_dhpBq_Jkw-J0Rn8aMj-OcBq0UnfglKL_0Yb63EhwmcD1y4qr1czKdGvdBIxL3HMkkCJBLbj42trajXETH3mZM3q7PaTv-q4ag4T0vEeuiWmWYxHG6E8FTqk","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"EndSessionRequestValidationLog"}
+2020-04-21 18:54:24.849 +02:00 [DBG] Success validating end session request from mvc
+2020-04-21 18:54:24.860 +02:00 [INF] AuthenticationScheme: idsrv signed out.
+2020-04-21 18:54:24.928 +02:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2020-04-21 18:54:24.937 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2020-04-21 18:54:24.937 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2020-04-21 18:54:24.938 +02:00 [DBG] Processing signout callback request
+2020-04-21 18:54:24.938 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:24.938 +02:00 [DBG] No client front-channel logout URLs
+2020-04-21 18:54:24.939 +02:00 [DBG] No client back-channel logout URLs
+2020-04-21 18:54:24.939 +02:00 [INF] Successful signout callback.
+2020-04-21 18:54:24.939 +02:00 [DBG] No client front-channel iframe urls
+2020-04-21 18:54:24.939 +02:00 [DBG] No client back-channel iframe urls
+2020-04-21 18:54:25.045 +02:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-04-21 18:54:25.045 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-04-21 18:54:25.046 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-04-21 18:54:25.046 +02:00 [DBG] Start authorize request
+2020-04-21 18:54:25.046 +02:00 [DBG] No user present in authorize request
+2020-04-21 18:54:25.046 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:54:25.046 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:25.046 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:54:25.046 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:54:25.047 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYbhl_IhTL-xTgsK-dEMMQ6g9iZBx_6ZytSkkIgSUoQJcERckyNdqw7W8LKxv92nGgWaOSq1pdGveKmeHRvdr3xW2ErksNgxZgX90YTO0rVvSadl2KIAGckitOcoSP7TohFrSI2W1nacLQrWvNfG4UK16OfjR0khY63RFCmaRNx5C1N91noUxMUpj4lwQ3ixA7Q-2TyfKkjtiVXgUYV5heQVqKm16KOS-JTnsA52QggnlOq4S84-_1lnujfPFgCLMaoiiJH1xxaLSKdjDv8RnN5Rl_X-pvtsPmw7Y6pNmOZlSPCEC1qOZV6TEte_O04De25P2Z-WpKtrzn8stUjkCVUqC8peuVC_GCOq7hfwvnQEA","UiLocales":null,"Nonce":"637230848650404512.ZDEwMjM2MmItYzk5ZC00NTU1LWFhMDMtNWVkZTA0Mjc0MTQxZDlkMDIwNjQtOGY1ZS00NzI0LWE5ZTktNDQ0ZjFhNTQ2Yjhl","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"dkjok04BKT9-C-GQCwlsgMAoNylrrAXjDZ9-Md6E67Q","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230848650404512.ZDEwMjM2MmItYzk5ZC00NTU1LWFhMDMtNWVkZTA0Mjc0MTQxZDlkMDIwNjQtOGY1ZS00NzI0LWE5ZTktNDQ0ZjFhNTQ2Yjhl","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYbhl_IhTL-xTgsK-dEMMQ6g9iZBx_6ZytSkkIgSUoQJcERckyNdqw7W8LKxv92nGgWaOSq1pdGveKmeHRvdr3xW2ErksNgxZgX90YTO0rVvSadl2KIAGckitOcoSP7TohFrSI2W1nacLQrWvNfG4UK16OfjR0khY63RFCmaRNx5C1N91noUxMUpj4lwQ3ixA7Q-2TyfKkjtiVXgUYV5heQVqKm16KOS-JTnsA52QggnlOq4S84-_1lnujfPFgCLMaoiiJH1xxaLSKdjDv8RnN5Rl_X-pvtsPmw7Y6pNmOZlSPCEC1qOZV6TEte_O04De25P2Z-WpKtrzn8stUjkCVUqC8peuVC_GCOq7hfwvnQEA","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:54:25.047 +02:00 [INF] Showing login: User is not authenticated
+2020-04-21 18:54:25.065 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:54:25.065 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:25.065 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:54:25.066 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:54:25.066 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:27.485 +02:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-04-21 18:54:27.485 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-04-21 18:54:27.486 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-04-21 18:54:27.486 +02:00 [DBG] Start authorize request
+2020-04-21 18:54:27.486 +02:00 [DBG] No user present in authorize request
+2020-04-21 18:54:27.486 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:54:27.486 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:27.487 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:54:27.488 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:54:27.488 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYVxofwDs0sEFA931Ei5mjQc4V9MoNSqx9eDnacjg_p62PASz1p-UHo9oTE6G-Fiqz8d6oMudfJAGgjFnq6oxCPg4tnE4VXyKU7MNpwPPIRhgApjJ7-pUgmFarvWX28quspesbSSLis6MEV5Xb5UbeVIx7BvUuw9Dfz8X5xGfCHjzutDv16SJwTMP4EhZ5fNmNUDvt8VF1j6slIYwRZFssV_w4S_btUXvSHKcmr9Nq-w90_x8fQgwcPiL2SZdRsZzdddvcnH5dlLRXmXWCb-KHI4X7dU8Xf0nEbPEXXvWkv9CVFoZNSdr5F-k0Ed9dlRlgLHxvbuB6g0v07I0LIoodVts1TqDkRdjjzwshRPm9fWg","UiLocales":null,"Nonce":"637230848674815767.MWEwMzMzYjgtNTM4Yi00MzNjLThhOGQtM2QwMzgyOTkyMTA3YzJlZjBmYTAtY2Y2Ny00OGI3LWI5OTctZmE1YjQ0NDRkNTBh","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":null,"Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"Yj88Pn2oLRPGI2eP6AAG2c9R5Jd45mT0XQm5QulQGsM","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230848674815767.MWEwMzMzYjgtNTM4Yi00MzNjLThhOGQtM2QwMzgyOTkyMTA3YzJlZjBmYTAtY2Y2Ny00OGI3LWI5OTctZmE1YjQ0NDRkNTBh","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYVxofwDs0sEFA931Ei5mjQc4V9MoNSqx9eDnacjg_p62PASz1p-UHo9oTE6G-Fiqz8d6oMudfJAGgjFnq6oxCPg4tnE4VXyKU7MNpwPPIRhgApjJ7-pUgmFarvWX28quspesbSSLis6MEV5Xb5UbeVIx7BvUuw9Dfz8X5xGfCHjzutDv16SJwTMP4EhZ5fNmNUDvt8VF1j6slIYwRZFssV_w4S_btUXvSHKcmr9Nq-w90_x8fQgwcPiL2SZdRsZzdddvcnH5dlLRXmXWCb-KHI4X7dU8Xf0nEbPEXXvWkv9CVFoZNSdr5F-k0Ed9dlRlgLHxvbuB6g0v07I0LIoodVts1TqDkRdjjzwshRPm9fWg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:54:27.489 +02:00 [INF] Showing login: User is not authenticated
+2020-04-21 18:54:27.495 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:54:27.495 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:27.495 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:54:27.496 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:54:27.496 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:29.751 +02:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-04-21 18:54:29.756 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:54:29.756 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:29.756 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:54:29.757 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:54:29.757 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:54:29.757 +02:00 [DBG] Adding idp claim with value: local
+2020-04-21 18:54:29.757 +02:00 [DBG] Adding amr claim with value: pwd
+2020-04-21 18:54:29.758 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:54:29.758 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:29.838 +02:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-04-21 18:54:29.838 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-04-21 18:54:29.839 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-04-21 18:54:29.839 +02:00 [DBG] Start authorize callback request
+2020-04-21 18:54:29.839 +02:00 [DBG] User in authorize request: 88421113
+2020-04-21 18:54:29.839 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 18:54:29.839 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:29.839 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 18:54:29.839 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 18:54:29.840 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"88421113","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYVxofwDs0sEFA931Ei5mjQc4V9MoNSqx9eDnacjg_p62PASz1p-UHo9oTE6G-Fiqz8d6oMudfJAGgjFnq6oxCPg4tnE4VXyKU7MNpwPPIRhgApjJ7-pUgmFarvWX28quspesbSSLis6MEV5Xb5UbeVIx7BvUuw9Dfz8X5xGfCHjzutDv16SJwTMP4EhZ5fNmNUDvt8VF1j6slIYwRZFssV_w4S_btUXvSHKcmr9Nq-w90_x8fQgwcPiL2SZdRsZzdddvcnH5dlLRXmXWCb-KHI4X7dU8Xf0nEbPEXXvWkv9CVFoZNSdr5F-k0Ed9dlRlgLHxvbuB6g0v07I0LIoodVts1TqDkRdjjzwshRPm9fWg","UiLocales":null,"Nonce":"637230848674815767.MWEwMzMzYjgtNTM4Yi00MzNjLThhOGQtM2QwMzgyOTkyMTA3YzJlZjBmYTAtY2Y2Ny00OGI3LWI5OTctZmE1YjQ0NDRkNTBh","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"eAUyt5Rs_ZoEz8K6UCwBEg","Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"Yj88Pn2oLRPGI2eP6AAG2c9R5Jd45mT0XQm5QulQGsM","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230848674815767.MWEwMzMzYjgtNTM4Yi00MzNjLThhOGQtM2QwMzgyOTkyMTA3YzJlZjBmYTAtY2Y2Ny00OGI3LWI5OTctZmE1YjQ0NDRkNTBh","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYVxofwDs0sEFA931Ei5mjQc4V9MoNSqx9eDnacjg_p62PASz1p-UHo9oTE6G-Fiqz8d6oMudfJAGgjFnq6oxCPg4tnE4VXyKU7MNpwPPIRhgApjJ7-pUgmFarvWX28quspesbSSLis6MEV5Xb5UbeVIx7BvUuw9Dfz8X5xGfCHjzutDv16SJwTMP4EhZ5fNmNUDvt8VF1j6slIYwRZFssV_w4S_btUXvSHKcmr9Nq-w90_x8fQgwcPiL2SZdRsZzdddvcnH5dlLRXmXWCb-KHI4X7dU8Xf0nEbPEXXvWkv9CVFoZNSdr5F-k0Ed9dlRlgLHxvbuB6g0v07I0LIoodVts1TqDkRdjjzwshRPm9fWg","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 18:54:29.840 +02:00 [DBG] IsActive called from: AuthorizeEndpoint
+2020-04-21 18:54:29.840 +02:00 [DBG] Client is configured to not require consent, no consent is required
+2020-04-21 18:54:29.840 +02:00 [DBG] Creating Authorization Code Flow response.
+2020-04-21 18:54:29.841 +02:00 [DBG] Authorize endpoint response
+{"SubjectId":"88421113","ClientId":"mvc","RedirectUri":"https://127.0.0.1:44330/signin-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeYVxofwDs0sEFA931Ei5mjQc4V9MoNSqx9eDnacjg_p62PASz1p-UHo9oTE6G-Fiqz8d6oMudfJAGgjFnq6oxCPg4tnE4VXyKU7MNpwPPIRhgApjJ7-pUgmFarvWX28quspesbSSLis6MEV5Xb5UbeVIx7BvUuw9Dfz8X5xGfCHjzutDv16SJwTMP4EhZ5fNmNUDvt8VF1j6slIYwRZFssV_w4S_btUXvSHKcmr9Nq-w90_x8fQgwcPiL2SZdRsZzdddvcnH5dlLRXmXWCb-KHI4X7dU8Xf0nEbPEXXvWkv9CVFoZNSdr5F-k0Ed9dlRlgLHxvbuB6g0v07I0LIoodVts1TqDkRdjjzwshRPm9fWg","Scope":"openid profile","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-04-21 18:54:29.841 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 18:54:29.841 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 18:54:29.899 +02:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-04-21 18:54:29.899 +02:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-04-21 18:54:29.899 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-04-21 18:54:29.900 +02:00 [DBG] Start token request.
+2020-04-21 18:54:29.900 +02:00 [DBG] Start client validation
+2020-04-21 18:54:29.900 +02:00 [DBG] Start parsing Basic Authentication secret
+2020-04-21 18:54:29.900 +02:00 [DBG] Start parsing for secret in post body
+2020-04-21 18:54:29.900 +02:00 [DBG] Parser found secret: PostBodySecretParser
+2020-04-21 18:54:29.900 +02:00 [DBG] Secret id found: mvc
+2020-04-21 18:54:29.902 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:29.902 +02:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-04-21 18:54:29.902 +02:00 [DBG] Client validation success
+2020-04-21 18:54:29.902 +02:00 [DBG] Start token request validation
+2020-04-21 18:54:29.902 +02:00 [DBG] Start validation of authorization code token request
+2020-04-21 18:54:29.903 +02:00 [DBG] Client required a proof key for code exchange. Starting PKCE validation
+2020-04-21 18:54:29.903 +02:00 [DBG] IsActive called from: AuthorizationCodeValidation
+2020-04-21 18:54:29.903 +02:00 [DBG] Validation of authorization code token request success
+2020-04-21 18:54:29.903 +02:00 [INF] Token request validation success, {"ClientId":"mvc","ClientName":"Festival MVC","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"jUAKsl11wQO8ahxlXw5wqHsP_3qWVlQ_i9d03lStRWM","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"mvc","client_secret":"***REDACTED***","code":"jUAKsl11wQO8ahxlXw5wqHsP_3qWVlQ_i9d03lStRWM","grant_type":"authorization_code","redirect_uri":"https://127.0.0.1:44330/signin-oidc","code_verifier":"UKBEu0QchHb7U-HRSUxAQnGlTAdhVWPyOBSYHNLRPKs"},"$type":"TokenRequestValidationLog"}
+2020-04-21 18:54:29.903 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:29.903 +02:00 [DBG] Getting claims for access token for client: mvc
+2020-04-21 18:54:29.903 +02:00 [DBG] Getting claims for access token for subject: 88421113
+2020-04-21 18:54:29.904 +02:00 [DBG] Get profile called for subject 88421113 from client Festival MVC with claim types [] via ClaimsProviderAccessToken
+2020-04-21 18:54:29.904 +02:00 [DBG] Issued claims: []
+2020-04-21 18:54:29.907 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 18:54:29.907 +02:00 [DBG] Getting claims for identity token for subject: 88421113 and client: mvc
+2020-04-21 18:54:29.907 +02:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-04-21 18:54:29.909 +02:00 [DBG] Token request success.
+2020-04-21 19:04:54.673 +02:00 [INF] Starting host...
+2020-04-21 19:05:14.250 +02:00 [ERR] Failed executing DbCommand (582ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [DeviceCodes] (
+    [UserCode] nvarchar(200) NOT NULL,
+    [DeviceCode] nvarchar(200) NOT NULL,
+    [SubjectId] nvarchar(200) NULL,
+    [ClientId] nvarchar(200) NOT NULL,
+    [CreationTime] datetime2 NOT NULL,
+    [Expiration] datetime2 NOT NULL,
+    [Data] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_DeviceCodes] PRIMARY KEY ([UserCode])
+);
+2020-04-21 19:05:14.319 +02:00 [FTL] Application startup exception
+Microsoft.Data.SqlClient.SqlException (0x80131904): There is already an object named 'DeviceCodes' in the database.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at IdentityServer.Startup.InitializeDatabase(IApplicationBuilder app) in C:\Users\DT User3\Desktop\Festival\Festival.IdentityServer\Startup.cs:line 74
+   at IdentityServer.Startup.Configure(IApplicationBuilder app) in C:\Users\DT User3\Desktop\Festival\Festival.IdentityServer\Startup.cs:line 54
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISServerSetupFilter.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+ClientConnectionId:f713ee1d-3322-4d94-bc2a-7ecd6c8b5522
+Error Number:2714,State:6,Class:16
+2020-04-21 19:05:16.462 +02:00 [FTL] Host terminated unexpectedly.
+Microsoft.Data.SqlClient.SqlException (0x80131904): There is already an object named 'DeviceCodes' in the database.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at IdentityServer.Startup.InitializeDatabase(IApplicationBuilder app) in C:\Users\DT User3\Desktop\Festival\Festival.IdentityServer\Startup.cs:line 74
+   at IdentityServer.Startup.Configure(IApplicationBuilder app) in C:\Users\DT User3\Desktop\Festival\Festival.IdentityServer\Startup.cs:line 54
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISServerSetupFilter.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at IdentityServer.Program.Main(String[] args) in C:\Users\DT User3\Desktop\Festival\Festival.IdentityServer\Program.cs:line 38
+ClientConnectionId:f713ee1d-3322-4d94-bc2a-7ecd6c8b5522
+Error Number:2714,State:6,Class:16
+2020-04-21 19:08:20.563 +02:00 [INF] Starting host...
+2020-04-21 19:08:23.751 +02:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-04-21 19:08:23.765 +02:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2020-04-21 19:08:23.765 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2020-04-21 19:08:23.765 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2020-04-21 19:08:23.765 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2020-04-21 19:08:23.765 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2020-04-21 19:08:23.765 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2020-04-21 19:08:23.897 +02:00 [DBG] Login Url: /Account/Login
+2020-04-21 19:08:23.898 +02:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-04-21 19:08:23.899 +02:00 [DBG] Logout Url: /Account/Logout
+2020-04-21 19:08:23.899 +02:00 [DBG] ConsentUrl Url: /consent
+2020-04-21 19:08:23.899 +02:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-04-21 19:08:23.899 +02:00 [DBG] Error Url: /home/error
+2020-04-21 19:08:23.899 +02:00 [DBG] Error Id Parameter: errorId
+2020-04-21 19:08:31.395 +02:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-04-21 19:08:31.398 +02:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-04-21 19:08:31.398 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-04-21 19:08:31.400 +02:00 [DBG] Start discovery request
+2020-04-21 19:08:31.704 +02:00 [DBG] Found ["profile","openid"] as all scopes in database
+2020-04-21 19:08:31.994 +02:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-04-21 19:08:31.995 +02:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-04-21 19:08:31.995 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-04-21 19:08:31.996 +02:00 [DBG] Start key discovery request
+2020-04-21 19:08:32.056 +02:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2020-04-21 19:08:32.058 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2020-04-21 19:08:32.058 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2020-04-21 19:08:32.063 +02:00 [DBG] Processing signout request for 88421113
+2020-04-21 19:08:32.065 +02:00 [DBG] Start end session request validation
+2020-04-21 19:08:32.068 +02:00 [DBG] Start identity token validation
+2020-04-21 19:08:32.388 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:32.396 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:32.397 +02:00 [DBG] Client found: mvc / Festival MVC
+2020-04-21 19:08:32.458 +02:00 [DBG] IsActive called from: IdentityTokenValidation
+2020-04-21 19:08:32.459 +02:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2020-04-21 19:08:32.466 +02:00 [DBG] Token validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","ValidateLifetime":false,"AccessTokenType":null,"ExpectedScope":null,"TokenHandle":null,"JwtId":null,"Claims":{"nbf":1587488069,"exp":1587488369,"iss":"http://localhost:5000","aud":"mvc","nonce":"637230848674815767.MWEwMzMzYjgtNTM4Yi00MzNjLThhOGQtM2QwMzgyOTkyMTA3YzJlZjBmYTAtY2Y2Ny00OGI3LWI5OTctZmE1YjQ0NDRkNTBh","iat":1587488069,"at_hash":"FxO8Q0dIVfCPs7jvT454cA","s_hash":"7iTgTkeXsYdCYyjn92ipbw","sid":"eAUyt5Rs_ZoEz8K6UCwBEg","sub":"88421113","auth_time":1587488069,"idp":"local","amr":"pwd"},"$type":"TokenValidationLog"}
+2020-04-21 19:08:32.480 +02:00 [INF] End session request validation success
+{"ClientId":"mvc","ClientName":"Festival MVC","SubjectId":"88421113","PostLogOutUri":"https://127.0.0.1:44330/signout-callback-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeZ_zX2g3kDtMh0UfG8qUOHtYQW7pVJsVeoRfwwl4hocoYJcR-yRzDO7iQG2N1yOm6aEUDgz_QZMeLKdgUgBqu_BwMt7hhJM8kj3Qh2OxdT-ETnGhpJyR0eKenHsBgrRBqWqOI0eKvuBLBCPl0howGPG","Raw":{"post_logout_redirect_uri":"https://127.0.0.1:44330/signout-callback-oidc","id_token_hint":"***REDACTED***","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeZ_zX2g3kDtMh0UfG8qUOHtYQW7pVJsVeoRfwwl4hocoYJcR-yRzDO7iQG2N1yOm6aEUDgz_QZMeLKdgUgBqu_BwMt7hhJM8kj3Qh2OxdT-ETnGhpJyR0eKenHsBgrRBqWqOI0eKvuBLBCPl0howGPG","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"EndSessionRequestValidationLog"}
+2020-04-21 19:08:32.481 +02:00 [DBG] Success validating end session request from mvc
+2020-04-21 19:08:32.564 +02:00 [INF] AuthenticationScheme: idsrv signed out.
+2020-04-21 19:08:32.648 +02:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2020-04-21 19:08:32.651 +02:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2020-04-21 19:08:32.651 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2020-04-21 19:08:32.656 +02:00 [DBG] Processing signout callback request
+2020-04-21 19:08:32.676 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:32.676 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:32.677 +02:00 [DBG] No client front-channel logout URLs
+2020-04-21 19:08:32.678 +02:00 [DBG] No client back-channel logout URLs
+2020-04-21 19:08:32.680 +02:00 [INF] Successful signout callback.
+2020-04-21 19:08:32.680 +02:00 [DBG] No client front-channel iframe urls
+2020-04-21 19:08:32.680 +02:00 [DBG] No client back-channel iframe urls
+2020-04-21 19:08:32.782 +02:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2020-04-21 19:08:32.784 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2020-04-21 19:08:32.784 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2020-04-21 19:08:32.785 +02:00 [DBG] Start authorize request
+2020-04-21 19:08:32.790 +02:00 [DBG] No user present in authorize request
+2020-04-21 19:08:32.792 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 19:08:32.802 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:32.802 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:32.814 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 19:08:32.930 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:32.985 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:32.993 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:32.994 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:32.999 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 19:08:33.004 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY-6jIKZ3TSzMuvcmk1xLamB7WjAKQlHSitXXQ3jtkb-pc9GtD1mAg77oj93qLfb3sQB3CYdegcDglnoS168FRijfesma1_Z0ICUFDVSlJ0vvPKh2HjgeXRjNltMyYVNCxGDDcOmmYCY2Dcl2O4i60jsLx8GBSjx6W3h8o6N2tAGekZjosuyIHUkYqzMxBjyHmqh5XbI8Nzka0Hhsf2mvQJZYs3mgUtWi_BhfkrQBP1V7X-5ayT_XRh0DW5xO4HchrAMaAvvFKBSPEjil8dyRoNJ5xRHqmOOJjjG82N7uElmLgVpM0S2pDDcN2PSNd2m3N1q09Rh9-EJY3HNXZLLXNDjI8JcH_qchY82qOSJXRTeQ","UiLocales":null,"Nonce":"637230857127769357.M2QwNDdjYzItYmRlNy00NDNhLWJlZWUtYjY3ZjJkNDMzMTU4MWJiZDFlNjMtZGIzNy00ZTMwLThkNDktYmFjN2IzODkyZjBl","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"CqJ7i7oeXigaLiypHVt_o7zRzYZ0bP-N3xaCrpD6SEU","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230857127769357.M2QwNDdjYzItYmRlNy00NDNhLWJlZWUtYjY3ZjJkNDMzMTU4MWJiZDFlNjMtZGIzNy00ZTMwLThkNDktYmFjN2IzODkyZjBl","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY-6jIKZ3TSzMuvcmk1xLamB7WjAKQlHSitXXQ3jtkb-pc9GtD1mAg77oj93qLfb3sQB3CYdegcDglnoS168FRijfesma1_Z0ICUFDVSlJ0vvPKh2HjgeXRjNltMyYVNCxGDDcOmmYCY2Dcl2O4i60jsLx8GBSjx6W3h8o6N2tAGekZjosuyIHUkYqzMxBjyHmqh5XbI8Nzka0Hhsf2mvQJZYs3mgUtWi_BhfkrQBP1V7X-5ayT_XRh0DW5xO4HchrAMaAvvFKBSPEjil8dyRoNJ5xRHqmOOJjjG82N7uElmLgVpM0S2pDDcN2PSNd2m3N1q09Rh9-EJY3HNXZLLXNDjI8JcH_qchY82qOSJXRTeQ","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 19:08:33.007 +02:00 [INF] Showing login: User is not authenticated
+2020-04-21 19:08:33.033 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 19:08:33.042 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:33.042 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:33.043 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 19:08:33.045 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:33.046 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:33.048 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:33.050 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:33.050 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 19:08:33.062 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:33.062 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:36.326 +02:00 [DBG] CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2020-04-21 19:08:36.358 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 19:08:36.367 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:36.368 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:36.368 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 19:08:36.370 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:36.371 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:36.373 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:36.374 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:36.374 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 19:08:36.382 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 19:08:36.384 +02:00 [DBG] Adding idp claim with value: local
+2020-04-21 19:08:36.384 +02:00 [DBG] Adding amr claim with value: pwd
+2020-04-21 19:08:36.388 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 19:08:36.396 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:36.396 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:36.407 +02:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2020-04-21 19:08:36.408 +02:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2020-04-21 19:08:36.408 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2020-04-21 19:08:36.411 +02:00 [DBG] Start authorize callback request
+2020-04-21 19:08:36.413 +02:00 [DBG] User in authorize request: 88421113
+2020-04-21 19:08:36.414 +02:00 [DBG] Start authorize request protocol validation
+2020-04-21 19:08:36.421 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:36.421 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:36.421 +02:00 [DBG] Checking for PKCE parameters
+2020-04-21 19:08:36.423 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:36.425 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:36.426 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:36.427 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:36.428 +02:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2020-04-21 19:08:36.428 +02:00 [DBG] ValidatedAuthorizeRequest
+{"ClientId":"mvc","ClientName":"Festival MVC","RedirectUri":"https://127.0.0.1:44330/signin-oidc","AllowedRedirectUris":["https://127.0.0.1:44330/signin-oidc"],"SubjectId":"88421113","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY-6jIKZ3TSzMuvcmk1xLamB7WjAKQlHSitXXQ3jtkb-pc9GtD1mAg77oj93qLfb3sQB3CYdegcDglnoS168FRijfesma1_Z0ICUFDVSlJ0vvPKh2HjgeXRjNltMyYVNCxGDDcOmmYCY2Dcl2O4i60jsLx8GBSjx6W3h8o6N2tAGekZjosuyIHUkYqzMxBjyHmqh5XbI8Nzka0Hhsf2mvQJZYs3mgUtWi_BhfkrQBP1V7X-5ayT_XRh0DW5xO4HchrAMaAvvFKBSPEjil8dyRoNJ5xRHqmOOJjjG82N7uElmLgVpM0S2pDDcN2PSNd2m3N1q09Rh9-EJY3HNXZLLXNDjI8JcH_qchY82qOSJXRTeQ","UiLocales":null,"Nonce":"637230857127769357.M2QwNDdjYzItYmRlNy00NDNhLWJlZWUtYjY3ZjJkNDMzMTU4MWJiZDFlNjMtZGIzNy00ZTMwLThkNDktYmFjN2IzODkyZjBl","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"mQHxC0d89v8MUqs8juV4SQ","Raw":{"client_id":"mvc","redirect_uri":"https://127.0.0.1:44330/signin-oidc","response_type":"code","scope":"openid profile","code_challenge":"CqJ7i7oeXigaLiypHVt_o7zRzYZ0bP-N3xaCrpD6SEU","code_challenge_method":"S256","response_mode":"form_post","nonce":"637230857127769357.M2QwNDdjYzItYmRlNy00NDNhLWJlZWUtYjY3ZjJkNDMzMTU4MWJiZDFlNjMtZGIzNy00ZTMwLThkNDktYmFjN2IzODkyZjBl","state":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY-6jIKZ3TSzMuvcmk1xLamB7WjAKQlHSitXXQ3jtkb-pc9GtD1mAg77oj93qLfb3sQB3CYdegcDglnoS168FRijfesma1_Z0ICUFDVSlJ0vvPKh2HjgeXRjNltMyYVNCxGDDcOmmYCY2Dcl2O4i60jsLx8GBSjx6W3h8o6N2tAGekZjosuyIHUkYqzMxBjyHmqh5XbI8Nzka0Hhsf2mvQJZYs3mgUtWi_BhfkrQBP1V7X-5ayT_XRh0DW5xO4HchrAMaAvvFKBSPEjil8dyRoNJ5xRHqmOOJjjG82N7uElmLgVpM0S2pDDcN2PSNd2m3N1q09Rh9-EJY3HNXZLLXNDjI8JcH_qchY82qOSJXRTeQ","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2020-04-21 19:08:36.428 +02:00 [DBG] IsActive called from: AuthorizeEndpoint
+2020-04-21 19:08:36.432 +02:00 [DBG] Client is configured to not require consent, no consent is required
+2020-04-21 19:08:36.434 +02:00 [DBG] Creating Authorization Code Flow response.
+2020-04-21 19:08:36.470 +02:00 [DBG] jjQM7URzc/ZWhI0Q2flUavGRx6d0377GlWLg24CRE30= not found in database
+2020-04-21 19:08:36.532 +02:00 [DBG] Authorize endpoint response
+{"SubjectId":"88421113","ClientId":"mvc","RedirectUri":"https://127.0.0.1:44330/signin-oidc","State":"CfDJ8BwwW1oMIGFIhbTG5o0_OeY-6jIKZ3TSzMuvcmk1xLamB7WjAKQlHSitXXQ3jtkb-pc9GtD1mAg77oj93qLfb3sQB3CYdegcDglnoS168FRijfesma1_Z0ICUFDVSlJ0vvPKh2HjgeXRjNltMyYVNCxGDDcOmmYCY2Dcl2O4i60jsLx8GBSjx6W3h8o6N2tAGekZjosuyIHUkYqzMxBjyHmqh5XbI8Nzka0Hhsf2mvQJZYs3mgUtWi_BhfkrQBP1V7X-5ayT_XRh0DW5xO4HchrAMaAvvFKBSPEjil8dyRoNJ5xRHqmOOJjjG82N7uElmLgVpM0S2pDDcN2PSNd2m3N1q09Rh9-EJY3HNXZLLXNDjI8JcH_qchY82qOSJXRTeQ","Scope":"openid profile","Error":null,"ErrorDescription":null,"$type":"AuthorizeResponseLog"}
+2020-04-21 19:08:36.538 +02:00 [DBG] Augmenting SignInContext
+2020-04-21 19:08:36.539 +02:00 [INF] AuthenticationScheme: idsrv signed in.
+2020-04-21 19:08:36.636 +02:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-04-21 19:08:36.639 +02:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-04-21 19:08:36.639 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-04-21 19:08:36.643 +02:00 [DBG] Start token request.
+2020-04-21 19:08:36.645 +02:00 [DBG] Start client validation
+2020-04-21 19:08:36.649 +02:00 [DBG] Start parsing Basic Authentication secret
+2020-04-21 19:08:36.650 +02:00 [DBG] Start parsing for secret in post body
+2020-04-21 19:08:36.651 +02:00 [DBG] Parser found secret: PostBodySecretParser
+2020-04-21 19:08:36.652 +02:00 [DBG] Secret id found: mvc
+2020-04-21 19:08:36.660 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:36.660 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:36.669 +02:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-04-21 19:08:36.669 +02:00 [DBG] Client validation success
+2020-04-21 19:08:36.673 +02:00 [DBG] Start token request validation
+2020-04-21 19:08:36.677 +02:00 [DBG] Start validation of authorization code token request
+2020-04-21 19:08:36.693 +02:00 [DBG] jjQM7URzc/ZWhI0Q2flUavGRx6d0377GlWLg24CRE30= found in database: true
+2020-04-21 19:08:36.718 +02:00 [DBG] removing jjQM7URzc/ZWhI0Q2flUavGRx6d0377GlWLg24CRE30= persisted grant from database
+2020-04-21 19:08:36.733 +02:00 [DBG] Client required a proof key for code exchange. Starting PKCE validation
+2020-04-21 19:08:36.735 +02:00 [DBG] IsActive called from: AuthorizationCodeValidation
+2020-04-21 19:08:36.735 +02:00 [DBG] Validation of authorization code token request success
+2020-04-21 19:08:36.738 +02:00 [INF] Token request validation success, {"ClientId":"mvc","ClientName":"Festival MVC","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"6vVMiXySjGdkM9SroXXF2iLXsde939msjHfJ9cuBdX8","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"mvc","client_secret":"***REDACTED***","code":"6vVMiXySjGdkM9SroXXF2iLXsde939msjHfJ9cuBdX8","grant_type":"authorization_code","redirect_uri":"https://127.0.0.1:44330/signin-oidc","code_verifier":"RxKwxhfoKg7mWglJp38CqR8uTxnsR5L_bk-8iL5g0Bc"},"$type":"TokenRequestValidationLog"}
+2020-04-21 19:08:36.750 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:36.750 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:36.754 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:36.756 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:36.767 +02:00 [DBG] Getting claims for access token for client: mvc
+2020-04-21 19:08:36.768 +02:00 [DBG] Getting claims for access token for subject: 88421113
+2020-04-21 19:08:36.770 +02:00 [DBG] Get profile called for subject 88421113 from client Festival MVC with claim types [] via ClaimsProviderAccessToken
+2020-04-21 19:08:36.771 +02:00 [DBG] Issued claims: []
+2020-04-21 19:08:36.800 +02:00 [DBG] mvc found in database: true
+2020-04-21 19:08:36.800 +02:00 [DBG] client configuration validation for client mvc succeeded.
+2020-04-21 19:08:36.802 +02:00 [DBG] Found ["profile","openid"] identity scopes in database
+2020-04-21 19:08:36.803 +02:00 [DBG] Found [] API scopes in database
+2020-04-21 19:08:36.809 +02:00 [DBG] Getting claims for identity token for subject: 88421113 and client: mvc
+2020-04-21 19:08:36.810 +02:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2020-04-21 19:08:36.814 +02:00 [DBG] Token request success.
+2020-04-21 19:09:13.992 +02:00 [INF] Starting host...
+2020-04-21 19:09:14.657 +02:00 [INF] Starting IdentityServer4 version 3.1.2.0
+2020-04-21 19:09:14.781 +02:00 [INF] Using the default authentication scheme idsrv for IdentityServer
+2020-04-21 19:09:14.781 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for authentication
+2020-04-21 19:09:14.781 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-in
+2020-04-21 19:09:14.781 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for sign-out
+2020-04-21 19:09:14.781 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for challenge
+2020-04-21 19:09:14.782 +02:00 [DBG] Using idsrv as default ASP.NET Core scheme for forbid
+2020-04-21 19:09:14.925 +02:00 [DBG] Login Url: /Account/Login
+2020-04-21 19:09:14.926 +02:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-04-21 19:09:14.927 +02:00 [DBG] Logout Url: /Account/Logout
+2020-04-21 19:09:14.927 +02:00 [DBG] ConsentUrl Url: /consent
+2020-04-21 19:09:14.927 +02:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-04-21 19:09:14.927 +02:00 [DBG] Error Url: /home/error
+2020-04-21 19:09:14.927 +02:00 [DBG] Error Id Parameter: errorId
