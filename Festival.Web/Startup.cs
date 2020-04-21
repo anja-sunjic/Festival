@@ -32,9 +32,11 @@ namespace FestivalWebApplication
             .AddOpenIdConnect("oidc", options =>
            {
                options.SignInScheme = "Cookies";
-               options.Authority = "http://localhost:5000"; // Auth Server  
-               options.RequireHttpsMetadata = false; // only for development   
-               options.ClientId = "mvc"; // client setup in Auth Server
+               options.Authority = "http://localhost:5000";
+               options.RequireHttpsMetadata = false;
+               options.ClientId = "mvc";
+               options.ClientSecret = "secret";
+               options.ResponseType = "code";
                options.SaveTokens = true;
 
            });

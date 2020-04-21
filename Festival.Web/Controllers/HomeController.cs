@@ -1,10 +1,8 @@
 ﻿using FestivalWebApplication.Models;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -28,10 +26,9 @@ namespace FestivalWebApplication.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await HttpContext.SignOutAsync("Cookies");
-            return Redirect("http://localhost:5000/Account/Logout");
+            return SignOut("Cookies", "oidc");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
