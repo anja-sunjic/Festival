@@ -33,7 +33,7 @@ namespace FestivalWebApplication.Controllers
             List<AccommodationListVM> model = _repo.GetAll().Select(acc => new AccommodationListVM
             {
                 ID = acc.ID,
-                Description = acc.Description,
+                Description = acc.Description ?? "No Description",
                 Distance = acc.Distance,
                 Name = acc.Name,
                 PhoneNumber = acc.PhoneNumber,
@@ -89,6 +89,11 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult SaveNew(NewAccommodationVM model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New");
+            }
+
             string uniqueFileName = UploadedFile(model);
             Accommodation accommodation = new Accommodation()
             {
@@ -107,6 +112,11 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Save(EditAccommodationVM model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit");
+            }
+
             string uniqueFileName = UploadedFile(model);
             Accommodation acc = _repo.GetByID(model.ID);
             acc.Name = model.Name;
