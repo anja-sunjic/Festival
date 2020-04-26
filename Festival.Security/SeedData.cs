@@ -2,28 +2,29 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using System;
+using System.Linq;
+using System.Security.Claims;
+using IdentityModel;
 using Festival.Security.Data;
 using Festival.Security.Models;
-using IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using System;
-using System.Linq;
-using System.Security.Claims;
 
 namespace Festival.Security
 {
     public class SeedData
     {
-        public static void EnsureSeedData()
+        public static void EnsureSeedData(string connectionString)
         {
             var services = new ServiceCollection();
             services.AddLogging();
-            services.AddDbContext<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlite(connectionString));
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
