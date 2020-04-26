@@ -1,10 +1,11 @@
 ﻿@using FestivalWebApplication.ViewModels.TransferVehicle;
-@model List<FestivalWebApplication.ViewModels.TransferVehicle.TransferVehicleVM>
+@model List<FestivalWebApplication.ViewModels.TransferVehicle.ListTransferVehicleVM>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>TransferVehicle</h1>
+
+<h1>Transfer Vehicles</h1>
 <div style="float:right; margin-bottom:10px;">
     <a asp-controller="TransferVehicle" asp-action="New" class="btn btn-success btn-lg active addnew" role="button" aria-pressed="true">Add New     <i class="fa fa-plus"></i></a>
 </div>
@@ -14,17 +15,19 @@
             <th>#</th>
             <th>Vehicle</th>
             <th>Registration number</th>
+            <th>Driver</th>
             <th>Capacity</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (TransferVehicleVM x in Model)
+        @foreach (ListTransferVehicleVM x in Model)
         {
             <tr>
                 <td>@x.Id</td>
                 <td>@x.Name</td>
                 <td>@x.RegistrationNumber</td>
+                <td>@x.Driver</td>
                 <td>@x.Capacity</td>
                 <td>
                     <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Detail" asp-route-id="@x.Id" class="btn btn-info active" role="button" aria-pressed="true">

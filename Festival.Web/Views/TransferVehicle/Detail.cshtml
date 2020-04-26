@@ -1,46 +1,40 @@
-﻿@model FestivalWebApplication.ViewModels.TransferVehicle.TransferVehicleVM;
+﻿@model FestivalWebApplication.ViewModels.TransferVehicle.DetailTransferVehicleVM;
 @{
     ViewData["Title"] = "Detail";
 }
 
 
-<style>
-
-
-
-
-
-
-
-    .detailInput {
-        background-color: #e2e2e2 !important;
-    }
-
-    .legend {
-        margin-bottom: 30px !important;
-    }
-</style>
-
-
-
-<legend class="w-auto legend">Transfer Vehicle</legend>
-<input style="display: none" asp-for="Id" />
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Name">Vehicle name</label>
-    <div class="col-sm-5">
-        <input disabled asp-for="Name" class="form-control" />
+<div class="col-6" style="float:left">
+    <h2 class="detailName">@Model.Name</h2>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="RegistrationNumber">Registration Number : </label>
+        <span class="detailData">@Model.RegistrationNumber</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Capacity">Capacity : </label>
+        <span class="detailData">@Model.Capacity</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Driver">Driver : </label>
+        <span class="detailData">@Model.Driver</span>
+    </div>
+    <div class="detailButtons">
+        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="List" asp-route-id="@Model.ID" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
+        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
+            Edit
+            <i class="fa fa-edit"></i>
+        </a>
+        <a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger" role="button" aria-pressed="true">
+            Delete
+            <i class="fa fa-trash"></i>
+        </a>
     </div>
 </div>
+<div class="col-6" style="float:right">
+    <img src="~/images/transfervehicles/@Model.Picture" class="accImage imageDiv" />
+</div>
 
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="RegistrationNumber">Registration number</label>
-    <div class="col-sm-2">
-        <input disabled asp-for="RegistrationNumber" class="form-control" />
-    </div>
-</div>
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Capacity">Vehicle capacity</label>
-    <div class="col-sm-2">
-        <textarea disabled asp-for="Capacity" class="form-control detailInput"></textarea>
-    </div>
-</div>
+<div class="clearfix"></div>

@@ -1,42 +1,68 @@
-﻿@model FestivalWebApplication.ViewModels.TransferVehicle.TransferVehicleVM;
+﻿@model FestivalWebApplication.ViewModels.TransferVehicle.NewTransferVehicleVM;
 @{
-    if (Model.Id != 0)
-    {
-        ViewData["Title"] = "Edit";
-    }
-    else
-    {
-        ViewData["Title"] = "New";
-    }
+    ViewData["Title"] = "New";
 }
 
-<form asp-action="Save" enctype="multipart/form-data" method="post">
-    <fieldset>
-        <legend class="w-auto">Transfer Vehicle</legend>
-        <input style="display: none" asp-for="Id" />
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Name">Vehicle name</label>
-            <div class="col-sm-5">
-                <input asp-for="Name" class="form-control" />
+
+
+<style>
+
+
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="SaveNew" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="RegistrationNumber">Registration number</label>
-            <div class="col-sm-2">
-                <input asp-for="RegistrationNumber" class="form-control" />
+            <div class="form-group">
+                <div class="col-7 newRow" style="float:left;padding-left:0px;">
+                    <label class="newLabel" for="RegistrationNumber">Registration Number :</label>
+                    <div>
+                        <input asp-for="RegistrationNumber" class="form-control" />
+                    </div>
+                    <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+                </div>
+                <div class="col-5 newRow" style="float:right;padding-right:0px;">
+                    <label class="newLabel" for="Capacity">Capacity : </label>
+                    <div>
+                        <input asp-for="Capacity" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Capacity">Vehicle capacity</label>
-            <div class="col-sm-2">
-                <input type="number" asp-for="Capacity" class="form-control">
+            <div class="form-group newRow">
+                <label for="Driver" class="newLabel">Driver :</label>
+                <div>
+                    <input asp-for="Driver" class="form-control" />
+                </div>
+                <span asp-validation-for="Driver" class="text-danger"></span>
             </div>
-        </div>
-    </fieldset>
+            <div class="form-group newRow">
+                <label class="newLabel" for="ProfileImage">Image :</label>
+                <div>
+                    <input type="file" asp-for="Picture" />
+                </div>
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+        </fieldset>
 
+        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
 
-
-    <input type="submit" value="Save" class="btn btn-lg btn-secondary submit" />
-
-</form>
+    </form>
+</div>

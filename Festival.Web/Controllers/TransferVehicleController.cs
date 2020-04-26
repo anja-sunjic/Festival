@@ -2,8 +2,11 @@
 using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.TransferVehicle;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -12,12 +15,12 @@ namespace FestivalWebApplication.Controllers
     public class TransferVehicleController : Controller
     {
         private readonly ITransferVehicleRepository _repo;
-        private readonly ITransferServiceRepository _servicerepo;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public TransferVehicleController(ITransferVehicleRepository repo, ITransferServiceRepository servicerepo)
+        public TransferVehicleController(ITransferVehicleRepository repo, IWebHostEnvironment webHostEnvironment)
         {
             _repo = repo;
-            _servicerepo = servicerepo;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -26,11 +29,12 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult List()
         {
-            List<TransferVehicleVM> Model = _repo.GetAll().Select(p => new TransferVehicleVM
+            List<ListTransferVehicleVM> Model = _repo.GetAll().Select(p => new ListTransferVehicleVM
             {
                 Id = p.ID,
                 Name = p.Name,
                 RegistrationNumber = p.RegistrationNumber,
+                Driver = p.Driver,
                 Capacity = p.Capacity
             }).ToList();
 
@@ -40,79 +44,122 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult New()
         {
-            TransferVehicleVM Model = new TransferVehicleVM();
+            NewTransferVehicleVM Model = new NewTransferVehicleVM();
 
             return View(Model);
+        }
+
+        public IActionResult SaveNew(NewTransferVehicleVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("New");
+            }
+
+            string uniqueFileName = UploadedFile(model);
+            TransferVehicle vehicle = new TransferVehicle()
+            {
+                Name = model.Name,
+                RegistrationNumber = model.RegistrationNumber,
+                Driver = model.Driver,
+                Capacity = model.Capacity,
+                Picture = uniqueFileName
+            };
+
+            _repo.Add(vehicle);
+            return RedirectToAction("List");
         }
 
         public IActionResult Detail(int ID)
         {
             TransferVehicle vehicle = _repo.GetByID(ID);
-            TransferVehicleVM Model = new TransferVehicleVM
+            var Model = new DetailTransferVehicleVM
             {
-                Id = vehicle.ID,
+                ID = vehicle.ID,
                 Name = vehicle.Name,
                 Capacity = vehicle.Capacity,
-                RegistrationNumber = vehicle.RegistrationNumber
+                RegistrationNumber = vehicle.RegistrationNumber,
+                Driver = vehicle.Driver,
+                Picture = vehicle.Picture
             };
             return View(Model);
         }
 
         public IActionResult Edit(int ID)
         {
-            TransferVehicle transferVehicle = _repo.GetByID(ID);
-            TransferVehicleVM Model = new TransferVehicleVM
+            var transferVehicle = _repo.GetByID(ID);
+            var Model = new EditTransferVehicleVM
             {
-                Id = transferVehicle.ID,
+                ID = transferVehicle.ID,
                 Name = transferVehicle.Name,
                 RegistrationNumber = transferVehicle.RegistrationNumber,
+                Driver = transferVehicle.Driver,
                 Capacity = transferVehicle.Capacity
             };
 
-            return View("New", Model);
+            return View("Edit", Model);
+        }
+
+        public IActionResult Save(EditTransferVehicleVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit");
+            }
+
+            string uniqueFileName = UploadedFile(model);
+            var acc = _repo.GetByID(model.ID);
+            acc.Name = model.Name;
+            acc.Capacity = model.Capacity;
+            acc.RegistrationNumber = model.RegistrationNumber;
+            acc.Driver = model.Driver;
+            if (model.Picture != null)
+            {
+                acc.Picture = uniqueFileName;
+            }
+            _repo.Save();
+            return RedirectToAction("List");
+        }
+
+        private string UploadedFile(EditTransferVehicleVM model)
+        {
+            string uniqueFileName = null;
+
+            if (model.Picture != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "transfervehicles");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Picture.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Picture.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
         }
 
         public IActionResult Delete(int Id)
         {
-            TransferVehicle transferVehicle = _repo.GetByID(Id);
-            List<TransferService> deleteService = _servicerepo.GetAllServicesForVehicle(Id);
-            if (deleteService.Count > 0)
-            {
-                foreach (var service in deleteService)
-                {
-                    _servicerepo.Delete(service.ID);
-                }
-            }
             _repo.Delete(Id);
             return Redirect("/TransferVehicle/Index");
         }
 
 
-        public IActionResult Save(TransferVehicleVM Model)
+        private string UploadedFile(NewTransferVehicleVM model)
         {
-            TransferVehicle transferVehicle;
-            if (Model.Id == 0)
+            string uniqueFileName = null;
+
+            if (model.Picture != null)
             {
-                transferVehicle = new TransferVehicle
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "transfervehicles");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Picture.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    Name = Model.Name,
-                    RegistrationNumber = Model.RegistrationNumber,
-                    Capacity = Model.Capacity
-                };
-                _repo.Add(transferVehicle);
+                    model.Picture.CopyTo(fileStream);
+                }
             }
-
-            else
-            {
-                transferVehicle = _repo.GetByID(Model.Id);
-                transferVehicle.Name = Model.Name;
-                transferVehicle.RegistrationNumber = Model.RegistrationNumber;
-                transferVehicle.Capacity = Model.Capacity;
-                _repo.Save();
-            }
-
-
-            return RedirectToAction("Index");
+            return uniqueFileName;
         }
     }
 
