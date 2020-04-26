@@ -82,6 +82,11 @@ namespace FestivalWebApplication.Controllers
         [HttpPost]
         public IActionResult SaveNew(NewTransferServiceVM Model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New");
+            }
+
             TransferService transferService;
             if (Model.Id == 0)
             {

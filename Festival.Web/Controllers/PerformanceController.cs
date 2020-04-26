@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using FestivalWebApplication.ViewModels.Performance;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -50,10 +51,33 @@ namespace FestivalWebApplication.Controllers
                 Value = s.ID.ToString()
             }).ToList();
 
+            Model.Start=DateTime.Today;
             return View("New", Model);
         }
         public IActionResult SaveNew(NewPerformanceVM Model)
         {
+            if (!ModelState.IsValid)
+            {
+                Model = new NewPerformanceVM
+                {
+                    Stages = _db.Stage.Select(s => new SelectListItem
+                    {
+                        Text = s.Name,
+                        Value = s.ID.ToString()
+                    }).ToList(),
+
+                    Performers = _db.Performer.Select(s => new SelectListItem
+                    {
+                        Text = s.Name,
+                        Value = s.ID.ToString()
+                    }).ToList(),
+
+                    Start = DateTime.Now
+                };
+
+                return View("New", Model);
+            }
+
             Performance performance = new Performance();
             performance.Start = Model.Start;
             performance.StageID = Model.StageID;
