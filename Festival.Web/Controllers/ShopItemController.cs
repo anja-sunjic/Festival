@@ -2,8 +2,11 @@
 using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.ShopItem;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -11,13 +14,13 @@ namespace FestivalWebApplication.Controllers
     [Authorize]
     public class ShopItemController : Controller
     {
-        private readonly FestivalContext _context;
         private readonly IShopItemRepository _repo;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ShopItemController(FestivalContext context, IShopItemRepository repo)
+        public ShopItemController(IShopItemRepository repo, IWebHostEnvironment webHostEnvironment)
         {
-            _context = context;
             _repo = repo;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -61,7 +64,7 @@ namespace FestivalWebApplication.Controllers
                 Quantity = item.Quantity,
                 Price = item.Price,
                 Description = item.Description,
-
+                Picture = item.Picture
             };
             return View(model);
         }
@@ -83,12 +86,20 @@ namespace FestivalWebApplication.Controllers
         [HttpPost]
         public IActionResult SaveNew(NewShopItemVM model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New");
+            }
+
+            string uniqueFileName = UploadedFile(model);
+
             ShopItem shopItem = new ShopItem()
             {
                 Name = model.Name,
                 Price = model.Price,
                 Quantity = model.Quantity,
-                Description = model.Description
+                Description = model.Description,
+                Picture = uniqueFileName
             };
 
             _repo.Add(shopItem);
@@ -98,13 +109,58 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Save(EditShopItemVM model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit");
+            }
+
+            string uniqueFileName = UploadedFile(model);
+
             ShopItem shopItem = _repo.GetByID(model.ID);
             shopItem.Name = model.Name;
             shopItem.Description = model.Description;
             shopItem.Price = model.Price;
             shopItem.Quantity = model.Quantity;
+            if (model.ProfileImage != null)
+            {
+                shopItem.Picture = uniqueFileName;
+            }
             _repo.Save();
             return RedirectToAction("List");
+        }
+
+        private string UploadedFile(NewShopItemVM model)
+        {
+            string uniqueFileName = null;
+
+            if (model.ProfileImage != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "shopitems");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ProfileImage.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }
+
+        private string UploadedFile(EditShopItemVM model)
+        {
+            string uniqueFileName = null;
+
+            if (model.ProfileImage != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "shopitems");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ProfileImage.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
         }
 
     }

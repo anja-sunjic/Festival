@@ -27,21 +27,29 @@ namespace Festival.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<float>("Distance")
                         .HasColumnType("real");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Picture")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -200,10 +208,10 @@ namespace Festival.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ImageID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Price")
@@ -216,8 +224,6 @@ namespace Festival.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("ImageID");
 
                     b.HasIndex("PurchaseID");
 
@@ -502,10 +508,6 @@ namespace Festival.Data.Migrations
 
             modelBuilder.Entity("Festival.Data.Models.ShopItem", b =>
                 {
-                    b.HasOne("Festival.Data.Models.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageID");
-
                     b.HasOne("Festival.Data.Models.Purchase", null)
                         .WithMany("Items")
                         .HasForeignKey("PurchaseID");

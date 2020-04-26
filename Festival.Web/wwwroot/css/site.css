@@ -300,6 +300,18 @@ form {
     border: 3px solid #e2e2e2;
 }
 
+.imageDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shopitemImage {
+    width: 80%;
+    height: 80%;
+    border: 3px solid #e2e2e2;
+}
+
 .detailData {
     width: auto;
     margin-left: 10px;

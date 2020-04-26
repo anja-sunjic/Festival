@@ -3,30 +3,38 @@
     ViewData["Title"] = "Detail";
 }
 
-<legend class="w-auto">Shop Item</legend>
-<input style="display: none" asp-for="ID" />
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Name">Shop Item Name</label>
-    <div class="col-sm-5">
-        <input disabled asp-for="Name" class="form-control" />
+
+<div class="col-6" style="float:left">
+    <h2 class="detailName">@Model.Name</h2>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Description">Description : </label>
+        <span class="detailData">@Model.Description</span>
     </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Quantity">Quantity : </label>
+        <span class="detailData">@Model.Quantity</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Price">Price : </label>
+        <span class="detailData">@Model.Price KM</span>
+    </div>
+    <div class="detailButtons">
+        <a style="margin-right:5px;" asp-controller="ShopItem" asp-action="List" asp-route-id="@Model.ID" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
+        <a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
+            Edit
+            <i class="fa fa-edit"></i>
+        </a>
+        <a asp-controller="ShopItem" asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger" role="button" aria-pressed="true">
+            Delete
+            <i class="fa fa-trash"></i>
+        </a>
+    </div>
+</div>
+<div class="col-6 imageDiv" style="float:right">
+    <img src="~/images/shopitems/@Model.Picture" class="shopitemImage" />
 </div>
 
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Price">Price</label>
-    <div class="col-sm-2">
-        <input disabled asp-for="Price" class="form-control" />
-    </div>
-</div>
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Quantity">Quantity</label>
-    <div class="col-sm-2">
-        <input disabled asp-for="Quantity" class="form-control" />
-    </div>
-</div>
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label" for="Description">Description</label>
-    <div class="col-sm-5">
-        <textarea disabled asp-for="Description" class="form-control"></textarea>
-    </div>
-</div>
+<div class="clearfix"></div>

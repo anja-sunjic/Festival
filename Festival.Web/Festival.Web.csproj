@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\accommodations\" />
+    <Folder Include="wwwroot\images\shopitems\" />
     <Folder Include="wwwroot\images\performerImages\" />
   </ItemGroup>
 

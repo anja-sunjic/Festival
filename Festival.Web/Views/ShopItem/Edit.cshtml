@@ -3,39 +3,70 @@
     ViewData["Title"] = "Edit";
 }
 
-<form asp-action="Save" enctype="multipart/form-data" method="post">
-    <fieldset>
-        <legend class="w-auto">Shop Item</legend>
-        <input style="display: none" asp-for="ID" />
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Name">Shop Item Name</label>
-            <div class="col-sm-5">
-                <input asp-for="Name" class="form-control" />
+
+<style>
+
+
+
+
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="Save" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <input asp-for="ID" hidden />
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Price">Price</label>
-            <div class="col-sm-2">
-                <input asp-for="Price" class="form-control" />
+            <div class="form-group newRow">
+                <label for="Address" class="newLabel">Description :</label>
+                <div>
+                    <input asp-for="Description" class="form-control" />
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Quantity">Quantity</label>
-            <div class="col-sm-2">
-                <input asp-for="Quantity" class="form-control" />
+
+            <div class="form-group">
+                <div class="col-5 newRow" style="float:left;padding-left:0px;">
+                    <label class="newLabel" for="Quantity">Quantity :</label>
+                    <div>
+                        <input asp-for="Quantity" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="col-5 newRow" style="float:right;padding-right:0px;">
+                    <label class="newLabel" for="Price">Price (KM) : </label>
+                    <div>
+                        <input asp-for="Price" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Description">Description</label>
-            <div class="col-sm-5">
-                <textarea asp-for="Description" class="form-control"></textarea>
+            <div class="clearfix"></div>
+            <div class="form-group newRow">
+                <label class="newLabel" for="ProfileImage">Image :</label>
+                <div>
+                    <input type="file" asp-for="ProfileImage" />
+                </div>
             </div>
-        </div>
-    </fieldset>
+        </fieldset>
 
+        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
 
-
-    <input type="submit" value="Edit shop item" class="btn btn-lg btn-secondary submit" />
-
-</form>
+    </form>
+</div>
