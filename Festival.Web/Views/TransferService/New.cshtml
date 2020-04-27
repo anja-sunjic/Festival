@@ -3,35 +3,61 @@
     ViewData["Title"] = "New";
 }
 
-<form asp-action="SaveNew" enctype="multipart/form-data" method="post">
-    <fieldset>
-        <legend class="w-auto">Transfer Service</legend>
-        <input style="display: none" asp-for="Id" />
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Date">Vehicle name</label>
-            <div class="col-sm-5">
-                <input asp-for="Date" class="form-control" />
+
+<style>
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="SaveNew" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Vehicle :</label>
+                <div>
+                    <select asp-for="VehicleId" asp-items="Model.Vehicles" class="form-control">
+                        <option disabled>(Pick vehicle)</option>
+                    </select>
+                </div>
+                <span asp-validation-for="VehicleId" class="text-danger"></span>
             </div>
-        </div>
 
-        @*<div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="AvailableSeats"></label>
-            <div class="col-sm-2">
-                <input asp-for="AvailableSeats" class="form-control" />
+            <div class="form-group newRow">
+                <label for="MeetingPoint" class="newLabel">Meeting Point :</label>
+                <div>
+                    <input asp-for="MeetingPoint" class="form-control" />
+                </div>
+                <span asp-validation-for="MeetingPoint" class="text-danger"></span>
             </div>
-        </div>*@
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Vehicle">Transfer vehicle</label>
-            <div class="col-sm-5">
-                <select asp-for="VehicleId" asp-items="Model.Vehicles" class="form-control">
-                    <option disabled>(Pick vehicle)</option>
-                </select>
+
+            <div class="form-group">
+                <div class="col-7 newRow" style="float:left;padding-left:0px;">
+                    <label class="newLabel" for="Date">Date :</label>
+                    <div>
+                        <input asp-for="Date" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="col-5 newRow" style="float:right;padding-right:0px;">
+                    <label class="newLabel" for="AvailableSeats">Available seats : </label>
+                    <div>
+                        <input asp-for="AvailableSeats" class="form-control" />
+                    </div>
+                    <span asp-validation-for="AvailableSeats" class="text-danger"></span>
+                </div>
             </div>
-        </div>
-    </fieldset>
+            <div class="clearfix"></div>
+        </fieldset>
 
+        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
 
-
-    <input type="submit" value="Add new service" class="btn btn-lg btn-secondary" />
-
-</form>
+    </form>
+</div>

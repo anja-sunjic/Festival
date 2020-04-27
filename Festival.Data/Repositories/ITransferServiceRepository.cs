@@ -5,10 +5,13 @@ namespace Festival.Data.Repositories
 {
     public interface ITransferServiceRepository
     {
-        List<TransferService> GetAllServicesForVehicle(int id);
-        void Delete(int iD);
+        TransferService GetByID(int id);
         List<TransferService> GetAll();
+        void Delete(int iD);
         void Add(TransferService transferService);
         void Save();
+        string GetVehicleNameByVehicleID(int? transferVehicleID);
+        List<TransferVehicle> GetAllVehicles();
+        TransferVehicle GetVehicleByID(int vehicleId);
     }
 }

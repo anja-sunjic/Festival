@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FestivalWebApplication.ViewModels.TransferService
+﻿namespace FestivalWebApplication.ViewModels.TransferService
 {
     public class ListTransferServiceVM
     {
         public int Id { get; set; }
         public string VehicleName { get; set; }
-        public int  AvailableSeats { get; set; }
+        public int AvailableSeats { get; set; }
+        public string MeetingPoint { get; set; }
         public string Date { get; set; }
     }
 }

@@ -1,18 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using CustomDataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using CustomDataAnnotations;
 
 namespace FestivalWebApplication.ViewModels.TransferService
 {
     public class NewTransferServiceVM
     {
-        public int Id { get; set; }
-        public List<SelectListItem> Vehicles{ get; set; }
+        public List<SelectListItem> Vehicles { get; set; }
+        [Required(ErrorMessage = "Transfer vehicle for service is required, please insert it.")]
         public int VehicleId { get; set; }
+        [Required(ErrorMessage = "Meeting point is required, please insert it.")]
+        [StringLength(25, ErrorMessage = "Meeting point length can't be more than 25 characters.")]
+        [DisplayName("Meeting point")]
+        public string MeetingPoint { get; set; }
+        [Required(ErrorMessage = "Number of available seats left is required, please insert it.")]
+        [Range(1, 30, ErrorMessage = "Number of available seats must be between 1 and 30 persons.")]
+        [DisplayName("Number of available seats")]
         public int AvailableSeats { get; set; }
-        [Required(ErrorMessage = "Start date and time of performance is required, please insert it.")]
+        [Required(ErrorMessage = "Start date and time of transfer service is required, please insert it.")]
         [CurrentDate(ErrorMessage = "Date must be after or equal to current date")]
         public DateTime Date { get; set; }
     }

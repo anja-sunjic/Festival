@@ -4,7 +4,7 @@ using FestivalWebApplication.ViewModels.TransferService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,14 +13,11 @@ namespace FestivalWebApplication.Controllers
     [Authorize]
     public class TransferServiceController : Controller
     {
-        private readonly FestivalContext _db;
         private readonly ITransferServiceRepository _repo;
-        private readonly ITransferVehicleRepository _vehiclerepo;
 
-        public TransferServiceController(ITransferServiceRepository repo, ITransferVehicleRepository vehiclerepo)
+        public TransferServiceController(ITransferServiceRepository repo)
         {
             _repo = repo;
-            _vehiclerepo = vehiclerepo;
         }
         public IActionResult Index()
         {
@@ -32,8 +29,9 @@ namespace FestivalWebApplication.Controllers
             List<ListTransferServiceVM> Model = _repo.GetAll().Select(p => new ListTransferServiceVM
             {
                 Id = p.ID,
-                VehicleName = _vehiclerepo.GetByID(p.TransferVehicle.ID).Name,
+                VehicleName = _repo.GetVehicleNameByVehicleID(p.TransferVehicleID),
                 AvailableSeats = p.NumberOfAvailableSeats,
+                MeetingPoint = p.MeetingPoint,
                 Date = p.Date.ToShortDateString()
             }).ToList();
             return View(Model);
@@ -43,40 +41,24 @@ namespace FestivalWebApplication.Controllers
         {
             NewTransferServiceVM Model = new NewTransferServiceVM
             {
-                Vehicles = _vehiclerepo.GetAll().Select(o => new SelectListItem
+                Vehicles = _repo.GetAllVehicles().Select(o => new SelectListItem
                 {
                     Value = o.ID.ToString(),
                     Text = o.Name
                 }).ToList()
             };
+            Model.Date = DateTime.Today;
             return View(Model);
         }
-        public IActionResult Delete(int Id)
-        {
-            TransferService TransferService = _db.TransferService.Find(Id);
+        //public IActionResult Delete(int Id)
+        //{
+        //    TransferService TransferService = _db.TransferService.Find(Id);
 
-            _db.Remove(TransferService);
-            _db.SaveChanges();
-            return Redirect("/TransferService/Index");
-        }
-        public IActionResult Update(int Id)
-        {
-            TransferService transferService = _db.TransferService.Include(a => a.TransferVehicle).FirstOrDefault(a => a.ID == Id);
-            NewTransferServiceVM Model = new NewTransferServiceVM
-            {
-                Id = transferService.ID,
-                AvailableSeats = transferService.NumberOfAvailableSeats,
-                VehicleId = transferService.TransferVehicle.ID,
-                Date = transferService.Date,
-                Vehicles = _db.TransferVehicle.Select(o => new SelectListItem
-                {
-                    Value = o.ID.ToString(),
-                    Text = o.Name
-                }).ToList()
-            };
+        //    _db.Remove(TransferService);
+        //    _db.SaveChanges();
+        //    return Redirect("/TransferService/Index");
+        //}
 
-            return View("New", Model);
-        }
 
 
         [HttpPost]
@@ -84,31 +66,88 @@ namespace FestivalWebApplication.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("New");
-            }
-
-            TransferService transferService;
-            if (Model.Id == 0)
-            {
-                transferService = new TransferService()
+                var newModel = new NewTransferServiceVM
                 {
-                    NumberOfAvailableSeats = Model.AvailableSeats,
-                    TransferVehicle = _vehiclerepo.GetByID(Model.VehicleId),
-                    Date = Model.Date
+                    Vehicles = _repo.GetAllVehicles().Select(o => new SelectListItem
+                    {
+                        Value = o.ID.ToString(),
+                        Text = o.Name
+                    }).ToList()
                 };
-                _repo.Add(transferService);
-            }
-            else
-            {
-                transferService = _db.TransferService.Find(Model.Id);
-                transferService.NumberOfAvailableSeats = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId).Capacity;
-                transferService.TransferVehicle = _db.TransferVehicle.FirstOrDefault(a => a.ID == Model.VehicleId);
-                transferService.Date = Model.Date;
+                newModel.Date = DateTime.Today;
+                return View("New", newModel);
             }
 
-            _repo.Save();
+            TransferService transferService = new TransferService
+            {
+                NumberOfAvailableSeats = Model.AvailableSeats,
+                TransferVehicle = _repo.GetVehicleByID(Model.VehicleId),
+                MeetingPoint = Model.MeetingPoint,
+                Date = Model.Date
+            };
+
+            _repo.Add(transferService);
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Detail(int ID)
+        {
+            TransferService service = _repo.GetByID(ID);
+            var model = new DetailTransferServiceVM()
+            {
+                Id = service.ID,
+                VehicleName = _repo.GetVehicleNameByVehicleID(service.TransferVehicleID),
+                MeetingPoint = service.MeetingPoint,
+                Date = service.Date.ToLongTimeString() + ' ' + service.Date.ToLongDateString(),
+                AvailableSeats = service.NumberOfAvailableSeats
+            };
+            return View(model);
+        }
+
+        public IActionResult Save(EditTransferServiceVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var newModel = new EditTransferServiceVM
+                {
+                    Vehicles = _repo.GetAllVehicles().Select(o => new SelectListItem
+                    {
+                        Value = o.ID.ToString(),
+                        Text = o.Name
+                    }).ToList()
+                };
+                newModel.Date = DateTime.Today;
+                return View("Edit", newModel);
+            }
+
+            var acc = _repo.GetByID(model.Id);
+            acc.TransferVehicleID = model.VehicleId;
+            acc.NumberOfAvailableSeats = model.AvailableSeats;
+            acc.MeetingPoint = model.MeetingPoint;
+            acc.Date = model.Date;
+            _repo.Save();
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            TransferService transferService = _repo.GetByID(Id);
+            var Model = new EditTransferServiceVM
+            {
+                Id = transferService.ID,
+                AvailableSeats = transferService.NumberOfAvailableSeats,
+                VehicleId = transferService.TransferVehicleID,
+                Date = transferService.Date,
+                MeetingPoint = transferService.MeetingPoint,
+                Vehicles = _repo.GetAllVehicles().Select(o => new SelectListItem
+                {
+                    Value = o.ID.ToString(),
+                    Text = o.Name
+                }).ToList()
+            };
+
+            return View("Edit", Model);
         }
     }
 }

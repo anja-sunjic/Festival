@@ -362,10 +362,15 @@ namespace Festival.Data.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("MeetingPoint")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
                     b.Property<int>("NumberOfAvailableSeats")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TransferVehicleID")
+                    b.Property<int>("TransferVehicleID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -571,7 +576,9 @@ namespace Festival.Data.Migrations
                 {
                     b.HasOne("Festival.Data.Models.TransferVehicle", "TransferVehicle")
                         .WithMany()
-                        .HasForeignKey("TransferVehicleID");
+                        .HasForeignKey("TransferVehicleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Festival.Data.Models.PurchaseVoucher", b =>

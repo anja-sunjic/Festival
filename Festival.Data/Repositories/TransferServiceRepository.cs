@@ -16,6 +16,7 @@ namespace Festival.Data.Repositories
         public void Add(TransferService transferService)
         {
             _context.TransferService.Add(transferService);
+            Save();
 
         }
 
@@ -32,9 +33,25 @@ namespace Festival.Data.Repositories
             return _context.TransferService.ToList();
         }
 
-        public List<TransferService> GetAllServicesForVehicle(int id)
+
+        public List<TransferVehicle> GetAllVehicles()
         {
-            return _context.TransferService.Where(a => a.TransferVehicle.ID == id).ToList();
+            return _context.TransferVehicle.ToList();
+        }
+
+        public TransferService GetByID(int id)
+        {
+            return _context.TransferService.Find(id);
+        }
+
+        public TransferVehicle GetVehicleByID(int vehicleId)
+        {
+            return _context.TransferVehicle.Find(vehicleId);
+        }
+
+        public string GetVehicleNameByVehicleID(int? transferVehicleID)
+        {
+            return _context.TransferVehicle.Where(a => a.ID == transferVehicleID).FirstOrDefault().Name;
         }
 
         public void Save()

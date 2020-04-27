@@ -526,6 +526,7 @@ namespace Festival.Data.Migrations
                     b.HasOne("ClassLibrary.Models.TransferVehicle", "transferVehicle")
                         .WithMany()
                         .HasForeignKey("transferVehicleID");
+
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.PurchaseVoucher", b =>
