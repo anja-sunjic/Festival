@@ -450,82 +450,95 @@ namespace Festival.Data.Migrations
                 {
                     b.HasOne("ClassLibrary.Models.UserAccount", "account")
                         .WithMany()
-                        .HasForeignKey("accountID");
+                        .HasForeignKey("accountID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.Performance", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Performer", "performer")
                         .WithMany()
-                        .HasForeignKey("performerID");
+                        .HasForeignKey("performerID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ClassLibrary.Models.Stage", "stage")
                         .WithMany()
-                        .HasForeignKey("stageID");
+                        .HasForeignKey("stageID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.Performer", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Manager", "manager")
                         .WithMany()
-                        .HasForeignKey("managerID");
+                        .HasForeignKey("managerID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.Purchase", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Attendee", "attendee")
                         .WithMany()
-                        .HasForeignKey("attendeeID");
+                        .HasForeignKey("attendeeID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.ShopItem", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Purchase", null)
                         .WithMany("items")
-                        .HasForeignKey("PurchaseID");
+                        .HasForeignKey("PurchaseID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.SocialMediaLink", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Performer", null)
                         .WithMany("socialMediaLinks")
-                        .HasForeignKey("PerformerID");
+                        .HasForeignKey("PerformerID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.Stage", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Sponsor", "sponsor")
                         .WithMany()
-                        .HasForeignKey("sponsorID");
+                        .HasForeignKey("sponsorID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.Ticket", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Attendee", "attendee")
                         .WithMany()
-                        .HasForeignKey("attendeeID");
+                        .HasForeignKey("attendeeID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ClassLibrary.Models.TicketType", "type")
                         .WithMany()
-                        .HasForeignKey("typeID");
+                        .HasForeignKey("typeID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.TransferReservation", b =>
                 {
                     b.HasOne("ClassLibrary.Models.Attendee", "attendee")
                         .WithMany()
-                        .HasForeignKey("attendeeID");
+                        .HasForeignKey("attendeeID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ClassLibrary.Models.TransferService", "transferService")
                         .WithMany()
-                        .HasForeignKey("transferServiceID");
+                        .HasForeignKey("transferServiceID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.TransferService", b =>
                 {
                     b.HasOne("ClassLibrary.Models.TransferVehicle", "transferVehicle")
                         .WithMany()
-                        .HasForeignKey("transferVehicleID");
+                        .HasForeignKey("transferVehicleID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                 });
 
