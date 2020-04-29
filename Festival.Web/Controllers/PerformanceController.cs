@@ -88,5 +88,16 @@ namespace FestivalWebApplication.Controllers
 
             return RedirectToAction("List");
         }
+        public IActionResult Delete(int id)
+        {
+
+            Performance x = _db.Performance.Find(id);
+            
+            _db.Performance.Remove(x);
+
+            _db.SaveChanges();
+
+            return RedirectToAction("List");
+        }
     }
 }
