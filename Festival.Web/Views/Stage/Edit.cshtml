@@ -4,8 +4,9 @@
 }
 
 <div class="formDiv" style="background-color:#e2e2e2;">
-    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" action="Save" method="post">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="Stage" asp-action="Save" method="post">
         <fieldset>
+            <input asp-for="Id" hidden/>
             <div class="form-group newRow">
                 <label for="Name" class="newLabel">Name :</label>
                 <div>
