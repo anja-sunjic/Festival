@@ -18,7 +18,7 @@
             <ul class="list-unstyled components">
                 <li class="item">
                     <a asp-controller="Home" asp-action="Index" class="linkItem">
-                        <i class="fa fa-home menuItem"></i>
+                        <i class="fas fa-home menuItem"></i>
                         <span class="text">Home</span>
                     </a>
 
@@ -27,28 +27,45 @@
                 <hr class="alert-light" />
                 <li class="item">
                     <a asp-controller="Performance" asp-action="Index" class="linkItem">
-                        <i class="fa fa-music menuItem"></i>
+                        <i class="fas fa-music menuItem"></i>
                         <span class="text">Performance</span>
                     </a>
 
                 </li>
                 <li class="item">
                     <a asp-controller="Performer" asp-action="Index" class="linkItem">
-                        <i class="fa fa-microphone menuItem"></i>
+                        <i class="fas fa-microphone menuItem"></i>
                         <span class="text">Performer</span>
                     </a>
 
                 </li>
                 <li class="item">
                     <a asp-controller="Stage" asp-action="Index" class="linkItem">
-                        <i class="fa fa-music menuItem"></i>
+                        <i class="fas fa-music menuItem"></i>
                         <span class="text">Stage</span>
                     </a>
 
                 </li>
+
+                <hr class="alert-light" />
+
+                <li class="item">
+                    <a asp-controller="Accommodations" asp-action="Index" class="linkItem">
+                        <i class="fas fa-hotel menuItem"></i>
+                        <span class="text">Accommodations</span>
+                    </a>
+                </li>
+
+                <li class="item">
+                    <a asp-controller="Attendee" asp-action="Index" class="linkItem">
+                        <i class="fas fa-user-md menuItem menuItem"></i>
+                        <span class="text">Attendee</span>
+                    </a>
+                </li>
+
                 <li class="item">
                     <a asp-controller="Sponsor" asp-action="Index" class="linkItem">
-                        <i class="fa fa-briefcase menuItem"></i>
+                        <i class="fas fa-briefcase menuItem"></i>
                         <span class="text">Sponsor</span>
                     </a>
                 </li>
@@ -56,24 +73,8 @@
                 <hr class="alert-light" />
 
                 <li class="item">
-                    <a asp-controller="Accommodations" asp-action="Index" class="linkItem">
-                        <i class="fa fa-hotel menuItem"></i>
-                        <span class="text">Accommodations</span>
-                    </a>
-                </li>
-
-                <li class="item">
-                    <a asp-controller="Attendee" asp-action="Index" class="linkItem">
-                        <i class="fa fa-user-md menuItem menuItem"></i>
-                        <span class="text">Attendee</span>
-                    </a>
-                </li>
-
-                <hr class="alert-light" />
-
-                <li class="item">
                     <a asp-controller="Ticket" asp-action="Index" class="linkItem">
-                        <i class="fa fa-ticket menuItem"></i>
+                        <i class="fas fa-ticket-alt menuItem"></i>
                         <span class="text">Tickets</span>
                     </a>
                 </li>
@@ -82,7 +83,7 @@
 
                 <li class="item">
                     <a asp-controller="TicketType" asp-action="Index" class="linkItem">
-                        <i class="fa fa-object-group menuItem"></i>
+                        <i class="fas fa-object-group menuItem"></i>
                         <span class="text">Ticket Type</span>
                     </a>
                 </li>
@@ -90,7 +91,7 @@
 
                 <li class="item">
                     <a asp-controller="TicketVoucher" asp-action="Index" class="linkItem">
-                        <i class="fa fa-newspaper-o menuItem"></i>
+                        <i class="fas fa-gift menuItem"></i>
                         <span class="text">Ticket Voucher</span>
                     </a>
                 </li>
@@ -102,21 +103,21 @@
                 <li class="item">
 
                     <a asp-controller="Purchase" asp-action="Index" class="linkItem">
-                        <i class="fa fa-shopping-cart menuItem"></i>
+                        <i class="fas fa-shopping-cart menuItem"></i>
                         <span class="text">Purchases</span>
                     </a>
                 </li>
                 <li class="item">
 
                     <a asp-controller="ShopItem" asp-action="Index" class="linkItem">
-                        <i class="fa fa-shopping-bag menuItem"></i>
+                        <i class="fas fa-shopping-bag menuItem"></i>
                         <span class="text">Shop Items</span>
                     </a>
                 </li>
                 <li class="item">
 
                     <a asp-controller="PurchaseVoucher" asp-action="Index" class="linkItem">
-                        <i class="fa fa-caret-square-o-right menuItem"></i>
+                        <i class="fas fa-hand-holding-usd menuItem"></i>
                         <span class="text">Purchase Vouchers</span>
                     </a>
                 </li>
@@ -124,21 +125,21 @@
                 <li class="item">
 
                     <a asp-controller="TransferVehicle" asp-action="Index" class="linkItem">
-                        <i class="fa fa-car menuItem"></i>
+                        <i class="fas fa-car menuItem"></i>
                         <span class="text">Transfer Vehicles</span>
                     </a>
                 </li>
                 <li class="item">
 
                     <a asp-controller="TransferService" asp-action="Index" class="linkItem">
-                        <i class="fa fa-compass menuItem"></i>
+                        <i class="fas fa-compass menuItem"></i>
                         <span class="text">Transfer Services</span>
                     </a>
                 </li>
                 <li class="item">
 
                     <a asp-controller="TransferReservation" asp-action="Index" class="linkItem">
-                        <i class="fa fa-podcast menuItem"></i>
+                        <i class="fas fa-podcast menuItem"></i>
                         <span class="text">Transfer Reservations</span>
                     </a>
                 </li>
@@ -153,11 +154,9 @@
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fa     fa-align-left"></i>
+                        <i class="fas fa-align-left"></i>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
+
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">

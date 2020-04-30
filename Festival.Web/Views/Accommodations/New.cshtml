@@ -1,11 +1,9 @@
 ﻿@model FestivalWebApplication.ViewModels.Accommodation.NewAccommodationVM;
 @{
-    ViewData["Title"] = "New";
+    ViewData["Title"] = "New Accommodation";
 }
 
 <style>
-
-
 
     .container {
         padding: 0 !important;
@@ -48,7 +46,7 @@
 
                 <label class="newLabel" for="Distance">Distance to Festival area (km) : </label>
                 <div>
-                    <input class="col-sm-5 form-control"  asp-for="Distance"  />
+                    <input class="col-sm-5 form-control" asp-for="Distance" />
                 </div>
                 <span asp-validation-for="Distance" class="text-danger"></span>
 
