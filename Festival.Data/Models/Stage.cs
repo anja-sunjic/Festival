@@ -1,4 +1,6 @@
-﻿namespace Festival.Data.Models
+﻿using System;
+
+namespace Festival.Data.Models
 {
     public class Stage
     {
@@ -7,5 +9,6 @@
         public int Capacity { get; set; }
         public Sponsor Sponsor { get; set; }
         public int? SponsorID { get; set; }
+
     }
 }

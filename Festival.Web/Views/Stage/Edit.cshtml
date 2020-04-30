@@ -6,7 +6,7 @@
 <div class="formDiv" style="background-color:#e2e2e2;">
     <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="Stage" asp-action="Save" method="post">
         <fieldset>
-            <input asp-for="Id" hidden/>
+            <input asp-for="Id" hidden />
             <div class="form-group newRow">
                 <label for="Name" class="newLabel">Name :</label>
                 <div>
@@ -34,7 +34,10 @@
             <div class="clearfix"></div>
 
         </fieldset>
-
+        <a style="margin-right:5px;" asp-controller="Stage" asp-action="List" asp-route-id="@Model.Id" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
         <input type="submit" value="Save stage" class="btn btn-lg btn-secondary submit" />
     </form>
 </div>

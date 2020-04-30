@@ -11,6 +11,7 @@ namespace Festival.Data.Repositories
         Stage GetByID(int id);
         void Save();
         List<Sponsor> GetAllSponsors();
-        
+        Sponsor GetSponsor(int id);
+
     }
 }

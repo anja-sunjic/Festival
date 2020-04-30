@@ -1,5 +1,6 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
+using Festival.Web.ViewModels.Stage;
 using FestivalWebApplication.ViewModels.Stage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -111,6 +112,18 @@ namespace FestivalWebApplication.Controllers
             _repo.Delete(id);
 
             return RedirectToAction("List");
+        }
+        public IActionResult Detail(int id)
+        {
+            Stage x = _repo.GetByID(id);
+            DetailStageVM model = new DetailStageVM
+            {
+                Id = x.ID,
+                Name = x.Name,
+                Capacity = x.Capacity,
+                SponsorName = _repo.GetSponsor(id).CompanyName
+            };
+            return View(model);
         }
     }
 }

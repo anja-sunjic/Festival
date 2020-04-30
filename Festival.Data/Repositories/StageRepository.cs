@@ -40,6 +40,10 @@ namespace Festival.Data.Repositories
         {
             return _context.Stage.Find(id);
         }
+        public Sponsor GetSponsor(int id)
+        {
+            return _context.Sponsor.First(s => s.ID == _context.Stage.Find(id).SponsorID);
+        }
 
         public void Save()
         {

@@ -27,6 +27,9 @@
                 <td>@x.Capacity</td>
                 <td>@x.Sponsor</td>
                 <td>
+                    <a style="margin-right:5px;" asp-controller="Stage" asp-action="Detail" asp-route-id="@x.StageID" class="btn btn-info active" role="button" aria-pressed="true">
+                        <i class="fa fa-info"></i>
+                    </a>
                     <a style="margin-right:5px;" asp-controller="Stage" asp-action="Edit" asp-route-id="@x.StageID" class="btn btn-secondary active" role="button" aria-pressed="true">
                         <i class="fa fa-edit"></i>
                     </a>
