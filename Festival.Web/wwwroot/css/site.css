@@ -53,8 +53,8 @@ div a .btn-group-lg > .btn, .btn-lg {
 
 
 .fa, .fa::before {
-    height: 15px !important;
-    width: 15px !important;
+    height: 10px !important;
+    width: 10px !important;
 }
 
 body {
@@ -143,7 +143,7 @@ span {
     }
 
     #sidebar.active ul li a {
-        padding: 20px 10px;
+        padding: 14px 10px;
         text-align: center;
         font-size: 0.85em;
     }
@@ -180,8 +180,7 @@ span {
         }
 
     #sidebar ul.components {
-        padding: 20px 0;
-        border-bottom: 1px solid #7EB09B;
+        padding: 15px 0;
     }
 
 
@@ -202,8 +201,8 @@ th {
 }
 
 #sidebar ul li a {
+    padding-left: 15px;
     padding: 10px;
-    font-size: 1.1em;
     display: block;
 }
 
@@ -267,6 +266,7 @@ form {
 
 #sidebarCollapse {
     background: #7EB09B !important;
+    padding-right: 16px !important;
 }
 
 
@@ -323,4 +323,15 @@ form {
 
 .detailButtons {
     margin-top: 20px;
+}
+
+/*.item {
+    padding-left: 10px;
+}*/
+.linkItem {
+    padding-left: 15px !important;
+}
+
+#sidebar.active .linkItem {
+    padding-left: 9px !important;
 }
