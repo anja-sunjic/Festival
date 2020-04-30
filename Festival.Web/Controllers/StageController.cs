@@ -106,13 +106,11 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        //public IActionResult Delete(int id)
-        //{
-        //    Stage stage = _db.Stage.Find(id);
-        //    _db.Stage.Remove(stage);
-        //    _db.SaveChanges();
+        public IActionResult Delete(int id)
+        {
+            _repo.Delete(id);
 
-        //    return RedirectToAction("List");
-        //}
+            return RedirectToAction("List");
+        }
     }
 }
