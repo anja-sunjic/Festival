@@ -28,8 +28,10 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult List()
+        public IActionResult List(string sortOrder)
         {
+
+
             List<AccommodationListVM> model = _repo.GetAll().Select(acc => new AccommodationListVM
             {
                 ID = acc.ID,
@@ -39,6 +41,7 @@ namespace FestivalWebApplication.Controllers
                 PhoneNumber = acc.PhoneNumber,
                 Address = acc.Address
             }).ToList();
+
             return View("List", model);
 
         }
