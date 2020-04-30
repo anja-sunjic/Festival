@@ -1,12 +1,9 @@
-﻿using Festival.Data.Models;
-using Festival.Data.Repositories;
-using FestivalWebApplication.Helper;
+﻿using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.Performer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers

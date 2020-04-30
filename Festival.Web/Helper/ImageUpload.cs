@@ -1,15 +1,28 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.IO;
 
-namespace FestivalWebApplication.Helper
+namespace Festival.Web.Helper
 {
-    public class ImageUpload
+    public static class ImageUpload
     {
-        public static void UploadImageToFolder(IFormFile image, string path)
+        public static string UploadImage(IFormFile image, IWebHostEnvironment webhost, string modelName)
         {
-            var fileStream = new FileStream(path, FileMode.Create);
-            image.CopyTo(fileStream);
-            fileStream.Dispose();
+
+            string uniqueFileName = null;
+
+            if (image != null)
+            {
+                string uploadsFolder = Path.Combine(webhost.WebRootPath, "images", modelName);
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    image.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
         }
     }
 }

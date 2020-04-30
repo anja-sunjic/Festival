@@ -1,12 +1,11 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
+using Festival.Web.Helper;
 using FestivalWebApplication.ViewModels.Accommodation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -97,7 +96,8 @@ namespace FestivalWebApplication.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = UploadedFile(model);
+            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "accommodations");
+
             Accommodation accommodation = new Accommodation()
             {
                 Name = model.Name,
@@ -120,7 +120,7 @@ namespace FestivalWebApplication.Controllers
                 return View("Edit");
             }
 
-            string uniqueFileName = UploadedFile(model);
+            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "accommodations");
             Accommodation acc = _repo.GetByID(model.ID);
             acc.Name = model.Name;
             acc.Description = model.Description;
@@ -133,40 +133,6 @@ namespace FestivalWebApplication.Controllers
             }
             _repo.Save();
             return RedirectToAction("List");
-        }
-
-        private string UploadedFile(NewAccommodationVM model)
-        {
-            string uniqueFileName = null;
-
-            if (model.ProfileImage != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "accommodations");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.ProfileImage.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
-        }
-
-        private string UploadedFile(EditAccommodationVM model)
-        {
-            string uniqueFileName = null;
-
-            if (model.ProfileImage != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "accommodations");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.ProfileImage.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
         }
     }
 }
