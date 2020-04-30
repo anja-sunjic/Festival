@@ -1,5 +1,6 @@
 ﻿/* Buttons  */
 
+
 .addnew {
     margin-bottom: 10px;
 }
@@ -37,12 +38,6 @@ div a .btn-group-lg > .btn, .btn-lg {
     background-color: #fafafa;
     border-radius: 5px;
     padding: 25px;
-}
-
-
-
-.center {
-    margin-left: 16px;
 }
 
 
