@@ -2,26 +2,38 @@
 @{
     ViewData["Title"] = "New";
 }
+<style>
 
-<form action="SaveNew" method="post">
-    
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" action="SaveNew" method="post">
+
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="Name">Name</label>
-            <div class="col-sm-5">
+            <div class="col-sm-7">
                 <input asp-for="Name" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="Capacity">Capacity</label>
-            <div class="col-sm-2">
-                <input asp-for="Capacity" class="form-control" /> 
+            <div class="col-sm-4">
+                <input asp-for="Capacity" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="Sponsor">Sponsor</label>
-            <div class="col-sm-5">
+            <div class="col-sm-7">
                 <select asp-items="@Model.Sponsors" asp-for="SponsorID" class="form-control">
                     <option selected disabled>(Choose a sponsor)</option>
                 </select>
@@ -29,7 +41,7 @@
         </div>
 
 
- 
-    <input type="submit" value="Add new stage" class="btn btn-lg btn-secondary"/>
-</form>
 
+        <input type="submit" value="Add new stage" class="btn btn-lg btn-secondary" />
+    </form>
+</div>

@@ -1,4 +1,5 @@
 ﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.Stage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,10 @@ namespace FestivalWebApplication.Controllers
     [Authorize]
     public class StageController : Controller
     {
-        private readonly FestivalContext _db;
-        public StageController(FestivalContext db)
+        private readonly IStageRepository _repo;
+        public StageController(IStageRepository repo)
         {
-            _db = db;
+            _repo = repo;
         }
         public IActionResult Index()
         {
@@ -24,12 +25,12 @@ namespace FestivalWebApplication.Controllers
         public IActionResult List()
         {
             //fetching all stages
-            List<StagesListVM> Model = _db.Stage.Select(s => new StagesListVM
+            List<StagesListVM> Model = _repo.GetAll().Select(s => new StagesListVM
             {
                 StageID = s.ID,
                 Name = s.Name,
                 Capacity = s.Capacity,
-                Sponsor = _db.Sponsor.Where(x => x.ID == s.ID).FirstOrDefault().CompanyName
+                Sponsor = s.Sponsor.CompanyName
             }).ToList();
 
             //ordered list
@@ -44,10 +45,10 @@ namespace FestivalWebApplication.Controllers
         {
             NewStageVM Model = new NewStageVM();
             //populating sponsors list
-            Model.Sponsors = _db.Sponsor.Select(s => new SelectListItem
+            Model.Sponsors = _repo.GetAllSponsors().Select(s => new SelectListItem
             {
+                Text = s.CompanyName,
                 Value = s.ID.ToString(),
-                Text = s.CompanyName
             }).ToList();
 
             return View(Model);
@@ -55,60 +56,63 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult SaveNew(NewStageVM Model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New");
+            }
             Stage stage = new Stage();
             stage.Name = Model.Name;
             stage.Capacity = Model.Capacity;
             stage.SponsorID = Model.SponsorID;
 
-            _db.Stage.Add(stage);
-            _db.SaveChanges();
+            _repo.Add(stage);
 
             return RedirectToAction("List");
         }
 
-        public IActionResult Edit(int id)
-        {
-            //fetching stage object
-            Stage x = _db.Stage.Find(id);
+        //public IActionResult Edit(int id)
+        //{
+        //    //fetching stage object
+        //    Stage x = _db.Stage.Find(id);
 
-            //assigning data from x to Model
-            EditStageVM Model = new EditStageVM();
-            Model.Id = x.ID;
-            Model.Name = x.Name;
-            Model.Capacity = x.Capacity;
+        //    //assigning data from x to Model
+        //    EditStageVM Model = new EditStageVM();
+        //    Model.Id = x.ID;
+        //    Model.Name = x.Name;
+        //    Model.Capacity = x.Capacity;
 
-            Model.Sponsors = _db.Sponsor.Select(s => new SelectListItem
-            {
-                Value = s.ID.ToString(),
-                Text = s.CompanyName
-            }).ToList();
+        //    Model.Sponsors = _db.Sponsor.Select(s => new SelectListItem
+        //    {
+        //        Value = s.ID.ToString(),
+        //        Text = s.CompanyName
+        //    }).ToList();
 
-            Model.SponsorId = (int)x.SponsorID;
+        //    Model.SponsorId = (int)x.SponsorID;
 
-            return View("Edit", Model);
+        //    return View("Edit", Model);
 
-        }
-        public IActionResult Save(EditStageVM Model)
-        {
-            //finding stage in db
-            Stage stage = _db.Stage.Find(Model.Id);
-            //changing data
-            stage.Name = Model.Name;
-            stage.Capacity = Model.Capacity;
-            stage.SponsorID = Model.SponsorId;
+        //}
+        //public IActionResult Save(EditStageVM Model)
+        //{
+        //    //finding stage in db
+        //    Stage stage = _db.Stage.Find(Model.Id);
+        //    //changing data
+        //    stage.Name = Model.Name;
+        //    stage.Capacity = Model.Capacity;
+        //    stage.SponsorID = Model.SponsorId;
 
-            _db.SaveChanges();
+        //    _db.SaveChanges();
 
-            return RedirectToAction("List");
-        }
+        //    return RedirectToAction("List");
+        //}
 
-        public IActionResult Delete(int id)
-        {
-            Stage stage = _db.Stage.Find(id);
-            _db.Stage.Remove(stage);
-            _db.SaveChanges();
+        //public IActionResult Delete(int id)
+        //{
+        //    Stage stage = _db.Stage.Find(id);
+        //    _db.Stage.Remove(stage);
+        //    _db.SaveChanges();
 
-            return RedirectToAction("List");
-        }
+        //    return RedirectToAction("List");
+        //}
     }
 }
