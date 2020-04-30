@@ -1,12 +1,11 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
+using Festival.Web.Helper;
 using FestivalWebApplication.ViewModels.ShopItem;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -91,7 +90,7 @@ namespace FestivalWebApplication.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = UploadedFile(model);
+            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "shopitems");
 
             ShopItem shopItem = new ShopItem()
             {
@@ -107,6 +106,7 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
+        [HttpPost]
         public IActionResult Save(EditShopItemVM model)
         {
             if (!ModelState.IsValid)
@@ -114,7 +114,7 @@ namespace FestivalWebApplication.Controllers
                 return View("Edit");
             }
 
-            string uniqueFileName = UploadedFile(model);
+            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "shopitems");
 
             ShopItem shopItem = _repo.GetByID(model.ID);
             shopItem.Name = model.Name;
@@ -127,40 +127,6 @@ namespace FestivalWebApplication.Controllers
             }
             _repo.Save();
             return RedirectToAction("List");
-        }
-
-        private string UploadedFile(NewShopItemVM model)
-        {
-            string uniqueFileName = null;
-
-            if (model.ProfileImage != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "shopitems");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.ProfileImage.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
-        }
-
-        private string UploadedFile(EditShopItemVM model)
-        {
-            string uniqueFileName = null;
-
-            if (model.ProfileImage != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "shopitems");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.ProfileImage.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
         }
 
     }

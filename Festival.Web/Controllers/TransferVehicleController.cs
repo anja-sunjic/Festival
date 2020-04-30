@@ -1,12 +1,11 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
+using Festival.Web.Helper;
 using FestivalWebApplication.ViewModels.TransferVehicle;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -56,7 +55,8 @@ namespace FestivalWebApplication.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = UploadedFile(model);
+            string uniqueFileName = ImageUpload.UploadImage(model.Picture, _webHostEnvironment, "transfervehicles");
+
             TransferVehicle vehicle = new TransferVehicle()
             {
                 Name = model.Name,
@@ -107,7 +107,7 @@ namespace FestivalWebApplication.Controllers
                 return View("Edit");
             }
 
-            string uniqueFileName = UploadedFile(model);
+            string uniqueFileName = ImageUpload.UploadImage(model.Picture, _webHostEnvironment, "transfervehicles");
             var acc = _repo.GetByID(model.ID);
             acc.Name = model.Name;
             acc.Capacity = model.Capacity;
@@ -121,46 +121,11 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        private string UploadedFile(EditTransferVehicleVM model)
-        {
-            string uniqueFileName = null;
-
-            if (model.Picture != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "transfervehicles");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Picture.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.Picture.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
-        }
 
         public IActionResult Delete(int Id)
         {
             _repo.Delete(Id);
             return Redirect("/TransferVehicle/Index");
         }
-
-
-        private string UploadedFile(NewTransferVehicleVM model)
-        {
-            string uniqueFileName = null;
-
-            if (model.Picture != null)
-            {
-                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "transfervehicles");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Picture.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    model.Picture.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
-        }
     }
-
 }
