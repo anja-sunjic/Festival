@@ -334,4 +334,5 @@ form {
 
 #sidebar.active .linkItem {
     padding-left: 9px !important;
+    padding-bottom: 23px !important;
 }
