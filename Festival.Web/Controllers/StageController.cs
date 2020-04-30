@@ -70,41 +70,41 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        //public IActionResult Edit(int id)
-        //{
-        //    //fetching stage object
-        //    Stage x = _db.Stage.Find(id);
+        public IActionResult Edit(int id)
+        {
+            //fetching stage object
+            Stage x = _repo.GetByID(id);
 
-        //    //assigning data from x to Model
-        //    EditStageVM Model = new EditStageVM();
-        //    Model.Id = x.ID;
-        //    Model.Name = x.Name;
-        //    Model.Capacity = x.Capacity;
+            //assigning data from x to Model
+            EditStageVM Model = new EditStageVM();
+            Model.Id = x.ID;
+            Model.Name = x.Name;
+            Model.Capacity = x.Capacity;
 
-        //    Model.Sponsors = _db.Sponsor.Select(s => new SelectListItem
-        //    {
-        //        Value = s.ID.ToString(),
-        //        Text = s.CompanyName
-        //    }).ToList();
+            Model.Sponsors = _repo.GetAllSponsors().Select(s => new SelectListItem
+            {
+                Text = s.CompanyName,
+                Value = s.ID.ToString(),
+            }).ToList();
 
-        //    Model.SponsorId = (int)x.SponsorID;
+            Model.SponsorId = (int)x.SponsorID;
 
-        //    return View("Edit", Model);
+            return View("Edit", Model);
 
-        //}
-        //public IActionResult Save(EditStageVM Model)
-        //{
-        //    //finding stage in db
-        //    Stage stage = _db.Stage.Find(Model.Id);
-        //    //changing data
-        //    stage.Name = Model.Name;
-        //    stage.Capacity = Model.Capacity;
-        //    stage.SponsorID = Model.SponsorId;
+        }
+        public IActionResult Save(EditStageVM Model)
+        {
+            //finding stage in db
+            Stage stage = _repo.GetByID(Model.Id);
+            //changing data
+            stage.Name = Model.Name;
+            stage.Capacity = Model.Capacity;
+            stage.SponsorID = Model.SponsorId;
 
-        //    _db.SaveChanges();
+            _repo.Save();
 
-        //    return RedirectToAction("List");
-        //}
+            return RedirectToAction("List");
+        }
 
         //public IActionResult Delete(int id)
         //{
