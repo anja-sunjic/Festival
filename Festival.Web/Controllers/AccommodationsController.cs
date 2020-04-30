@@ -28,7 +28,7 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult List(string sortOrder)
+        public IActionResult List()
         {
 
 
