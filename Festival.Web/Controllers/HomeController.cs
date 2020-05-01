@@ -1,12 +1,11 @@
 ﻿using FestivalWebApplication.Models;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace FestivalWebApplication.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -24,6 +23,14 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Login()
+        {
+            return Challenge(new AuthenticationProperties
+            {
+                RedirectUri = "/"
+            });
         }
 
         public IActionResult Logout()
