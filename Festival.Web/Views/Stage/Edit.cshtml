@@ -1,7 +1,18 @@
 ﻿@model FestivalWebApplication.ViewModels.Stage.EditStageVM;
 @{
-    ViewData["Title"] = "New";
+    ViewData["Title"] = Model.Name;
 }
+
+<style>
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
 
 <div class="formDiv" style="background-color:#e2e2e2;">
     <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="Stage" asp-action="Save" method="post">
@@ -18,12 +29,12 @@
             <div class="form-group newRow">
                 <label class="newLabel" for="Capacity">Capacity :</label>
                 <div>
-                    <input asp-for="Capacity" class="form-control" />
+                    <input asp-for="Capacity" class="form-control col-4" />
                 </div>
                 <span asp-validation-for="Capacity" class="text-danger"></span>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group newRow">
                 <label class="newLabel" for="Sponsor">Sponsor :</label>
 
                 <select asp-items="@Model.Sponsors" asp-for="SponsorId" class="form-control">
@@ -31,13 +42,9 @@
                 </select>
 
             </div>
-            <div class="clearfix"></div>
-
         </fieldset>
-        <a style="margin-right:5px;" asp-controller="Stage" asp-action="List" asp-route-id="@Model.Id" class="btn btn-info active" role="button" aria-pressed="true">
-            Back
-            <i class="fa fa-undo"></i>
-        </a>
+
         <input type="submit" value="Save stage" class="btn btn-lg btn-secondary submit" />
+
     </form>
 </div>
