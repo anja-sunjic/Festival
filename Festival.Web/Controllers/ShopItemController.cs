@@ -1,11 +1,11 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
 using Festival.Web.Helper;
+using FestivalWebApplication.Helper;
 using FestivalWebApplication.ViewModels.ShopItem;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -27,18 +27,23 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult List()
+        public IActionResult List(int? pageNumber)
         {
-            List<ShopItemListVM> model = _repo.GetAll().Select(p =>
-                 new ShopItemListVM
-                 {
-                     ID = p.ID,
-                     Name = p.Name,
-                     Price = p.Price,
-                     Quantity = p.Quantity,
-                     Description = p.Description
-                 }).ToList();
-            return View("List", model);
+            int pageSize = 1;
+
+            var model = _repo.GetAll().Select(p =>
+                  new ShopItemListVM
+                  {
+                      ID = p.ID,
+                      Name = p.Name,
+                      Price = p.Price,
+                      Quantity = p.Quantity,
+                      Description = p.Description
+                  }).AsQueryable();
+
+            var newModel = PaginatedList<ShopItemListVM>.CreateAsync(model, pageNumber ?? 1, pageSize);
+
+            return View("List", newModel);
         }
 
         public IActionResult New()
