@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using Festival.Data.Models;
 using Festival.Web.Helper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -48,6 +49,12 @@ namespace FestivalWebApplication.Controllers
         public IActionResult New()
         {
             NewPerformerVM Model = new NewPerformerVM();
+            Model.Managers = _repo.GetAllManagers().Select(m => new SelectListItem
+            {
+                Value = m.ID.ToString(),
+                Text = m.Name
+            }).ToList();
+
             return View(Model);
         }
 

@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FestivalWebApplication.ViewModels.Performer
 {
@@ -20,5 +22,7 @@ namespace FestivalWebApplication.ViewModels.Performer
         public string ManagerPhoneNumber { get; set; }
         [Required(ErrorMessage = "Manager E-mail is required, please insert it.")]
         public string ManagerEmail { get; set; }
+        public List<SelectListItem> Managers { get; set; }
+        public int? ManagerId { get; set; }
     }
 }

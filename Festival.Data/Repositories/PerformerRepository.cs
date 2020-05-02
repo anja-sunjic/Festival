@@ -62,6 +62,11 @@ namespace Festival.Data.Repositories
         {
             return  _context.Manager.Find(managerId);
         }
+
+        public List<Manager> GetAllManagers()
+        {
+            return _context.Manager.ToList();
+        }
     }
 }
 
