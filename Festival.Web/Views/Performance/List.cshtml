@@ -11,9 +11,10 @@
 <table class="table table-striped table-hover">
     <thead class="thead-dark">
         <tr>
-            <th>Date</th>
+            <th>#</th>
             <th>Performer</th>
             <th>Stage</th>
+            <th>Date</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -21,9 +22,10 @@
         @foreach (PerformanceListVM x in Model)
         {
             <tr>
-                <td>@x.Start.ToString()</td>
+                <td>@x.PerformanceID</td>
                 <td>@x.Performer</td>
                 <td>@x.Stage</td>
+                <td>@x.Start.ToString()</td>
                 <td>
                     <a style="margin-right:5px;" asp-controller="Performance" asp-action="Detail" asp-route-id="@x.PerformanceID" class="btn btn-info active" role="button" aria-pressed="true">
                         <i class="fa fa-info mr-1"></i>

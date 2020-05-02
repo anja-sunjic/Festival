@@ -5,6 +5,13 @@
 
 <style>
 
+
+
+
+
+
+
+
     .container {
         padding: 0 !important;
     }
@@ -37,7 +44,7 @@
 
                 <label class="newLabel" for="PhoneNumber">Phone number :</label>
                 <div>
-                    <input asp-for="PhoneNumber" class="form-control col-sm-5" />
+                    <input asp-for="PhoneNumber" class="form-control col-6" />
                 </div>
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
@@ -46,7 +53,7 @@
 
                 <label class="newLabel" for="Distance">Distance to Festival area (km) : </label>
                 <div>
-                    <input class="col-sm-5 form-control" asp-for="Distance" />
+                    <input class="col-3 form-control" asp-for="Distance" />
                 </div>
                 <span asp-validation-for="Distance" class="text-danger"></span>
 
@@ -59,16 +66,17 @@
                 </div>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group newRow">
-                <label class="newLabel" for="ProfileImage">Image :</label>
+            <label class="newLabel" for="Image">Image : </label>
+            <div class="custom-file newRow">
                 <div>
-                    <input type="file" asp-for="ProfileImage" />
+                    <input asp-for="ProfileImage" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="ProfileImage">Choose image</label>
                 </div>
                 <span asp-validation-for="ProfileImage" class="text-danger"></span>
             </div>
         </fieldset>
 
-        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
+        <input type="submit" value="Save New" class="btn btn-lg btn-secondary submit" />
 
     </form>
 </div>

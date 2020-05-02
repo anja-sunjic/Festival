@@ -1,22 +1,22 @@
 ﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model FestivalWebApplication.ViewModels.Performance.DetailPerformanceVM;
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "Performance #" + Model.ID;
 }
 
 
 <div class="col-6" style="float:left">
-    <h2 class="detailName">@Model.PerformerName on @Model.StageName (@Model.Start)</h2>
+    <h2 class="detailName">Performance #@Model.ID</h2>
     <div class="form-group row detailRow">
-        <label class="detailLabel" for="Start">Start of performance: </label>
+        <label class="detailLabel" for="Start">Start of Performance: </label>
         <span class="detailData">@Model.Start</span>
     </div>
     <div class="form-group row detailRow">
-        <label class="detailLabel" for="PerformerName">Performer name : </label>
+        <label class="detailLabel" for="PerformerName">Performer : </label>
         <span class="detailData">@Model.PerformerName</span>
     </div>
     <div class="form-group row detailRow">
-        <label class="detailLabel" for="StageName">Stage name : </label>
+        <label class="detailLabel" for="StageName">Stage : </label>
         <span class="detailData">@Model.StageName</span>
     </div>
     <div class="detailButtons">

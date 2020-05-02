@@ -34,12 +34,6 @@ namespace FestivalWebApplication.Controllers
                 Contact = p.Manager.PhoneNumber
             }).ToList();
 
-            //ordered list
-            int broj = 0;
-            foreach (PerformersListVM x in model)
-            {
-                x.Number = ++broj;
-            }
             return View(model);
         }
 
