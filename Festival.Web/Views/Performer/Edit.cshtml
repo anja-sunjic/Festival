@@ -1,76 +1,148 @@
 ﻿@model FestivalWebApplication.ViewModels.Performer.EditPerformerVM;
 @{
-    ViewData["Title"] = "New";
+    ViewData["Title"] = Model.Name;
 }
 
-<form asp-action="Save" enctype="multipart/form-data" method="post">
-    <input asp-for="Id" hidden/>
-    <input asp-for="ManagerId" hidden />
-    <fieldset>
-        <legend class="w-auto">Performer</legend>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Name">Name</label>
-            <div class="col-sm-5">
-                <input asp-for="Name" class="form-control" />
+
+<style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="Save" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <legend class="w-auto">Performer</legend>
+            <input asp-for="Id" hidden />
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Fee">Fee</label>
-            <div class="col-sm-3">
-                <input asp-for="Fee" class="form-control" />
+            <div class="form-group newRow">
+                <label for="PromoText" class="newLabel">Promotional text :</label>
+                <div>
+                    <textarea asp-for="PromoText" class="form-control" rows="3" style="height:100%"> </textarea>
+                </div>
+                <span asp-validation-for="PromoText" class="text-danger"></span>
             </div>
-            <span asp-validation-for="Fee" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="PromoText">Promo text</label>
-            <div class="col-sm-5">
-                <textarea asp-for="PromoText" class="form-control" rows="3" style="height:100%"> </textarea>
+
+            <div class="form-group newRow">
+                <div>
+                    <label class="newLabel" for="Fee">Festival fee (KM) :</label>
+                    <input asp-for="Fee" class="form-control col-3" />
+                </div>
+                <span asp-validation-for="Fee" class="text-danger"></span>
             </div>
-            <span asp-validation-for="PromoText" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Image">Image</label>
-            <div class="col-sm-5">
-                <div class="custom-file input-group">
-                    <input asp-for="Image" class="custom-file-input" />
+            <label class="newLabel" for="Image">Image : </label>
+            <div class="custom-file newRow">
+                <div>
+                    <input asp-for="Image" class="form-control custom-file-input col-6" />
                     <label class="custom-file-label" for="Image">Choose file</label>
                 </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-        </div>
-    </fieldset>
+            <div class="clearfix"></div>
+        </fieldset>
 
-    <fieldset>
-        <legend class="w-auto">Manager</legend>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="ManagerName">Name</label>
-            <div class="col-sm-5">
-                <input asp-for="ManagerName" class="form-control" />
+        <fieldset>
+            <legend class="w-auto">Performer</legend>
+
+            <input asp-for="ManagerId" hidden />
+            <div class="form-group newRow">
+                <label for="ManagerName" class="newLabel">Name :</label>
+                <div>
+                    <input asp-for="ManagerName" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerName" class="text-danger"></span>
             </div>
-            <span asp-validation-for="ManagerName" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="ManagerPhoneNumber">Phone number</label>
-            <div class="col-sm-5">
-                <input asp-for="ManagerPhoneNumber" class="form-control" />
+            <div class="form-group newRow">
+                <label for="ManagerEmail" class="newLabel">Email :</label>
+                <div>
+                    <input asp-for="ManagerEmail" type="email" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerEmail" class="text-danger"></span>
             </div>
-            <span asp-validation-for="ManagerPhoneNumber" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="ManagerEmail">Email</label>
-            <div class="col-sm-5">
-                <input asp-for="ManagerEmail" class="form-control" />
+            <div class="form-group newRow">
+                <label for="ManagerPhoneNumber" class="newLabel">Phone Number :</label>
+                <div>
+                    <input asp-for="ManagerPhoneNumber" class="form-control col-6" />
+                </div>
+                <span asp-validation-for="ManagerPhoneNumber" class="text-danger"></span>
             </div>
-            <span asp-validation-for="ManagerEmail" class="text-danger"></span>
-        </div>
 
-    </fieldset>
+        </fieldset>
 
-    <input type="submit" value="Save changes" class="btn btn-lg btn-secondary" />
-</form>
+        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
+
+    </form>
+</div>
+
+
+@*
+        <fieldset>
+            <legend class="w-auto">Manager</legend>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="ManagerName">Name</label>
+                <div class="col-sm-5">
+                    <input asp-for="ManagerName" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="ManagerPhoneNumber">Phone number</label>
+                <div class="col-sm-5">
+                    <input asp-for="ManagerPhoneNumber" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerPhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="ManagerEmail">Email</label>
+                <div class="col-sm-5">
+                    <input asp-for="ManagerEmail" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerEmail" class="text-danger"></span>
+            </div>
+
+        </fieldset>
+
+        <input type="submit" value="Save changes" class="btn btn-lg btn-secondary" />
+    </form>*@

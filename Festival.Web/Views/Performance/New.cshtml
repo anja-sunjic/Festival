@@ -3,31 +3,51 @@
     ViewData["Title"] = "New";
 }
 
-<form action="SaveNew" enctype="multipart/form-data" method="post">
 
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="Start">Start</label>
-        <div class="col-sm-6">
-            <input asp-for="Start" class="form-control" />
-        </div>
-        <span asp-validation-for="Start" class="text-danger"></span>
-    </div>
 
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="Performer">Performer</label>
-        <div class="col-sm-6">
-            <select asp-items="@Model.Performers" asp-for="PerformerID" class="form-control">
-            </select>
-        </div>
-    </div>
+<style>
 
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label" for="Stage">Stage</label>
-        <div class="col-sm-6">
-            <select asp-items="@Model.Stages" asp-for="StageID" class="form-control">
-            </select>
-        </div>
-    </div>
+    .container {
+        padding: 0 !important;
+    }
 
-    <input type="submit" value="Add new performance" class="btn btn-lg btn-secondary" />
-</form>
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="SaveNew" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <div class="form-group newRow">
+                <label class="newLabel" for="Performer">Performer :</label>
+                <div>
+                    <select asp-items="@Model.Performers" asp-for="PerformerID" class="form-control col-6">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group newRow">
+                <label class="newLabel" for="Performer">Stage :</label>
+                <div>
+                    <select asp-items="@Model.Stages" asp-for="StageID" class="form-control col-6">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="Start" class="newLabel">Start Date :</label>
+                <div>
+                    <input asp-for="Start" class="form-control col-6" />
+                </div>
+                <span asp-validation-for="Start" class="text-danger"></span>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </fieldset>
+
+        <input type="submit" value="Save changes" class="btn btn-lg btn-secondary submit" />
+
+    </form>
+</div>

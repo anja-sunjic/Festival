@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FestivalWebApplication.ViewModels.Performer
+﻿namespace FestivalWebApplication.ViewModels.Performer
 {
     public class PerformersListVM
     {
@@ -12,5 +7,6 @@ namespace FestivalWebApplication.ViewModels.Performer
         public string PerformerName { get; set; }
         public string ManagerName { get; set; }
         public float Fee { get; set; }
+        public string Contact { get; set; }
     }
 }

@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace FestivalWebApplication.ViewModels.Performer
 {
@@ -9,7 +9,7 @@ namespace FestivalWebApplication.ViewModels.Performer
         [Required(ErrorMessage = "Performer name is required, please insert it.")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Fee is required, please insert the amount.")]
-        [Range(1, float.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]
+        [Range(1, 5000, ErrorMessage = "Value should be between 1 and 5000 KM.")]
         public float Fee { get; set; }
         [Required(ErrorMessage = "Promo text for the performer is required.")]
         public string PromoText { get; set; }

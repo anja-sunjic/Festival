@@ -1,13 +1,10 @@
-﻿using Festival.Data.Repositories;
+﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
+using Festival.Web.Helper;
 using FestivalWebApplication.ViewModels.Performer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Festival.Data.Models;
-using Festival.Web.Helper;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -33,7 +30,8 @@ namespace FestivalWebApplication.Controllers
                 PerformerID = p.ID,
                 PerformerName = p.Name,
                 ManagerName = p.Manager.Name,
-                Fee = p.Fee
+                Fee = p.Fee,
+                Contact = p.Manager.PhoneNumber
             }).ToList();
 
             //ordered list

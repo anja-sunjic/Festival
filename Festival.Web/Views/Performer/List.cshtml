@@ -13,8 +13,9 @@
         <tr>
             <th>#</th>
             <th>Performer</th>
-            <th>Fee ($)</th>
+            <th>Fee</th>
             <th>Manager</th>
+            <th>Contact</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -24,8 +25,9 @@
             <tr>
                 <td>@x.Number</td>
                 <td>@x.PerformerName</td>
-                <td>@x.Fee</td>
+                <td>@x.Fee KM</td>
                 <td>@x.ManagerName</td>
+                <td>@x.Contact</td>
                 <td>
                     <a style="margin-right:5px;" asp-controller="Performer" asp-action="Detail" asp-route-id="@x.PerformerID" class="btn btn-info active" role="button" aria-pressed="true">
                         <i class="fa fa-info mr-1"></i>
