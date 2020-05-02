@@ -4,16 +4,19 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Festival.Data.Models;
+using Festival.Web.Helper;
 
 namespace FestivalWebApplication.Controllers
 {
-    [Authorize]
     public class PerformerController : Controller
     {
         private readonly IPerformerRepository _repo;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public PerformerController(IWebHostEnvironment environment, IPerformerRepository repo)
+
+        public PerformerController(IWebHostEnvironment environment, IPerformerRepository repo, IWebHostEnvironment webHostEnvironment)
         {
             _hostingEnvironment = environment;
             _repo = repo;
@@ -25,20 +28,21 @@ namespace FestivalWebApplication.Controllers
         public IActionResult List()
         {
             //fetching all records from Performer
-            List<PerformersListVM> Model = _repo.GetAll().Select(p => new PerformersListVM
+            var model = _repo.GetAll().Select(p => new PerformersListVM
             {
                 PerformerID = p.ID,
                 PerformerName = p.Name,
-                ManagerName = p.Manager.Name
+                ManagerName = p.Manager.Name,
+                Fee = p.Fee
             }).ToList();
 
             //ordered list
             int broj = 0;
-            foreach (PerformersListVM x in Model)
+            foreach (PerformersListVM x in model)
             {
                 x.Number = ++broj;
             }
-            return View(Model);
+            return View(model);
         }
 
         public IActionResult New()
@@ -47,110 +51,112 @@ namespace FestivalWebApplication.Controllers
             return View(Model);
         }
 
-        //public IActionResult SaveNew(NewPerformerVM Model)
-        //{
-        //    //creating new manager object
-        //    Manager manager = new Manager();
-        //    manager.Name = Model.ManagerName;
-        //    manager.PhoneNumber = Model.ManagerPhoneNumber;
-        //    manager.Email = Model.ManagerEmail;
-        //    //adding new manager to db first, to be able to assign managerID to a performer
-        //    _db.Manager.Add(manager);
-        //    _db.SaveChanges();
+        public IActionResult SaveNew(NewPerformerVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("New");
+            }
+            //creating new manager object
+            var manager = new Manager
+            {
+                Name = model.ManagerName,
+                PhoneNumber = model.ManagerPhoneNumber,
+                Email = model.ManagerEmail
+            };
+            //adding new manager to db first, to be able to assign managerID to a performer
+            _repo.AddManager(manager);
 
-        //    //creating a new performer object
-        //    Performer performer = new Performer();
-        //    performer.Name = Model.Name;
-        //    performer.Fee = Model.Fee;
-        //    performer.PromoText = Model.PromoText;
-        //    performer.ManagerID = manager.ID;
-        //    _db.Performer.Add(performer);
-        //    _db.SaveChanges();
+            var uniqueFileName = ImageUpload.UploadImage(model.Image, _hostingEnvironment, "performers");
 
-        //    //building a filepath and name
-        //    string fileName = "image" + performer.ID.ToString() + Path.GetExtension(Model.Image.FileName);
-        //    string folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/performerImages");
-        //    string filePath = Path.Combine(folderPath, fileName);
+            var performer = new Performer
+            {
+                Name = model.Name,
+                Fee = model.Fee,
+                PromoText = model.PromoText,
+                ManagerID = manager.ID,
+                Picture = uniqueFileName
+            };
 
-        //    //uploading an image using a helper method
-        //    ImageUpload.UploadImageToFolder(Model.Image, filePath);
+            _repo.Add(performer);
 
-        //    Image image = new Image();
-        //    image.ImagePath = Path.Combine("~/images/performerImages/", fileName);
-        //    //saving an image first, to get an imageID which will be saved in a performer object
-        //    _db.Image.Add(image);
-        //    _db.SaveChanges();
+            return RedirectToAction("List");
+        }
 
-        //    performer.ImageID = image.Id;
-        //    _db.SaveChanges();
+        public IActionResult Edit(int id)
+        {
+            var performer = _repo.GetByID(id);
 
-        //    return RedirectToAction("List");
-        //}
+            var model = new EditPerformerVM
+            {
+                Id = performer.ID,
+                Name = performer.Name,
+                Fee = performer.Fee,
+                PromoText = performer.PromoText,
+                ManagerId = performer.Manager.ID,
+                ManagerName = performer.Manager.Name,
+                ManagerPhoneNumber = performer.Manager.PhoneNumber,
+                ManagerEmail = performer.Manager.Email
+            };
 
-        //public IActionResult Edit(int id)
-        //{
-        //    //fetching performer and manager objects
-        //    Performer x = _db.Performer.Find(id);
-        //    Manager m = _db.Manager.Find(x.ManagerID);
+            return View("Edit", model);
 
-        //    EditPerformerVM Model = new EditPerformerVM();
-        //    Model.Id = x.ID;
-        //    Model.Name = x.Name;
-        //    Model.Fee = x.Fee;
-        //    Model.PromoText = x.PromoText;
-        //    if (x.ImageID != null)
-        //        Model.ImagePath = _db.Image.Find(x.ImageID).ImagePath;
-        //    Model.ManagerId = m.ID;
-        //    Model.ManagerName = m.Name;
-        //    Model.ManagerPhoneNumber = m.PhoneNumber;
-        //    Model.ManagerEmail = m.Email;
+        }
+        public IActionResult Save(EditPerformerVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit");
+            }
 
-        //    return View("Edit", Model);
+            var manager = _repo.FindManagerById(model.ManagerId);
 
-        //}
-        //public IActionResult Save(EditPerformerVM Model)
-        //{
-        //    //finding performer in db
-        //    Performer x = _db.Performer.Find(Model.Id);
-        //    //changing data
-        //    x.Name = Model.Name;
-        //    x.Fee = Model.Fee;
-        //    x.PromoText = Model.PromoText;
+            manager.Name = model.ManagerName;
+            manager.Email = model.ManagerEmail;
+            manager.PhoneNumber = model.ManagerPhoneNumber;
 
-        //    //check if there is a new image, and overwrite the previous one if there is
-        //    if (Model.Image != null)
-        //    {
-        //        string fileName = "image" + x.ID.ToString() + Path.GetExtension(Model.Image.FileName);
-        //        string folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "images/performerImages");
-        //        string filePath = Path.Combine(folderPath, fileName);
+            _repo.Save();
 
-        //        ImageUpload.UploadImageToFolder(Model.Image, filePath);
-        //    }
+            var performer = _repo.GetByID(model.Id);
+            performer.Name = model.Name;
+            performer.Fee = model.Fee;
+            performer.PromoText = model.PromoText;
 
-        //    //fetching a manager object
-        //    Manager m = _db.Manager.Find(Model.ManagerId);
-        //    m.Name = Model.ManagerName;
-        //    m.PhoneNumber = Model.ManagerPhoneNumber;
-        //    m.Email = Model.ManagerEmail;
+            if (model.Image != null)
+            {
+                var uniqueFileName = ImageUpload.UploadImage(model.Image, _hostingEnvironment, "performers");
+                performer.Picture = uniqueFileName;
+            }
 
-        //    _db.SaveChanges();
+            _repo.Save();
+            return RedirectToAction("List");
 
-        //    return RedirectToAction("List");
+        }
 
-        //}
+        public IActionResult Detail(int id)
+        {
+            var performer = _repo.GetByID(id);
+            var model = new DetailPerformerVM
+            {
+                Id = performer.ID,
+                Fee = performer.Fee,
+                Name = performer.Name,
+                PromoText = performer.PromoText,
+                Picture = performer.Picture,
+                ManagerName = performer.Manager.Name,
+                ManagerPhoneNumber = performer.Manager.PhoneNumber,
+                ManagerEmail = performer.Manager.Email
+            };
 
-        //public IActionResult Delete(int id)
-        //{
+            return View("Detail", model);
+        }
+        public IActionResult Delete(int id)
+        {
+            _repo.Delete(id);
 
-        //    Performer x = _db.Performer.Find(id);
-        //    Manager m = _db.Manager.Find(x.ManagerID);
-
-        //    _db.Manager.Remove(m);
-        //    _db.Performer.Remove(x);
-
-        //    _db.SaveChanges();
-
-        //    return RedirectToAction("List");
-        //}
+            return RedirectToAction("List");
+        }
     }
+
+
 }

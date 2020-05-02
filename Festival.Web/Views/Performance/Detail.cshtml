@@ -1,0 +1,41 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model FestivalWebApplication.ViewModels.Performance.DetailPerformanceVM;
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<div class="col-6" style="float:left">
+    <h2 class="detailName">@Model.PerformerName on @Model.StageName (@Model.Start)</h2>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Start">Start of performance: </label>
+        <span class="detailData">@Model.Start</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="PerformerName">Performer name : </label>
+        <span class="detailData">@Model.PerformerName</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="StageName">Stage name : </label>
+        <span class="detailData">@Model.StageName</span>
+    </div>
+    <div class="detailButtons">
+        <a style="margin-right:5px;" asp-controller="Performance" asp-action="List" asp-route-id="@Model.ID" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
+        <a style="margin-right:5px;" asp-controller="Performance" asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
+            Edit
+            <i class="fa fa-edit"></i>
+        </a>
+        <a asp-controller="Performance" asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger" role="button" aria-pressed="true">
+            Delete
+            <i class="fa fa-trash"></i>
+        </a>
+    </div>
+</div>
+<div class="col-6 " style="float:right">
+    <img src="~/images/performers/@Model.PerformerPicture" class="accImage imageDiv" />
+</div>
+
+<div class="clearfix"></div>

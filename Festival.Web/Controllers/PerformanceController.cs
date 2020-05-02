@@ -6,17 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Data.Repositories;
+using FestivalWebApplication.ViewModels.Accommodation;
 
 namespace FestivalWebApplication.Controllers
 {
-    [Authorize]
     public class PerformanceController : Controller
     {
         private readonly FestivalContext _db;
+        private readonly IPerformanceRepository _repo;
 
-        public PerformanceController(FestivalContext db)
+        public PerformanceController(FestivalContext db, IPerformanceRepository repo)
         {
             _db = db;
+            _repo = repo;
         }
         public IActionResult Index()
         {
@@ -24,78 +27,152 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult List()
         {
-            List<PerformanceListVM> Model = _db.Performance.Select(p =>
+            var model = _repo.GetAll().Select(p =>
                  new PerformanceListVM
                  {
                      PerformanceID = p.ID,
                      Start = p.Start,
-                     Performer = _db.Performer.Where(x => x.ID == p.PerformerID).FirstOrDefault().Name,
-                     Stage = _db.Stage.Where(x => x.ID == p.StageID).FirstOrDefault().Name
+                     Performer = p.Performer.Name,
+                     Stage = p.Stage.Name
 
                  }).ToList();
-            return View("List", Model);
+            return View("List", model);
         }
 
         public IActionResult New()
         {
-            NewPerformanceVM Model = new NewPerformanceVM();
-            Model.Stages = _db.Stage.Select(s => new SelectListItem
+            var model = new NewPerformanceVM
             {
-                Text = s.Name,
-                Value = s.ID.ToString()
-            }).ToList();
+                Stages =
+                    _repo.GetAllStages().Select(s => new SelectListItem
+                    {
+                        Text = s.Name,
+                        Value = s.ID.ToString()
+                    }).ToList(),
+                Performers =
+                    _repo.GetAllPerformers().Select(s => new SelectListItem
+                    {
+                        Text = s.Name,
+                        Value = s.ID.ToString()
+                    }).ToList(),
+                Start = DateTime.Today
+            };
 
-            Model.Performers = _db.Performer.Select(s => new SelectListItem
-            {
-                Text = s.Name,
-                Value = s.ID.ToString()
-            }).ToList();
-
-            Model.Start=DateTime.Today;
-            return View("New", Model);
+            return View("New", model);
         }
-        public IActionResult SaveNew(NewPerformanceVM Model)
+
+        public IActionResult Edit(int id)
+        {
+            var performance = _repo.GetById(id);
+
+            var model = new EditPerformanceVM
+            {
+                ID = id,
+                Start = performance.Start,
+                Stages =
+                    _repo.GetAllStages().Select(s => new SelectListItem
+                    {
+                        Text = s.Name,
+                        Value = s.ID.ToString()
+                    }).ToList(),
+                Performers =
+                    _repo.GetAllPerformers().Select(s => new SelectListItem
+                    {
+                        Text = s.Name,
+                        Value = s.ID.ToString()
+                    }).ToList(),
+                PerformerID = performance.PerformerID,
+                StageID = performance.StageID
+            };
+
+            return View("Edit", model);
+        }
+
+        public IActionResult SaveNew(NewPerformanceVM model)
         {
             if (!ModelState.IsValid)
             {
-                Model = new NewPerformanceVM
+                model = new NewPerformanceVM
                 {
-                    Stages = _db.Stage.Select(s => new SelectListItem
-                    {
-                        Text = s.Name,
-                        Value = s.ID.ToString()
-                    }).ToList(),
-
-                    Performers = _db.Performer.Select(s => new SelectListItem
-                    {
-                        Text = s.Name,
-                        Value = s.ID.ToString()
-                    }).ToList(),
-
-                    Start = DateTime.Now
+                    Stages =
+                        _repo.GetAllStages().Select(s => new SelectListItem
+                        {
+                            Text = s.Name,
+                            Value = s.ID.ToString()
+                        }).ToList(),
+                    Performers =
+                        _repo.GetAllPerformers().Select(s => new SelectListItem
+                        {
+                            Text = s.Name,
+                            Value = s.ID.ToString()
+                        }).ToList(),
+                    Start = DateTime.Today
                 };
 
-                return View("New", Model);
+                return View("New", model);
             }
 
-            Performance performance = new Performance();
-            performance.Start = Model.Start;
-            performance.StageID = Model.StageID;
-            performance.PerformerID = Model.PerformerID;
+            var performance = new Performance
+            {
+                Start = model.Start,
+                StageID = model.StageID,
+                PerformerID = model.PerformerID
+            };
 
-            _db.Performance.Add(performance);
-            _db.SaveChanges();
+            _repo.Add(performance);
 
             return RedirectToAction("List");
         }
+
+        public IActionResult Save(EditPerformanceVM model)
+        {
+            var performance = _repo.GetById(model.ID);
+
+            if (!ModelState.IsValid)
+            {
+                model = new EditPerformanceVM
+                {
+                    Stages =
+                        _repo.GetAllStages().Select(s => new SelectListItem { Text = s.Name, Value = s.ID.ToString() })
+                            .ToList(),
+                    Performers =
+                        _repo.GetAllPerformers()
+                            .Select(s => new SelectListItem { Text = s.Name, Value = s.ID.ToString() }).ToList(),
+                    Start = DateTime.Today,
+                    PerformerID = performance.PerformerID,
+                    StageID = performance.StageID
+                };
+
+
+                return View("Edit", model);
+            }
+
+            performance.Start = model.Start;
+            performance.StageID = model.StageID;
+            performance.PerformerID = model.PerformerID;
+
+            _repo.Save();
+
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Detail(int id)
+        {
+            var performance = _repo.GetById(id);
+            var model = new DetailPerformanceVM
+            {
+                ID = performance.ID,
+                Start = performance.Start,
+                PerformerName = performance.Performer.Name,
+                StageName = performance.Stage.Name,
+                PerformerPicture = performance.Performer.Picture
+            };
+            return View("Detail",model);
+        }
+
         public IActionResult Delete(int id)
         {
-
-            Performance x = _db.Performance.Find(id);
-            
-            _db.Performance.Remove(x);
-
-            _db.SaveChanges();
+            _repo.Delete(id);
 
             return RedirectToAction("List");
         }

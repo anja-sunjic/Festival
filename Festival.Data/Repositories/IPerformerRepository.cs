@@ -7,10 +7,11 @@ namespace Festival.Data.Repositories
     {
         List<Performer> GetAll();
         bool Add(Performer performer);
-        bool Delete(int id);
+        void Delete(int id);
         Performer GetByID(int id);
         void Save();
-        List<Sponsor> GetAllSponsors();
-        
+        string FindManager(int managerId);
+        void AddManager(Manager manager);
+        Manager FindManagerById(int managerId);
     }
 }

@@ -11,5 +11,6 @@ namespace FestivalWebApplication.ViewModels.Performer
         public int Number { get; set; }
         public string PerformerName { get; set; }
         public string ManagerName { get; set; }
+        public float Fee { get; set; }
     }
 }

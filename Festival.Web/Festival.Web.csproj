@@ -23,7 +23,7 @@
     <Folder Include="wwwroot\images\sponsors\" />
     <Folder Include="wwwroot\images\transfervehicles\" />
     <Folder Include="wwwroot\images\shopitems\" />
-    <Folder Include="wwwroot\images\performerImages\" />
+    <Folder Include="wwwroot\images\performers\" />
   </ItemGroup>
 
   <ItemGroup>

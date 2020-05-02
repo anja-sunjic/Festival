@@ -10,38 +10,58 @@ namespace Festival.Data.Repositories
     public class PerformerRepository : IPerformerRepository
     {
         private readonly FestivalContext _context;
+
         public PerformerRepository(FestivalContext context)
         {
             _context = context;
         }
+
         public List<Performer> GetAll()
         {
-            return _context.Performer.Include(p => p.Manager).ToList();
-   
-        }
-        public bool Add(Performer performer)
-        {
-            throw new NotImplementedException();
+            return _context.Performer.Include(a=>a.Manager).ToList();
         }
 
-        public bool Delete(int id)
+        public bool Add(Performer performer)
         {
-            throw new NotImplementedException();
+            _context.Performer.Add(performer);
+            if (_context.SaveChanges() > 0)
+                return true;
+            return false;
+        }
+
+        public void Delete(int id)
+        {
+            var performer = _context.Performer.Find(id);
+            _context.Remove(performer);
+
+            Save();
         }
 
         public Performer GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _context.Performer.Include(a=>a.Manager).FirstOrDefault(b=>b.ID==id);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public List<Sponsor> GetAllSponsors()
+        public string FindManager(int managerId)
         {
-            throw new NotImplementedException();
+            return _context.Manager.FirstOrDefault(m => m.ID == managerId)?.Name;
+        }
+
+        public void AddManager(Manager manager)
+        {
+            _context.Manager.Add(manager);
+            Save();
+        }
+
+        public Manager FindManagerById(int managerId)
+        {
+            return  _context.Manager.Find(managerId);
         }
     }
 }
+

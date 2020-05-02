@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using FestivalWebApplication.ViewModels.Performance;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -54,7 +55,7 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Detail(int ID)
         {
             Accommodation accomodation = _repo.GetByID(ID);
-            DetailAccommodationVM model = new DetailAccommodationVM()
+            var model = new DetailAccommodationVM()
             {
                 ID = accomodation.ID,
                 Name = accomodation.Name,
