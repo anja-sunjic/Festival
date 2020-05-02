@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Performers";
 }
-
+<style>
+    th, td {
+        text-align: center;
+    }
+</style>
 <h1>Performers</h1>
 <div style="float:right; margin-bottom:10px;">
     <a asp-controller="Performer" asp-action="New" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add New <i class="fa fa-plus"></i></a>
@@ -29,18 +33,20 @@
                 <td>@x.ManagerName</td>
                 <td>@x.Contact</td>
                 <td>
-                    <a style="margin-right:5px;" asp-controller="Performer" asp-action="Detail" asp-route-id="@x.PerformerID" class="btn btn-info active" role="button" aria-pressed="true">
-                        <i class="fa fa-info mr-1"></i>
-                        Detail
-                    </a>
-                    <a style="margin-right:5px;" asp-controller="Performer" asp-action="Edit" asp-route-id="@x.PerformerID" class="btn btn-secondary active" role="button" aria-pressed="true">
-                        <i class="fa fa-edit"></i>
-                        Edit
-                    </a>
-                    <a asp-controller="Performer" asp-action="Delete" asp-route-id="@x.PerformerID" class="btn btn-danger" role="button" aria-pressed="true">
-                        <i class="fa fa-trash"></i>
-                        Delete
-                    </a>
+                    <div class="btn-group">
+                        <a style="margin-right:5px;" asp-controller="Performer" asp-action="Detail" asp-route-id="@x.PerformerID" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-info mr-1"></i>
+                            Detail
+                        </a>
+                        <a style="margin-right:5px;" asp-controller="Performer" asp-action="Edit" asp-route-id="@x.PerformerID" class="btn btn-secondary active btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </a>
+                        <a asp-controller="Performer" asp-action="Delete" asp-route-id="@x.PerformerID" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
 
