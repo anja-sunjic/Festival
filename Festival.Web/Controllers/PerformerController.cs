@@ -1,10 +1,14 @@
-﻿using Festival.Data.Models;
-using Festival.Data.Repositories;
-using Festival.Web.Helper;
+﻿using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.Performer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Festival.Data.Models;
+using Festival.Web.Helper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -30,16 +34,27 @@ namespace FestivalWebApplication.Controllers
                 PerformerID = p.ID,
                 PerformerName = p.Name,
                 ManagerName = p.Manager.Name,
-                Fee = p.Fee,
-                Contact = p.Manager.PhoneNumber
+                Fee = p.Fee
             }).ToList();
 
+            //ordered list
+            int broj = 0;
+            foreach (PerformersListVM x in model)
+            {
+                x.Number = ++broj;
+            }
             return View(model);
         }
 
         public IActionResult New()
         {
             NewPerformerVM Model = new NewPerformerVM();
+            Model.Managers = _repo.GetAllManagers().Select(m => new SelectListItem
+            {
+                Value = m.ID.ToString(),
+                Text = m.Name
+            }).ToList();
+
             return View(Model);
         }
 

@@ -1,8 +1,7 @@
 ﻿@model FestivalWebApplication.ViewModels.Performer.NewPerformerVM;
 @{
-    ViewData["Title"] = "New Performer";
+    ViewData["Title"] = "New";
 }
-
 <style>
 
 
@@ -18,6 +17,7 @@
 
 <div class="formDiv" style="background-color:#e2e2e2;">
     <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="SaveNew" enctype="multipart/form-data" method="post">
+
         <fieldset>
             <legend class="w-auto">Performer</legend>
             <div class="form-group newRow">
@@ -29,38 +29,46 @@
             </div>
 
             <div class="form-group newRow">
-                <label for="PromoText" class="newLabel">Promotional text :</label>
+                <label for="Address" class="newLabel">Fee :</label>
                 <div>
-                    <textarea asp-for="PromoText" class="form-control" rows="3" style="height:100%"> </textarea>
-                </div>
-                <span asp-validation-for="PromoText" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group newRow">
-                <div>
-                    <label class="newLabel" for="Fee">Festival fee (KM) :</label>
-                    <input asp-for="Fee" class="form-control col-3" />
+                    <input asp-for="Fee" class="form-control col-sm-5" />
                 </div>
                 <span asp-validation-for="Fee" class="text-danger"></span>
             </div>
 
-            <label class="newLabel" for="Image">Image : </label>
-            <div class="custom-file newRow">
+            <div class="form-group newRow">
+                <label class="newLabel" for="PromoText">Promo text :</label>
                 <div>
-                    <input asp-for="Image" class="form-control custom-file-input col-6" />
-                    <label class="custom-file-label" for="Image">Choose image</label>
+                    <textarea asp-for="PromoText" class="form-control" rows="4"></textarea>
+                </div>
+                <span asp-validation-for="PromoText" class="text-danger"></span>
+            </div>
+
+           
+
+            <div class="clearfix"></div>
+
+            <div class="form-group newRow">
+                <label class="newLabel" for="Image">Image :</label>
+                <div>
+                    <input type="file" asp-for="Image"/> 
+                    
                 </div>
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
-            <div class="clearfix"></div>
+
         </fieldset>
 
         <fieldset>
-            <legend class="w-auto">Performer</legend>
-
+            <legend class="w-auto">Manager</legend>
             <div class="form-group newRow">
-                <label for="ManagerName" class="newLabel">Name :</label>
+                    <select asp-items="@Model.Managers" asp-for="ManagerId" class="form-control">
+                    <option selected disabled>(Choose manager:)</option>
+                </select>
+
+            </div>
+            <div class="form-group newRow">
+                <label class="newLabel" for="ManagerName">Name</label>
                 <div>
                     <input asp-for="ManagerName" class="form-control" />
                 </div>
@@ -68,24 +76,33 @@
             </div>
 
             <div class="form-group newRow">
-                <label for="ManagerEmail" class="newLabel">Email :</label>
+                <label class="newLabel" for="ManagerPhoneNumber">Phone number</label>
                 <div>
-                    <input asp-for="ManagerEmail" type="email" class="form-control" />
-                </div>
-                <span asp-validation-for="ManagerEmail" class="text-danger"></span>
-            </div>
-
-            <div class="form-group newRow">
-                <label for="ManagerPhoneNumber" class="newLabel">Phone Number :</label>
-                <div>
-                    <input asp-for="ManagerPhoneNumber" class="form-control col-6" />
+                    <input asp-for="ManagerPhoneNumber" class="form-control" />
                 </div>
                 <span asp-validation-for="ManagerPhoneNumber" class="text-danger"></span>
             </div>
 
+            <div class="form-group newRow">
+                <label class="newLabel" for="ManagerEmail">Email</label>
+                <div>
+                    <input asp-for="ManagerEmail" class="form-control" />
+                </div>
+                <span asp-validation-for="ManagerEmail" class="text-danger"></span>
+            </div>
+
         </fieldset>
 
-        <input type="submit" value="Save New" class="btn btn-lg btn-secondary submit" />
-
+        <input type="submit" value="Add new performer" class="btn btn-lg btn-secondary" />
     </form>
 </div>
+
+
+@*<script>
+                $('#Image').on('change',function(){
+                    //get the file name
+                    var fileName = $("#Image").val();
+                    //replace the "Choose a file" label
+                    $(this).next('.custom-file-label').html(fileName);
+                })
+    </script>*@

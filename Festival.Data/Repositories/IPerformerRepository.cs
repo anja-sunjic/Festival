@@ -13,5 +13,6 @@ namespace Festival.Data.Repositories
         string FindManager(int managerId);
         void AddManager(Manager manager);
         Manager FindManagerById(int managerId);
+        List<Manager> GetAllManagers();
     }
 }

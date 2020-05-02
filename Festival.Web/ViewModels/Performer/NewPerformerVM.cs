@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FestivalWebApplication.ViewModels.Performer
 {
@@ -8,7 +10,7 @@ namespace FestivalWebApplication.ViewModels.Performer
         [Required(ErrorMessage = "Performer name is required, please insert it.")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Fee is required, please insert the amount.")]
-        [Range(1, 5000, ErrorMessage = "Value should be between 1 and 5000 KM.")]
+        [Range(1, float.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]
         public float Fee { get; set; }
         [Required(ErrorMessage = "Promo text for the performer is required.")]
         public string PromoText { get; set; }
@@ -20,5 +22,7 @@ namespace FestivalWebApplication.ViewModels.Performer
         public string ManagerPhoneNumber { get; set; }
         [Required(ErrorMessage = "Manager E-mail is required, please insert it.")]
         public string ManagerEmail { get; set; }
+        public List<SelectListItem> Managers { get; set; }
+        public int? ManagerId { get; set; }
     }
 }
