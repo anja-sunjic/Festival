@@ -16,11 +16,11 @@ namespace FestivalWebApplication.ViewModels.Performer
         public string PromoText { get; set; }
         [Required(ErrorMessage = "Picture is required, please pick one.")]
         public IFormFile Image { get; set; }
-        [Required(ErrorMessage = "Manager name is required, please insert it.")]
+        
         public string ManagerName { get; set; }
-        [Required(ErrorMessage = "Manager phone number is required, please insert it.")]
+       
         public string ManagerPhoneNumber { get; set; }
-        [Required(ErrorMessage = "Manager E-mail is required, please insert it.")]
+        
         public string ManagerEmail { get; set; }
         public List<SelectListItem> Managers { get; set; }
         public int? ManagerId { get; set; }

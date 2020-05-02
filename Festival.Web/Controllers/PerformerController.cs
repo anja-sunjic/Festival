@@ -62,15 +62,19 @@ namespace FestivalWebApplication.Controllers
             {
                 return View("New");
             }
-            //creating new manager object
+            //creating new manager object 
             var manager = new Manager
             {
                 Name = model.ManagerName,
                 PhoneNumber = model.ManagerPhoneNumber,
                 Email = model.ManagerEmail
             };
-            //adding new manager to db first, to be able to assign managerID to a performer
-            _repo.AddManager(manager);
+            //adding new manager into the database if the chosen id is 9999 (aka none of the given options)
+            if (model.ManagerId == 9999)
+            {
+                //adding new manager to db first, to be able to assign managerID to a performer
+                _repo.AddManager(manager);
+            }
 
             var uniqueFileName = ImageUpload.UploadImage(model.Image, _hostingEnvironment, "performers");
 
@@ -79,9 +83,11 @@ namespace FestivalWebApplication.Controllers
                 Name = model.Name,
                 Fee = model.Fee,
                 PromoText = model.PromoText,
-                ManagerID = manager.ID,
+                ManagerID=model.ManagerId,
                 Picture = uniqueFileName
             };
+            if (model.ManagerId == 9999)
+                performer.ManagerID = manager.ID;
 
             _repo.Add(performer);
 
