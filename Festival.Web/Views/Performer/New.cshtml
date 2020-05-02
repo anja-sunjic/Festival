@@ -59,7 +59,7 @@
             <legend class="w-auto">Manager</legend>
             <div class="form-group newRow">
                 <select asp-items="@Model.Managers" asp-for="ManagerId" class="form-control">
-                    <option selected disabled>(Choose manager:)</option>
+                    <option selected value="9999">(None of the listed)</option>
                 </select>
 
             </div>
