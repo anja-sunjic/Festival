@@ -6,6 +6,12 @@
 }
 
 
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+
 <h1>Shop Items</h1>
 <div style="float:right; margin-bottom:10px;">
     <a asp-controller="ShopItem" asp-action="New" class="btn btn-success btn-lg active addnew" role="button" aria-pressed="true">Add New   <i class="fa fa-plus"></i></a>
@@ -49,19 +55,31 @@
     </tbody>
 </table>
 
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "text-success";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "text-success";
-}
-<div class="text-center">
-    <a asp-action="List"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
-       class="btn btn-default @prevDisabled">
-        Previous
-    </a>
-    <a asp-action="List"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
-       class="btn btn-default @nextDisabled">
-        Next
-    </a>
-</div>
+
+<nav aria-label="..." class="mt-4">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @prevDisabled">
+            <a class="page-link paginationText" asp-action="List" asp-route-pageNumber="@(Model.PageIndex-1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        @{
+            for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                var isCurrent = Model.PageIndex == i ? "ourActive" : "";
+
+                <li class="page-item">
+                    <a class="page-link paginationText @isCurrent" asp-action="List" asp-route-pageNumber="@i">@i <span class="sr-only">(current)</span></a>
+                </li>
+            }
+
+        }
+        <li class="page-item @nextDisabled">
+            <a class="page-link paginationText" asp-action="List" asp-route-pageNumber="@(Model.PageIndex+1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -1,5 +1,14 @@
 ﻿/* Buttons  */
 
+.paginationText {
+    color: #476A6F !important;
+}
+
+.ourActive {
+    color: white !important;
+    background-color: #7EB09B !important;
+}
+
 
 .addnew {
     margin-bottom: 10px;
