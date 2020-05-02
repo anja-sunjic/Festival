@@ -1,10 +1,9 @@
-﻿@model FestivalWebApplication.ViewModels.TicketType.NewTicketTypeVM;
+﻿@model FestivalWebApplication.ViewModels.TicketType.EditTicketTypeVM;
 @{
-    ViewData["Title"] = "New Ticket Type";
+    ViewData["Title"] = Model.Name;
 }
 
 <style>
-
 
 
 
@@ -17,10 +16,10 @@
     }
 </style>
 
-
 <div class="formDiv" style="background-color:#e2e2e2;">
-    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" action="SaveNew" method="post">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="TicketType" asp-action="Save" method="post">
         <fieldset>
+            <input asp-for="Id" hidden />
             <div class="form-group newRow">
                 <label for="Name" class="newLabel">Name :</label>
                 <div>
@@ -46,6 +45,7 @@
             </div>
         </fieldset>
 
-        <input type="submit" value="Add New" class="btn btn-lg btn-secondary submit" />
+        <input type="submit" value="Save changes" class="btn btn-lg btn-secondary submit" />
+
     </form>
 </div>

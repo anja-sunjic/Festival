@@ -1,4 +1,5 @@
 ﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
 using FestivalWebApplication.ViewModels.TicketType;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,74 +11,100 @@ namespace FestivalWebApplication.Controllers
     [Authorize]
     public class TicketTypeController : Controller
     {
-        private readonly FestivalContext _db;
+        private readonly ITicketTypeRepository _repo;
 
-        public TicketTypeController(FestivalContext db)
+        public TicketTypeController(ITicketTypeRepository repo)
         {
-            _db = db;
+            _repo = repo;
         }
         public IActionResult Index()
         {
-            List<TicketTypeVM> Model = _db.TicketType.Select(p => new TicketTypeVM
+            return RedirectToAction("List");
+        }
+
+        public IActionResult List()
+        {
+            List<TicketTypeListVM> Model = _repo.GetAll().Select(p => new TicketTypeListVM
             {
                 Id = p.ID,
                 Name = p.Name,
-                Price = p.Price
+                Price = p.Price,
+                TicketsBought = _repo.GetNumberOfTicketsBought(p.ID),
+                Description = p.Description
             }).ToList();
+
             return View(Model);
         }
+
         public IActionResult New()
         {
-            TicketTypeVM Model = new TicketTypeVM();
+            NewTicketTypeVM Model = new NewTicketTypeVM();
 
             return View(Model);
         }
+
+        public IActionResult SaveNew(NewTicketTypeVM Model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("New");
+            }
+            TicketType ticketType = new TicketType()
+            {
+                Name = Model.Name,
+                Price = Model.Price,
+                Description = Model.Description
+            };
+            _repo.Add(ticketType);
+
+            return RedirectToAction("List");
+        }
+
         public IActionResult Delete(int Id)
         {
-
-            TicketType ticketType = _db.TicketType.Find(Id);
-
-            _db.Remove(ticketType);
-            _db.SaveChanges();
-            return Redirect("/TicketType/Index");
+            _repo.Delete(Id);
+            return RedirectToAction("List");
         }
-        public IActionResult Update(int Id)
+        public IActionResult Edit(int Id)
         {
-            TicketType ticketType = _db.TicketType.Find(Id);
-            TicketTypeVM Model = new TicketTypeVM
+            TicketType tt = _repo.GetByID(Id);
+            var model = new EditTicketTypeVM
             {
-                Id = ticketType.ID,
-                Name = ticketType.Name,
-                Price = ticketType.Price
+                Id = tt.ID,
+                Name = tt.Name,
+                Price = tt.Price,
+                Description = tt.Description
             };
 
-            return View("New", Model);
+            return View(model);
         }
 
-
-        [HttpPost]
-        public IActionResult SaveNew(TicketTypeVM Model)
+        public IActionResult Save(EditTicketTypeVM model)
         {
-
-            TicketType ticketType;
-
-            if (Model.Id == 0)
+            if (!ModelState.IsValid)
             {
-                ticketType = new TicketType();
-                _db.TicketType.Add(ticketType);
-
+                return View("Edit", model);
             }
-            else
+            var tt = _repo.GetByID(model.Id);
+            tt.Name = model.Name;
+            tt.Price = model.Price;
+            tt.Description = model.Description;
+            _repo.Save();
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Detail(int Id)
+        {
+            TicketType tt = _repo.GetByID(Id);
+            var model = new DetailTicketTypeVM
             {
-                ticketType = _db.TicketType.Find(Model.Id);
-            }
-
-            ticketType.Name = Model.Name;
-            ticketType.Price = Model.Price;
-
-            _db.SaveChanges();
-
-            return RedirectToAction("Index");
+                Id = tt.ID,
+                Name = tt.Name,
+                Description = tt.Description,
+                Price = tt.Price,
+                TicketsSold = _repo.GetNumberOfTicketsBought(tt.ID)
+            };
+            return View(model);
         }
     }
 
