@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Accommodations";
 }
+<style>
+    th{
+        text-align:center;
+    }
 
+</style>
 <h1>Accommodations</h1>
 <div style="float:right; margin-bottom:10px;">
     <a asp-controller="Accommodations" asp-action="New" class="btn btn-success btn-lg active addnew" role="button" aria-pressed="true">Add New   <i class="fa fa-plus"></i></a>
@@ -14,7 +19,7 @@
             <th>#</th>
             <th>Name</th>
             <th>Address</th>
-            <th>Phone Number</th>
+            <th>Phone</th>
             <th>Distance</th>
             <th>Actions</th>
         </tr>
@@ -29,18 +34,20 @@
                 <td>@x.PhoneNumber</td>
                 <td>@x.Distance km</td>
                 <td>
-                    <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active" role="button" aria-pressed="true">
-                        <i class="fa fa-info mr-1"></i>
-                        Detail
-                    </a>
-                    <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
-                        <i class="fa fa-edit"></i>
-                        Edit
-                    </a>
-                    <a asp-controller="Accommodations" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true">
-                        <i class="fa fa-trash"></i>
-                        Delete
-                    </a>
+                    <div class="btn-group">
+                        <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-info mr-1"></i>
+                            Detail
+                        </a>
+                        <a style="margin-right:5px;" asp-controller="Accommodations" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </a>
+                        <a asp-controller="Accommodations" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
         }
