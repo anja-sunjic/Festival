@@ -1,0 +1,40 @@
+﻿@model FestivalWebApplication.ViewModels.Sponsor.DetailSponsorVM;
+@{
+    ViewData["Title"] = Model.CompanyName;
+}
+
+
+<div class="col-6" style="float:left">
+    <h2 class="detailName">@Model.CompanyName</h2>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="PhoneNumber">Phone number : </label>
+        <span class="detailData">@Model.PhoneNumber</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Address">Address : </label>
+        <span class="detailData">@Model.Address</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Distance">Contact Person : </label>
+        <span class="detailData">@Model.ContactPersonName</span>
+    </div>
+    <div class="detailButtons">
+        <a style="margin-right:5px;" asp-controller="Sponsor" asp-action="List" asp-route-id="@Model.Id" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
+        <a style="margin-right:5px;" asp-controller="Sponsor" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
+            Edit
+            <i class="fa fa-edit"></i>
+        </a>
+        <a asp-controller="Sponsor" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" role="button" aria-pressed="true">
+            Delete
+            <i class="fa fa-trash"></i>
+        </a>
+    </div>
+</div>
+<div class="col-6" style="float:right">
+    <img src="~/images/sponsors/@Model.Image" class="accImage imageDiv" />
+</div>
+
+<div class="clearfix"></div>

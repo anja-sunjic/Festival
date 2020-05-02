@@ -1,11 +1,12 @@
 ﻿namespace FestivalWebApplication.ViewModels.Sponsor
 {
-    public class SponsorsListVM
+    public class DetailSponsorVM
     {
-        public int SponsorID { get; set; }
-        public string Number { get; set; }
+        public int Id { get; set; }
         public string CompanyName { get; set; }
         public string ContactPersonName { get; set; }
+        public string PhoneNumber { get; set; }
         public string Address { get; set; }
+        public string Image { get; set; }
     }
 }

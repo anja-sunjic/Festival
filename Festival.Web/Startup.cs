@@ -49,6 +49,7 @@ namespace FestivalWebApplication
             services.AddScoped<ITransferServiceRepository, TransferServiceRepository>();
             services.AddScoped<IStageRepository, StageRepository>();
             services.AddScoped<IPerformerRepository, PerformerRepository>();
+            services.AddScoped<ISponzorRepository, SponsorRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

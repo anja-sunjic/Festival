@@ -119,8 +119,6 @@ namespace FestivalWebApplication.Controllers
             {
                 return View("Edit");
             }
-
-            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "accommodations");
             Accommodation acc = _repo.GetByID(model.ID);
             acc.Name = model.Name;
             acc.Description = model.Description;
@@ -129,6 +127,7 @@ namespace FestivalWebApplication.Controllers
             acc.Address = model.Address;
             if (model.ProfileImage != null)
             {
+                string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "accommodations");
                 acc.Picture = uniqueFileName;
             }
             _repo.Save();
