@@ -4,14 +4,9 @@
 }
 
 
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/Inputmask-5.x/dist/jquery.inputmask.js"></script>
 <style>
-
-
-
-
-
-
     .container {
         padding: 0 !important;
     }
@@ -35,7 +30,7 @@
                 <div class="col-7 newRow" style="float:left;padding-left:0px;">
                     <label class="newLabel" for="RegistrationNumber">Registration Number :</label>
                     <div>
-                        <input asp-for="RegistrationNumber" class="form-control" />
+                        <input asp-for="RegistrationNumber" data-inputmask-regex="[AEOJKMT]\d{2}-[AEOJKMT]-\d{3}" id="regNum" class="form-control" />
                     </div>
                     <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
                 </div>
@@ -54,16 +49,31 @@
                 </div>
                 <span asp-validation-for="Driver" class="text-danger"></span>
             </div>
-            <div class="form-group newRow">
-                <label class="newLabel" for="ProfileImage">Image :</label>
+
+            <label class="newLabel" for="ProfileImage">Image :</label>
+            <div class="custom-file newRow">
                 <div>
-                    <input type="file" asp-for="Picture" />
+                    <input asp-for="Picture" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="Picture">Choose image</label>
                 </div>
                 <span asp-validation-for="Picture" class="text-danger"></span>
             </div>
-        </fieldset>
 
-        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
+        </fieldset>
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit ml-1" />
+        </div>
+
 
     </form>
 </div>
+<script>
+
+    $(function ($) {
+        $("#regNum").inputmask();
+    })
+</script>

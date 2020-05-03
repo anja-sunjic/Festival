@@ -9,7 +9,7 @@
 <div style="float:right; margin-bottom:10px;">
     <a asp-controller="TransferVehicle" asp-action="New" class="btn btn-success btn-lg active addnew" role="button" aria-pressed="true">Add New     <i class="fa fa-plus"></i></a>
 </div>
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover text-center ">
     <thead class="thead-dark">
         <tr>
             <th>#</th>
@@ -21,27 +21,31 @@
         </tr>
     </thead>
     <tbody>
+        @{int broj = 0; }
         @foreach (ListTransferVehicleVM x in Model)
         {
+            broj++;
             <tr>
-                <td>@x.Id</td>
+                <td>@broj</td>
                 <td>@x.Name</td>
                 <td>@x.RegistrationNumber</td>
                 <td>@x.Driver</td>
                 <td>@x.Capacity</td>
                 <td>
-                    <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Detail" asp-route-id="@x.Id" class="btn btn-info active" role="button" aria-pressed="true">
-                        <i class="fa fa-info mr-1"></i>
-                        Detail
-                    </a>
-                    <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Edit" asp-route-id="@x.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
-                        <i class="fa fa-edit"></i>
-                        Edit
-                    </a>
-                    <a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@x.Id" class="btn btn-danger" role="button" aria-pressed="true">
-                        <i class="fa fa-trash"></i>
-                        Delete
-                    </a>
+                    <div class="btn-group">
+                        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Detail" asp-route-id="@x.Id" class="btn btn-info active" role="button" aria-pressed="true">
+                            <i class="fa fa-info mr-1"></i>
+                            Detail
+                        </a>
+                        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Edit" asp-route-id="@x.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </a>
+                        <a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@x.Id" class="btn btn-danger" role="button" aria-pressed="true">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
         }
