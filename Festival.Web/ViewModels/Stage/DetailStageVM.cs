@@ -11,5 +11,6 @@ namespace Festival.Web.ViewModels.Stage
         public string Name { get; set; }
         public int Capacity { get; set; }
         public string SponsorName { get; set; }
+        public string Image { get; set; }
     }
 }

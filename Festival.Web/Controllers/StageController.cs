@@ -1,8 +1,10 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
+using Festival.Web.Helper;
 using Festival.Web.ViewModels.Stage;
 using FestivalWebApplication.ViewModels.Stage;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
@@ -13,9 +15,11 @@ namespace FestivalWebApplication.Controllers
     [Authorize]
     public class StageController : Controller
     {
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IStageRepository _repo;
-        public StageController(IStageRepository repo)
+        public StageController(IWebHostEnvironment environment, IStageRepository repo)
         {
+            _hostingEnvironment = environment;
             _repo = repo;
         }
         public IActionResult Index()
@@ -66,10 +70,12 @@ namespace FestivalWebApplication.Controllers
                 }).ToList();
                 return View("New", Model);
             }
+            string uniqueFileName = ImageUpload.UploadImage(Model.Image, _hostingEnvironment, "stages");
             Stage stage = new Stage();
             stage.Name = Model.Name;
             stage.Capacity = Model.Capacity;
             stage.SponsorID = Model.SponsorID;
+            stage.Image = uniqueFileName;
 
             _repo.Add(stage);
 
@@ -93,20 +99,33 @@ namespace FestivalWebApplication.Controllers
                 Value = s.ID.ToString(),
             }).ToList();
 
-            Model.SponsorId = (int)x.SponsorID;
+            Model.SponsorID = (int)x.SponsorID;
 
             return View("Edit", Model);
 
         }
         public IActionResult Save(EditStageVM Model)
         {
+            if (!ModelState.IsValid)
+            {
+                Model.Sponsors = _repo.GetAllSponsors().Select(s => new SelectListItem
+                {
+                    Text = s.CompanyName,
+                    Value = s.ID.ToString(),
+                }).ToList();
+                return View("Edit", Model);
+            }
             //finding stage in db
             Stage stage = _repo.GetByID(Model.Id);
             //changing data
             stage.Name = Model.Name;
             stage.Capacity = Model.Capacity;
-            stage.SponsorID = Model.SponsorId;
-
+            stage.SponsorID = Model.SponsorID;
+            if (Model.Image != null)
+            {
+                string uniqueFileName = ImageUpload.UploadImage(Model.Image, _hostingEnvironment, "stages");
+                stage.Image = uniqueFileName;
+            }
             _repo.Save();
 
             return RedirectToAction("List");
@@ -126,7 +145,9 @@ namespace FestivalWebApplication.Controllers
                 Id = x.ID,
                 Name = x.Name,
                 Capacity = x.Capacity,
-                SponsorName = _repo.GetSponsor(id).CompanyName
+                SponsorName = _repo.GetSponsor(id).CompanyName,
+                Image=x.Image
+                
             };
             return View(model);
         }
