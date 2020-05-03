@@ -5,14 +5,7 @@
 
 
 <style>
-
-
-
-
-
-
-
-
+    
     .container {
         padding: 0 !important;
     }
@@ -25,7 +18,6 @@
 <div class="formDiv" style="background-color:#e2e2e2;">
     <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="Save" enctype="multipart/form-data" method="post">
         <fieldset>
-            <input asp-for="Id" hidden />
             <div class="form-group newRow">
                 <label for="Name" class="newLabel">Company Name :</label>
                 <div>
@@ -42,32 +34,48 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <div class="col-5 newRow" style="float:left;padding-left:0px;">
-                    <label class="newLabel" for="PhoneNumber">Phone number :</label>
-                    <div>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                    </div>
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            <div class="form-group newRow">
+
+                <label class="newLabel" for="PhoneNumber">Phone Number :</label>
+                <div>
+                    <input asp-for="PhoneNumber" class="form-control col-sm-5" />
                 </div>
-                <div class="col-7 newRow" style="float:right;padding-right:0px;">
-                    <label class="newLabel" for="ContactPersonName">Contact Name : </label>
-                    <div>
-                        <input asp-for="ContactPersonName" class="form-control" />
-                    </div>
-                    <span asp-validation-for="ContactPersonName" class="text-danger"></span>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+            </div>
+            <div class="form-group newRow">
+
+                <label class="newLabel" for="Distance">Contact Person : </label>
+                <div>
+                    <input class="col-sm-5 form-control" asp-for="ContactPersonName" />
                 </div>
+                <span asp-validation-for="ContactPersonName" class="text-danger"></span>
+
             </div>
             <div class="clearfix"></div>
-            <div class="form-group newRow">
-                <label class="newLabel" for="Image">Image :</label>
+
+            <label class="newLabel" for="ProfileImage">Image :</label>
+            <div class="custom-file newRow">
                 <div>
-                    <input type="file" asp-for="Image" />
+                    <input asp-for="Image" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="Image">Choose image</label>
                 </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </fieldset>
 
-        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
+
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Sponsor" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <a asp-controller="Sponsor" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" role="button" aria-pressed="true">
+                Delete
+                <i class="fa fa-trash"></i>
+            </a>
+            <input type="submit" value="Save changes" class="btn btn-lg btn-secondary submit ml-1" />
+        </div>
 
     </form>
 </div>

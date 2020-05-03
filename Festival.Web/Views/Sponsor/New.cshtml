@@ -5,7 +5,6 @@
 
 <style>
 
-
     .container {
         padding: 0 !important;
     }
@@ -13,6 +12,7 @@
     main.pb-3 {
         padding-bottom: 0 !important;
     }
+
 </style>
 
 <div class="formDiv" style="background-color:#e2e2e2;">
@@ -53,16 +53,26 @@
 
             </div>
             <div class="clearfix"></div>
-            <div class="form-group newRow">
-                <label class="newLabel" for="ProfileImage">Image :</label>
+
+            <label class="newLabel" for="ProfileImage">Image :</label>
+            <div class="custom-file newRow">
                 <div>
-                    <input type="file" asp-for="Image" />
+                    <input asp-for="Image" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="Image">Choose image</label>
                 </div>
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </fieldset>
 
-        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
+
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Sponsor" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit ml-1" />
+        </div>
+
 
     </form>
 </div>
