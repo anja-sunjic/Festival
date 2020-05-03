@@ -5,7 +5,7 @@
 
 
 
-<div class="col-6">
+<div class="col-6" style="float:left">
     <h2 class="detailName">Stage</h2>
     <div class="form-group row detailRow">
         <label class="detailLabel" for="VehicleName">Name : </label>
@@ -34,51 +34,10 @@
         </a>
     </div>
 </div>
+<div class="col-6" style="float:right">
+    <img src="~/images/stages/@Model.Image" class="shopitemImage imageDiv" />
+</div>
+
 <div class="clearfix"></div>
 
 
-@*<div class="formDiv" style="background-color:#e2e2e2;">
-        <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="Stage" asp-action="Save" method="post">
-            <fieldset>
-                <input asp-for="Id" hidden />
-                <div class="form-group newRow">
-                    <label for="Name" class="newLabel">Name :</label>
-                    <div>
-                        <span style="" class="detailData">@Model.Name</span>
-                    </div>
-                </div>
-
-                <div class="form-group newRow">
-                    <label class="newLabel" for="Capacity">Capacity :</label>
-                    <div>
-                        <span style="" class="detailData">@Model.Capacity</span>
-                    </div>
-                </div>
-                <div class="form-group newRow">
-                    <label class="newLabel" for="Capacity">Sponsor :</label>
-                    <div>
-                        <span style="" class="detailData">@Model.SponsorName</span>
-                    </div>
-                </div>
-
-
-                <div class="clearfix"></div>
-
-            </fieldset>
-
-            <div class="detailButtons">
-                <a style="margin-right:5px;" asp-controller="Stage" asp-action="List" asp-route-id="@Model.Id" class="btn btn-info active" role="button" aria-pressed="true">
-                    Back
-                    <i class="fa fa-undo"></i>
-                </a>
-                <a style="margin-right:5px;" asp-controller="Stage" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary active" role="button" aria-pressed="true">
-                    Edit
-                    <i class="fa fa-edit"></i>
-                </a>
-                <a asp-controller="Stage" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" role="button" aria-pressed="true">
-                    Delete
-                    <i class="fa fa-trash"></i>
-                </a>
-            </div>
-        </form>
-    </div>*@

@@ -15,7 +15,7 @@
 </style>
 
 <div class="formDiv" style="background-color:#e2e2e2;">
-    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="Stage" asp-action="Save" method="post">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-controller="Stage" asp-action="Save" method="post" enctype="multipart/form-data">
         <fieldset>
             <input asp-for="Id" hidden />
             <div class="form-group newRow">
@@ -37,10 +37,19 @@
             <div class="form-group newRow">
                 <label class="newLabel" for="Sponsor">Sponsor :</label>
 
-                <select asp-items="@Model.Sponsors" asp-for="SponsorId" class="form-control">
+                <select asp-items="@Model.Sponsors" asp-for="SponsorID" class="form-control">
                     <option selected disabled>(Choose a sponsor)</option>
                 </select>
+                <span asp-validation-for="SponsorID" class="text-danger"></span>
 
+            </div>
+            <label class="newLabel" for="Image">Image :</label>
+            <div class="custom-file newRow">
+                <div>
+                    <input asp-for="Image" class="form-control custom-file-input col-6" />
+                    <label class="custom-file-label" for="Image">Choose image</label>
+                </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </fieldset>
         <div class="btn-group">

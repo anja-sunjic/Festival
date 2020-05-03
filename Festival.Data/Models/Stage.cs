@@ -9,5 +9,6 @@ namespace Festival.Data.Models
         public int Capacity { get; set; }
         public Sponsor Sponsor { get; set; }
         public int? SponsorID { get; set; }
+        public string Image { get; set; }
     }
 }
