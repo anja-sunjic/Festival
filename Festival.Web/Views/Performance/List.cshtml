@@ -2,6 +2,7 @@
 @model List<FestivalWebApplication.ViewModels.Performance.PerformanceListVM>
 @{
     ViewData["Title"] = "Performances";
+
 }
 
 <h1>Performances</h1>
@@ -19,10 +20,12 @@
         </tr>
     </thead>
     <tbody>
+        @{int broj = 0; }
         @foreach (PerformanceListVM x in Model)
         {
+            broj++;
             <tr>
-                <td>@x.PerformanceID</td>
+                <td>@broj</td>
                 <td>@x.Performer</td>
                 <td>@x.Stage</td>
                 <td>@x.Start.ToString()</td>
