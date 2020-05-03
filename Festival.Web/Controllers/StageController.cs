@@ -59,7 +59,12 @@ namespace FestivalWebApplication.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("New");
+                Model.Sponsors = _repo.GetAllSponsors().Select(s => new SelectListItem
+                {
+                    Text = s.CompanyName,
+                    Value = s.ID.ToString(),
+                }).ToList();
+                return View("New", Model);
             }
             Stage stage = new Stage();
             stage.Name = Model.Name;

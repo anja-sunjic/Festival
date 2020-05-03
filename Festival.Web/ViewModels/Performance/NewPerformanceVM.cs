@@ -9,7 +9,7 @@ namespace FestivalWebApplication.ViewModels.Performance
     public class NewPerformanceVM
     {
 
-        [Required(ErrorMessage = "Start date and time of performance is required, please insert it.")]
+        [Required(ErrorMessage = "Start date and time of performance is required, please insert one.")]
         [CurrentDate(ErrorMessage = "Date must be greater than current date.")]
         public DateTime Start { get; set; }
         public List<SelectListItem> Stages { get; set; }

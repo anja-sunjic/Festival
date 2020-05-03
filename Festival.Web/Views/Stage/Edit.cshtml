@@ -43,8 +43,18 @@
 
             </div>
         </fieldset>
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Stage" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <a asp-controller="Stage" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" role="button" aria-pressed="true">
+                Delete
+                <i class="fa fa-trash"></i>
+            </a>
+            <input type="submit" value="Save changes" class="btn btn-secondary submit ml-1" />
+        </div>
 
-        <input type="submit" value="Save stage" class="btn btn-lg btn-secondary submit" />
 
     </form>
 </div>

@@ -7,13 +7,6 @@
 
 <style>
 
-
-
-
-
-
-
-
     .container {
         padding: 0 !important;
     }
@@ -29,7 +22,7 @@
             <div class="form-group newRow">
                 <label class="newLabel" for="Performer">Performer :</label>
                 <div>
-                    <select asp-items="@Model.Performers" asp-for="PerformerID" class="form-control col-6">
+                    <select asp-items="@Model.Performers" asp-for="PerformerID" class="form-control">
                     </select>
                 </div>
             </div>
@@ -37,7 +30,7 @@
             <div class="form-group newRow">
                 <label class="newLabel" for="Performer">Stage :</label>
                 <div>
-                    <select asp-items="@Model.Stages" asp-for="StageID" class="form-control col-6">
+                    <select asp-items="@Model.Stages" asp-for="StageID" class="form-control">
                     </select>
                 </div>
             </div>
@@ -45,7 +38,7 @@
             <div class="form-group newRow">
                 <label for="Start" class="newLabel">Start date :</label>
                 <div>
-                    <input asp-for="Start" class="form-control col-5" />
+                    <input asp-for="Start" class="form-control" />
                 </div>
                 <span asp-validation-for="Start" class="text-danger"></span>
             </div>
@@ -53,8 +46,12 @@
 
             <div class="clearfix"></div>
         </fieldset>
-
-        <input type="submit" value="Save New" class="btn btn-lg btn-secondary submit" />
-
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Performance" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit ml-1" />
+        </div>
     </form>
 </div>

@@ -27,15 +27,16 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult List()
         {
-            var model = _repo.GetAll().Select(p =>
+            var model = _repo.GetAll().OrderBy(m => m.Start).ToList().Select(p =>
                  new PerformanceListVM
                  {
                      PerformanceID = p.ID,
-                     Start = p.Start,
+                     Start = p.Start.ToString("dd/MM hh:mm"),
                      Performer = p.Performer.Name,
                      Stage = p.Stage.Name
 
                  }).ToList();
+            
             return View("List", model);
         }
 
@@ -162,7 +163,7 @@ namespace FestivalWebApplication.Controllers
             var model = new DetailPerformanceVM
             {
                 ID = performance.ID,
-                Start = performance.Start,
+                Start = performance.Start.ToString("dd/MM/yyyy hh:mm tt"),
                 PerformerName = performance.Performer.Name,
                 StageName = performance.Stage.Name,
                 PerformerPicture = performance.Performer.Picture

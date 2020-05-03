@@ -4,8 +4,6 @@
 }
 <style>
 
-
-
     .container {
         padding: 0 !important;
     }
@@ -57,6 +55,9 @@
 
         <fieldset>
             <legend class="w-auto">Manager</legend>
+            <span class="font-italic small">Choose a manager from the list or insert new manager data</span>
+            <div class="clearfix"></div>
+
             <div class="form-group newRow">
                 <select asp-items="@Model.Managers" asp-for="ManagerId" class="form-control">
                     <option selected value="9999">(None of the listed)</option>
@@ -89,6 +90,13 @@
 
         </fieldset>
 
-        <input type="submit" value="Save New" class="btn btn-lg btn-secondary submit" />
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Performer" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit ml-1" />
+        </div>
+        
     </form>
 </div>
