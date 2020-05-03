@@ -1,6 +1,6 @@
 ﻿@model FestivalWebApplication.ViewModels.Stage.NewStageVM;
 @{
-    ViewData["Title"] = "New";
+    ViewData["Title"] = "New Stage";
 }
 <style>
     .container {
@@ -43,7 +43,14 @@
             <div class="clearfix"></div>
 
         </fieldset>
-
-        <input type="submit" value="Add new stage" class="btn btn-lg btn-secondary submit" />
+        <div class="btn-group">
+            <a style="margin-right:5px;" asp-controller="Stage" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+                Back
+                <i class="fa fa-undo"></i>
+            </a>
+            <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit ml-1" />
+        </div>
+        
+        
     </form>
 </div>
