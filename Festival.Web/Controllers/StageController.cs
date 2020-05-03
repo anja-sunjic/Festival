@@ -59,6 +59,11 @@ namespace FestivalWebApplication.Controllers
         {
             if (!ModelState.IsValid)
             {
+                Model.Sponsors = _repo.GetAllSponsors().Select(s => new SelectListItem
+                {
+                    Text = s.CompanyName,
+                    Value = s.ID.ToString(),
+                }).ToList();
                 return View("New", Model);
             }
             Stage stage = new Stage();
