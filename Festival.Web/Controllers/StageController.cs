@@ -59,7 +59,7 @@ namespace FestivalWebApplication.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("New");
+                return View("New", Model);
             }
             Stage stage = new Stage();
             stage.Name = Model.Name;
