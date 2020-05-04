@@ -22,25 +22,10 @@ namespace Festival.Data.Models
         public DbSet<TicketVoucher> TicketVoucher { get; set; }
         public DbSet<PurchaseVoucher> PurchaseVoucher { get; set; }
         public DbSet<TransferService> TransferService { get; set; }
-        public DbSet<Image> Image { get; set; }
 
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public FestivalContext(DbContextOptions<FestivalContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer(@" Server=app.fit.ba, 1431;
-            
-                                            Database=Festival;
-
-                                            Trusted_Connection=False;
-
-                                            MultipleActiveResultSets=true;
-
-                                            User ID=festivalUser;
-
-                                            Password=f9pctz!");
 
         }
-
     }
 }

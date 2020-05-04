@@ -2,6 +2,7 @@
 using Festival.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -42,7 +43,9 @@ namespace FestivalWebApplication
 
            });
             services.AddControllersWithViews();
-            services.AddDbContext<FestivalContext>();
+            services.AddDbContext<FestivalContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("FestivalDatabase")));
+
             services.AddScoped<IAccommodationRepository, AccommodationRepository>();
             services.AddScoped<IShopItemRepository, ShopItemRepository>();
             services.AddScoped<ITransferVehicleRepository, TransferVehicleRepository>();
