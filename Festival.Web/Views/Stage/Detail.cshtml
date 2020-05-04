@@ -19,7 +19,7 @@
         <label class="detailLabel" for="Date">Sponsor : </label>
         <span class="detailData">@Model.SponsorName</span>
     </div>
-    <div class="detailButtons">
+    <div class="detailButtons btn-group">
         <a style="margin-right:5px;" asp-controller="Stage" asp-action="List" asp-route-id="@Model.Id" class="btn btn-info active" role="button" aria-pressed="true">
             Back
             <i class="fa fa-undo"></i>
@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="col-6" style="float:right">
-    <img src="~/images/stages/@Model.Image" class="shopitemImage imageDiv" />
+    <img src="~/images/stages/@Model.Image" class="accImage imageDiv" />
 </div>
 
 <div class="clearfix"></div>
