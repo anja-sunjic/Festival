@@ -16,7 +16,7 @@
 <div style="float:right; margin-bottom:10px;">
     <a asp-controller="ShopItem" asp-action="New" class="btn btn-success btn-lg active addnew" role="button" aria-pressed="true">Add New   <i class="fa fa-plus"></i></a>
 </div>
-<table class="table table-striped table-hover table-bordered">
+<table class="table table-striped table-hover text-center">
     <thead class="thead-dark zaglavlje">
         <tr>
             <th>#</th>
@@ -37,18 +37,20 @@
                 <td>@x.Quantity</td>
                 <td>@x.Price KM</td>
                 <td>
-                    <a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active" role="button" aria-pressed="true">
-                        <i class="fa fa-info mr-1"></i>
-                        Detail
-                    </a>
-                    <a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
-                        <i class="fa fa-edit"></i>
-                        Edit
-                    </a>
-                    <a asp-controller="ShopItem" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true">
-                        <i class="fa fa-trash"></i>
-                        Delete
-                    </a>
+                    <div class="btn-group">
+                        <a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active" role="button" aria-pressed="true">
+                            <i class="fa fa-info mr-1"></i>
+                            Detail
+                        </a>
+                        <a style="margin-right:5px;" asp-controller="ShopItem" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </a>
+                        <a asp-controller="ShopItem" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger" role="button" aria-pressed="true">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
                 </td>
             </tr>
         }
