@@ -22,7 +22,7 @@
         <label class="detailLabel" for="AvailableSeats">Available seats : </label>
         <span style="" class="detailData">@Model.AvailableSeats</span>
     </div>
-    <div class="detailButtons">
+    <div class="detailButtons btn-group">
         <a style="margin-right:5px;" asp-controller="TransferService" asp-action="List" asp-route-id="@Model.Id" class="btn btn-info active" role="button" aria-pressed="true">
             Back
             <i class="fa fa-undo"></i>

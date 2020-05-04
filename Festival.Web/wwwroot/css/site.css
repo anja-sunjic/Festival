@@ -298,8 +298,8 @@ form {
 }
 
 .accImage {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: auto;
     border: 3px solid #e2e2e2;
 }
 
