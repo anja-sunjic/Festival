@@ -1,6 +1,4 @@
-using System;
-
-namespace FestivalWebApplication.Models
+﻿namespace Festival.Web.Models
 {
     public class ErrorViewModel
     {

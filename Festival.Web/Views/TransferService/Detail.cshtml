@@ -1,4 +1,4 @@
-﻿@model FestivalWebApplication.ViewModels.TransferService.DetailTransferServiceVM;
+﻿@model Festival.Web.ViewModels.TransferService.DetailTransferServiceVM;
 @{
     ViewData["Title"] = "Detail";
 }
@@ -23,7 +23,7 @@
         <span style="" class="detailData">@Model.AvailableSeats</span>
     </div>
     <div class="detailButtons btn-group">
-        <a style="margin-right:5px;" asp-controller="TransferService" asp-action="List"  class="btn btn-info active" role="button" aria-pressed="true">
+        <a style="margin-right:5px;" asp-controller="TransferService" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
             Back
             <i class="fa fa-undo"></i>
         </a>

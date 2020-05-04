@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FestivalWebApplication.ViewModels.TransferVehicle
+namespace Festival.Web.ViewModels.TransferVehicle
 {
     public class ListTransferVehicleVM
     {

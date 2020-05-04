@@ -2,7 +2,6 @@
 using Festival.Data.Repositories;
 using Festival.Web.Helper;
 using Festival.Web.ViewModels.Stage;
-using FestivalWebApplication.ViewModels.Stage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

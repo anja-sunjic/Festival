@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FestivalWebApplication.Helper
+namespace Festival.Web.Helper
 {
     public class PaginatedList<T> : List<T>
     {

@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApplication.ViewModels.Sponsor
+﻿namespace Festival.Web.ViewModels.Sponsor
 {
     public class SponsorsListVM
     {

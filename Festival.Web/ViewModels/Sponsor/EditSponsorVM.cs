@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.Sponsor
+namespace Festival.Web.ViewModels.Sponsor
 {
     public class EditSponsorVM
     {

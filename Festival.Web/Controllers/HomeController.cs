@@ -1,4 +1,4 @@
-﻿using FestivalWebApplication.Models;
+﻿using Festival.Web.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

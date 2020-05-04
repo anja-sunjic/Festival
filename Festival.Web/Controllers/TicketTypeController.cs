@@ -1,6 +1,6 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
-using FestivalWebApplication.ViewModels.TicketType;
+using Festival.Web.ViewModels.TicketType;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

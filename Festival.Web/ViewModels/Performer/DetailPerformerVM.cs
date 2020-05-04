@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApplication.ViewModels.Performer
+﻿namespace Festival.Web.ViewModels.Performer
 {
     public class DetailPerformerVM
     {

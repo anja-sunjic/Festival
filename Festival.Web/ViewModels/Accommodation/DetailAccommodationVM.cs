@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApplication.ViewModels.Accommodation
+﻿namespace Festival.Web.ViewModels.Accommodation
 {
     public class DetailAccommodationVM
     {

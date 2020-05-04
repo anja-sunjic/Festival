@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.Performer
+namespace Festival.Web.ViewModels.Performer
 {
     public class EditPerformerVM
     {

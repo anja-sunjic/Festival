@@ -1,11 +1,11 @@
-﻿using CustomDataAnnotations;
+﻿using Festival.Web.Helper;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.TransferService
+namespace Festival.Web.ViewModels.TransferService
 {
     public class EditTransferServiceVM
     {

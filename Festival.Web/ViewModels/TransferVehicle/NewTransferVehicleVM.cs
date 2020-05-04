@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.TransferVehicle
+namespace Festival.Web.ViewModels.TransferVehicle
 {
     public class NewTransferVehicleVM
     {

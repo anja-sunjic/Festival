@@ -1,6 +1,6 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
-using FestivalWebApplication.ViewModels.TransferService;
+using Festival.Web.ViewModels.TransferService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

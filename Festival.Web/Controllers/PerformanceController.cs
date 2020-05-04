@@ -1,13 +1,10 @@
-﻿using System;
-using Festival.Data.Models;
-using FestivalWebApplication.ViewModels.Performance;
-using Microsoft.AspNetCore.Authorization;
+﻿using Festival.Data.Models;
+using Festival.Data.Repositories;
+using Festival.Web.ViewModels.Performance;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
+using System;
 using System.Linq;
-using Festival.Data.Repositories;
-using FestivalWebApplication.ViewModels.Accommodation;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -36,7 +33,7 @@ namespace FestivalWebApplication.Controllers
                      Stage = p.Stage.Name
 
                  }).ToList();
-            
+
             return View("List", model);
         }
 
@@ -168,7 +165,7 @@ namespace FestivalWebApplication.Controllers
                 StageName = performance.Stage.Name,
                 PerformerPicture = performance.Performer.Picture
             };
-            return View("Detail",model);
+            return View("Detail", model);
         }
 
         public IActionResult Delete(int id)

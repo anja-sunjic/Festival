@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApplication.ViewModels.TransferService
+﻿namespace Festival.Web.ViewModels.TransferService
 {
     public class DetailTransferServiceVM
     {

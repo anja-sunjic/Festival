@@ -1,10 +1,10 @@
-﻿using CustomDataAnnotations;
+﻿using Festival.Web.Helper;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.Performance
+namespace Festival.Web.ViewModels.Performance
 {
     public class NewPerformanceVM
     {

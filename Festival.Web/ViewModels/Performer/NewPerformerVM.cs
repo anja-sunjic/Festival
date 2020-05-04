@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.Performer
+namespace Festival.Web.ViewModels.Performer
 {
     public class NewPerformerVM
     {
@@ -16,11 +16,11 @@ namespace FestivalWebApplication.ViewModels.Performer
         public string PromoText { get; set; }
         [Required(ErrorMessage = "Picture is required, please pick one.")]
         public IFormFile Image { get; set; }
-        
+
         public string ManagerName { get; set; }
-       
+
         public string ManagerPhoneNumber { get; set; }
-        
+
         public string ManagerEmail { get; set; }
         public List<SelectListItem> Managers { get; set; }
         public int? ManagerId { get; set; }

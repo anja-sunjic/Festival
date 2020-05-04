@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.ShopItem
+namespace Festival.Web.ViewModels.ShopItem
 {
     public class NewShopItemVM
     {

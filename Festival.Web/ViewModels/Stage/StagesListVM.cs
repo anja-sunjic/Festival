@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FestivalWebApplication.ViewModels.Stage
+﻿namespace Festival.Web.ViewModels.Stage
 {
     public class StagesListVM
     {

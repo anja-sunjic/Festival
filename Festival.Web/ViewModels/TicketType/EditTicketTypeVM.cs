@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.TicketType
+namespace Festival.Web.ViewModels.TicketType
 {
     public class EditTicketTypeVM
     {

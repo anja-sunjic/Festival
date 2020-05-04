@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.Accommodation
+namespace Festival.Web.ViewModels.Accommodation
 {
     public class NewAccommodationVM
     {

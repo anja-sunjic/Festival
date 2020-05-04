@@ -1,4 +1,4 @@
-﻿@model FestivalWebApplication.ViewModels.TransferVehicle.DetailTransferVehicleVM;
+﻿@model Festival.Web.ViewModels.TransferVehicle.DetailTransferVehicleVM;
 @{
     ViewData["Title"] = Model.Name;
 }
@@ -19,7 +19,7 @@
         <span class="detailData">@Model.Driver</span>
     </div>
     <div class="detailButtons btn-group">
-        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="List"  class="btn btn-info active" role="button" aria-pressed="true">
+        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
             Back
             <i class="fa fa-undo"></i>
         </a>

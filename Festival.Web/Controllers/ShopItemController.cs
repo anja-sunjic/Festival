@@ -1,8 +1,7 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
 using Festival.Web.Helper;
-using FestivalWebApplication.Helper;
-using FestivalWebApplication.ViewModels.ShopItem;
+using Festival.Web.ViewModels.ShopItem;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

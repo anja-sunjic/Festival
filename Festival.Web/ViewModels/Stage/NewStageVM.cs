@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace FestivalWebApplication.ViewModels.Stage
+namespace Festival.Web.ViewModels.Stage
 {
     public class NewStageVM
     {
@@ -14,7 +14,7 @@ namespace FestivalWebApplication.ViewModels.Stage
         [Required(ErrorMessage = "Capacity is required, please insert the amount.")]
         [Range(1, float.MaxValue, ErrorMessage = "Value should be greater than 1")]
         public int Capacity { get; set; }
-        
+
         public List<SelectListItem> Sponsors { get; set; }
         [Required(ErrorMessage = "Sponsor is required, please select one.")]
         public int? SponsorID { get; set; }

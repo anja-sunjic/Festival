@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApplication.ViewModels.ShopItem
+﻿namespace Festival.Web.ViewModels.ShopItem
 {
     public class DetailShopItemVM
     {

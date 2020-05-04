@@ -1,4 +1,4 @@
-﻿namespace FestivalWebApplication.ViewModels.TicketType
+﻿namespace Festival.Web.ViewModels.TicketType
 {
     public class TicketTypeListVM
     {

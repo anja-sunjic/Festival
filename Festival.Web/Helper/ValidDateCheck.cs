@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CustomDataAnnotations
+namespace Festival.Web.Helper
 {
     public class CurrentDateAttribute : ValidationAttribute
     {

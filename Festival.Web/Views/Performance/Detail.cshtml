@@ -1,5 +1,5 @@
 ﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
-@model FestivalWebApplication.ViewModels.Performance.DetailPerformanceVM;
+@model Festival.Web.ViewModels.Performance.DetailPerformanceVM;
 @{
     ViewData["Title"] = "Performance #" + Model.ID;
 }
@@ -20,7 +20,7 @@
         <span class="detailData">@Model.StageName</span>
     </div>
     <div class="detailButtons btn-group">
-        <a style="margin-right:5px;" asp-controller="Performance" asp-action="List"  class="btn btn-info active" role="button" aria-pressed="true">
+        <a style="margin-right:5px;" asp-controller="Performance" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
             Back
             <i class="fa fa-undo"></i>
         </a>
