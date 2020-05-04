@@ -101,6 +101,8 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Delete(int id)
         {
+            var sponsor = _repo.GetByID(id);
+            ImageDelete.DeleteImage(hostingEnvironment, "sponsors", sponsor.Image);
             _repo.Delete(id);
             return RedirectToAction("List");
         }

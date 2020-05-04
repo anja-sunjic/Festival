@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using FestivalWebApplication.ViewModels.Performance;
 
 namespace FestivalWebApplication.Controllers
 {
@@ -70,6 +69,8 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Delete(int ID)
         {
+            var acc = _repo.GetByID(ID);
+            ImageDelete.DeleteImage(_webHostEnvironment, "accommodations", acc.Picture);
             _repo.Delete(ID);
             return Redirect("/Accommodations/List");
         }

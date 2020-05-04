@@ -124,6 +124,8 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Delete(int Id)
         {
+            var vehicle = _repo.GetByID(Id);
+            ImageDelete.DeleteImage(_webHostEnvironment, "transfervehicles", vehicle.Picture);
             _repo.Delete(Id);
             return Redirect("/TransferVehicle/Index");
         }

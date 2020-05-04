@@ -133,10 +133,12 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Delete(int id)
         {
+            var stage = _repo.GetByID(id);
+            ImageDelete.DeleteImage(_hostingEnvironment, "stages", stage.Image);
             _repo.Delete(id);
-
             return RedirectToAction("List");
         }
+
         public IActionResult Detail(int id)
         {
             Stage x = _repo.GetByID(id);
@@ -146,8 +148,8 @@ namespace FestivalWebApplication.Controllers
                 Name = x.Name,
                 Capacity = x.Capacity,
                 SponsorName = _repo.GetSponsor(id).CompanyName,
-                Image=x.Image
-                
+                Image = x.Image
+
             };
             return View(model);
         }

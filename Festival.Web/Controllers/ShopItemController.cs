@@ -54,6 +54,8 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult Delete(int ID)
         {
+            var shopItem = _repo.GetByID(ID);
+            ImageDelete.DeleteImage(_webHostEnvironment, "shopitems", shopItem.Picture);
             _repo.Delete(ID);
             return Redirect("/ShopItem/List");
         }

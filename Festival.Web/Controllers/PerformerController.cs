@@ -83,7 +83,7 @@ namespace FestivalWebApplication.Controllers
                 Name = model.Name,
                 Fee = model.Fee,
                 PromoText = model.PromoText,
-                ManagerID=model.ManagerId,
+                ManagerID = model.ManagerId,
                 Picture = uniqueFileName
             };
             if (model.ManagerId == 9999)
@@ -163,8 +163,9 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult Delete(int id)
         {
+            var performer = _repo.GetByID(id);
+            ImageDelete.DeleteImage(_hostingEnvironment, "performers", performer.Picture);
             _repo.Delete(id);
-
             return RedirectToAction("List");
         }
     }
