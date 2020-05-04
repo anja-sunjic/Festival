@@ -54,7 +54,7 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int ID)
         {
             var shopItem = _repo.GetByID(ID);
-            ImageDelete.DeleteImage(_webHostEnvironment, "shopitems", shopItem.Picture);
+            Image.Delete(_webHostEnvironment, "shopitems", shopItem.Picture);
             _repo.Delete(ID);
             return Redirect("/ShopItem/List");
         }
@@ -96,7 +96,7 @@ namespace FestivalWebApplication.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "shopitems");
+            string uniqueFileName = Image.Upload(model.ProfileImage, _webHostEnvironment, "shopitems");
 
             ShopItem shopItem = new ShopItem()
             {
@@ -120,7 +120,7 @@ namespace FestivalWebApplication.Controllers
                 return View("Edit");
             }
 
-            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "shopitems");
+            string uniqueFileName = Image.Upload(model.ProfileImage, _webHostEnvironment, "shopitems");
 
             ShopItem shopItem = _repo.GetByID(model.ID);
             shopItem.Name = model.Name;

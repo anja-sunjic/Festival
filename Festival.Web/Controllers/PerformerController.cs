@@ -76,7 +76,7 @@ namespace FestivalWebApplication.Controllers
                 _repo.AddManager(manager);
             }
 
-            var uniqueFileName = ImageUpload.UploadImage(model.Image, _hostingEnvironment, "performers");
+            var uniqueFileName = Image.Upload(model.Image, _hostingEnvironment, "performers");
 
             var performer = new Performer
             {
@@ -135,7 +135,7 @@ namespace FestivalWebApplication.Controllers
 
             if (model.Image != null)
             {
-                var uniqueFileName = ImageUpload.UploadImage(model.Image, _hostingEnvironment, "performers");
+                var uniqueFileName = Image.Upload(model.Image, _hostingEnvironment, "performers");
                 performer.Picture = uniqueFileName;
             }
 
@@ -164,7 +164,7 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int id)
         {
             var performer = _repo.GetByID(id);
-            ImageDelete.DeleteImage(_hostingEnvironment, "performers", performer.Picture);
+            Image.Delete(_hostingEnvironment, "performers", performer.Picture);
             _repo.Delete(id);
             return RedirectToAction("List");
         }

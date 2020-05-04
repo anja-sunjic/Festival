@@ -51,7 +51,7 @@ namespace FestivalWebApplication.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = ImageUpload.UploadImage(Model.Image, hostingEnvironment, "sponsors");
+            string uniqueFileName = Image.Upload(Model.Image, hostingEnvironment, "sponsors");
 
             Sponsor sponsor = new Sponsor()
             {
@@ -92,7 +92,7 @@ namespace FestivalWebApplication.Controllers
             sponsor.ContactPersonName = Model.ContactPersonName;
             if (Model.Image != null)
             {
-                string uniqueFileName = ImageUpload.UploadImage(Model.Image, hostingEnvironment, "sponsors");
+                string uniqueFileName = Image.Upload(Model.Image, hostingEnvironment, "sponsors");
                 sponsor.Image = uniqueFileName;
             }
             _repo.Save();
@@ -102,7 +102,7 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int id)
         {
             var sponsor = _repo.GetByID(id);
-            ImageDelete.DeleteImage(hostingEnvironment, "sponsors", sponsor.Image);
+            Image.Delete(hostingEnvironment, "sponsors", sponsor.Image);
             _repo.Delete(id);
             return RedirectToAction("List");
         }

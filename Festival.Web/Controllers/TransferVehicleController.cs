@@ -55,7 +55,7 @@ namespace FestivalWebApplication.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = ImageUpload.UploadImage(model.Picture, _webHostEnvironment, "transfervehicles");
+            string uniqueFileName = Image.Upload(model.Picture, _webHostEnvironment, "transfervehicles");
 
             TransferVehicle vehicle = new TransferVehicle()
             {
@@ -107,7 +107,7 @@ namespace FestivalWebApplication.Controllers
                 return View("Edit");
             }
 
-            string uniqueFileName = ImageUpload.UploadImage(model.Picture, _webHostEnvironment, "transfervehicles");
+            string uniqueFileName = Image.Upload(model.Picture, _webHostEnvironment, "transfervehicles");
             var acc = _repo.GetByID(model.ID);
             acc.Name = model.Name;
             acc.Capacity = model.Capacity;
@@ -125,7 +125,7 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int Id)
         {
             var vehicle = _repo.GetByID(Id);
-            ImageDelete.DeleteImage(_webHostEnvironment, "transfervehicles", vehicle.Picture);
+            Image.Delete(_webHostEnvironment, "transfervehicles", vehicle.Picture);
             _repo.Delete(Id);
             return Redirect("/TransferVehicle/Index");
         }

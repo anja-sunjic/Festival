@@ -69,7 +69,7 @@ namespace FestivalWebApplication.Controllers
                 }).ToList();
                 return View("New", Model);
             }
-            string uniqueFileName = ImageUpload.UploadImage(Model.Image, _hostingEnvironment, "stages");
+            string uniqueFileName = Image.Upload(Model.Image, _hostingEnvironment, "stages");
             Stage stage = new Stage();
             stage.Name = Model.Name;
             stage.Capacity = Model.Capacity;
@@ -122,7 +122,7 @@ namespace FestivalWebApplication.Controllers
             stage.SponsorID = Model.SponsorID;
             if (Model.Image != null)
             {
-                string uniqueFileName = ImageUpload.UploadImage(Model.Image, _hostingEnvironment, "stages");
+                string uniqueFileName = Image.Upload(Model.Image, _hostingEnvironment, "stages");
                 stage.Image = uniqueFileName;
             }
             _repo.Save();
@@ -133,7 +133,7 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int id)
         {
             var stage = _repo.GetByID(id);
-            ImageDelete.DeleteImage(_hostingEnvironment, "stages", stage.Image);
+            Image.Delete(_hostingEnvironment, "stages", stage.Image);
             _repo.Delete(id);
             return RedirectToAction("List");
         }

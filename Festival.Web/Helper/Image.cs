@@ -5,9 +5,9 @@ using System.IO;
 
 namespace Festival.Web.Helper
 {
-    public static class ImageUpload
+    public static class Image
     {
-        public static string UploadImage(IFormFile image, IWebHostEnvironment webhost, string modelName)
+        public static string Upload(IFormFile image, IWebHostEnvironment webhost, string modelName)
         {
 
             string uniqueFileName = null;
@@ -23,6 +23,15 @@ namespace Festival.Web.Helper
                 }
             }
             return uniqueFileName;
+        }
+
+        public static void Delete(IWebHostEnvironment webhost, string folder, string fileName)
+        {
+            string fullPath = Path.Combine(webhost.WebRootPath, "images", folder, fileName);
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+            }
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Festival.Web.Controllers
         public IActionResult Delete(int ID)
         {
             var acc = _repo.GetByID(ID);
-            ImageDelete.DeleteImage(_webHostEnvironment, "accommodations", acc.Picture);
+            Image.Delete(_webHostEnvironment, "accommodations", acc.Picture);
             _repo.Delete(ID);
             return Redirect("/Accommodations/List");
         }
@@ -98,7 +98,7 @@ namespace Festival.Web.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "accommodations");
+            string uniqueFileName = Image.Upload(model.ProfileImage, _webHostEnvironment, "accommodations");
 
             Accommodation accommodation = new Accommodation()
             {
@@ -129,7 +129,7 @@ namespace Festival.Web.Controllers
             acc.Address = model.Address;
             if (model.ProfileImage != null)
             {
-                string uniqueFileName = ImageUpload.UploadImage(model.ProfileImage, _webHostEnvironment, "accommodations");
+                string uniqueFileName = Image.Upload(model.ProfileImage, _webHostEnvironment, "accommodations");
                 acc.Picture = uniqueFileName;
             }
             _repo.Save();
