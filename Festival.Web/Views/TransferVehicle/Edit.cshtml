@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = Model.Name;
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/Inputmask-5.x/dist/jquery.inputmask.js"></script>
 
 
 <style>
@@ -31,7 +33,7 @@
                 <div class="col-7 newRow" style="float:left;padding-left:0px;">
                     <label class="newLabel" for="RegistrationNumber">Registration Number :</label>
                     <div>
-                        <input asp-for="RegistrationNumber" class="form-control" />
+                        <input asp-for="RegistrationNumber" data-inputmask-regex="[AEOJKMT]\d{2}-[AEOJKMT]-\d{3}" id="regNum" class="form-control" />
                     </div>
                     <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
                 </div>
@@ -76,3 +78,10 @@
 
     </form>
 </div>
+
+<script>
+
+    $(function ($) {
+        $("#regNum").inputmask();
+    })
+</script>
