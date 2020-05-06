@@ -55,6 +55,7 @@ namespace FestivalWebApplication
             services.AddScoped<ISponzorRepository, SponsorRepository>();
             services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             services.AddScoped<IPerformanceRepository, PerformanceRepository>();
+            services.AddScoped<IAttendeeRepository, AttendeeRepository>();
 
         }
 
