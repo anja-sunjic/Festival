@@ -28,7 +28,8 @@ namespace FestivalWebApplication.Controllers
                  new PerformanceListVM
                  {
                      PerformanceID = p.ID,
-                     Start = p.Start.ToString("dd/MM hh:mm tt"),
+                     Date = p.Start.ToString("dd/MM"),
+                     StartTime = p.Start.ToString("hh:mm tt"),
                      Performer = p.Performer.Name,
                      Stage = p.Stage.Name
 

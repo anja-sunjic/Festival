@@ -15,7 +15,8 @@
             <th>#</th>
             <th>Performer</th>
             <th>Stage</th>
-            <th>Date & Time</th>
+            <th>Date</th>
+            <th>Time</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -28,18 +29,19 @@
                 <td>@broj</td>
                 <td>@x.Performer</td>
                 <td>@x.Stage</td>
-                <td>@x.Start.ToString()</td>
+                <td>@x.Date</td>
+                <td>@x.StartTime</td>
                 <td>
                     <div class="btn-group">
-                        <a style="margin-right:5px;" asp-controller="Performance" asp-action="Detail" asp-route-id="@x.PerformanceID" class="btn btn-info active" role="button" aria-pressed="true">
+                        <a style="margin-right:5px;" asp-controller="Performance" asp-action="Detail" asp-route-id="@x.PerformanceID" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
                             <i class="fa fa-info mr-1"></i>
                             Detail
                         </a>
-                        <a style="margin-right:5px;" asp-controller="Performance" asp-action="Edit" asp-route-id="@x.PerformanceID" class="btn btn-secondary active" role="button" aria-pressed="true">
+                        <a style="margin-right:5px;" asp-controller="Performance" asp-action="Edit" asp-route-id="@x.PerformanceID" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">
                             <i class="fa fa-edit"></i>
                             Edit
                         </a>
-                        <a asp-controller="Performance" asp-action="Delete" asp-route-id="@x.PerformanceID" class="btn btn-danger" role="button" aria-pressed="true">
+                        <a asp-controller="Performance" asp-action="Delete" asp-route-id="@x.PerformanceID" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
                             <i class="fa fa-trash"></i>
                             Delete
                         </a>
