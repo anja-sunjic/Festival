@@ -38,13 +38,10 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a asp-controller="Home" asp-action="UserIndex">Home</a></li>
                             <li><a asp-controller="Performance" asp-action="GroupedList">Line up</a></li>
-                            <li><a asp-controller="Accommodations" asp-action="_List">Accommodation</a></li>
-
-                            <li><a href="schedule.html">Schedule</a></li>
-                            <li><a href="speakers.html">Speakers</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li class="animated bounceIn"><a href="pricing.html">Buy Tickets</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li class="animated bounceIn"><a asp-controller="Ticket" asp-action="Index">Buy tickets</a></li>
+                            <li><a asp-controller="Accommodations" asp-action="Index">Accommodation</a></li>
+                            <li><a asp-controller="TransferService" asp-action="Index">Transfer</a></li>
+                            <li><a asp-controller="ShopItem" asp-action="UserList">Merch</a></li>
                             <li><a class="register" asp-controller="Attendee" asp-action="New">Register</a></li>
                         </ul>
                     </div><!-- /navbar-collapse -->
@@ -74,7 +71,7 @@
         </main>
     </div>
 
-    
+
     <!-- Main contetn End -->
     <!-- Copytight Start -->
     <section id="copyright">
