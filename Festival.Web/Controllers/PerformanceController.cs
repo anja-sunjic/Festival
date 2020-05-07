@@ -1,5 +1,6 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
+using Festival.Web.Helper;
 using Festival.Web.ViewModels.Performance;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,8 +23,10 @@ namespace FestivalWebApplication.Controllers
         {
             return RedirectToAction("List");
         }
-        public IActionResult List()
+        public IActionResult List(int? pageNumber)
         {
+            int pageSize = 4;
+
             var model = _repo.GetAll().OrderBy(m => m.Start).ToList().Select(p =>
                  new PerformanceListVM
                  {
@@ -33,8 +36,12 @@ namespace FestivalWebApplication.Controllers
                      Performer = p.Performer.Name,
                      Stage = p.Stage.Name
 
-                 }).ToList();
+                 }).AsQueryable();
 
+
+            var newModel = PaginatedList<PerformanceListVM>.CreateAsync(model, pageNumber ?? 1, pageSize);
+
+            return View("List", newModel);
             return View("List", model);
         }
 
