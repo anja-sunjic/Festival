@@ -61,7 +61,8 @@ namespace FestivalWebApplication.Controllers
             {
                 Name = Model.Name,
                 Price = Model.Price,
-                Description = Model.Description
+                Description = Model.Description,
+                Tier=Model.Tier
             };
             _repo.Add(ticketType);
 
@@ -81,7 +82,8 @@ namespace FestivalWebApplication.Controllers
                 Id = tt.ID,
                 Name = tt.Name,
                 Price = tt.Price,
-                Description = tt.Description
+                Description = tt.Description,
+                Tier=tt.Tier
             };
 
             return View(model);
@@ -97,6 +99,7 @@ namespace FestivalWebApplication.Controllers
             tt.Name = model.Name;
             tt.Price = model.Price;
             tt.Description = model.Description;
+            tt.Tier = model.Tier;
             _repo.Save();
             return RedirectToAction("List");
         }

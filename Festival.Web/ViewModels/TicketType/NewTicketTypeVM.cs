@@ -13,5 +13,7 @@ namespace Festival.Web.ViewModels.TicketType
         [Required(ErrorMessage = "Description is required, please insert it.")]
         [StringLength(50, ErrorMessage = "Description length can't be more than 50 characters.")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "Tier is required, please insert it.")]
+        public int Tier { get; set; }
     }
 }

@@ -14,5 +14,7 @@ namespace Festival.Web.ViewModels.TicketType
         [Required(ErrorMessage = "Price is required, please insert it.")]
         [Range(0, 1000, ErrorMessage = "Price must be between 0 and 1000 KM")]
         public float Price { get; set; }
+        [Required(ErrorMessage = "Tier is required, please insert it.")]
+        public int Tier { get; set; }
     }
 }
