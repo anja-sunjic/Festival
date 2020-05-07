@@ -23,6 +23,7 @@ namespace Festival.Web.Helper
                     MailClient.Credentials = new System.Net.NetworkCredential("account2@gmail.com", "password");
                     MailClient.Send(emailMessage);
                 }
+                //https://stackoverflow.com/questions/5336239/attach-a-file-from-memorystream-to-a-mailmessage-in-c-sharp
             }
         }
     }

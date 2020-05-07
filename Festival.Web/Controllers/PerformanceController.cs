@@ -5,6 +5,7 @@ using Festival.Web.ViewModels.Performance;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FestivalWebApplication.Controllers
@@ -43,6 +44,31 @@ namespace FestivalWebApplication.Controllers
 
             return View("List", newModel);
             return View("List", model);
+        } 
+        
+        public IActionResult GroupedList()
+        {
+            List<GroupedPerformanceListVM> Model = new List<GroupedPerformanceListVM>();
+            var query = _repo.GetAll().GroupBy(x => x.Start.Date).OrderBy(x => x.Key);
+            foreach (IGrouping<DateTime, Performance> group in query)
+            {
+                Model.Add(new GroupedPerformanceListVM
+                {
+                    Key = group.Key.ToString("dd/MM"),
+                    Performances = group.Where(g => g.Start.Date == group.Key).OrderBy(m => m.Start).Select(p => new PerformanceListVM
+                    {
+                        PerformanceID = p.ID,
+                        Date = p.Start.ToString("dd/MM"),
+                        StartTime = p.Start.ToString("hh:mm tt"),
+                        Performer = p.Performer.Name,
+                        Stage = p.Stage.Name
+                    }).ToList()
+                });
+            }
+            
+
+            return View("GroupedList", Model);
+            
         }
 
         public IActionResult New()

@@ -61,6 +61,7 @@ namespace Festival.Web.Controllers
 
             };
             _repo.Add(attendee);
+            
 
             return RedirectToAction("Index", "Home");
         }

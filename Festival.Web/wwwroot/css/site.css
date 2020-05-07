@@ -339,3 +339,10 @@ form {
     padding-left: 9px !important;
     padding-bottom: 23px !important;
 }
+
+.danFestivala {
+    font-size: larger;
+    text-align: center;
+    background-color: #8b49fc !important;
+    border:none !important;
+}

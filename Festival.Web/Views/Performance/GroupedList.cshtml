@@ -1,0 +1,45 @@
+﻿@using Festival.Data.Models;
+
+@using Festival.Web.ViewModels.Performance;
+@model List<GroupedPerformanceListVM>
+@{
+    ViewData["Title"] = "Performances";
+
+}
+
+@foreach (GroupedPerformanceListVM group in Model)
+{
+    <table class="table table-hover text-center">
+
+        <thead class="thead-dark">
+            <tr>
+                <th class="danFestivala" colspan="4">@group.Key</th>
+            </tr>
+            <tr>
+                <th>Performer</th>
+                <th>Stage</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PerformanceListVM x in group.Performances)
+            {
+                <tr>
+                    <td>@x.Performer</td>
+                    <td>@x.Stage</td>
+                    <td>@x.StartTime</td>
+                    <td>
+
+                        <a style="margin-right:5px;" asp-controller="Performance" asp-action="Detail" asp-route-id="@x.PerformanceID" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-info mr-1"></i>
+                            Detail
+                        </a>
+
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
