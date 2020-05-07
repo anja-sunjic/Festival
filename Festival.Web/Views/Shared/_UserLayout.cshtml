@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Impression | Bootstrap HTML5 Conference and Event Template</title>
-
+    <title>@ViewData["Title"] </title>
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/bootstrap.min.css">
     <!-- Main Style -->
@@ -40,21 +38,14 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a asp-controller="Home" asp-action="UserIndex">Home</a></li>
                             <li><a asp-controller="Performance" asp-action="GroupedList">Line up</a></li>
-                            <li class="active dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pages <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li class="active"><a href="about.html">About Us</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="pricing.html">Pricing Table</a></li>
-                                    <li><a href="sponsors.html">Sponsors</a></li>
-                                    <li><a href="single-post.html">Single Post</a></li>
-                                </ul>
-                            </li>
+                            <li><a asp-controller="Accommodations" asp-action="_List">Accommodation</a></li>
+
                             <li><a href="schedule.html">Schedule</a></li>
                             <li><a href="speakers.html">Speakers</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li class="animated bounceIn"><a href="pricing.html">Buy Tickets</a></li>
                             <li><a href="contact.html">Contact</a></li>
+                            <li><a class="register" asp-controller="Attendee" asp-action="New">Register</a></li>
                         </ul>
                     </div><!-- /navbar-collapse -->
                 </div><!-- /container -->
@@ -78,72 +69,34 @@
     <!-- Page Header End-->
 
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
-    <!-- Call to action Section End -->
-    <!-- Footer Section Start -->
-    <footer class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <h3><img src="assets/img/footer-logo.png" alt=""></h3>
-                    <p>
-                        If you think you have the passion,
-                        attitude and capability to join us
-                        the next big software company
-                        s so that we can get the convers.
-                    </p>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Docs</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <h3>Learn More</h3>
-                    <ul>
-                        <li><a href="#">How it Works</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Log In</a></li>
-                        <li><a href="#">Sign Up</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <h3>Quick Link</h3>
-                    <ul>
-                        <li><a href="#">Schedule</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
 
+    
+    <!-- Main contetn End -->
+    <!-- Copytight Start -->
     <section id="copyright">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <p class="copyright-text text-center">
-                        @@Festival team
+                        ©Designed and Developed by
+                        <a rel="nofollow" href="http://graygrids.com">
+                            GrayGrids
+                        </a>
                     </p>
                 </div>
             </div>
         </div>
     </section>
-
+    <!-- Copytight End -->
     <!-- Go to Top Link -->
-    <a href="#header-wrap" class="back-to-top">
+    <a href="#" class="back-to-top">
         <i class="icon-arrow-up"></i>
     </a>
+
 
 
 

@@ -61,7 +61,8 @@ namespace FestivalWebApplication.Controllers
                         Date = p.Start.ToString("dd/MM"),
                         StartTime = p.Start.ToString("hh:mm tt"),
                         Performer = p.Performer.Name,
-                        Stage = p.Stage.Name
+                        Stage = p.Stage.Name,
+                        Image=p.Performer.Picture
                     }).ToList()
                 });
             }

@@ -7,40 +7,92 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 
 }
+<section id="schedule" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
+                <!-- Schedule Main board Start-->
+                <div class="main-board wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs day" role="tablist">
+                        @{var broj = 0; }
+                        @foreach (GroupedPerformanceListVM group in Model)
+                        {
+                            broj++;
+                            <li role="presentation" class=""><a href="#@("day" +broj)" aria-controls="@("day" +broj)" role="tab" data-toggle="tab" aria-expanded="false">@group.Key <br> <span>DAY @broj</span></a></li>
+                        }
+                    </ul>
+                    <div class="tab-content">
+                        @{ broj = 0; }
+                        @foreach (GroupedPerformanceListVM group in Model)
+                        {
+                            broj++;
+                            <!-- Tab content Start -->
+
+
+                            <div role="tabpanel" class="tab-pane" id="@("day" +broj)">
+                                <div class="row">
+                                    @foreach (PerformanceListVM x in group.Performances)
+                                    {
+
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="speakers-member wow fadeInUp animated" data-wow-delay="0s" style="visibility:visible; animation-delay:0.1s; -moz-animation-delay:0.1s; -webkit-animation-delay:0.1s">
+                                                <div class="member-img">
+                                                    <img style="max-width:100%;" src="~/images/performers/@x.Image" />
+                                                </div>
+                                                <div class="member-desc">
+                                                    <h3>@x.Performer</h3>
+                                                    <h4>@x.Stage</h4>
+                                                    <h4>@x.StartTime</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+                            </div>
+
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @foreach (GroupedPerformanceListVM group in Model)
 {
-    <table class="table table-hover text-center">
 
-        <thead class="thead-dark">
-            <tr>
-                <th class="danFestivala" colspan="4">@group.Key</th>
-            </tr>
-            <tr>
-                <th>Performer</th>
-                <th>Stage</th>
-                <th>Time</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (PerformanceListVM x in group.Performances)
-            {
-                <tr>
-                    <td>@x.Performer</td>
-                    <td>@x.Stage</td>
-                    <td>@x.StartTime</td>
-                    <td>
+    <section id="speakers" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title wow fadeInUp animated" data-wow-delay="0s" style="visibility:visible; animation-delay:0.1s; -moz-animation-delay:0.1s; -webkit-animation-delay:0.1s ">
+                        @group.Key
+                    </h2>
+                </div>
+                @foreach (PerformanceListVM x in group.Performances)
+                {
 
-                        <a style="margin-right:5px;" asp-controller="Performance" asp-action="Detail" asp-route-id="@x.PerformanceID" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
-                            <i class="fa fa-info mr-1"></i>
-                            Detail
-                        </a>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="speakers-member wow fadeInUp animated" data-wow-delay="0s" style="visibility:visible; animation-delay:0.1s; -moz-animation-delay:0.1s; -webkit-animation-delay:0.1s">
+                            <div class="member-img">
+                                <img style="max-width:100%;" src="~/images/performers/@x.Image" />
+                            </div>
+                            <div class="member-desc">
+                                <h3>@x.Performer</h3>
+                                <h4>@x.Stage</h4>
+                                <h4>@x.StartTime</h4>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
 
-                    </td>
-                </tr>
-
-            }
-        </tbody>
-    </table>
+    <br />
 }

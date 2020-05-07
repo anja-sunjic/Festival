@@ -7,5 +7,6 @@
         public string StartTime { get; set; }
         public string Performer { get; set; }
         public string Stage { get; set; }
+        public string Image { get; set; }
     }
 }
