@@ -42,6 +42,11 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        } 
+        public IActionResult UserIndex()
+        {
+            return View();
         }
+       
     }
 }
