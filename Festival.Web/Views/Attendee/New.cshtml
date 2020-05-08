@@ -5,132 +5,121 @@
 }
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/Inputmask-5.x/dist/jquery.inputmask.js"></script>
+<style>
+    .page-header {
+        display: none;
+    }
+    .text-danger{
+        color:rgba(0, 0, 0, 0.64) !important;
+    }
+</style>
 
+<div class="main-content">
+    <div class="form-wrapper">
+        <section id="contact">
+            <div class="container">
+                <div class="row wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+                    <div class="col-md-8 col-sm-7 contact-form">
 
+                        <div class="title-header">
+                            <h3 class="title-medium pull-left">Register</h3>
+                            <div class="icon pull-right"><i class="icon-globe"></i></div>
+                        </div>
 
-<section id="contact">
-    <div class="container">
-        <div class="row wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-            <div class="col-md-8 col-sm-7 contact-form">
-                <form role="form" id="contactForm" asp-action="SaveNew" method="post">
-                    <div class="title-header">
-                        <h3 class="title-medium pull-left">Register</h3>
-                        <div class="icon pull-right"><i class="icon-globe"></i></div>
+                        <form  asp-controller="Attendee" asp-action="SaveNew" method="post">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="newLabel" for="FirstName">First name</label>
+                                    <div>
+                                        <input asp-for="FirstName" class="input" />
+                                    </div>
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <label class="newLabel" for="LastName">Last name</label>
+                                    <div>
+                                        <input asp-for="LastName" class="input" />
+                                    </div>
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <label class="newLabel" for="Email">Email</label>
+                                    <div>
+                                        <input asp-for="Email" class="input" id="email" />
+                                    </div>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <label class="newLabel" for="PhoneNumber">Phone number</label>
+                                    <div>
+                                        <input asp-for="PhoneNumber" class="input" />
+                                    </div>
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <br /><br />
+
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <label class="newLabel" for="Username">Username</label>
+                                    <div>
+                                        <input asp-for="Username" class="input" />
+                                    </div>
+                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <label class="newLabel" for="Password">Password</label>
+                                    <div>
+                                        <input asp-for="Password" type="password" class="input" />
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="newLabel" for="ConfirmPassword">Confirm password</label>
+                                    <div>
+                                        <input asp-for="ConfirmPassword" type="password" class="input" />
+                                    </div>
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <input type="submit" value="Register"  class="btn btn-common submitButton" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="label-line">
-                                <span asp-validation-for="FirstName"></span>
-                                <label class="label transition">First name</label>
-                                <input asp-for="FirstName" class="input" />
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="label-line">
-                                <span class="span"></span>
-                                <label class="label transition">Email</label>
-                                <input type="email" class="input" id="email" required="" data-error="Please enter your email">
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="label-line textarea">
-                                <span class="span"></span>
-                                <label class="label transition">Message</label>
-                                <textarea id="message" class="input" required="" data-error="Write your message"></textarea>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                            <input type="submit"  value="Register" id="form-submit" class="btn btn-common disabled" style="pointer-events: all; cursor: pointer;">
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
+
+        </section>
     </div>
-</section>
+</div>
 
-<section id="contact">
-    <form class="formMy" style="border:2px dotted #fafafa;width:50%; margin: 0 auto;" asp-action="SaveNew" method="post">
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="label-line">
-
-                </div>
-            </div>
-            <div class="form-group newRow">
-                <label for="LastName" class="newLabel">Last name :</label>
-                <div>
-                    <input asp-for="LastName" class="form-control" />
-                </div>
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group newRow">
-                <label class="newLabel" for="Email">Email :</label>
-                <div>
-                    <input asp-for="Email" class="form-control" id="email" />
-                </div>
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group newRow">
-                <label class="newLabel" for="PhoneNumber">Phone number :</label>
-                <div>
-                    <input asp-for="PhoneNumber" class="form-control" />
-                </div>
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group newRow">
-                <label class="newLabel" for="Username">Username :</label>
-                <div>
-                    <input asp-for="Username" class="form-control" />
-                </div>
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-
-            <div class="form-group newRow">
-                <label class="newLabel" for="Password">Password :</label>
-                <div>
-                    <input asp-for="Password" type="password" class="form-control" />
-                </div>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group newRow">
-                <label class="newLabel" for="ConfirmPassword">Confirm password :</label>
-                <div>
-                    <input asp-for="ConfirmPassword" type="password" class="form-control" />
-                </div>
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-
-        </div>
-
-
-
-
-    </form>
-</section>
-<script>
-    $(function ($) {
-        $("#email").inputmask({
-            mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@@*{1,20}[.*{2,6}][.*{1,2}]",
-            greedy: false,
-            onBeforePaste: function (pastedValue, opts) {
-                pastedValue = pastedValue.toLowerCase();
-                return pastedValue.replace("mailto:", "");
-            },
-            definitions: {
-                '*': {
-                    validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
-                    casing: "lower"
+@*<script>
+        $(function ($) {
+            $("#email").inputmask({
+                mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@@*{1,20}[.*{2,6}][.*{1,2}]",
+                greedy: false,
+                onBeforePaste: function (pastedValue, opts) {
+                    pastedValue = pastedValue.toLowerCase();
+                    return pastedValue.replace("mailto:", "");
+                },
+                definitions: {
+                    '*': {
+                        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
+                        casing: "lower"
+                    }
                 }
-            }
-        });
-    })
-</script>
+            });
+        })
+    </script>*@
