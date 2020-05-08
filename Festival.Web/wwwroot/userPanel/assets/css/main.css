@@ -8,6 +8,7 @@
 html{
     width:100%;
 }
+
 body {
   font-size: 15px;
   font-family: 'Roboto', sans-serif;
@@ -1433,7 +1434,7 @@ h1 {
 #contact .contact-form {
   background: #fff;
   padding: 57px 40px;
-  margin: -254px 0px 200px;
+  margin: 0 auto;
   max-height: 627px;
 }
 #contact .information {
@@ -1506,22 +1507,22 @@ h1 {
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
-#contact input {
-  display: block;
-  width: 100%;
-  padding: 0;
-  box-sizing: border-box;
-  border: none;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  position: absolute;
-  background: transparent;
-  height: 100%;
-  font-size: 1em;
-  font-family: inherit;
-  font-weight: 400;
-  padding-top: 15px;
+#contact input:not([type="submit"]) {
+    display: block;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    position: absolute;
+    background: transparent;
+    height: 100%;
+    font-size: 1em;
+    font-family: inherit;
+    font-weight: 400;
+    padding-top: 15px;
 }
 #contact .title-header {
   display: inline-block;
