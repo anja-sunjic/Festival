@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Festival.Web.Areas.Guest.ViewModels.Performance;
+using System;
 using System.Collections.Generic;
 
-namespace Festival.Web.ViewModels.Performance
+namespace Festival.Web.Areas.Guest.ViewModels.Performance
 {
     public class GroupedPerformanceListVM
     {

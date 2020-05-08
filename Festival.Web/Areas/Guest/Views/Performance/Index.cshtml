@@ -1,10 +1,9 @@
 ﻿@using Festival.Data.Models;
-
-@using Festival.Web.ViewModels.Performance;
+@using Festival.Web.Areas.Guest.ViewModels.Performance
 @model List<GroupedPerformanceListVM>
 @{
     ViewData["Title"] = "Line Up";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Areas/Guest/Views/Shared/_UserLayout.cshtml";
 
 }
 <section id="schedule" class="section">

@@ -36,13 +36,13 @@
                 <div class="container">
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a asp-controller="Home" asp-action="UserIndex">Home</a></li>
-                            <li><a asp-controller="Performance" asp-action="GroupedList">Line up</a></li>
-                            <li class="animated bounceIn"><a asp-controller="TicketType" asp-action="Index">Buy tickets</a></li>
-                            <li><a asp-controller="Accommodations" asp-action="Index">Accommodation</a></li>
-                            <li><a asp-controller="TransferService" asp-action="Index">Transfer</a></li>
-                            <li><a asp-controller="ShopItem" asp-action="UserList">Merch</a></li>
-                            <li><a class="register" asp-controller="Attendee" asp-action="New">Register</a></li>
+                            <li><a asp-area="Guest" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="Guest" asp-controller="Performance" asp-action="Index">Line up</a></li>
+                            <li class="animated bounceIn"><a asp-area="Guest" asp-controller="TicketType" asp-action="Index">Buy tickets</a></li>
+                            <li><a asp-area="Guest" asp-controller="Accommodations" asp-action="Index">Accommodation</a></li>
+                            <li><a asp-area="Guest" asp-controller="TransferService" asp-action="Index">Transfer</a></li>
+                            <li><a asp-area="Guest" asp-controller="ShopItem" asp-action="UserList">Merch</a></li>
+                            <li><a class="register" asp-area="Guest" asp-controller="Attendee" asp-action="New">Register</a></li>
                         </ul>
                     </div><!-- /navbar-collapse -->
                 </div><!-- /container -->

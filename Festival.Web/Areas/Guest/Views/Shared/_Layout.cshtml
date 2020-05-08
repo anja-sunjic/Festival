@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Festival</title>
+    <link rel="icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+
+@{
+
+    bool isAuthenticated = User.Identity.IsAuthenticated;
+    string text = isAuthenticated ? "Logout" : "Login";
+}
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar" style="overflow-y:scroll">
+            <ul class="list-unstyled components">
+                <li class="item">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="linkItem">
+                        <i class="fa fa-home menuItem"></i>
+                        <span class="text ml-2">Home</span>
+                    </a>
+                    <a asp-controller="Home" asp-action="UserIndex" class="linkItem">
+                        <i class="fa fa-home menuItem"></i>
+                        <span class="text ml-2">User panel Home</span>
+                    </a>
+
+                </li>
+
+                <hr class="alert-light" />
+                <li class="item">
+                    <a asp-controller="Performance" asp-action="Index" class="linkItem">
+                        <i class="fa fa-music menuItem"></i>
+                        <span class="text ml-2">Performance</span>
+                    </a>
+
+                </li>
+                <li class="item">
+                    <a asp-controller="Performer" asp-action="Index" class="linkItem">
+                        <i class="fa fa-microphone-alt menuItem ml-1"></i>
+                        <span class="text ml-2">Performer</span>
+                    </a>
+
+                </li>
+                <li class="item">
+                    <a asp-controller="Stage" asp-action="Index" class="linkItem">
+                        <i class="fa fa-play-circle menuItem"></i>
+                        <span class="text ml-2">Stage</span>
+                    </a>
+
+                </li>
+
+                <hr class="alert-light" />
+
+                <li class="item">
+                    <a asp-controller="Accommodations" asp-action="List" class="linkItem">
+                        <i class="fas fa-hotel menuItem"></i>
+                        <span class="text ml-2">Accommodations</span>
+                    </a>
+                </li>
+
+                <li class="item">
+                    <a asp-controller="Attendee" asp-action="Index" class="linkItem">
+                        <i class="fas fa-user-md menuItem menuItem"></i>
+                        <span class="text ml-2">Attendee</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a asp-controller="Attendee" asp-action="New" class="linkItem">
+                        <i class="fas fa-user-md menuItem menuItem"></i>
+                        <span class="text ml-2">Attendee-registration</span>
+                    </a>
+                </li>
+
+                <li class="item">
+                    <a asp-controller="Sponsor" asp-action="Index" class="linkItem">
+                        <i class="fas fa-briefcase menuItem"></i>
+                        <span class="text ml-2">Sponsor</span>
+                    </a>
+                </li>
+
+                <hr class="alert-light" />
+
+                <li class="item">
+                    <a asp-controller="Ticket" asp-action="Index" class="linkItem">
+                        <i class="fas fa-ticket-alt menuItem"></i>
+                        <span class="text ml-2">Tickets</span>
+                    </a>
+                </li>
+                <li>
+
+
+                <li class="item">
+                    <a asp-controller="TicketType" asp-action="List" class="linkItem">
+                        <i class="fas fa-object-group menuItem"></i>
+                        <span class="text ml-2">Ticket Type</span>
+                    </a>
+                </li>
+                <li>
+
+                <li class="item">
+                    <a asp-controller="TicketVoucher" asp-action="Index" class="linkItem">
+                        <i class="fas fa-gift menuItem"></i>
+                        <span class="text ml-2">Ticket Voucher</span>
+                    </a>
+                </li>
+                <li>
+
+                    <hr class="alert-light" />
+
+
+                <li class="item">
+
+                    <a asp-controller="Purchase" asp-action="Index" class="linkItem">
+                        <i class="fas fa-shopping-cart menuItem"></i>
+                        <span class="text ml-2">Purchases</span>
+                    </a>
+                </li>
+                <li class="item">
+
+                    <a asp-controller="ShopItem" asp-action="Index" class="linkItem">
+                        <i class="fas fa-shopping-bag menuItem ml-1"></i>
+                        <span class="text ml-2">Shop Items</span>
+                    </a>
+                </li>
+                <li class="item">
+
+                    <a asp-controller="PurchaseVoucher" asp-action="Index" class="linkItem">
+                        <i class="fas fa-hand-holding-usd menuItem"></i>
+                        <span class="text ml-2">Purchase Vouchers</span>
+                    </a>
+                </li>
+                <hr class="alert-light" />
+                <li class="item">
+
+                    <a asp-controller="TransferVehicle" asp-action="Index" class="linkItem">
+                        <i class="fas fa-car menuItem"></i>
+                        <span class="text ml-2">Transfer Vehicles</span>
+                    </a>
+                </li>
+                <li class="item">
+
+                    <a asp-controller="TransferService" asp-action="List" class="linkItem">
+                        <i class="fa fa-compass menuItem"></i>
+                        <span class="text ml-2">Transfer Services</span>
+                    </a>
+                </li>
+                <li class="item">
+
+                    <a asp-controller="TransferReservation" asp-action="Index" class="linkItem">
+                        <i class="fas fa-podcast menuItem"></i>
+                        <span class="text ml-2">Transfer Reservations</span>
+                    </a>
+                </li>
+                <hr class="alert-light" />
+            </ul>
+
+
+        </nav>
+
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active" id="logoutButton">
+                                @if (isAuthenticated)
+                                {
+                                    <a class="nav-link btn-success" asp-controller="Home" asp-action="Logout">@text<i class="fa fa-user" id="logout"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="nav-link btn-success" asp-controller="Home" asp-action="Login">@text<i class="fa fa-user" id="logout"></i></a>
+                                }
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('.text').toggleClass('visible');
+                $('#sidebar').toggleClass('active');
+                $('.menuItem').toggleClass('ml-1');
+                $('#content').toggleClass('margin');
+
+            });
+        });</script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
