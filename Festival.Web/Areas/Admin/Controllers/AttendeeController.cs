@@ -31,39 +31,6 @@ namespace Festival.Web.Controllers
                 }).ToList();
             return View(model);
         }
-        public IActionResult New()
-        {
-            NewAttendeeVM model = new NewAttendeeVM();
-
-            return View(model);
-        }
-        public IActionResult SaveNew(NewAttendeeVM model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View("New");
-            }
-            UserAccount userAccount = new UserAccount
-            {
-                Username = model.Username,
-                Password = model.Password,
-                Type = AccountType.attendee
-            };
-            _repo.AddUserAccount(userAccount);
-
-            Attendee attendee = new Attendee
-            {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Email = model.Email,
-                PhoneNumber = model.PhoneNumber,
-                UserAccountID = userAccount.ID
-
-            };
-            _repo.Add(attendee);
-
-
-            return RedirectToAction("Index", "Home");
-        }
+       
     }
 }

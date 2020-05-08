@@ -1,4 +1,4 @@
-﻿@model Festival.Web.ViewModels.Attendee.NewAttendeeVM;
+﻿@model Festival.Web.Areas.Guest.ViewModels.Attendee.NewAttendeeVM
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -26,7 +26,7 @@
                             <div class="icon pull-right"><i class="icon-globe"></i></div>
                         </div>
 
-                        <form  asp-controller="Attendee" asp-action="SaveNew" method="post">
+                        <form asp-controller="Attendee" asp-action="SaveNew" asp-area="Guest" method="post" asp>
                             <div class="row">
                                 <div class="col-md-5">
                                     <label class="newLabel" for="FirstName">First name</label>

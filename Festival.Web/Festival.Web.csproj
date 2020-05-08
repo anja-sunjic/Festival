@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Guest\Data\**" />
+    <Compile Remove="Areas\Guest\Models\**" />
+    <Content Remove="Areas\Guest\Data\**" />
+    <Content Remove="Areas\Guest\Models\**" />
+    <EmbeddedResource Remove="Areas\Guest\Data\**" />
+    <EmbeddedResource Remove="Areas\Guest\Models\**" />
+    <None Remove="Areas\Guest\Data\**" />
+    <None Remove="Areas\Guest\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="IdentityModel" Version="4.1.1" />
     <PackageReference Include="itext7" Version="7.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
@@ -20,8 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Guest\Data\" />
-    <Folder Include="Areas\Guest\Models\" />
+    <Folder Include="Views\Attendee\" />
     <Folder Include="wwwroot\images\accommodations\" />
     <Folder Include="wwwroot\images\stages\" />
     <Folder Include="wwwroot\images\sponsors\" />
