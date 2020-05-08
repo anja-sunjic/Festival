@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Logging;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 
 namespace FestivalWebApplication
 {
@@ -56,6 +58,8 @@ namespace FestivalWebApplication
             services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             services.AddScoped<IPerformanceRepository, PerformanceRepository>();
             services.AddScoped<IAttendeeRepository, AttendeeRepository>();
+            IdentityModelEventSource.ShowPII = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
         }
 
