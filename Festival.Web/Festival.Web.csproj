@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Attendee\" />
     <Folder Include="wwwroot\images\accommodations\" />
     <Folder Include="wwwroot\images\stages\" />
     <Folder Include="wwwroot\images\sponsors\" />
