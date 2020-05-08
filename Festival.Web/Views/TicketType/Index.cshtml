@@ -11,69 +11,47 @@
         <div class="row">
             <div class="col-md-12">
                 <h2 class="section-title wow fadeInUp animated" data-wow-delay="0s" style="visibility: visible;-webkit-animation-delay: 0s; -moz-animation-delay: 0s; animation-delay: 0s;">Take a look at Our Pricing</h2>
-                <p class="section-subcontent wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. A <br> enean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
             </div>
             @foreach (var x in Model)
             {
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="pricing-table wow fadeInLeft animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
                         <div class="table-icon">
-                            <i class="icon-user"></i>
+                            @{
+                                switch (x.Tier)
+                                {
+                                    case 1:
+                                        <i class="icon-diamond"></i>
+                                        break;
+                                    case 2:
+                                        <i class="icon-earphones"></i>
+                                        break;
+                                    case 3:
+                                        <i class="icon-music-tone-alt"></i>
+                                        break;
+                                    case 4:
+                                        <i class="icon-music-tone"></i>
+                                        break;
+                                    default:
+                                        <i class="icon-heart"></i>
+                                        break;
+                                }
+                            }
+
                         </div>
-                        <h3>BASIC</h3>
-                        <ul class="plan-info">
-                            <li><i class="icon-check"></i> Access to Booth</li>
-                            <li><i class="icon-minus"></i> Conference Tickets</li>
-                            <li><i class="icon-minus"></i> Printed Materials</li>
-                        </ul>
+                        <h3>@x.Name</h3>
+                        <span>@x.Description</span>
                         <div class="price">
-                            <h4>$0.00</h4>
+                            <h4>@x.Price KM</h4>
                         </div>
                         <div class="button-area">
-                            <a href="http://demo.graygrids.com/themes/impression/pricing.html#" class="btn btn-common">Buy Now</a>
+                            <a asp-controller="Ticket" asp-action="Buy" class="btn btn-common">Buy Now</a>
                         </div>
                     </div>
                 </div>
             }
 
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="pricing-table pricing-active wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-                    <div class="table-icon">
-                        <i class="icon-plane"></i>
-                    </div>
-                    <h3>STANDARD</h3>
-                    <ul class="plan-info">
-                        <li><i class="icon-check"></i> Access to Booth</li>
-                        <li><i class="icon-check"></i> Conference Tickets</li>
-                        <li><i class="icon-minus"></i> Printed Materials</li>
-                    </ul>
-                    <div class="price">
-                        <h4>$99</h4>
-                    </div>
-                    <div class="button-area">
-                        <a href="http://demo.graygrids.com/themes/impression/pricing.html#" class="btn btn-common">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="pricing-table wow fadeInRight animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-                    <div class="table-icon">
-                        <i class="icon-lock"></i>
-                    </div>
-                    <h3>PREMIUM</h3>
-                    <ul class="plan-info">
-                        <li><i class="icon-check"></i> Access to Booth</li>
-                        <li><i class="icon-check"></i> Conference Tickets</li>
-                        <li><i class="icon-check"></i> Printed Materials</li>
-                    </ul>
-                    <div class="price">
-                        <h4>$149</h4>
-                    </div>
-                    <div class="button-area">
-                        <a href="http://demo.graygrids.com/themes/impression/pricing.html#" class="btn btn-common">Buy Now</a>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 </section>

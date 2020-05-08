@@ -1379,6 +1379,11 @@ h1 {
   font-size: 24px;
   font-weight: 700;
   padding: 6px;
+}.pricing-table span {
+  font-size: 18px;
+  font-weight: 200;
+  padding: 6px;
+  opacity:0.5;
 }
 .pricing-table .plan-info {
   margin-top: 30px;
