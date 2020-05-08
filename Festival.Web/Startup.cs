@@ -87,8 +87,15 @@ namespace FestivalWebApplication
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
+                endpoints.MapAreaControllerRoute(
+                    name: "Admin",
+                    areaName: "Admin",
+                    pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
+
+                endpoints.MapAreaControllerRoute(
+                    name: "Guest",
+                    areaName: "Guest",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }

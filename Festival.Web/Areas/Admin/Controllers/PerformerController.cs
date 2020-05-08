@@ -9,6 +9,8 @@ using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+
+    [Area("Admin")]
     public class PerformerController : Controller
     {
         private readonly IPerformerRepository _repo;

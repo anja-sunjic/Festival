@@ -9,6 +9,7 @@ using System.Linq;
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
+    [Area("Admin")]
     public class TicketTypeController : Controller
     {
         private readonly ITicketTypeRepository _repo;
@@ -19,13 +20,13 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult Index()
         {
-            List<TicketsVM> model = _repo.GetAll().OrderByDescending(p=> p.Tier).Select(p => new TicketsVM
+            List<TicketsVM> model = _repo.GetAll().OrderByDescending(p => p.Tier).Select(p => new TicketsVM
             {
                 Id = p.ID,
                 Name = p.Name,
                 Price = p.Price,
                 Description = p.Description,
-                Tier=p.Tier
+                Tier = p.Tier
             }).ToList();
 
             return View(model);
@@ -63,7 +64,7 @@ namespace FestivalWebApplication.Controllers
                 Name = Model.Name,
                 Price = Model.Price,
                 Description = Model.Description,
-                Tier=Model.Tier
+                Tier = Model.Tier
             };
             _repo.Add(ticketType);
 
@@ -84,7 +85,7 @@ namespace FestivalWebApplication.Controllers
                 Name = tt.Name,
                 Price = tt.Price,
                 Description = tt.Description,
-                Tier=tt.Tier
+                Tier = tt.Tier
             };
 
             return View(model);

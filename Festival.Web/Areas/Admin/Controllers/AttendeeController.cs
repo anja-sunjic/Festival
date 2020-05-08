@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Festival.Data.Models;
+﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
 using Festival.Web.ViewModels.Attendee;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Festival.Web.Controllers
 {
+
+    [Area("Admin")]
     public class AttendeeController : Controller
     {
         private readonly IAttendeeRepository _repo;
@@ -57,11 +57,11 @@ namespace Festival.Web.Controllers
                 LastName = model.LastName,
                 Email = model.Email,
                 PhoneNumber = model.PhoneNumber,
-                UserAccountID=userAccount.ID
+                UserAccountID = userAccount.ID
 
             };
             _repo.Add(attendee);
-            
+
 
             return RedirectToAction("Index", "Home");
         }

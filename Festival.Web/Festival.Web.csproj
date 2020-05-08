@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Guest\Data\" />
+    <Folder Include="Areas\Guest\Models\" />
     <Folder Include="wwwroot\images\accommodations\" />
     <Folder Include="wwwroot\images\stages\" />
     <Folder Include="wwwroot\images\sponsors\" />
@@ -29,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Performer\List.cshtml" />
-    <None Include="Views\Performer\New.cshtml" />
+    <None Include="Areas\Admin\Views\Performer\List.cshtml" />
+    <None Include="Areas\Admin\Views\Performer\New.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

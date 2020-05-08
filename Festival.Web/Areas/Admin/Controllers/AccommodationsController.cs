@@ -11,6 +11,7 @@ using System.Linq;
 namespace Festival.Web.Controllers
 {
     [Authorize]
+    [Area("Admin")]
     public class AccommodationsController : Controller
     {
         private readonly IAccommodationRepository _repo;

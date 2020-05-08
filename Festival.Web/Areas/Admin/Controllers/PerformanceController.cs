@@ -10,6 +10,8 @@ using System.Linq;
 
 namespace FestivalWebApplication.Controllers
 {
+
+    [Area("Admin")]
     public class PerformanceController : Controller
     {
         private readonly FestivalContext _db;
@@ -44,8 +46,8 @@ namespace FestivalWebApplication.Controllers
 
             return View("List", newModel);
             return View("List", model);
-        } 
-        
+        }
+
         public IActionResult GroupedList()
         {
             List<GroupedPerformanceListVM> Model = new List<GroupedPerformanceListVM>();
@@ -62,14 +64,14 @@ namespace FestivalWebApplication.Controllers
                         StartTime = p.Start.ToString("hh:mm tt"),
                         Performer = p.Performer.Name,
                         Stage = p.Stage.Name,
-                        Image=p.Performer.Picture
+                        Image = p.Performer.Picture
                     }).ToList()
                 });
             }
-            
+
 
             return View("GroupedList", Model);
-            
+
         }
 
         public IActionResult New()

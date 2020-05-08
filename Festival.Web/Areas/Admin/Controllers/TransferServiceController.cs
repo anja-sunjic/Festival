@@ -11,6 +11,7 @@ using System.Linq;
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
+    [Area("Admin")]
     public class TransferServiceController : Controller
     {
         private readonly ITransferServiceRepository _repo;

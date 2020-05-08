@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] </title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/bootstrap.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/responsive.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/fonts/font-awesome.min.css">
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/fonts/simple-line-icons.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/slicknav.css">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/nivo-lightbox.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/animate.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="~/userPanel/assets/css/owl.carousel.css">
+
+</head>
+<body>
+
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+
+        <!-- Nav Menu Section Start -->
+        <div class="navigation-menu">
+            <nav class="navbar navbar-default navbar-event" role="navigation" data-spy="affix" data-offset-top="20">
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a asp-controller="Home" asp-action="UserIndex">Home</a></li>
+                            <li><a asp-controller="Performance" asp-action="GroupedList">Line up</a></li>
+                            <li class="animated bounceIn"><a asp-controller="TicketType" asp-action="Index">Buy tickets</a></li>
+                            <li><a asp-controller="Accommodations" asp-action="Index">Accommodation</a></li>
+                            <li><a asp-controller="TransferService" asp-action="Index">Transfer</a></li>
+                            <li><a asp-controller="ShopItem" asp-action="UserList">Merch</a></li>
+                            <li><a class="register" asp-controller="Attendee" asp-action="New">Register</a></li>
+                        </ul>
+                    </div><!-- /navbar-collapse -->
+                </div><!-- /container -->
+
+            </nav>
+        </div>
+        <!-- Nav Menu Section End -->
+
+    </header>
+    <!-- Header Area wrapper End -->
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="page-header-inner">
+                <h1 class="page-title wow fadeInRight" data-wow-delay="300ms">
+                    @ViewData["Title"]
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End-->
+
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <!-- Main contetn End -->
+    <!-- Copytight Start -->
+    <section id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright-text text-center">
+                        ©Festival team
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Copytight End -->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="icon-arrow-up"></i>
+    </a>
+
+
+
+
+    <!-- jQuery Load -->
+    <script src="~/userPanel/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/userPanel/assets/js/bootstrap.min.js"></script>
+    <!-- Countdown Js -->
+    <script src="~/userPanel/assets/js/jquery.countdown.min.js"></script>
+    <!-- Smooth scroll JS -->
+    <script src="~/userPanel/assets/js/smooth-scroll.js"></script>
+    <!-- Wow Scroll -->
+    <script src="~/userPanel/assets/js/wow.js"></script>
+    <!-- Owl carousel -->
+    <script src="~/userPanel/assets/js/owl.carousel.min.js"></script>
+    <!-- Slicknav js -->
+    <script src="~/userPanel/assets/js/jquery.slicknav.js"></script>
+    <!--  Nivo lightbox Js -->
+    <script src="~/userPanel/assets/js/nivo-lightbox.js"></script>
+    <!-- Contact Form Scripts -->
+    <script src="~/userPanel/assets/js/form-validator.min.js"></script>
+    <script src="~/userPanel/assets/js/contact-form-script.js"></script>
+
+    <!-- All Js plugin -->
+    <script src="~/userPanel/assets/js/main.js"></script>
+    <!-- Map JS -->
+    <script type="text/javascript" src="~/userPanel/assets/js/jquery.mapit.min.js"></script>
+    <script src="~/userPanel/assets/js/initializers.js"></script>
+
+</body>
+</html>
