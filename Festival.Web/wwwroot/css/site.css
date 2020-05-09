@@ -1,4 +1,9 @@
-﻿
+﻿.lastItem {
+    border-bottom: 1px solid #fafafa !important;
+    margin-bottom: 5px !important;
+}
+
+
 .paginationText {
     color: #476A6F !important;
 }
@@ -344,5 +349,5 @@ form {
     font-size: larger;
     text-align: center;
     background-color: #8b49fc !important;
-    border:none !important;
+    border: none !important;
 }
