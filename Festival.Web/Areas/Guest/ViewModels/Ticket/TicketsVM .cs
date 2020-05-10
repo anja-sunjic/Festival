@@ -1,4 +1,4 @@
-﻿namespace Festival.Web.ViewModels.TicketType
+﻿namespace Festival.Web.Areas.Guest.ViewModels.Ticket
 {
     public class TicketsVM
     {

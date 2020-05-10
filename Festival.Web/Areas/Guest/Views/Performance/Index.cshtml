@@ -6,6 +6,13 @@
     Layout = "~/Areas/Guest/Views/Shared/_UserLayout.cshtml";
 
 }
+<style>
+    .tab-pane .member-img {
+        padding: 0 !important;
+        overflow: hidden;
+    }
+</style>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <section id="schedule" class="section">
     <div class="container">
         <div class="row">
@@ -95,3 +102,8 @@
 
     <br />
 }
+<script>
+    $(function ($) {
+        $("#day1").addClass("active");
+    })
+</script>

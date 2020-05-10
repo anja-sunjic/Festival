@@ -20,16 +20,7 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult Index()
         {
-            List<TicketsVM> model = _repo.GetAll().OrderByDescending(p => p.Tier).Select(p => new TicketsVM
-            {
-                Id = p.ID,
-                Name = p.Name,
-                Price = p.Price,
-                Description = p.Description,
-                Tier = p.Tier
-            }).ToList();
-
-            return View(model);
+            return RedirectToAction("List");
         }
 
         public IActionResult List()
