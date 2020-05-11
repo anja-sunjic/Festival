@@ -1446,12 +1446,14 @@ h1 {
         text-transform: uppercase;
         font-weight: 400;
         text-decoration: underline #e91e63 solid;
+       
     }
 
     #team .team-desc h5 {
         font-size: 1.8vw;
         font-weight: 400;
-        padding-top:5%;
+        padding-top: 5%;
+        opacity: 0.4;
     }
 
 #team .social-icon {
@@ -1465,6 +1467,7 @@ h1 {
 #team .team-desc p{
     padding-top:10%;
     font-size:1.8vw;
+    color:#2d2d2d
 }
 
 #team .single-member:hover .team-img:before {
