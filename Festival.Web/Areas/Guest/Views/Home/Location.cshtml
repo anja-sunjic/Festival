@@ -20,13 +20,19 @@
 
 
 <script>
-    var map = L.map('map').setView([-13.4, 48.275], 12);
+    var map = L.map('map', { center: [-13.4, 48.275], zoom: 10, maxZoom: 13 });
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-        id: "mapbox/satellite-v9",
+        id: "mapbox/satellite-v9"
     }).addTo(map);
 
     
-    L.circleMarker([-13.4, 48.275], { radius: 50}).addTo(map);
+    L.circleMarker([-13.4, 48.275], { radius: 50 }).addTo(map);
+
+    var popup = L.popup()
+    .setLatLng([-13.4, 48.275])
+    .setContent('<p>Stade D\'Ambodivoanio (Nosy-Be)</p>')
+    .openOn(map);
+
 </script>

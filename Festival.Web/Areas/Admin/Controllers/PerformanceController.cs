@@ -63,7 +63,7 @@ namespace FestivalWebApplication.Controllers
                         Text = s.Name,
                         Value = s.ID.ToString()
                     }).ToList(),
-                Start = DateTime.Today
+                Start = DateTime.Parse("07.01.2020.")
             };
 
             return View("New", model);
