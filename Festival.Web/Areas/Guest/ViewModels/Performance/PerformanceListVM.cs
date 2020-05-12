@@ -6,7 +6,9 @@
         public string Date { get; set; }
         public string StartTime { get; set; }
         public string Performer { get; set; }
+        public int PerformerID { get; set; }
         public string Stage { get; set; }
+        public int StageID { get; set; }
         public string Image { get; set; }
     }
 }

@@ -36,7 +36,9 @@ namespace Festival.Web.Areas.Guest.Controllers
                         StartTime = p.Start.ToString("hh:mm tt"),
                         Performer = p.Performer.Name,
                         Stage = p.Stage.Name,
-                        Image = p.Performer.Picture
+                        Image = p.Performer.Picture,
+                        PerformerID =(int)p.PerformerID,
+                        StageID = (int)p.StageID
                     }).ToList()
                 });
             }

@@ -38,7 +38,7 @@ namespace Festival.Data.Repositories
 
         public Stage GetByID(int id)
         {
-            return _context.Stage.Find(id);
+            return _context.Stage.Include(a => a.Sponsor).FirstOrDefault(b => b.ID == id);
         }
         public Sponsor GetSponsor(int id)
         {

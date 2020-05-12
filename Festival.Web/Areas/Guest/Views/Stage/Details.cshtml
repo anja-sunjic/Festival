@@ -1,0 +1,56 @@
+﻿@using Festival.Web.Areas.Guest.ViewModels.Stage
+@model StageDetailsVM
+@*@{
+        ViewData["Title"] = "Details";
+        Layout = "~/Areas/Guest/Views/Shared/_UserLayout.cshtml";
+    }*@
+<style>
+    .container {
+        width: 100%;
+        padding: 20px !important;
+    }
+
+    .single-member {
+        margin: 0 !important;
+    }
+</style>
+
+@*<section class="section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-8">
+                        <img src="~/images/stages/@Model.Image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+<section id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <br />
+                <div class="single-member wow animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+
+                    <div class="team-desc" style="position:relative">
+                        <h3>@Model.Name</h3>
+                        <p>Sponsored by: @Model.SponsorName </p>
+                        <img class="sponsor-logo-icon" src="~/images/sponsors/@Model.SponsorImage" alt="">
+
+                    </div>
+                    <div class="team-img right">
+
+                        <img src="~/images/stages/@Model.Image" alt="">
+                        <div class="social-icon">
+                            <h3>Capacity: @Model.Capacity</h3>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
