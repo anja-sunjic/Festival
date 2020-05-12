@@ -24,18 +24,20 @@
     #team {
         padding-top: 5% !important;
     }
+   
+
 </style>
 
 <section id="team">
     <div class="container position-relative popupContent">
         <div class="row">
-            <div class="col-md-12 ">
+            <div style="margin: 0 auto !important; width:90% !important;">
                 <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
-                <div class="single-member wow animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+                <div class="single-member wow animated" data-wow-delay="0.2s" style="visibility: visible; -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
 
                     <div class="team-desc" style="position:relative">
                         <h3>@Model.Name</h3>
-                        <p>Sponsored by: @Model.PromoText </p>
+                        <p class="text-justify p-2">@Model.PromoText </p>
                         
 
                     </div>
@@ -43,7 +45,7 @@
 
                         <img src="~/images/performers/@Model.Picture" alt="">
                         <div class="social-icon">
-                            <h3>Capacity: @Model.Name</h3>
+                            <h3>@Model.Name</h3>
 
                         </div>
                     </div>
