@@ -10,19 +10,18 @@ namespace Festival.Security
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> Ids =>
-            new IdentityResource[]
+        public static IEnumerable<ApiResource> GetApiResources()
+        {
+            return new List<ApiResource>
             {
-                new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new ApiResource("api1", "My API")
             };
+        }
 
-        public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[]
-            { };
 
-        public static IEnumerable<Client> Clients =>
-            new Client[]
+        public static IEnumerable<Client> GetClients()
+        {
+            return new List<Client>
             {
                 new Client
                 {
@@ -37,5 +36,15 @@ namespace Festival.Security
                     AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile }
                 }
             };
+        }
+
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
+            return new List<IdentityResource>
+            {
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile(),
+            };
+        }
     }
 }
