@@ -1,5 +1,5 @@
-﻿@using Festival.Web.Areas.Guest.ViewModels.Stage
-@model StageDetailsVM
+﻿@using Festival.Web.Areas.Guest.ViewModels.Performer
+@model PerformerDetailsVM
 @*@{
         ViewData["Title"] = "Details";
         Layout = "~/Areas/Guest/Views/Shared/_UserLayout.cshtml";
@@ -20,8 +20,9 @@
         position: relative;
         right: 10px;
     }
-    #team{
-        padding-top:5% !important;
+
+    #team {
+        padding-top: 5% !important;
     }
 </style>
 
@@ -34,15 +35,15 @@
 
                     <div class="team-desc" style="position:relative">
                         <h3>@Model.Name</h3>
-                        <p>Sponsored by: @Model.SponsorName </p>
-                        <img class="sponsor-logo-icon" src="~/images/sponsors/@Model.SponsorImage" alt="">
+                        <p>Sponsored by: @Model.PromoText </p>
+                        
 
                     </div>
                     <div class="team-img right">
 
-                        <img src="~/images/stages/@Model.Image" alt="">
+                        <img src="~/images/performers/@Model.Picture" alt="">
                         <div class="social-icon">
-                            <h3>Capacity: @Model.Capacity</h3>
+                            <h3>Capacity: @Model.Name</h3>
 
                         </div>
                     </div>
