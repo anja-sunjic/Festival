@@ -6,6 +6,7 @@
     Layout = "~/Areas/Guest/Views/Shared/_UserLayout.cshtml";
 
 }
+
 <style>
     .tab-pane .member-img {
         padding: 0 !important;
@@ -15,32 +16,38 @@
     #myModal {
         z-index: 999999;
     }
-    @@media (min-width: 768px) {
-  .modal-xl {
-    width: 80%;
-   max-width:1200px;
-  }
 
-}
-.team-img{
-    width:60% !important;
-}
-.team-desc{
-    width:40% !important;
-}
+    @@media (min-width: 768px) {
+        .modal-lg {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
+
+    .team-img {
+        width: 60% !important;
+    }
+
+    .team-desc {
+        width: 40% !important;
+    }
+
+    .modal-backdrop {
+        opacity: 0.6 !important;
+        z-index:100000 !important;
+    }
 </style>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" />
 <section id="schedule" class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
 
                 <!-- Schedule Main board Start-->
-                <div class="main-board wow fadeInDown animated" data-wow-delay="0.3s" style="        visibility: visible;
-        -webkit-animation-delay: 0.3s;
-        -moz-animation-delay: 0.3s;
-        animation-delay: 0.3s;
-">
+                <div class="main-board wow fadeInDown animated" data-wow-delay="0.3s" style=" visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s; ">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs day" role="tablist">
                         @{var broj = 0; }
@@ -70,7 +77,7 @@
                                                 </div>
                                                 <div class="member-desc">
                                                     <h3>@x.Performer</h3>
-                                                    <a asp-controller="Stage" asp-action="Details" asp-route-id="@x.StageID" data-target="#myModal" data-toggle="modal"><h4>@x.Stage</h4></a>
+                                                    <a asp-controller="Stage" asp-action="Details" asp-route-id="@x.StageID" data-target="#myModal" data-toggle="ajax-modal"><h4>@x.Stage</h4></a>
                                                     <h4>@x.StartTime</h4>
                                                 </div>
                                             </div>
@@ -91,59 +98,36 @@
     </div>
 </section>
 
-<div id="myModal" class="modal fade">
+<div id="myModal" class="modal modal-lg">
     <div role="dialog">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
-
+                
 
             </div>
-
         </div>
     </div>
 </div>
 
-
 <script>
 
-    //$(function () {
-    //    var modal = $(".modal-content");
-    //    var body = $(window);
-    //    // Get modal size
-    //    var w = 500;
-    //    var h = 500;
-    //    // Get window size
-    //    var bw = body.width();
-    //    var bh = body.height();
-
-    //    // Update the css and center the modal on screen
-    //    modal.css({
-    //        "position": "absolute",
-    //        "top": ((bh - h) / 2) + "px",
-    //        "left": ((bw - w) / 2) + "px",
-    //        "floar": "left"
-    //    })
-
-    //});
     $(function ($) {
         $("#day1").addClass("active");
-
     })
-    $(document).on("click", ".btn-primary", function (event) {
-     event.preventDefault();
-     var buttonUrl = $(this).attr('href');
-    //to some any remote data you need to send an ajax request.
-    $.ajax({
-      url: buttonUrl,
-      type: 'GET',
-      dataType: 'html'
-    })
-    .always(function(responseData) {
-      $("#mypopup .modal-content").html(responseData);
-      $("#mypopup").show();
-    });
 
-});
+    $(function ($) {
+        $('a[data-toggle="ajax-modal"]').click(function (event) {
+            event.preventDefault();
+            var url = $(this).attr('href');
+            $.get(url, function (data) {
+                $('#myModal').html(data);
+                $('#myModal').modal('show');
+            });
+        });
+    })
+
+
+
 </script>

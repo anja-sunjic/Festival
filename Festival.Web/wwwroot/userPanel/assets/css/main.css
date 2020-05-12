@@ -1443,9 +1443,7 @@ h1 {
 .sponsor-logo-icon{
     width:30%;
     display:block;
-    margin:0 auto;
-    position:relative;
-    bottom:0;
+    margin:15% auto 0 auto;
 }
 
 #team .team-desc h3 {
