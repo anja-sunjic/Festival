@@ -119,7 +119,7 @@ namespace FestivalWebApplication.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Edit");
+                return View("Edit", model);
             }
 
             var manager = _repo.FindManagerById(model.ManagerId);

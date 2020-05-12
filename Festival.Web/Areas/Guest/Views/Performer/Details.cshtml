@@ -1,5 +1,5 @@
-﻿@using Festival.Web.Areas.Guest.ViewModels.Stage
-@model StageDetailsVM
+﻿@using Festival.Web.Areas.Guest.ViewModels.Performer
+@model PerformerDetailsVM
 @*@{
         ViewData["Title"] = "Details";
         Layout = "~/Areas/Guest/Views/Shared/_UserLayout.cshtml";
@@ -7,7 +7,6 @@
 <style>
     .popupContent {
         width: 100%;
-        padding: 20px !important;
     }
 
     .single-member {
@@ -20,37 +19,32 @@
         position: relative;
         right: 10px;
     }
-    #team{
-        padding-top:5% !important;
-    }
-     .team-img {
-        width: 60% !important;
-    }
 
-    .team-desc {
-        width: 40% !important;
+    #team {
+        padding-top: 3% !important;
     }
+   
 
 </style>
 
 <section id="team">
     <div class="container position-relative popupContent">
         <div class="row">
-            <div class="col-md-12 ">
+            <div style="margin: 0 auto !important; width:90% !important;">
                 <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
                 <div class="single-member wow animated" data-wow-delay="0.2s" style="visibility: visible; -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
 
                     <div class="team-desc" style="position:relative">
                         <h3>@Model.Name</h3>
-                        <p>Sponsored by: @Model.SponsorName </p>
-                        <img class="sponsor-logo-icon" src="~/images/sponsors/@Model.SponsorImage" alt="">
+                        <p class="text-justify p-2">@Model.PromoText </p>
+                        
 
                     </div>
                     <div class="team-img right">
 
-                        <img src="~/images/stages/@Model.Image" alt="">
+                        <img src="~/images/performers/@Model.Picture" alt="">
                         <div class="social-icon">
-                            <h3>Capacity: @Model.Capacity</h3>
+                            <h3>@Model.Name</h3>
 
                         </div>
                     </div>

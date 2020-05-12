@@ -15,6 +15,7 @@
 
     #myModal {
         z-index: 999999;
+       
     }
 
     @@media (min-width: 768px) {
@@ -25,17 +26,14 @@
         }
     }
 
-    .team-img {
-        width: 60% !important;
-    }
-
-    .team-desc {
-        width: 40% !important;
-    }
-
     .modal-backdrop {
         opacity: 0.6 !important;
-        z-index:100000 !important;
+        z-index: 100000 !important;
+    }
+
+    .member-desc a h4 {
+        color: #e91e63 !important;
+        text-decoration: #e91e63 underline !important;
     }
 </style>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -47,7 +45,11 @@
             <div class="col-md-12">
 
                 <!-- Schedule Main board Start-->
-                <div class="main-board wow fadeInDown animated" data-wow-delay="0.3s" style=" visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s; ">
+                <div class="main-board wow fadeInDown animated" data-wow-delay="0.3s" style="        visibility: visible;
+        -webkit-animation-delay: 0.3s;
+        -moz-animation-delay: 0.3s;
+        animation-delay: 0.3s;
+    ">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs day" role="tablist">
                         @{var broj = 0; }
@@ -76,7 +78,8 @@
                                                     <img style="max-width:100%;" src="~/images/performers/@x.Image" />
                                                 </div>
                                                 <div class="member-desc">
-                                                    <h3>@x.Performer</h3>
+                                                    <a asp-controller="Performer" asp-action="Details" asp-route-id="@x.PerformerID" data-target="#myModal" data-toggle="ajax-modal"><h3>@x.Performer</h3></a>
+
                                                     <a asp-controller="Stage" asp-action="Details" asp-route-id="@x.StageID" data-target="#myModal" data-toggle="ajax-modal"><h4>@x.Stage</h4></a>
                                                     <h4>@x.StartTime</h4>
                                                 </div>
@@ -104,7 +107,7 @@
 
             <!-- Modal content-->
             <div class="modal-content">
-                
+
 
             </div>
         </div>
