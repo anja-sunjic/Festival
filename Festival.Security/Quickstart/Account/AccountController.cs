@@ -253,7 +253,7 @@ namespace IdentityServer4.Quickstart.UI
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterInputVM model)
+        public async Task<IActionResult> Register(RegisterInputViewModel model)
         {
             // provjeravamo da li su validni input podaci
             if (ModelState.IsValid)

@@ -4,7 +4,7 @@
 
 namespace IdentityServer4.Quickstart.UI
 {
-    public class RegisterInputVM
+    public class RegisterInputViewModel
     {
         public string Username { get; set; }
         public string Password { get; set; }
