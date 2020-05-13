@@ -290,33 +290,39 @@ namespace IdentityServer4.Quickstart.UI
 
         public async Task<IActionResult> SeedRoles()
         {
-            bool adminRoleExists = await _roleManager.RoleExistsAsync("Admin");
 
-            var bobUser = await _userManager.FindByNameAsync("bob");
-            var aliceUser = await _userManager.FindByNameAsync("alice");
 
-            if (!adminRoleExists)
-            {
-                var adminRole = new ApplicationRole();
-                adminRole.Name = "Admin";
-                await _roleManager.CreateAsync(adminRole);
-                await _userManager.AddToRoleAsync(bobUser, "Admin");
-                await _userManager.AddToRoleAsync(aliceUser, "Admin");
 
-            }
 
-            await _userManager.AddToRoleAsync(bobUser, "Admin");
-            await _userManager.AddToRoleAsync(aliceUser, "Admin");
+            //bool adminRoleExists = await _roleManager.RoleExistsAsync("Admin");
 
-            bool guestRoleExists = await _roleManager.RoleExistsAsync("Attendee");
+            //var bobUser = await _userManager.FindByNameAsync("bob");
+            //var aliceUser = await _userManager.FindByNameAsync("alice");
 
-            if (!guestRoleExists)
-            {
-                var attendeeRole = new ApplicationRole();
-                attendeeRole.Name = "Attendee";
-                await _roleManager.CreateAsync(attendeeRole);
-            }
+            //if (!adminRoleExists)
+            //{
+            //    var adminRole = new ApplicationRole();
+            //    adminRole.Name = "Admin";
+            //    await _roleManager.CreateAsync(adminRole);
+            //    await _userManager.AddToRoleAsync(bobUser, "Admin");
+            //    await _userManager.AddToRoleAsync(aliceUser, "Admin");
 
+            //}
+
+            //await _userManager.AddToRoleAsync(bobUser, "Admin");
+            //await _userManager.AddToRoleAsync(aliceUser, "Admin");
+
+            //bool guestRoleExists = await _roleManager.RoleExistsAsync("Attendee");
+
+            //if (!guestRoleExists)
+            //{
+            //    var attendeeRole = new ApplicationRole();
+            //    attendeeRole.Name = "Attendee";
+            //    await _roleManager.CreateAsync(attendeeRole);
+            //}
+
+
+            // Ova funkcija nam vise ne treba al nek stoji ovako
             return Ok();
         }
 
