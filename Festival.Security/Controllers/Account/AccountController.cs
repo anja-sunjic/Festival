@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace IdentityServer4.Quickstart.UI
@@ -28,6 +27,8 @@ namespace IdentityServer4.Quickstart.UI
         private readonly UserManager<ApplicationUser> _userManager;
         // sa signin managerom cemo samo loginovat usera
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
+
         // ovo dole su identity server 4 stvari koje ne kontam najbolje al su postavljene sve kako treba
         // nama za registraciju i role vise ne treba identity server 4 kolko sam mogao istrazit
         private readonly IIdentityServerInteractionService _interaction;
@@ -38,6 +39,7 @@ namespace IdentityServer4.Quickstart.UI
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            RoleManager<ApplicationRole> roleManager,
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
@@ -45,6 +47,7 @@ namespace IdentityServer4.Quickstart.UI
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _interaction = interaction;
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
@@ -274,7 +277,7 @@ namespace IdentityServer4.Quickstart.UI
                 //slozili smo se da nece se administratori moci registrovat tako da ce ovo uvijek ovako bit
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(newUser, "Guest");
+                    await _userManager.AddToRoleAsync(newUser, "Attendee");
                 }
 
                 // Ako je sve uspjelo treba vratit na View neki Uspjesna registracija ili redirectat na Homepage ?? veze nemam
@@ -283,6 +286,38 @@ namespace IdentityServer4.Quickstart.UI
             // vracamo na registracioni View opet ako nesto nije bilo dobro I guess ? i ispisujemo greske
             return View("Register", model);
 
+        }
+
+        public async Task<IActionResult> SeedRoles()
+        {
+            bool adminRoleExists = await _roleManager.RoleExistsAsync("Admin");
+
+            var bobUser = await _userManager.FindByNameAsync("bob");
+            var aliceUser = await _userManager.FindByNameAsync("alice");
+
+            if (!adminRoleExists)
+            {
+                var adminRole = new ApplicationRole();
+                adminRole.Name = "Admin";
+                await _roleManager.CreateAsync(adminRole);
+                await _userManager.AddToRoleAsync(bobUser, "Admin");
+                await _userManager.AddToRoleAsync(aliceUser, "Admin");
+
+            }
+
+            await _userManager.AddToRoleAsync(bobUser, "Admin");
+            await _userManager.AddToRoleAsync(aliceUser, "Admin");
+
+            bool guestRoleExists = await _roleManager.RoleExistsAsync("Attendee");
+
+            if (!guestRoleExists)
+            {
+                var attendeeRole = new ApplicationRole();
+                attendeeRole.Name = "Attendee";
+                await _roleManager.CreateAsync(attendeeRole);
+            }
+
+            return Ok();
         }
 
 
@@ -308,25 +343,16 @@ namespace IdentityServer4.Quickstart.UI
                     Username = context?.LoginHint,
                 };
 
-                if (!local)
-                {
-                    vm.ExternalProviders = new[] { new ExternalProvider { AuthenticationScheme = context.IdP } };
-                }
+                //if (!local)
+                //{
+                //    vm.ExternalProviders = new[] { new ExternalProvider { AuthenticationScheme = context.IdP } };
+                //}
 
                 return vm;
             }
 
             var schemes = await _schemeProvider.GetAllSchemesAsync();
 
-            var providers = schemes
-                .Where(x => x.DisplayName != null ||
-                            (x.Name.Equals(AccountOptions.WindowsAuthenticationSchemeName, StringComparison.OrdinalIgnoreCase))
-                )
-                .Select(x => new ExternalProvider
-                {
-                    DisplayName = x.DisplayName ?? x.Name,
-                    AuthenticationScheme = x.Name
-                }).ToList();
 
             var allowLocal = true;
             if (context?.ClientId != null)
@@ -335,11 +361,6 @@ namespace IdentityServer4.Quickstart.UI
                 if (client != null)
                 {
                     allowLocal = client.EnableLocalLogin;
-
-                    if (client.IdentityProviderRestrictions != null && client.IdentityProviderRestrictions.Any())
-                    {
-                        providers = providers.Where(provider => client.IdentityProviderRestrictions.Contains(provider.AuthenticationScheme)).ToList();
-                    }
                 }
             }
 
@@ -349,7 +370,6 @@ namespace IdentityServer4.Quickstart.UI
                 EnableLocalLogin = allowLocal && AccountOptions.AllowLocalLogin,
                 ReturnUrl = returnUrl,
                 Username = context?.LoginHint,
-                ExternalProviders = providers.ToArray()
             };
         }
 
