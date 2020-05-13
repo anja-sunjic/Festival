@@ -24,8 +24,12 @@ namespace IdentityServer4.Quickstart.UI
     [AllowAnonymous]
     public class AccountController : Controller
     {
+        //sa usermanagerom registrujemo usere, dodajemo role i slicne stvari
         private readonly UserManager<ApplicationUser> _userManager;
+        // sa signin managerom cemo samo loginovat usera
         private readonly SignInManager<ApplicationUser> _signInManager;
+        // ovo dole su identity server 4 stvari koje ne kontam najbolje al su postavljene sve kako treba
+        // nama za registraciju i role vise ne treba identity server 4 kolko sam mogao istrazit
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
@@ -54,13 +58,9 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> Login(string returnUrl)
         {
             // build a model so we know what to show on the login page
+            // ovo znas vec kako ide, samo sto su po defaultu oni napravili helper metode za pravljenje VM
+            // mi bi obicno ovdje rekli var model = new LoginVM() al je manje vise isto
             var vm = await BuildLoginViewModelAsync(returnUrl);
-
-            if (vm.IsExternalLoginOnly)
-            {
-                // we only have one option for logging in and it's an external provider
-                return RedirectToAction("Challenge", "External", new { provider = vm.ExternalLoginScheme, returnUrl });
-            }
 
             return View(vm);
         }
@@ -73,9 +73,15 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> Login(LoginInputModel model, string button)
         {
             // check if we are in the context of an authorization request
+            // unutar ovog projekta u Config.cs postavljen je RedirectUri 
+            // GetAuthorizedContext provjerava da li je returnUri s kojeg je dosao request unutar jedan od onih unutar Configa.cs
+            // Ovo sprecava druge ljude da rucno odu na nas localhost:5000/Account/Login i da dobiju pristup
+
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
 
             // the user clicked the "cancel" button
+            // ovaj citav IF je jeben za skontat, al nece se nama ovo desavat
+            // i da se desi postavljeno je ovo sve defaultno od Identity Servera da ih vraca odakle su dosli
             if (button != "login")
             {
                 if (context != null)
@@ -102,16 +108,27 @@ namespace IdentityServer4.Quickstart.UI
                 }
             }
 
+
+            // Ova if petlja ako je izvor uredu i ako nema gresaka validacijskih unutar ViewModela
             if (ModelState.IsValid)
             {
+
+                // Ova funkcija je bukvalno za login od strane Microsoft Identitya
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
+
                 if (result.Succeeded)
                 {
+                    // Microsoft Identity funkcija koja vraca ApplicationUser objekat lika koji se ulogovao
                     var user = await _userManager.FindByNameAsync(model.Username);
+
+                    //Ovo je od Identity Servera 4 da ga obavjestimo da je User uspjesno logovan i da mu da Token ili Cookies ili sta vec
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.ClientId));
 
+                    //Ista provjera ko gora na prvom velikom ifu
+                    // Provjeravamo da li je request pravi, validan 
                     if (context != null)
                     {
+                        // Kod nas nece bit PKCE klijenata ovdje nece nikad uci
                         if (await _clientStore.IsPkceClientAsync(context.ClientId))
                         {
                             // if the client is PKCE then we assume it's native, so this change in how to
@@ -120,30 +137,38 @@ namespace IdentityServer4.Quickstart.UI
                         }
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
+                        // Uspjesno smo loginovali korisnika, dali mu Access Token i mozemo ga redirectat na Festival
                         return Redirect(model.ReturnUrl);
                     }
 
                     // request for a local page
+                    // ovo je ako je los autorizaciji request tj. ako je context == null 
+                    // vracamo ga odakle je dosao
                     if (Url.IsLocalUrl(model.ReturnUrl))
                     {
                         return Redirect(model.ReturnUrl);
                     }
+                    // Ako user nema return url vracamo ga na pocetnu stranicu nasu
+                    // u ovom slucaju pocetnu od identity servera
                     else if (string.IsNullOrEmpty(model.ReturnUrl))
                     {
                         return Redirect("~/");
                     }
+                    // ako skripta, bot ili slicno pokusaju nam loginovat throwa exception
                     else
                     {
                         // user might have clicked on a malicious link - should be logged
                         throw new Exception("invalid return URL");
                     }
                 }
-
+                // Ako malo bolje se zagledas ovo je bukvalno Else od onog gore Result.Succeded tj ako je pogresne kredencijale ukucao
                 await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId: context?.ClientId));
                 ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
             }
 
             // something went wrong, show form with error
+            // Vracamo ga na nas Login View gdje mu izbacujemo Invalid username or passowrd
+            // Pokusaj jednom pogresno ukucat i vidjeces da ce ti ovaj dio bacit
             var vm = await BuildLoginViewModelAsync(model);
             return View(vm);
         }
@@ -156,6 +181,8 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> Logout(string logoutId)
         {
             // build a model so the logout page knows what to display
+            // bukvalno prave viewmodel za onu glupost are you sure you want to logout
+            // ako pogledas ja sam zakucao ShowLogoutPromt da je false tako da odma baca na logout
             var vm = await BuildLogoutViewModelAsync(logoutId);
 
             if (vm.ShowLogoutPrompt == false)
@@ -176,18 +203,27 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> Logout(LogoutInputModel model)
         {
             // build a model so the logged out page knows what to display
+            // Ovdje je ViewModel za You have been successfully logged out
+            // Ja mislim da sam ja ovdje odma puko da vrate na pocetnu nasu, bukvalno se na 1 sekundu vidi taj view
             var vm = await BuildLoggedOutViewModelAsync(model.LogoutId);
+
+            //User.Identity.IsAuthenticated nema veze ni sa Identityem, ni IS4 
+            //ova funkcija iz System namespace i kaze da li je korisnik autentifikovan
 
             if (User?.Identity.IsAuthenticated == true)
             {
                 // delete local authentication cookie
+                // brise microsoft identity cookie
                 await _signInManager.SignOutAsync();
 
                 // raise the logout event
+                // brise identity server 4 token
                 await _events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()));
             }
 
             // check if we need to trigger sign-out at an upstream identity provider
+            // ovo je lupam ako smo implementirali Google ili Facebook login pa on ga baci na njihove API da se odjave
+            // moze se ovo izbrisat skroz ili zakomentarisat
             if (vm.TriggerExternalSignout)
             {
                 // build a return URL so the upstream provider will redirect back
@@ -198,7 +234,8 @@ namespace IdentityServer4.Quickstart.UI
                 // this triggers a redirect to the external provider for sign-out
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
-
+            // Dzaba sto on baca na View Logged Out ako pogledas klasu AccountOptions odma ispod ovog kontrolera
+            // Vidjeces da sam stavio da automatski redirekta nakon log outa
             return View("LoggedOut", vm);
         }
 
@@ -207,6 +244,50 @@ namespace IdentityServer4.Quickstart.UI
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Register(string returnUrl)
+        {
+            //ovdje korsnici prvo dolaze popunjavaju formu tvoju i kliknom na Submit/RegistrujSe salje ih na funkciju ispod
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterInputVM model)
+        {
+            // provjeravamo da li su validni input podaci
+            if (ModelState.IsValid)
+            {
+                //pravimo objekat naše klase koju možeš u Models naći unutar Security projekta
+                //nasa klasa nema svojih propertya vec ih nasljedjuje od Identity klase koja ima npr Username, Email, PhoneNumber i sl
+                var newUser = new ApplicationUser()
+                {
+                    Email = model.Email,
+                    UserName = model.Username
+                };
+
+                //ovdje pravimo putem Identitya novog korisnika i ovdje drugi parametar je password
+                //jer ova funkcija CreateAsync ce primit password, hashovat ga i spremit u bazu sa ostalim podacima
+                var result = await _userManager.CreateAsync(newUser, model.Password);
+
+                //ako je uspjesno spremljeno ovdje im kao dodjeljumemo rolu Guest
+                //slozili smo se da nece se administratori moci registrovat tako da ce ovo uvijek ovako bit
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(newUser, "Guest");
+                }
+
+                // Ako je sve uspjelo treba vratit na View neki Uspjesna registracija ili redirectat na Homepage ?? veze nemam
+                return Redirect("https://127.0.0.1:44330/");
+            }
+            // vracamo na registracioni View opet ako nesto nije bilo dobro I guess ? i ispisujemo greske
+            return View("Register", model);
+
+        }
+
+
+        //Ovo su dole pomocne funkcije mozemo i mi napraviti helper za pravljanje ViewModela nasih
+        //Ali ove imaju dosta Identity Server 4 gluposti, sto nama ne treba za Registraciju
 
 
         /*****************************************/

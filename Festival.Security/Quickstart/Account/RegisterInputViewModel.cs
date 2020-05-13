@@ -4,8 +4,10 @@
 
 namespace IdentityServer4.Quickstart.UI
 {
-    public class LogoutViewModel : LogoutInputModel
+    public class RegisterInputVM
     {
-        public bool ShowLogoutPrompt { get; set; } = false;
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
     }
 }

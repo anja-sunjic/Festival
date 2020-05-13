@@ -10,7 +10,7 @@ using System;
 
 namespace Festival.Security.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(IdentityContext))]
     [Migration("20180109192453_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
