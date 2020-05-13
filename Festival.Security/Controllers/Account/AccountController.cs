@@ -3,6 +3,7 @@
 
 
 using Festival.Security.Models;
+using Festival.Security.ViewModels;
 using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
@@ -17,7 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace IdentityServer4.Quickstart.UI
+namespace Festival.Security.Controllers.Account
 {
     [SecurityHeaders]
     [AllowAnonymous]
@@ -288,7 +289,7 @@ namespace IdentityServer4.Quickstart.UI
 
         }
 
-        public async Task<IActionResult> SeedRoles()
+        public IActionResult SeedRoles()
         {
 
 

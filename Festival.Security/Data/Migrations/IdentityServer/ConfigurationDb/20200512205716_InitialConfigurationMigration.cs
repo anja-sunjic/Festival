@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
-namespace Festival.Security.Migrations.IdentityServer.ConfigurationDb
+namespace Festival.Security.Data.Migrations.IdentityServer.ConfigurationDb
 {
     public partial class InitialConfigurationMigration : Migration
     {

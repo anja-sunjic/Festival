@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Festival.Security.Data.Migrations
+namespace Festival.Security.Data.Migrations.MicrosoftIdentity
 {
     public partial class AddeddescriptiontoTicketType : Migration
     {

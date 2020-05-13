@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace Festival.Security.Data.Migrations
+namespace Festival.Security.Data.Migrations.MicrosoftIdentity
 {
     public partial class CreateIdentitySchema : Migration
     {

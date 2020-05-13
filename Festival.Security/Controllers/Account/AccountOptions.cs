@@ -4,7 +4,7 @@
 
 using System;
 
-namespace IdentityServer4.Quickstart.UI
+namespace Festival.Security.Controllers.Account
 {
     public class AccountOptions
     {

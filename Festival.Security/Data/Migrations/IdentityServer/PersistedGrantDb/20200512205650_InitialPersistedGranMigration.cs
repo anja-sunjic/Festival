@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
-namespace Festival.Security.Migrations.IdentityServer.PersistedGrantDb
+namespace Festival.Security.Data.Migrations.IdentityServer.PersistedGrantDb
 {
     public partial class InitialPersistedGranMigration : Migration
     {
