@@ -31,7 +31,8 @@ namespace Festival.Security
                     RequireConsent = false,
                     RequirePkce = true,
                     RedirectUris = { "https://127.0.0.1:44330/signin-oidc" },
-                    PostLogoutRedirectUris = { "https://127.0.0.1:44330/signout-callback-oidc" }
+                    PostLogoutRedirectUris = { "https://127.0.0.1:44330/signout-callback-oidc" },
+
                 }
             };
         }

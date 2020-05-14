@@ -1,5 +1,6 @@
 ﻿using Festival.Data.Models;
 using Festival.Data.Repositories;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -42,9 +43,20 @@ namespace FestivalWebApplication
                options.ResponseType = "code";
                options.SaveTokens = true;
                options.MetadataAddress = "http://localhost:5000/.well-known/openid-configuration";
+               options.GetClaimsFromUserInfoEndpoint = true;
+               options.ClaimActions.MapUniqueJsonKey("roles", "roles");
 
            });
+
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("Admin", policy => policy.RequireClaim("roles", "Admin"));
+                option.AddPolicy("Attendee", policy => policy.RequireClaim("roles", "Attendee"));
+
+            });
+
             services.AddControllersWithViews();
+
             services.AddDbContext<FestivalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FestivalDatabase")));
 
@@ -58,6 +70,7 @@ namespace FestivalWebApplication
             services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             services.AddScoped<IPerformanceRepository, PerformanceRepository>();
             services.AddScoped<IAttendeeRepository, AttendeeRepository>();
+
             IdentityModelEventSource.ShowPII = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 

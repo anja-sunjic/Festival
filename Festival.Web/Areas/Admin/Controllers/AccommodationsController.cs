@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Festival.Web.Controllers
 {
-    [Authorize]
+    [Authorize("Admin")]
     [Area("Admin")]
     public class AccommodationsController : Controller
     {

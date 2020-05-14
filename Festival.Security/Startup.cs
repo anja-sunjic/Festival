@@ -4,6 +4,7 @@
 
 using Festival.Security.Data;
 using Festival.Security.Models;
+using Festival.Security.Services;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Builder;
@@ -73,7 +74,8 @@ namespace Festival.Security
                         sql => sql.MigrationsAssembly(migrationAssembly));
                 })
                 .AddDeveloperSigningCredential()
-                .AddAspNetIdentity<ApplicationUser>();
+                .AddAspNetIdentity<ApplicationUser>()
+                .AddProfileService<ProfileService>();
 
             services.Configure<IdentityOptions>(options =>
             {
