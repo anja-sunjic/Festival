@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DT User3\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj": {}
+    "C:\\Users\\Anja\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DT User3\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj": {
+    "C:\\Users\\Anja\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DT User3\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj",
+        "projectUniqueName": "C:\\Users\\Anja\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj",
         "projectName": "Festival.Security",
-        "projectPath": "C:\\Users\\DT User3\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj",
-        "packagesPath": "C:\\Users\\DT User3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DT User3\\Desktop\\Festival\\Festival.Security\\obj\\",
+        "projectPath": "C:\\Users\\Anja\\Desktop\\Festival\\Festival.Security\\Festival.Security.csproj",
+        "packagesPath": "C:\\Users\\Anja\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anja\\Desktop\\Festival\\Festival.Security\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DT User3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anja\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

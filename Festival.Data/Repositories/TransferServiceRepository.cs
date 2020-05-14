@@ -1,4 +1,5 @@
 ﻿using Festival.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,6 +38,10 @@ namespace Festival.Data.Repositories
         public List<TransferVehicle> GetAllVehicles()
         {
             return _context.TransferVehicle.ToList();
+        }
+        public List<TransferService> GetByDate(DateTime date)
+        {
+            return _context.TransferService.Where(t => t.Date == date).ToList();
         }
 
         public TransferService GetByID(int id)

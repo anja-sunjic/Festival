@@ -1,4 +1,5 @@
 ﻿using Festival.Data.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Festival.Data.Repositories
@@ -12,6 +13,7 @@ namespace Festival.Data.Repositories
         void Save();
         string GetVehicleNameByVehicleID(int? transferVehicleID);
         List<TransferVehicle> GetAllVehicles();
+        List<TransferService> GetByDate(DateTime date);
         TransferVehicle GetVehicleByID(int vehicleId);
     }
 }
