@@ -4,14 +4,16 @@ using Festival.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Festival.Data.Migrations
 {
     [DbContext(typeof(FestivalContext))]
-    partial class FestivalContextModelSnapshot : ModelSnapshot
+    [Migration("20200514222411_Changed vouchers structure")]
+    partial class Changedvouchersstructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,8 +183,6 @@ namespace Festival.Data.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("AttendeeID");
-
-                    b.HasIndex("PurchaseVoucherID");
 
                     b.ToTable("Purchase");
                 });
@@ -470,6 +470,13 @@ namespace Festival.Data.Migrations
                 {
                     b.HasBaseType("Festival.Data.Models.Voucher");
 
+                    b.Property<int?>("PurchaseID")
+                        .HasColumnType("int");
+
+                    b.HasIndex("PurchaseID")
+                        .IsUnique()
+                        .HasFilter("[PurchaseID] IS NOT NULL");
+
                     b.HasDiscriminator().HasValue("PurchaseVoucher");
                 });
 
@@ -510,10 +517,6 @@ namespace Festival.Data.Migrations
                     b.HasOne("Festival.Data.Models.Attendee", "Attendee")
                         .WithMany()
                         .HasForeignKey("AttendeeID");
-
-                    b.HasOne("Festival.Data.Models.PurchaseVoucher", "PurchaseVoucher")
-                        .WithMany("RedeemedPurchasesWithVouchers")
-                        .HasForeignKey("PurchaseVoucherID");
                 });
 
             modelBuilder.Entity("Festival.Data.Models.ShopItem", b =>
@@ -563,6 +566,13 @@ namespace Festival.Data.Migrations
                         .HasForeignKey("TransferVehicleID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Festival.Data.Models.PurchaseVoucher", b =>
+                {
+                    b.HasOne("Festival.Data.Models.Purchase", "Purchase")
+                        .WithOne("PurchaseVoucher")
+                        .HasForeignKey("Festival.Data.Models.PurchaseVoucher", "PurchaseID");
                 });
 #pragma warning restore 612, 618
         }

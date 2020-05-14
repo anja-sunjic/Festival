@@ -70,6 +70,7 @@ namespace FestivalWebApplication
             services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             services.AddScoped<IPerformanceRepository, PerformanceRepository>();
             services.AddScoped<IAttendeeRepository, AttendeeRepository>();
+            services.AddScoped<ITicketVoucherRepository, TicketVoucherRepository>();
 
             IdentityModelEventSource.ShowPII = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;

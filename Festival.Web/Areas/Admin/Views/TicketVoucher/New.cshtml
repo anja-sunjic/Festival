@@ -1,0 +1,54 @@
+﻿@model Festival.Web.Areas.Admin.ViewModels.TicketVoucher.NewTicketVoucherVM;
+@{
+    ViewData["Title"] = "New Transfer Service";
+}
+
+
+<style>
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="SaveNew" enctype="multipart/form-data" method="post">
+        <fieldset>
+
+
+            <div class="form-group newRow">
+                <label for="VoucherCode" class="newLabel">Voucher Code :</label>
+                <div>
+                    <input asp-for="VoucherCode" class="form-control" />
+                </div>
+                <span asp-validation-for="VoucherCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="ExpirationDate" class="newLabel">ExpirationDate :</label>
+                <div>
+                    <input asp-for="ExpirationDate" class="form-control" />
+                </div>
+                <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group newRow">
+                <label for="Discount" class="newLabel">Discount :</label>
+                <div>
+                    <input asp-for="Discount" class="form-control" />
+                </div>
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+
+
+        </fieldset>
+
+        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
+
+    </form>
+</div>

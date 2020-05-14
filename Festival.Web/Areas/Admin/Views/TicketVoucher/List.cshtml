@@ -1,0 +1,54 @@
+﻿@using Festival.Web.Areas.Admin.ViewModels.TicketVoucher;
+@model List<Festival.Web.Areas.Admin.ViewModels.TicketVoucher.TicketVoucherListVM>
+
+@{
+    ViewData["Title"] = "Ticket Vouchers";
+}
+
+
+<h1>Ticket Vouchers</h1>
+<div style="float:right; margin-bottom:10px;">
+    <a asp-controller="TicketVoucher" asp-action="New" class="btn btn-success btn-lg active addnew" role="button" aria-pressed="true">Add New     <i class="fa fa-plus"></i></a>
+</div>
+<table class="table table-striped table-hover text-center ">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Voucher Code</th>
+            <th>Expiration Date</th>
+            <th>Discount</th>
+            <th>Vouchers Redeemed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (TicketVoucherListVM x in Model)
+        {
+            <tr>
+                <td>@x.ID</td>
+                <td>@x.VoucherCode</td>
+                <td>@x.ExpirationDate</td>
+                <td>@x.Discount</td>
+                <td>@x.NumberOfRedeemedVouchers</td>
+                <td>
+                    <div class="btn-group">
+                        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Detail" asp-route-id="@x.ID" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-info mr-1"></i>
+                            Detail
+                        </a>
+                        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Edit" asp-route-id="@x.ID" class="btn btn-secondary active btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </a>
+                        <a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@x.ID" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

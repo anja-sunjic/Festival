@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+
 namespace Festival.Data.Models
 {
     public class TicketVoucher : Voucher
     {
-        [ForeignKey("TicketID")]
-        public Ticket Ticket { get; set; }
-        public int? TicketID { get; set; }
-
-
+        public List<Ticket> RedeemedTicketsWithVouchers { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Festival.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("List");
         }
 
         public IActionResult List()

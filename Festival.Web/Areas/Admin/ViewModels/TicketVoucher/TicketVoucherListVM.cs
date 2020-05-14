@@ -1,7 +1,8 @@
 ﻿using System;
-namespace Festival.Data.Models
+
+namespace Festival.Web.Areas.Admin.ViewModels.TicketVoucher
 {
-    public abstract class Voucher
+    public class TicketVoucherListVM
     {
         public int ID { get; set; }
         public string VoucherCode { get; set; }
