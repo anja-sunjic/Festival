@@ -1,0 +1,40 @@
+﻿@model Festival.Web.Areas.Admin.ViewModels.TicketVoucher.DetailTicketVoucherVM;
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<div class="col-6">
+    <h2 class="detailName">Ticket Voucher</h2>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="VoucherCode">Voucher Code : </label>
+        <span class="detailData">@Model.VoucherCode</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="ExpirationDate">Expiration Date : </label>
+        <span class="detailData">@Model.ExpirationDate</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="Discount">Discount : </label>
+        <span class="detailData">@Model.Discount</span>
+    </div>
+    <div class="form-group row detailRow">
+        <label class="detailLabel" for="AvailableSeats">Number of Redeemed Vouchers : </label>
+        <span style="" class="detailData">@Model.NumberOfRedeemedVouchers</span>
+    </div>
+    <div class="detailButtons btn-group">
+        <a style="margin-right:5px;" asp-controller="TicketVoucher" asp-action="List" class="btn btn-info active" role="button" aria-pressed="true">
+            Back
+            <i class="fa fa-undo"></i>
+        </a>
+        <a style="margin-right:5px;" asp-controller="TicketVoucher" asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-secondary active" role="button" aria-pressed="true">
+            Edit
+            <i class="fa fa-edit"></i>
+        </a>
+        <a asp-controller="TicketVoucher" asp-action="Delete" asp-route-id="@Model.ID" class="btn btn-danger" role="button" aria-pressed="true">
+            Delete
+            <i class="fa fa-trash"></i>
+        </a>
+    </div>
+</div>
+<div class="clearfix"></div>
