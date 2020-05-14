@@ -156,7 +156,11 @@ namespace Festival.Security.Controllers.Account
                     // u ovom slucaju pocetnu od identity servera
                     else if (string.IsNullOrEmpty(model.ReturnUrl))
                     {
-                        return Redirect("~/");
+                        var roles = await _userManager.GetRolesAsync(user);
+                        if (roles.Contains("Admin"))
+                            return Redirect("https://127.0.0.1:44330/Admin");
+                        else
+                            return Redirect("https://127.0.0.1:44330/");
                     }
                     // ako skripta, bot ili slicno pokusaju nam loginovat throwa exception
                     else
@@ -279,10 +283,19 @@ namespace Festival.Security.Controllers.Account
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(newUser, "Attendee");
+                    return Redirect("https://127.0.0.1:44330/");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                    return View("Register", model);
                 }
 
                 // Ako je sve uspjelo treba vratit na View neki Uspjesna registracija ili redirectat na Homepage ?? veze nemam
-                return Redirect("https://127.0.0.1:44330/");
+
             }
             // vracamo na registracioni View opet ako nesto nije bilo dobro I guess ? i ispisujemo greske
             return View("Register", model);

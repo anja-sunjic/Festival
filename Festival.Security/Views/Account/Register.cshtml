@@ -5,3 +5,35 @@
 }
 
 <h2>Register</h2>
+
+
+<partial name="_ValidationSummary" />
+
+<form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" enctype="multipart/form-data" action="Register" method="post">
+    <fieldset>
+        <div class="form-group newRow">
+            <label for="Username" class="newLabel">Username :</label>
+            <div>
+                <input asp-for="Username" class="form-control" />
+            </div>
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group newRow">
+            <label for="Email" class="newLabel">Email :</label>
+            <div>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group newRow">
+            <label for="Password" class="newLabel">Password :</label>
+            <div>
+                <input asp-for="Password" class="form-control" />
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit ml-1" />
+    </fieldset>
+</form>
