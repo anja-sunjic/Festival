@@ -52,7 +52,7 @@ namespace Festival.Web.Areas.Admin.Controllers
             };
 
             _repo.Add(ticketVoucher);
-            return View("List");
+            return RedirectToAction("List");
         }
 
         public IActionResult Detail(int ID)
@@ -67,6 +67,12 @@ namespace Festival.Web.Areas.Admin.Controllers
                 NumberOfRedeemedVouchers = voucher.NumberOfRedeemedVouchers
             };
             return View(model);
+        }
+
+        public IActionResult Delete(int ID)
+        {
+            _repo.Delete(ID);
+            return RedirectToAction("List");
         }
     }
 }

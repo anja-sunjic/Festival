@@ -9,5 +9,6 @@ namespace Festival.Data.Repositories
         void Add(TicketVoucher ticketVoucher);
         void Save();
         TicketVoucher GetByID(int iD);
+        void Delete(int iD);
     }
 }

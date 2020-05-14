@@ -19,6 +19,13 @@ namespace Festival.Data.Repositories
             Save();
         }
 
+        public void Delete(int iD)
+        {
+            var voucher = context.TicketVoucher.Find(iD);
+            context.TicketVoucher.Remove(voucher);
+            Save();
+        }
+
         public List<TicketVoucher> GetAll()
         {
             return context.TicketVoucher.ToList();
