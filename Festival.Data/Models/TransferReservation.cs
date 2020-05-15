@@ -7,6 +7,5 @@
         public int? AttendeeID { get; set; }
         public TransferService TransferService { get; set; }
         public int? TransferServiceID { get; set; }
-
     }
 }
