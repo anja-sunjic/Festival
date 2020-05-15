@@ -1,4 +1,8 @@
-﻿.lastItem {
+﻿div.wrapper #content.margin {
+    margin-left: 80px !important;
+}
+
+.lastItem {
     border-bottom: 1px solid #fafafa !important;
     margin-bottom: 5px !important;
 }
