@@ -6,5 +6,9 @@ namespace Festival.Data.Repositories
     public interface ITransferReservationRepository
     {
         List<TransferReservation> GetAll();
+        List<Attendee> GetAllAttendees();
+        List<TransferService> GetAllServices();
+        void Add(TransferReservation reservation);
+        void Save();
     }
 }

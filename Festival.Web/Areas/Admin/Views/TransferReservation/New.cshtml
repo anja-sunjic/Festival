@@ -1,0 +1,54 @@
+﻿@model Festival.Web.Areas.Admin.ViewModels.TransferReservation.NewTransferReservationVM;
+@{
+    ViewData["Title"] = "New Transfer Reservation";
+}
+
+
+<style>
+
+
+
+
+
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="SaveNew" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Attendee :</label>
+                <div>
+                    <select asp-for="AttendeeID" asp-items="Model.Attendees" class="form-control">
+                        <option disabled>(Pick Attendee)</option>
+                    </select>
+                </div>
+                <span asp-validation-for="AttendeeID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group newRow">
+                <label for="Name" class="newLabel">Transfer Service :</label>
+                <div>
+                    <select asp-for="TransferServiceID" asp-items="Model.TransferServices" class="form-control">
+                        <option disabled>(Pick Service)</option>
+                    </select>
+                </div>
+                <span asp-validation-for="TransferServiceID" class="text-danger"></span>
+            </div>
+
+
+        </fieldset>
+
+        <input type="submit" value="Save new" class="btn btn-lg btn-secondary submit" />
+
+    </form>
+</div>
