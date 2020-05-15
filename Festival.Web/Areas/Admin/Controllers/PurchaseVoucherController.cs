@@ -54,5 +54,20 @@ namespace Festival.Web.Areas.Admin.Controllers
             _repo.Add(purchaseVoucher);
             return RedirectToAction("List");
         }
+
+        public IActionResult Detail(int ID)
+        {
+            var voucher = _repo.GetByID(ID);
+            var model = new DetailPurchaseVoucherVM()
+            {
+                ID = voucher.ID,
+                VoucherCode = voucher.VoucherCode,
+                Discount = voucher.Discount,
+                ExpirationDate = voucher.ExpirationDate,
+                NumberOfRedeemedVouchers = voucher.NumberOfRedeemedVouchers
+            };
+
+            return View(model);
+        }
     }
 }

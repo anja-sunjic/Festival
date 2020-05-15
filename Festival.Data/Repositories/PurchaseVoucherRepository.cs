@@ -24,6 +24,11 @@ namespace Festival.Data.Repositories
             return context.PurchaseVoucher.ToList();
         }
 
+        public PurchaseVoucher GetByID(int iD)
+        {
+            return context.PurchaseVoucher.Find(iD);
+        }
+
         public void Save()
         {
             context.SaveChanges();
