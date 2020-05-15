@@ -11,5 +11,6 @@ namespace Festival.Data.Repositories
         void Add(TransferReservation reservation);
         void Save();
         TransferReservation GetByID(int iD);
+        void Delete(int ID);
     }
 }

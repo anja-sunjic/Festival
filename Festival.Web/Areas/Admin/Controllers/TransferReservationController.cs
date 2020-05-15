@@ -3,7 +3,6 @@ using Festival.Data.Repositories;
 using Festival.Web.Areas.Admin.ViewModels.TransferReservation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Festival.Web.Areas.Admin.Controllers
@@ -26,7 +25,7 @@ namespace Festival.Web.Areas.Admin.Controllers
         public IActionResult List()
         {
 
-            List<TransferReservationListVM> model = _repo.GetAll().Select(x => new TransferReservationListVM
+            var model = _repo.GetAll().Select(x => new TransferReservationListVM
             {
                 ID = x.ID,
                 FullName = x.Attendee.FirstName + " " + x.Attendee.LastName,
@@ -82,6 +81,41 @@ namespace Festival.Web.Areas.Admin.Controllers
             };
 
             return View(model);
+        }
+
+        public IActionResult Delete(int ID)
+        {
+            _repo.Delete(ID);
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            var model = new EditTransferReservationVM()
+            {
+                ID = Id,
+                Attendees = _repo.GetAllAttendees().Select(o => new SelectListItem
+                {
+                    Value = o.ID.ToString(),
+                    Text = o.FirstName + " " + o.LastName
+                }).ToList(),
+                TransferServices = _repo.GetAllServices().Select(o => new SelectListItem
+                {
+                    Value = o.ID.ToString(),
+                    Text = o.TransferVehicle.Name + " - " + o.MeetingPoint + " - " + o.Date.ToString()
+                }).ToList()
+            };
+
+            return View(model);
+        }
+
+        public IActionResult Save(EditTransferReservationVM model)
+        {
+            var reservation = _repo.GetByID(model.ID);
+            reservation.AttendeeID = model.AttendeeID;
+            reservation.TransferServiceID = model.TransferServiceID;
+            _repo.Save();
+            return RedirectToAction("List");
         }
     }
 }

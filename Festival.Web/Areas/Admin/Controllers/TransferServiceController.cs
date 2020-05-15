@@ -22,7 +22,7 @@ namespace FestivalWebApplication.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("List");
         }
 
         public IActionResult List()
@@ -89,7 +89,7 @@ namespace FestivalWebApplication.Controllers
 
             _repo.Add(transferService);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         public IActionResult Detail(int ID)

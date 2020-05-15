@@ -20,6 +20,13 @@ namespace Festival.Data.Repositories
             Save();
         }
 
+        public void Delete(int ID)
+        {
+            var reservation = context.TransferReservation.Find(ID);
+            context.TransferReservation.Remove(reservation);
+            Save();
+        }
+
         public List<TransferReservation> GetAll()
         {
             return context.TransferReservation.Include(x => x.Attendee).Include(x => x.TransferService).ToList();
