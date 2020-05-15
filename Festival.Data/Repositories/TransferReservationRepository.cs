@@ -35,6 +35,11 @@ namespace Festival.Data.Repositories
             return context.TransferService.Include(x => x.TransferVehicle).ToList();
         }
 
+        public TransferReservation GetByID(int iD)
+        {
+            return context.TransferReservation.Include(x => x.Attendee).Include(x => x.TransferService).ThenInclude(x => x.TransferVehicle).First(x => x.ID == iD);
+        }
+
         public void Save()
         {
             context.SaveChanges();

@@ -29,7 +29,7 @@ namespace Festival.Web.Areas.Admin.Controllers
             List<TransferReservationListVM> model = _repo.GetAll().Select(x => new TransferReservationListVM
             {
                 ID = x.ID,
-                FullName = x.Attendee.FirstName + x.Attendee.LastName,
+                FullName = x.Attendee.FirstName + " " + x.Attendee.LastName,
                 Email = x.Attendee.Email,
                 Date = x.TransferService.Date,
                 MeetingPoint = x.TransferService.MeetingPoint
@@ -66,6 +66,22 @@ namespace Festival.Web.Areas.Admin.Controllers
             };
             _repo.Add(reservation);
             return RedirectToAction("List");
+        }
+
+        public IActionResult Detail(int ID)
+        {
+            var reservation = _repo.GetByID(ID);
+            var model = new DetailTransferReservationVM()
+            {
+                ID = reservation.ID,
+                AttendeeEmail = reservation.Attendee.Email,
+                AttendeeName = reservation.Attendee.FirstName + " " + reservation.Attendee.LastName,
+                VehicleName = reservation.TransferService.TransferVehicle.Name,
+                MeetingPoint = reservation.TransferService.MeetingPoint,
+                DateOfService = reservation.TransferService.Date
+            };
+
+            return View(model);
         }
     }
 }
