@@ -1,0 +1,64 @@
+﻿@model Festival.Web.Areas.Admin.ViewModels.PurchaseVoucher.EditPurchaseVoucherVM;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<style>
+
+
+
+    .container {
+        padding: 0 !important;
+    }
+
+    main.pb-3 {
+        padding-bottom: 0 !important;
+    }
+</style>
+
+<div class="formDiv" style="background-color:#e2e2e2;">
+    <form class="formMy" style="border:2px dotted #fafafa; background-color:#fafafa" asp-action="Save" enctype="multipart/form-data" method="post">
+        <fieldset>
+            <input asp-for="ID" hidden />
+
+            <div class="form-group">
+                <div class="col-6 newRow" style="float:left;padding-left:0px;">
+                    <label class="newLabel" for="VoucherCode">Voucher Code :</label>
+                    <div>
+                        <input asp-for="VoucherCode" class="form-control" />
+                    </div>
+                    <span asp-validation-for="VoucherCode" class="text-danger"></span>
+                </div>
+                <div class="col-6 newRow" style="float:right;padding-right:0px;">
+                    <label class="newLabel" for="ExpirationDate">Expiration Date : </label>
+                    <div>
+                        <input asp-for="ExpirationDate" class="form-control" />
+                    </div>
+                    <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-group">
+                <div class="col-6 newRow" style="float:left;padding-left:0px;">
+                    <label class="newLabel" for="Discount">Discount :</label>
+                    <div>
+                        <input asp-for="Discount" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+                <div class="col-6 newRow" style="float:right;padding-right:0px;">
+                    <label class="newLabel" for="NumberOfRedeemedVouchers">Vouchers Redeemed : </label>
+                    <div>
+                        <input asp-for="NumberOfRedeemedVouchers" class="form-control" />
+                    </div>
+                    <span asp-validation-for="NumberOfRedeemedVouchers" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </fieldset>
+
+        <input type="submit" value="Save changes" class="btn btn-lg btn-secondary submit" />
+
+    </form>
+</div>
