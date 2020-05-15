@@ -9,5 +9,6 @@ namespace Festival.Data.Repositories
         void Add(PurchaseVoucher voucher);
         void Save();
         PurchaseVoucher GetByID(int iD);
+        void Delete(int iD);
     }
 }

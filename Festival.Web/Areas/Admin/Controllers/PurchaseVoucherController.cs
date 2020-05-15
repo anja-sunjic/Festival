@@ -69,5 +69,11 @@ namespace Festival.Web.Areas.Admin.Controllers
 
             return View(model);
         }
+
+        public IActionResult Delete(int ID)
+        {
+            _repo.Delete(ID);
+            return RedirectToAction("List");
+        }
     }
 }
