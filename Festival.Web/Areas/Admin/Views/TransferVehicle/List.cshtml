@@ -1,9 +1,14 @@
-﻿@using Festival.Web.ViewModels.TransferVehicle;
-@model List<Festival.Web.ViewModels.TransferVehicle.ListTransferVehicleVM>
+﻿@using Festival.Web.Helper;
+@using Festival.Web.ViewModels.TransferVehicle;
+@model PaginatedList<Festival.Web.ViewModels.TransferVehicle.ListTransferVehicleVM>
 @{
     ViewData["Title"] = "Transfer Vehicles";
 }
 
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
 
 <h1>Transfer Vehicles</h1>
 <div style="float:right; margin-bottom:10px;">
@@ -25,29 +30,57 @@
         @foreach (ListTransferVehicleVM x in Model)
         {
             broj++;
-            <tr>
-                <td>@broj</td>
-                <td>@x.Name</td>
-                <td>@x.RegistrationNumber</td>
-                <td>@x.Driver</td>
-                <td>@x.Capacity</td>
-                <td>
-                    <div class="btn-group">
-                        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Detail" asp-route-id="@x.Id" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
-                            <i class="fa fa-info mr-1"></i>
-                            Detail
-                        </a>
-                        <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Edit" asp-route-id="@x.Id" class="btn btn-secondary active btn-sm" role="button" aria-pressed="true">
-                            <i class="fa fa-edit"></i>
-                            Edit
-                        </a>
-                        <a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@x.Id" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
-                            <i class="fa fa-trash"></i>
-                            Delete
-                        </a>
-                    </div>
-                </td>
-            </tr>
+        <tr>
+            <td>@broj</td>
+            <td>@x.Name</td>
+            <td>@x.RegistrationNumber</td>
+            <td>@x.Driver</td>
+            <td>@x.Capacity</td>
+            <td>
+                <div class="btn-group">
+                    <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Detail" asp-route-id="@x.Id" class="btn btn-info active btn-sm" role="button" aria-pressed="true">
+                        <i class="fa fa-info mr-1"></i>
+                        Detail
+                    </a>
+                    <a style="margin-right:5px;" asp-controller="TransferVehicle" asp-action="Edit" asp-route-id="@x.Id" class="btn btn-secondary active btn-sm" role="button" aria-pressed="true">
+                        <i class="fa fa-edit"></i>
+                        Edit
+                    </a>
+                    <a asp-controller="TransferVehicle" asp-action="Delete" asp-route-id="@x.Id" class="btn btn-danger btn-sm" role="button" aria-pressed="true">
+                        <i class="fa fa-trash"></i>
+                        Delete
+                    </a>
+                </div>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
+
+<nav aria-label="..." class="mt-4">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @prevDisabled">
+            <a class="page-link paginationText" asp-action="List" asp-route-pageNumber="@(Model.PageIndex-1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        @{
+            for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                var isCurrent = Model.PageIndex == i ? "ourActive" : "";
+
+            <li class="page-item">
+                <a class="page-link paginationText @isCurrent" asp-action="List" asp-route-pageNumber="@i">@i <span class="sr-only">(current)</span></a>
+            </li>
+            }
+
+        }
+        <li class="page-item @nextDisabled">
+            <a class="page-link paginationText" asp-action="List" asp-route-pageNumber="@(Model.PageIndex+1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

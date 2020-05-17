@@ -28,26 +28,30 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult List()
+        public IActionResult List(int? pageNumber)
         {
-            List<ListTransferVehicleVM> Model = _repo.GetAll().Select(p => new ListTransferVehicleVM
+            var pageSize = 4;
+
+            var model = _repo.GetAll().OrderBy(a=>a.Name).ToList().Select(p => new ListTransferVehicleVM
             {
                 Id = p.ID,
                 Name = p.Name,
                 RegistrationNumber = p.RegistrationNumber,
                 Driver = p.Driver,
                 Capacity = p.Capacity
-            }).ToList();
+            }).AsQueryable();
 
-            return View(Model);
+            var paginatedModel = PaginatedList<ListTransferVehicleVM>.CreateAsync(model, pageNumber ?? 1, pageSize);
 
+
+            return View(paginatedModel);
         }
 
         public IActionResult New()
         {
-            NewTransferVehicleVM Model = new NewTransferVehicleVM();
+            var model = new NewTransferVehicleVM();
 
-            return View(Model);
+            return View(model);
         }
 
         public IActionResult SaveNew(NewTransferVehicleVM model)
@@ -57,9 +61,9 @@ namespace FestivalWebApplication.Controllers
                 return View("New");
             }
 
-            string uniqueFileName = Image.Upload(model.Picture, _webHostEnvironment, "transfervehicles");
+            var uniqueFileName = Image.Upload(model.Picture, _webHostEnvironment, "transfervehicles");
 
-            TransferVehicle vehicle = new TransferVehicle()
+            var vehicle = new TransferVehicle
             {
                 Name = model.Name,
                 RegistrationNumber = model.RegistrationNumber,
@@ -72,10 +76,10 @@ namespace FestivalWebApplication.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult Detail(int ID)
+        public IActionResult Detail(int id)
         {
-            TransferVehicle vehicle = _repo.GetByID(ID);
-            var Model = new DetailTransferVehicleVM
+            var vehicle = _repo.GetByID(id);
+            var model = new DetailTransferVehicleVM
             {
                 ID = vehicle.ID,
                 Name = vehicle.Name,
@@ -84,13 +88,13 @@ namespace FestivalWebApplication.Controllers
                 Driver = vehicle.Driver,
                 Picture = vehicle.Picture
             };
-            return View(Model);
+            return View(model);
         }
 
-        public IActionResult Edit(int ID)
+        public IActionResult Edit(int id)
         {
-            var transferVehicle = _repo.GetByID(ID);
-            var Model = new EditTransferVehicleVM
+            var transferVehicle = _repo.GetByID(id);
+            var model = new EditTransferVehicleVM
             {
                 ID = transferVehicle.ID,
                 Name = transferVehicle.Name,
@@ -99,7 +103,7 @@ namespace FestivalWebApplication.Controllers
                 Capacity = transferVehicle.Capacity
             };
 
-            return View("Edit", Model);
+            return View("Edit", model);
         }
 
         public IActionResult Save(EditTransferVehicleVM model)
@@ -109,16 +113,19 @@ namespace FestivalWebApplication.Controllers
                 return View("Edit");
             }
 
-            string uniqueFileName = Image.Upload(model.Picture, _webHostEnvironment, "transfervehicles");
-            var acc = _repo.GetByID(model.ID);
-            acc.Name = model.Name;
-            acc.Capacity = model.Capacity;
-            acc.RegistrationNumber = model.RegistrationNumber;
-            acc.Driver = model.Driver;
+            var uniqueFileName = Image.Upload(model.Picture, _webHostEnvironment, "transfervehicles");
+            var vehicle = _repo.GetByID(model.ID);
+
+            vehicle.Name = model.Name;
+            vehicle.Capacity = model.Capacity;
+            vehicle.RegistrationNumber = model.RegistrationNumber;
+            vehicle.Driver = model.Driver;
+
             if (model.Picture != null)
             {
-                acc.Picture = uniqueFileName;
+                vehicle.Picture = uniqueFileName;
             }
+
             _repo.Save();
             return RedirectToAction("List");
         }
@@ -127,8 +134,10 @@ namespace FestivalWebApplication.Controllers
         public IActionResult Delete(int Id)
         {
             var vehicle = _repo.GetByID(Id);
+
             Image.Delete(_webHostEnvironment, "transfervehicles", vehicle.Picture);
             _repo.Delete(Id);
+
             return Redirect("/TransferVehicle/Index");
         }
     }
