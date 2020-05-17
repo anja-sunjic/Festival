@@ -1,15 +1,11 @@
 ﻿using Festival.Data.Models;
-using Festival.Data.Repositories;
-using Microsoft.AspNetCore.Authentication;
+using Festival.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 
 namespace FestivalWebApplication
 {
@@ -27,11 +23,14 @@ namespace FestivalWebApplication
 
             services.AddControllersWithViews();
 
-            ConfigureDatabase(services);
 
-            ConfigureSecurity(services);
+            services.AddDbContext<FestivalContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("FestivalDatabase")));
 
-            ConfigureRepositories(services);
+
+            services.AddRepositories();
+
+            services.AddSecurity();
 
         }
 
@@ -73,62 +72,5 @@ namespace FestivalWebApplication
             });
         }
 
-        private void ConfigureRepositories(IServiceCollection services)
-        {
-            services.AddScoped<IAccommodationRepository, AccommodationRepository>();
-            services.AddScoped<IShopItemRepository, ShopItemRepository>();
-            services.AddScoped<ITransferVehicleRepository, TransferVehicleRepository>();
-            services.AddScoped<ITransferServiceRepository, TransferServiceRepository>();
-            services.AddScoped<IStageRepository, StageRepository>();
-            services.AddScoped<IPerformerRepository, PerformerRepository>();
-            services.AddScoped<ISponzorRepository, SponsorRepository>();
-            services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
-            services.AddScoped<IPerformanceRepository, PerformanceRepository>();
-            services.AddScoped<IAttendeeRepository, AttendeeRepository>();
-            services.AddScoped<ITicketVoucherRepository, TicketVoucherRepository>();
-            services.AddScoped<IPurchaseVoucherRepository, PurchaseVoucherRepository>();
-            services.AddScoped<ITransferReservationRepository, TransferReservationRepository>();
-        }
-
-        private void ConfigureSecurity(IServiceCollection services)
-        {
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = "Cookies";
-                options.DefaultChallengeScheme = "oidc";
-            })
-            .AddCookie("Cookies")
-            .AddOpenIdConnect("oidc", options =>
-            {
-                options.SignInScheme = "Cookies";
-                options.Authority = "http://localhost:5000";
-                options.RequireHttpsMetadata = false;
-                options.ClientId = "mvc";
-                options.ClientSecret = "secret";
-                options.ResponseType = "code";
-                options.SaveTokens = true;
-                options.MetadataAddress = "http://localhost:5000/.well-known/openid-configuration";
-                options.GetClaimsFromUserInfoEndpoint = true;
-                options.ClaimActions.MapUniqueJsonKey("roles", "roles");
-
-            });
-
-            services.AddAuthorization(option =>
-            {
-                option.AddPolicy("Admin", policy => policy.RequireClaim("roles", "Admin"));
-                option.AddPolicy("Attendee", policy => policy.RequireClaim("roles", "Attendee"));
-
-            });
-
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-            IdentityModelEventSource.ShowPII = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-        }
-
-        private void ConfigureDatabase(IServiceCollection services)
-        {
-            services.AddDbContext<FestivalContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("FestivalDatabase")));
-        }
     }
 }
