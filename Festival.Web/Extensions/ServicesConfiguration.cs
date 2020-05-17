@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
+using Festival.Web.Helper;
 
 namespace Festival.Web.Extensions
 {
@@ -24,6 +25,8 @@ namespace Festival.Web.Extensions
             services.AddScoped<ITicketVoucherRepository, TicketVoucherRepository>();
             services.AddScoped<IPurchaseVoucherRepository, PurchaseVoucherRepository>();
             services.AddScoped<ITransferReservationRepository, TransferReservationRepository>();
+            services.AddScoped<ILoggingRepository, LoggingRepository>();
+            services.AddScoped<DblExceptionFilter>();
         }
 
         public static void AddSecurity(this IServiceCollection services)
