@@ -4,11 +4,12 @@ using Festival.Web.Areas.Admin.ViewModels.TransferReservation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace Festival.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class TransferReservationController : Controller
+    public class TransferReservationController : BaseController
     {
         private readonly ITransferReservationRepository _repo;
 

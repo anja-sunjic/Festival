@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
     [Area("Admin")]
-    public class StageController : Controller
+    public class StageController : BaseController
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IStageRepository _repo;

@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
     [Area("Admin")]
-    public class TransferServiceController : Controller
+    public class TransferServiceController : BaseController
     {
         private readonly ITransferServiceRepository _repo;
 

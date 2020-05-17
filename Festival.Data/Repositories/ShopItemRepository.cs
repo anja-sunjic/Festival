@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,6 +24,8 @@ namespace Festival.Data.Repositories
         public bool Delete(int ID)
         {
             ShopItem item = _context.ShopItem.Find(ID);
+            if (item == null) throw new Exception($"Can't find shop item with Id: {ID}");
+
             _context.Remove(item);
             if (_context.SaveChanges() > 0)
                 return true;
@@ -36,7 +39,10 @@ namespace Festival.Data.Repositories
 
         public ShopItem GetByID(int ID)
         {
-            return _context.ShopItem.Find(ID);
+            var shopItem = _context.ShopItem.Find(ID);
+            if (shopItem == null) throw new Exception($"Can't find shop item with Id: {ID}");
+
+            return shopItem;
         }
 
         public void Save()

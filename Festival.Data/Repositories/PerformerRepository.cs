@@ -32,6 +32,8 @@ namespace Festival.Data.Repositories
         public void Delete(int id)
         {
             var performer = _context.Performer.Find(id);
+            if (performer == null) throw new Exception($"Can't find performer with Id: {id}");
+
             _context.Remove(performer);
 
             Save();
@@ -39,7 +41,10 @@ namespace Festival.Data.Repositories
 
         public Performer GetByID(int id)
         {
-            return _context.Performer.Include(a=>a.Manager).FirstOrDefault(b=>b.ID==id);
+            var performer = _context.Performer.Include(a => a.Manager).FirstOrDefault(b => b.ID == id);
+            if (performer == null) throw new Exception($"Can't find performer with Id: {id}");
+
+            return performer;
         }
 
         public void Save()
@@ -60,7 +65,10 @@ namespace Festival.Data.Repositories
 
         public Manager FindManagerById(int managerId)
         {
-            return  _context.Manager.Find(managerId);
+            var manager = _context.Manager.Find(managerId);
+            if (manager == null) throw new Exception($"Can't find manager with Id: {managerId}");
+
+            return manager;
         }
 
         public List<Manager> GetAllManagers()

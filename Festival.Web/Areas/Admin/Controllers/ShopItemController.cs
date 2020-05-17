@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
     [Area("Admin")]
-    public class ShopItemController : Controller
+    public class ShopItemController : BaseController
     {
         private readonly IShopItemRepository _repo;
         private readonly IWebHostEnvironment _webHostEnvironment;

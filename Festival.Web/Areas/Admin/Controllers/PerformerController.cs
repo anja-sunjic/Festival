@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
 
     [Area("Admin")]
-    public class PerformerController : Controller
+    public class PerformerController : BaseController
     {
         private readonly IPerformerRepository _repo;
         private readonly IWebHostEnvironment _hostingEnvironment;

@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +23,8 @@ namespace Festival.Data.Repositories
         public void Delete(int iD)
         {
             var voucher = context.TicketVoucher.Find(iD);
+            if(voucher == null) throw new Exception($"Can't find ticket voucher with Id: {iD}");
+
             context.TicketVoucher.Remove(voucher);
             Save();
         }
@@ -33,7 +36,10 @@ namespace Festival.Data.Repositories
 
         public TicketVoucher GetByID(int iD)
         {
-            return context.TicketVoucher.Find(iD);
+            var voucher = context.TicketVoucher.Find(iD);
+            if (voucher == null) throw new Exception($"Can't find ticket voucher with Id: {iD}");
+
+            return voucher;
         }
 
         public void Save()

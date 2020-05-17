@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +23,8 @@ namespace Festival.Data.Repositories
         public void Delete(int id)
         {
             var entity = context.TicketType.Find(id);
+            if (entity == null) throw new Exception($"Can't find ticket type with Id: {id}");
+
             context.TicketType.Remove(entity);
             Save();
         }
@@ -33,7 +36,10 @@ namespace Festival.Data.Repositories
 
         public TicketType GetByID(int id)
         {
-            return context.TicketType.Find(id);
+            var ticketType = context.TicketType.Find(id);
+            if (ticketType == null) throw new Exception($"Can't find ticket type with Id: {id}");
+
+            return ticketType;
         }
 
         public int GetNumberOfTicketsBought(int iD)

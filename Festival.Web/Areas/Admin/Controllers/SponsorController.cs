@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
     [Area("Admin")]
-    public class SponsorController : Controller
+    public class SponsorController : BaseController
     {
         private readonly IWebHostEnvironment hostingEnvironment;
         private readonly ISponzorRepository _repo;

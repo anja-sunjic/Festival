@@ -4,11 +4,12 @@ using Festival.Web.Areas.Admin.ViewModels.PurchaseVoucher;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace Festival.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class PurchaseVoucherController : Controller
+    public class PurchaseVoucherController : BaseController
     {
         private readonly IPurchaseVoucherRepository _repo;
 

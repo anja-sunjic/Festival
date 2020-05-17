@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +23,8 @@ namespace Festival.Data.Repositories
         public void Delete(int id)
         {
             var sponsor = context.Sponsor.Find(id);
+            if (sponsor == null) throw new Exception($"Can't find sponsor with Id: {id}");
+
             context.Sponsor.Remove(sponsor);
             Save();
         }
@@ -33,7 +36,10 @@ namespace Festival.Data.Repositories
 
         public Sponsor GetByID(int id)
         {
-            return context.Sponsor.Find(id);
+            Sponsor sponsor = null;
+            if (sponsor == null) throw new Exception($"Can't find sponsor with Id: {id}");
+
+            return sponsor;
         }
 
         public void Save()
