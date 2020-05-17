@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IdentityModel.Tokens.Jwt;
+using Festival.Web.Helper;
 
 namespace FestivalWebApplication
 {
@@ -52,7 +53,8 @@ namespace FestivalWebApplication
             services.AddScoped<ISponzorRepository, SponsorRepository>();
             services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
             services.AddScoped<IPerformanceRepository, PerformanceRepository>();
-
+            services.AddScoped<ILoggingRepository, LoggingRepository>();
+            services.AddScoped<DblExceptionFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Festival.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -30,13 +31,18 @@ namespace Festival.Data.Repositories
         public void Delete(int id)
         {
             var performance = _context.Performance.Find(id);
+            if (performance == null) throw new Exception($"Can't find performance with Id: {id}");
+
             _context.Remove(performance);
             Save();
         }
 
         public Performance GetById(int id)
         {
-            return GetAll().FirstOrDefault(a => a.ID == id);
+            var performance = GetAll().FirstOrDefault(a => a.ID == id);
+            if(performance==null) throw new Exception($"Can't find performance with Id: {id}");
+
+            return performance;
         }
 
         public void Save()

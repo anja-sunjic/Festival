@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,8 @@ namespace Festival.Data.Repositories
 
         public bool Add(Accommodation acc)
         {
+            if (acc == null) throw new Exception("New accommodation cannot be null");
+
             _context.Accommodation.Add(acc);
             if (_context.SaveChanges() > 0)
                 return true;
@@ -23,7 +26,9 @@ namespace Festival.Data.Repositories
 
         public bool Delete(int id)
         {
-            Accommodation accommodation = _context.Accommodation.Find(id);
+            var accommodation = _context.Accommodation.Find(id);
+            if (accommodation == null) throw new Exception($"Cant find accommodation with Id: {id}");
+
             _context.Remove(accommodation);
             if (_context.SaveChanges() > 0)
                 return true;
@@ -37,7 +42,10 @@ namespace Festival.Data.Repositories
 
         public Accommodation GetByID(int id)
         {
-            return _context.Accommodation.Find(id);
+            var accommodation = _context.Accommodation.Find(id);
+            if(accommodation==null) throw new Exception($"Cant find accommodation with Id: {id}");
+
+            return accommodation;
         }
 
         public void Save()

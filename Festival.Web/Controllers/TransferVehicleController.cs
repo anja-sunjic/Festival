@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
-    public class TransferVehicleController : Controller
+    public class TransferVehicleController : BaseController
     {
         private readonly ITransferVehicleRepository _repo;
         private readonly IWebHostEnvironment _webHostEnvironment;

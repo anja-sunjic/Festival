@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using Festival.Data.Repositories;
 using Festival.Web.Helper;
 using FestivalWebApplication.ViewModels.Accommodation;
@@ -7,12 +8,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 using FestivalWebApplication.ViewModels.Performance;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
-    public class AccommodationsController : Controller
+    public class AccommodationsController : BaseController
     {
         private readonly IAccommodationRepository _repo;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -30,8 +32,7 @@ namespace FestivalWebApplication.Controllers
 
         public IActionResult List()
         {
-
-
+            
             List<AccommodationListVM> model = _repo.GetAll().Select(acc => new AccommodationListVM
             {
                 ID = acc.ID,

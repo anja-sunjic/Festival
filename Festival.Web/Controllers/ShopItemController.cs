@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
-    public class ShopItemController : Controller
+    public class ShopItemController : BaseController
     {
         private readonly IShopItemRepository _repo;
         private readonly IWebHostEnvironment _webHostEnvironment;

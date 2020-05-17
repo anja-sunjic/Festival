@@ -7,11 +7,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Festival.Data.Models;
+using Festival.Web.Controllers;
 using Festival.Web.Helper;
 
 namespace FestivalWebApplication.Controllers
 {
-    public class PerformerController : Controller
+    public class PerformerController : BaseController
     {
         private readonly IPerformerRepository _repo;
         private readonly IWebHostEnvironment _hostingEnvironment;

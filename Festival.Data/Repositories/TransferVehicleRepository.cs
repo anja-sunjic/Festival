@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,9 +20,11 @@ namespace Festival.Data.Repositories
             Save();
         }
 
-        public void Delete(int id)
+        public void Delete(int Id)
         {
-            TransferVehicle vehicle = _context.TransferVehicle.Find(id);
+            TransferVehicle vehicle = _context.TransferVehicle.Find(Id);
+            if (vehicle == null) throw new Exception($"Can't find vehicle with Id: {Id}");
+
             _context.Remove(vehicle);
             Save();
         }
@@ -31,9 +34,12 @@ namespace Festival.Data.Repositories
             return _context.TransferVehicle.ToList();
         }
 
-        public TransferVehicle GetByID(int ID)
+        public TransferVehicle GetByID(int Id)
         {
-            return _context.TransferVehicle.Find(ID);
+            var vehicle = _context.TransferVehicle.Find(Id);
+            if (vehicle == null) throw new Exception($"Can't find vehicle with Id: {Id}");
+
+            return vehicle;
         }
 
         public void Save()

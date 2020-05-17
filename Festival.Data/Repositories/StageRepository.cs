@@ -1,4 +1,5 @@
-﻿using Festival.Data.Models;
+﻿using System;
+using Festival.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace Festival.Data.Repositories
         public bool Delete(int id)
         {
             Stage stage = _context.Stage.Find(id);
+            if(stage == null) throw new Exception($"Can't find stage with Id: {id}");
+
             _context.Remove(stage);
             if (_context.SaveChanges() > 0)
                 return true;
@@ -38,7 +41,11 @@ namespace Festival.Data.Repositories
 
         public Stage GetByID(int id)
         {
-            return _context.Stage.Find(id);
+            var stage = _context.Stage.Find(id);
+            if (stage == null) throw new Exception($"Can't find stage with Id: {id}");
+
+            return stage;
+
         }
         public Sponsor GetSponsor(int id)
         {

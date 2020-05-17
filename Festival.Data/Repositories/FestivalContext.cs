@@ -23,8 +23,7 @@ namespace Festival.Data.Models
         public DbSet<PurchaseVoucher> PurchaseVoucher { get; set; }
         public DbSet<TransferService> TransferService { get; set; }
         public DbSet<Image> Image { get; set; }
-
-
+        public DbSet<ExceptionLogger> ExceptionLoggers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,6 +40,5 @@ namespace Festival.Data.Models
                                             Password=f9pctz!");
 
         }
-
     }
 }

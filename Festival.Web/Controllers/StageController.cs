@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using Festival.Web.Controllers;
 
 namespace FestivalWebApplication.Controllers
 {
     [Authorize]
-    public class StageController : Controller
+    public class StageController : BaseController
     {
         private readonly IStageRepository _repo;
         public StageController(IStageRepository repo)

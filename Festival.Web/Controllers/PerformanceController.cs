@@ -7,18 +7,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 using Festival.Data.Repositories;
+using Festival.Web.Controllers;
 using FestivalWebApplication.ViewModels.Accommodation;
 
 namespace FestivalWebApplication.Controllers
 {
-    public class PerformanceController : Controller
+    public class PerformanceController : BaseController
     {
-        private readonly FestivalContext _db;
         private readonly IPerformanceRepository _repo;
 
-        public PerformanceController(FestivalContext db, IPerformanceRepository repo)
+        public PerformanceController(IPerformanceRepository repo)
         {
-            _db = db;
             _repo = repo;
         }
         public IActionResult Index()
