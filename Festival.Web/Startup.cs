@@ -23,10 +23,8 @@ namespace FestivalWebApplication
 
             services.AddControllersWithViews();
 
-
             services.AddDbContext<FestivalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FestivalDatabase")));
-
 
             services.AddRepositories();
 

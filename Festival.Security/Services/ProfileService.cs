@@ -27,6 +27,8 @@ namespace Festival.Security.Services
             foreach (var role in userRoles)
             {
                 roleClaims.Add(new Claim("roles", role));
+                roleClaims.Add(new Claim("email", user.Email));
+                roleClaims.Add(new Claim("username", user.UserName));
             }
 
             context.IssuedClaims.AddRange(roleClaims);
