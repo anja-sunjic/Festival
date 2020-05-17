@@ -22,64 +22,20 @@ namespace FestivalWebApplication
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = "Cookies";
-                options.DefaultChallengeScheme = "oidc";
-            })
-            .AddCookie("Cookies")
-            .AddOpenIdConnect("oidc", options =>
-           {
-               options.SignInScheme = "Cookies";
-               options.Authority = "http://localhost:5000";
-               options.RequireHttpsMetadata = false;
-               options.ClientId = "mvc";
-               options.ClientSecret = "secret";
-               options.ResponseType = "code";
-               options.SaveTokens = true;
-               options.MetadataAddress = "http://localhost:5000/.well-known/openid-configuration";
-               options.GetClaimsFromUserInfoEndpoint = true;
-               options.ClaimActions.MapUniqueJsonKey("roles", "roles");
-
-           });
-
-            services.AddAuthorization(option =>
-            {
-                option.AddPolicy("Admin", policy => policy.RequireClaim("roles", "Admin"));
-                option.AddPolicy("Attendee", policy => policy.RequireClaim("roles", "Attendee"));
-
-            });
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<FestivalContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("FestivalDatabase")));
+            ConfigureDatabase(services);
 
-            services.AddScoped<IAccommodationRepository, AccommodationRepository>();
-            services.AddScoped<IShopItemRepository, ShopItemRepository>();
-            services.AddScoped<ITransferVehicleRepository, TransferVehicleRepository>();
-            services.AddScoped<ITransferServiceRepository, TransferServiceRepository>();
-            services.AddScoped<IStageRepository, StageRepository>();
-            services.AddScoped<IPerformerRepository, PerformerRepository>();
-            services.AddScoped<ISponzorRepository, SponsorRepository>();
-            services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
-            services.AddScoped<IPerformanceRepository, PerformanceRepository>();
-            services.AddScoped<IAttendeeRepository, AttendeeRepository>();
-            services.AddScoped<ITicketVoucherRepository, TicketVoucherRepository>();
-            services.AddScoped<IPurchaseVoucherRepository, PurchaseVoucherRepository>();
-            services.AddScoped<ITransferReservationRepository, TransferReservationRepository>();
+            ConfigureSecurity(services);
 
-            IdentityModelEventSource.ShowPII = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ConfigureRepositories(services);
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -89,10 +45,11 @@ namespace FestivalWebApplication
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseAuthentication();
@@ -114,6 +71,64 @@ namespace FestivalWebApplication
                     areaName: "Guest",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void ConfigureRepositories(IServiceCollection services)
+        {
+            services.AddScoped<IAccommodationRepository, AccommodationRepository>();
+            services.AddScoped<IShopItemRepository, ShopItemRepository>();
+            services.AddScoped<ITransferVehicleRepository, TransferVehicleRepository>();
+            services.AddScoped<ITransferServiceRepository, TransferServiceRepository>();
+            services.AddScoped<IStageRepository, StageRepository>();
+            services.AddScoped<IPerformerRepository, PerformerRepository>();
+            services.AddScoped<ISponzorRepository, SponsorRepository>();
+            services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
+            services.AddScoped<IPerformanceRepository, PerformanceRepository>();
+            services.AddScoped<IAttendeeRepository, AttendeeRepository>();
+            services.AddScoped<ITicketVoucherRepository, TicketVoucherRepository>();
+            services.AddScoped<IPurchaseVoucherRepository, PurchaseVoucherRepository>();
+            services.AddScoped<ITransferReservationRepository, TransferReservationRepository>();
+        }
+
+        private void ConfigureSecurity(IServiceCollection services)
+        {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+            .AddCookie("Cookies")
+            .AddOpenIdConnect("oidc", options =>
+            {
+                options.SignInScheme = "Cookies";
+                options.Authority = "http://localhost:5000";
+                options.RequireHttpsMetadata = false;
+                options.ClientId = "mvc";
+                options.ClientSecret = "secret";
+                options.ResponseType = "code";
+                options.SaveTokens = true;
+                options.MetadataAddress = "http://localhost:5000/.well-known/openid-configuration";
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.ClaimActions.MapUniqueJsonKey("roles", "roles");
+
+            });
+
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("Admin", policy => policy.RequireClaim("roles", "Admin"));
+                option.AddPolicy("Attendee", policy => policy.RequireClaim("roles", "Attendee"));
+
+            });
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            IdentityModelEventSource.ShowPII = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        }
+
+        private void ConfigureDatabase(IServiceCollection services)
+        {
+            services.AddDbContext<FestivalContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("FestivalDatabase")));
         }
     }
 }
