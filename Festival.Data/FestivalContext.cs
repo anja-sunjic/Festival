@@ -22,6 +22,7 @@ namespace Festival.Data.Models
         public DbSet<TicketVoucher> TicketVoucher { get; set; }
         public DbSet<PurchaseVoucher> PurchaseVoucher { get; set; }
         public DbSet<TransferService> TransferService { get; set; }
+        public DbSet<ExceptionLogger> ExceptionLoggers { get; set; }
 
         public FestivalContext(DbContextOptions<FestivalContext> options) : base(options)
         {
