@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Web\\Festival.Web.csproj": {}
+    "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Web\\Festival.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Data\\Festival.Data.csproj": {
+    "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Data\\Festival.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Data\\Festival.Data.csproj",
+        "projectUniqueName": "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Data\\Festival.Data.csproj",
         "projectName": "Festival.Data",
-        "projectPath": "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Data\\Festival.Data.csproj",
-        "packagesPath": "C:\\Users\\edio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Data\\obj\\",
+        "projectPath": "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Data\\Festival.Data.csproj",
+        "packagesPath": "C:\\Users\\DT User3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\edio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DT User3\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,21 +68,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Web\\Festival.Web.csproj": {
+    "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Web\\Festival.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Web\\Festival.Web.csproj",
+        "projectUniqueName": "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Web\\Festival.Web.csproj",
         "projectName": "Festival.Web",
-        "projectPath": "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Web\\Festival.Web.csproj",
-        "packagesPath": "C:\\Users\\edio\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Web\\obj\\",
+        "projectPath": "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Web\\Festival.Web.csproj",
+        "packagesPath": "C:\\Users\\DT User3\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\edio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DT User3\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,8 +95,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Data\\Festival.Data.csproj": {
-                "projectPath": "C:\\Users\\edio\\Desktop\\fest\\Festival\\Festival.Data\\Festival.Data.csproj"
+              "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Data\\Festival.Data.csproj": {
+                "projectPath": "C:\\Users\\DT User3\\Desktop\\CountryCards-VanillaJS\\Festival\\Festival.Data\\Festival.Data.csproj"
               }
             }
           }
@@ -163,7 +163,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
