@@ -59,7 +59,7 @@ namespace FestivalWebApplication.Controllers
 
             return View(Model);
         }
-
+        [ValidateAntiForgeryToken]
         public IActionResult SaveNew(NewStageVM Model)
         {
             if (!ModelState.IsValid)

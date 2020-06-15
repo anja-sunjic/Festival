@@ -116,6 +116,7 @@ namespace FestivalWebApplication.Controllers
             return View("Edit", model);
 
         }
+        [ValidateAntiForgeryToken]
         public IActionResult Save(EditPerformerVM model)
         {
             if (!ModelState.IsValid)
